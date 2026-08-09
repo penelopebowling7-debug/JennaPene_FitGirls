@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Fitness Tests · Pene &amp; Jenna</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-top">
+    <div>
+      <h1>Pene &amp; Jenna</h1>
+      <p class="tagline">Fitness Hub</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="tracker.html">Tracker</a>
+    <a href="tests.html" class="active">Fitness Tests</a>
+    <a href="stats.html">Fun Stats</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>Fitness test progress 📈</h2>
+    <p>Push ups, plank hold, wall sit and sit ups, side by side across every test date so far. Pene is shown in purple, Jenna in gold.</p>
+  </div>
+
+  <div class="note-box" id="methodologyNote"></div>
+
+  <div id="chartsWrap"></div>
+</main>
+
+<footer class="site-footer">Built for Pene &amp; Jenna's training block, Weeks 11&ndash;12.</footer>
+
+<script src="data.js"></script>
+<script>
+const FT = window.SITE_DATA.fitnessTests;
+const COLOR_PENE = '#6A11CB';
+const COLOR_JENNA = '#C98500';
+
+document.getElementById('methodologyNote').innerHTML =
+  `<strong>How to read this:</strong> Push ups and sit ups are straight rep counts. Plank and wall sit hold ` +
+  `times came from the original tracking sheet in a slightly ambiguous format, so they've been read as ` +
+  `minutes.seconds (for example "1.39" = 1 minute 39 seconds). Your next retest is scheduled for ` +
+  `${FT.nextTestDate}, it isn't plotted yet since it hasn't happened.`;
+
+function fmtDate(d){
+  // d like "07/06/2026" -> "7 Jun"
+  const [day, month, year] = d.split('/').map(Number);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${day} ${months[month-1]}`;
+}
+function fmtValue(v, unit){
+  if(v == null) return '—';
+  if(unit === 'seconds'){
+    const m = Math.floor(v/60), s = v%60;
+    return `${m}:${String(s).padStart(2,'0')}`;
+  }
+  return `${v} reps`;
+}
+function niceCeil(max){
+  if(max <= 0) return 10;
+  const pow = Math.pow(10, Math.floor(Math.log10(max)));
+  const norm = max / pow;
+  let step;
+  if(norm <= 1) step = 1;
+  else if(norm <= 2) step = 2;
+  else if(norm <= 5) step = 5;
+  else step = 10;
+  return Math.ceil(max / (step*pow/5)) * (step*pow/5);
+}
+
+function buildChart(test){
+  const dates = FT.dates;
+  const people = ['Pene','Jenna'];
+  const colors = {Pene: COLOR_PENE, Jenna: COLOR_JENNA};
+  const allVals = people.flatMap(p => test.series[p]).filter(v => v != null);
+  const maxVal = Math.max(...allVals);
+  const yMax = niceCeil(maxVal * 1.15);
+  const yMin = 0;
+
+  const W = 600, H = 280;
+  const padL = 46, padR = 40, padT = 26, padB = 44;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const xFor = i => padL + (dates.length === 1 ? plotW/2 : (i/(dates.length-1)) * plotW);
+  const yFor = v => padT + plotH - ((v - yMin)/(yMax - yMin)) * plotH;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'card viz-root';
+
+  const legend = document.createElement('div');
+  legend.className = 'chart-legend';
+  legend.innerHTML = people.map(p =>
+    `<span class="item"><span class="swatch" style="background:${colors[p]}"></span>${p}</span>`
+  ).join('');
+
+  const title = document.createElement('h3');
+  title.textContent = test.name;
+
+  // gridlines
+  const gridSteps = 4;
+  let gridLines = '';
+  let yLabels = '';
+  for(let i=0;i<=gridSteps;i++){
+    const v = yMin + (yMax-yMin) * (i/gridSteps);
+    const y = yFor(v);
+    gridLines += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="#e1e0d9" stroke-width="1"/>`;
+    yLabels += `<text x="${padL-8}" y="${y+4}" text-anchor="end" font-size="10" fill="#898781">${fmtValue(Math.round(v), test.unit)}</text>`;
+  }
+  let xLabels = dates.map((d,i) => `<text x="${xFor(i)}" y="${H-padB+18}" text-anchor="middle" font-size="10" fill="#52514e">${fmtDate(d)}</text>`).join('');
+
+  let seriesSvg = '';
+  let hitCircles = '';
+  people.forEach(p => {
+    const vals = test.series[p];
+    const pts = vals.map((v,i)=> v==null ? null : [xFor(i), yFor(v)]).filter(Boolean);
+    const pathD = pts.map((pt,i)=> (i===0?'M':'L') + pt[0].toFixed(1) + ',' + pt[1].toFixed(1)).join(' ');
+    seriesSvg += `<path d="${pathD}" fill="none" stroke="${colors[p]}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    vals.forEach((v,i)=>{
+      if(v == null) return;
+      const x = xFor(i), y = yFor(v);
+      const labelY = p === 'Pene' ? y - 12 : y + 20;
+      seriesSvg += `<circle cx="${x}" cy="${y}" r="4.5" fill="${colors[p]}" stroke="#fff" stroke-width="1.5"/>`;
+      seriesSvg += `<text x="${x}" y="${labelY}" text-anchor="middle" font-size="10.5" font-weight="700" fill="${colors[p]}">${fmtValue(v, test.unit)}</text>`;
+      hitCircles += `<circle class="hit" cx="${x}" cy="${y}" r="12" fill="transparent" data-person="${p}" data-date="${fmtDate(dates[i])}" data-value="${fmtValue(v, test.unit)}"></circle>`;
+    });
+  });
+
+  const svgWrapId = 'svg-' + Math.random().toString(36).slice(2,9);
+  const chartSvgWrap = document.createElement('div');
+  chartSvgWrap.className = 'chart-svg-wrap';
+  chartSvgWrap.style.position = 'relative';
+  chartSvgWrap.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;min-width:340px;" id="${svgWrapId}">
+      ${gridLines}
+      ${yLabels}
+      ${xLabels}
+      ${seriesSvg}
+      ${hitCircles}
+    </svg>
+    <div class="chart-tooltip" id="${svgWrapId}-tip"></div>
+  `;
+
+  const tableBtn = document.createElement('button');
+  tableBtn.className = 'table-toggle';
+  tableBtn.textContent = 'View as table';
+  const table = document.createElement('table');
+  table.className = 'data-table';
+  table.style.display = 'none';
+  table.innerHTML = `
+    <thead><tr><th>Person</th>${dates.map(d=>`<th>${fmtDate(d)}</th>`).join('')}<th>${fmtDate(FT.nextTestDate)} (next test)</th></tr></thead>
+    <tbody>
+      ${people.map(p => `<tr><td style="color:${colors[p]};font-weight:700;">${p}</td>${test.series[p].map(v=>`<td>${fmtValue(v, test.unit)}</td>`).join('')}<td>—</td></tr>`).join('')}
+    </tbody>
+  `;
+  tableBtn.onclick = ()=>{
+    const showing = table.style.display !== 'none';
+    table.style.display = showing ? 'none' : 'table';
+    tableBtn.textContent = showing ? 'View as table' : 'Hide table';
+  };
+
+  wrap.appendChild(title);
+  wrap.appendChild(legend);
+  wrap.appendChild(chartSvgWrap);
+  wrap.appendChild(tableBtn);
+  wrap.appendChild(table);
+
+  // wire up tooltip after mount (needs DOM)
+  requestAnimationFrame(()=>{
+    const svgEl = document.getElementById(svgWrapId);
+    const tip = document.getElementById(svgWrapId + '-tip');
+    svgEl.querySelectorAll('.hit').forEach(hit=>{
+      hit.addEventListener('mouseenter', (e)=>{
+        const rect = chartSvgWrap.getBoundingClientRect();
+        const cx = parseFloat(hit.getAttribute('cx'));
+        const cy = parseFloat(hit.getAttribute('cy'));
+        const scaleX = rect.width / W;
+        tip.textContent = `${hit.dataset.person}, ${hit.dataset.date}: ${hit.dataset.value}`;
+        tip.style.left = (cx*scaleX) + 'px';
+        tip.style.top = (cy*scaleX - 30) + 'px';
+        tip.classList.add('show');
+      });
+      hit.addEventListener('mouseleave', ()=> tip.classList.remove('show'));
+      hit.addEventListener('touchstart', (e)=>{
+        const rect = chartSvgWrap.getBoundingClientRect();
+        const cx = parseFloat(hit.getAttribute('cx'));
+        const cy = parseFloat(hit.getAttribute('cy'));
+        const scaleX = rect.width / W;
+        tip.textContent = `${hit.dataset.person}, ${hit.dataset.date}: ${hit.dataset.value}`;
+        tip.style.left = (cx*scaleX) + 'px';
+        tip.style.top = (cy*scaleX - 30) + 'px';
+        tip.classList.add('show');
+        setTimeout(()=> tip.classList.remove('show'), 1500);
+      }, {passive:true});
+    });
+  });
+
+  return wrap;
+}
+
+const chartsWrap = document.getElementById('chartsWrap');
+FT.tests.forEach(test => chartsWrap.appendChild(buildChart(test)));
+</script>
+</body>
+</html>

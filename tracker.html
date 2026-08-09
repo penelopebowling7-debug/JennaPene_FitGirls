@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Workout Tracker · Pene &amp; Jenna</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{padding-bottom:100px;}
+  .tabs-row{
+    display:flex;
+    gap:6px;
+    margin-top:12px;
+  }
+  .week-tab{
+    flex:1;
+    background:rgba(255,255,255,0.14);
+    border:none;
+    color:#fff;
+    padding:9px 10px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:0.85rem;
+    cursor:pointer;
+  }
+  .week-tab.active{
+    background:#fff;
+    color:var(--teal-700);
+  }
+  .day-row{
+    display:flex;
+    gap:6px;
+    margin-top:8px;
+    padding-bottom:2px;
+    overflow-x:auto;
+  }
+  .day-tab{
+    flex:0 0 auto;
+    min-width:70px;
+    text-align:center;
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:10px 10px 0 0;
+    font-weight:700;
+    font-size:0.85rem;
+    cursor:pointer;
+    position:relative;
+  }
+  .day-tab .sub{
+    display:block;
+    font-size:0.68rem;
+    font-weight:600;
+    opacity:0.75;
+  }
+  .day-tab.active{
+    background:var(--bg);
+    color:var(--teal-700);
+  }
+  .day-tab.new::after{
+    content:"NEW";
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    background:var(--gold-500);
+    color:#5b4600;
+    font-size:0.55rem;
+    font-weight:800;
+    padding:2px 5px;
+    border-radius:6px;
+  }
+  .day-banner{
+    background:linear-gradient(135deg,var(--teal-500),var(--coral-500));
+    color:#fff;
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:16px;
+    box-shadow:var(--shadow);
+  }
+  .day-banner h2{margin:0 0 2px;font-size:1.15rem;}
+  .day-banner .meta{font-size:0.82rem;opacity:0.9;margin-bottom:8px;}
+  .progress-wrap{
+    background:rgba(255,255,255,0.3);
+    border-radius:8px;
+    height:8px;
+    overflow:hidden;
+  }
+  .progress-bar{
+    background:#fff;
+    height:100%;
+    border-radius:8px;
+    transition:width 0.25s ease;
+  }
+  .progress-label{font-size:0.78rem;margin-top:6px;opacity:0.9;}
+  .day-banner .note-box{
+    background:rgba(255,255,255,0.18);
+    border:none;
+    color:#fff;
+    margin-top:10px;
+    margin-bottom:0;
+  }
+  .day-banner .note-box strong{color:#fff;}
+  .new-flag{
+    display:inline-block;
+    background:var(--gold-500);
+    color:#5b4600;
+    font-weight:800;
+    font-size:0.7rem;
+    padding:3px 8px;
+    border-radius:8px;
+    margin-bottom:6px;
+  }
+  .section{margin-bottom:18px;}
+  .section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-weight:800;
+    color:var(--teal-900);
+    font-size:0.95rem;
+    margin:0 2px 8px;
+  }
+  .section-title .tempo{
+    font-weight:600;
+    font-size:0.76rem;
+    color:var(--ink-soft);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .card-top > div:first-child{flex:1;min-width:0;}
+  .ex-name{
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .ex-qty{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .video-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--coral-100);
+    color:var(--coral-500);
+    font-size:0.65rem;
+    text-decoration:none;
+    flex:0 0 auto;
+  }
+  .video-link.known{
+    background:var(--coral-500);
+    color:#fff;
+  }
+  .simple-row .video-link{margin-left:6px;}
+  .weight-input{
+    width:130px;
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    font-size:0.85rem;
+    font-family:inherit;
+    text-align:right;
+    flex:0 0 auto;
+  }
+  @media (min-width:640px){
+    .weight-input{ width:190px; font-size:0.82rem; }
+  }
+  .rounds-row{
+    display:flex;
+    gap:6px;
+    margin-top:10px;
+    flex-wrap:wrap;
+  }
+  .round-chip{
+    padding:8px 0;
+    width:44px;
+    text-align:center;
+    border-radius:10px;
+    background:var(--teal-100);
+    color:var(--teal-700);
+    font-weight:800;
+    font-size:0.78rem;
+    cursor:pointer;
+    user-select:none;
+  }
+  .round-chip.done{
+    background:var(--coral-500);
+    color:#fff;
+  }
+  .simple-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 2px;
+    border-bottom:1px solid var(--line);
+    cursor:pointer;
+  }
+  .simple-row:last-child{border-bottom:none;}
+  .simple-row .label{
+    font-size:0.9rem;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .simple-row .qty{
+    color:var(--ink-soft);
+    font-size:0.8rem;
+  }
+  .checkbox{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    border:2px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.85rem;
+    color:#fff;
+    flex:0 0 auto;
+  }
+  .checkbox.done{
+    background:var(--teal-700);
+    border-color:var(--teal-700);
+  }
+  .tracker-footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    border-top:1px solid var(--line);
+    padding:10px 12px;
+    display:flex;
+    gap:10px;
+    z-index:20;
+    box-shadow:0 -2px 12px rgba(106,17,203,0.1);
+  }
+  .btn-timer, .btn-summary{
+    flex:1;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    font-weight:800;
+    font-size:0.88rem;
+    cursor:pointer;
+  }
+  .btn-timer{background:var(--teal-700);color:#fff;}
+  .btn-summary{background:var(--coral-100);color:var(--coral-500);}
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(43,10,77,0.5);
+    z-index:50;
+    align-items:flex-end;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:#fff;
+    width:100%;
+    border-radius:20px 20px 0 0;
+    padding:22px 18px 26px;
+    position:relative;
+    max-height:80vh;
+    overflow-y:auto;
+  }
+  @media (min-width:640px){
+    .modal-overlay{align-items:center;justify-content:center;}
+    .modal{border-radius:20px;max-width:440px;}
+  }
+  .modal h3{margin:0 0 12px;color:var(--teal-900);}
+  .modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    background:var(--teal-100);
+    border:none;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:1rem;
+    cursor:pointer;
+    color:var(--teal-700);
+  }
+  .timer-display{
+    font-size:2.6rem;
+    font-weight:800;
+    text-align:center;
+    color:var(--teal-700);
+    margin:10px 0 16px;
+    font-variant-numeric:tabular-nums;
+  }
+  .timer-presets{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:16px;
+  }
+  .preset-btn{
+    padding:8px 12px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fff;
+    font-weight:700;
+    font-size:0.8rem;
+    cursor:pointer;
+  }
+  .timer-controls{
+    display:flex;
+    gap:10px;
+  }
+  .timer-controls .btn{
+    flex:1;
+    padding:12px;
+    border-radius:12px;
+    font-weight:800;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-start{background:var(--teal-500);color:#fff;}
+  .btn-reset{background:var(--line);color:var(--ink);}
+  .summary-box{
+    width:100%;
+    min-height:180px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    padding:10px;
+    font-family:monospace;
+    font-size:0.8rem;
+    resize:vertical;
+  }
+  .copy-btn{
+    margin-top:10px;
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    background:var(--teal-700);
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .disclaimer{
+    font-size:0.76rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+    line-height:1.5;
+  }
+  .save-flag{
+    font-size:0.74rem;
+    opacity:0.85;
+    margin-top:2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-top">
+    <div>
+      <h1>Pene &amp; Jenna</h1>
+      <p class="tagline" id="dateLine"></p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="tracker.html" class="active">Tracker</a>
+    <a href="tests.html">Fitness Tests</a>
+    <a href="stats.html">Fun Stats</a>
+  </nav>
+  <div class="tabs-row" id="weekTabs"></div>
+  <div class="day-row" id="dayTabs"></div>
+</header>
+
+<main id="main" style="padding-top:16px;"></main>
+
+<div style="text-align:center;margin:8px 0 100px;">
+  <button id="howToUse" style="background:none;border:none;color:var(--teal-700);font-weight:700;font-size:0.85rem;text-decoration:underline;cursor:pointer;">How to use this tracker</button>
+</div>
+
+<div class="tracker-footer">
+  <button class="btn-timer" id="openTimer">⏱ Rest Timer</button>
+  <button class="btn-summary" id="openSummary">📋 Copy Summary</button>
+</div>
+
+<div class="modal-overlay" id="timerOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeTimer">&times;</button>
+    <h3>Rest / Work Timer</h3>
+    <div class="timer-display" id="timerDisplay">00:40</div>
+    <div class="timer-presets" id="timerPresets"></div>
+    <div class="timer-controls">
+      <button class="btn btn-start" id="startTimer">Start</button>
+      <button class="btn btn-reset" id="resetTimer">Reset</button>
+    </div>
+    <p class="disclaimer">Tip: tap a preset to load it, tap Start to begin the countdown. Your phone will vibrate when time is up if it supports it.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="summaryOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeSummary">&times;</button>
+    <h3>Session Summary</h3>
+    <p class="disclaimer">Copy this summary and paste it into your Workout Builder spreadsheet, notes app, or a message to Jenna to keep a permanent record.</p>
+    <textarea class="summary-box" id="summaryText" readonly></textarea>
+    <button class="copy-btn" id="copyBtn">Copy to clipboard</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="guideOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeGuide">&times;</button>
+    <h3>How this works</h3>
+    <p style="font-size:0.9rem;line-height:1.6;">
+      Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
+      The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
+      Use the Rest Timer for your work and rest intervals during circuits. Tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
+      Before you finish, tap Copy Summary for a plain text record of what you did, weights included.<br><br>
+      <strong>Your progress is saved automatically on this device</strong> (browser storage), so it's still here if you close the tab or lose signal mid session. If you and Jenna each use your own phone, your ticks are separate on each device, they don't sync to each other. Tap "Reset this plan" below if you ever want to clear everything and start fresh.
+    </p>
+    <button id="resetAllData" style="margin-top:6px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#B5179E;font-weight:700;cursor:pointer;">Reset this plan (clears all saved ticks)</button>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const DATA = window.SITE_DATA.tracker;
+const STORAGE_KEY = 'pj-tracker-state-v1';
+const SESSIONS_KEY = 'pj-completed-sessions-v1';
+
+function loadSavedState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+function persistState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      weekIdx: state.weekIdx,
+      dayIdx: state.dayIdx,
+      progress: state.progress
+    }));
+  }catch(e){ /* storage unavailable, tracker still works, just won't persist */ }
+}
+
+const saved = loadSavedState();
+const state = {
+  weekIdx: saved && saved.weekIdx != null ? saved.weekIdx : 0,
+  dayIdx: saved && saved.dayIdx != null ? saved.dayIdx : 0,
+  progress: saved && saved.progress ? saved.progress : {}
+};
+
+function keyFor(weekId, dayId){ return weekId + "__" + dayId; }
+
+function ensureDayState(week, day){
+  const k = keyFor(week.id, day.id);
+  if(!state.progress[k]){
+    state.progress[k] = {
+      warmup: day.warmup.map(()=>false),
+      blocks: day.blocks.map(b => ({
+        rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
+        weights: b.exercises.map(e => e.weight)
+      })),
+      cooldown: day.cooldown.map(()=>false)
+    };
+  }
+  return state.progress[k];
+}
+
+function totalTicks(ds, day){
+  let total = 0, done = 0;
+  ds.warmup.forEach(v=>{total++; if(v) done++;});
+  ds.blocks.forEach(b=> b.rounds.forEach(arr=>{ arr.forEach(v=>{total++; if(v) done++;}); }));
+  ds.cooldown.forEach(v=>{total++; if(v) done++;});
+  return {total, done};
+}
+
+function recordIfComplete(week, day, ds){
+  const {total, done} = totalTicks(ds, day);
+  if(total === 0 || done < total) return;
+  try{
+    const raw = localStorage.getItem(SESSIONS_KEY);
+    const log = raw ? JSON.parse(raw) : [];
+    const k = keyFor(week.id, day.id) + '__' + week.label;
+    if(!log.some(entry => entry.key === k)){
+      log.push({ key: k, week: week.label, day: day.label, title: day.title, completedAt: new Date().toISOString() });
+      localStorage.setItem(SESSIONS_KEY, JSON.stringify(log));
+    }
+  }catch(e){ /* storage unavailable */ }
+}
+
+function renderTabs(){
+  const weekTabs = document.getElementById('weekTabs');
+  weekTabs.innerHTML = '';
+  DATA.weeks.forEach((w, i)=>{
+    const b = document.createElement('button');
+    b.className = 'week-tab' + (i===state.weekIdx?' active':'');
+    b.textContent = w.label;
+    b.onclick = ()=>{ state.weekIdx = i; state.dayIdx = 0; persistState(); renderAll(); };
+    weekTabs.appendChild(b);
+  });
+
+  const dayTabs = document.getElementById('dayTabs');
+  dayTabs.innerHTML = '';
+  const week = DATA.weeks[state.weekIdx];
+  week.days.forEach((d, i)=>{
+    const b = document.createElement('div');
+    b.className = 'day-tab' + (i===state.dayIdx?' active':'') + (d.isNew?' new':'');
+    b.innerHTML = d.label + '<span class="sub">' + d.title.split(' ')[0] + '</span>';
+    b.onclick = ()=>{ state.dayIdx = i; persistState(); renderAll(); };
+    dayTabs.appendChild(b);
+  });
+
+  document.getElementById('dateLine').textContent = week.label + ' · ' + week.dates;
+}
+
+function roundChip(done, label){
+  const d = document.createElement('div');
+  d.className = 'round-chip' + (done?' done':'');
+  d.textContent = label;
+  return d;
+}
+
+function videoLinkHtml(item){
+  if(!item || !item.video) return '';
+  const cls = item.videoKnown ? 'video-link known' : 'video-link';
+  const icon = item.videoKnown ? '&#9654;' : '&#128269;';
+  const title = item.videoKnown ? 'Watch how-to video' : 'Search a how-to video on YouTube';
+  return `<a class="${cls}" href="${item.video}" target="_blank" rel="noopener" title="${title}" onclick="event.stopPropagation()">${icon}</a>`;
+}
+
+function renderMain(){
+  const week = DATA.weeks[state.weekIdx];
+  const day = week.days[state.dayIdx];
+  const ds = ensureDayState(week, day);
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  const banner = document.createElement('div');
+  banner.className = 'day-banner';
+  const {total, done} = totalTicks(ds, day);
+  const pct = total ? Math.round((done/total)*100) : 0;
+  banner.innerHTML = `
+    ${day.isNew ? '<div class="new-flag">New 4th day</div><br>' : ''}
+    <h2>${day.label}: ${day.title}</h2>
+    <div class="meta">Estimated time: ${day.estTime}</div>
+    <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
+    <div class="progress-label">${done} of ${total} items ticked (${pct}%)</div>
+    ${day.note ? `<div class="note-box">${day.note}</div>` : ''}
+  `;
+  main.appendChild(banner);
+
+  main.appendChild(renderSimpleSection('Warm Up', day.warmup, ds.warmup, week, day, ds));
+
+  day.blocks.forEach((block, bi)=>{
+    const section = document.createElement('div');
+    section.className = 'section';
+    const title = document.createElement('div');
+    title.className = 'section-title';
+    title.innerHTML = `<span>${block.name}</span><span class="tempo">${block.tempo}</span>`;
+    section.appendChild(title);
+
+    block.exercises.forEach((exObj, ei)=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      const top = document.createElement('div');
+      top.className = 'card-top';
+      const left = document.createElement('div');
+      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>`;
+      top.appendChild(left);
+
+      const weightInput = document.createElement('input');
+      weightInput.className = 'weight-input';
+      weightInput.value = ds.blocks[bi].weights[ei];
+      weightInput.oninput = (e)=>{ ds.blocks[bi].weights[ei] = e.target.value; persistState(); };
+      top.appendChild(weightInput);
+      card.appendChild(top);
+
+      const roundsRow = document.createElement('div');
+      roundsRow.className = 'rounds-row';
+      for(let r=0;r<block.rounds;r++){
+        const chip = roundChip(ds.blocks[bi].rounds[ei][r], 'R' + (r+1));
+        chip.onclick = ()=>{
+          ds.blocks[bi].rounds[ei][r] = !ds.blocks[bi].rounds[ei][r];
+          persistState();
+          recordIfComplete(week, day, ds);
+          renderMain();
+        };
+        roundsRow.appendChild(chip);
+      }
+      card.appendChild(roundsRow);
+      section.appendChild(card);
+    });
+    main.appendChild(section);
+  });
+
+  main.appendChild(renderSimpleSection('Cool Down', day.cooldown, ds.cooldown, week, day, ds));
+}
+
+function renderSimpleSection(title, items, stateArr, week, day, ds){
+  const section = document.createElement('div');
+  section.className = 'section';
+  const t = document.createElement('div');
+  t.className = 'section-title';
+  t.innerHTML = `<span>${title}</span>`;
+  section.appendChild(t);
+  const card = document.createElement('div');
+  card.className = 'card';
+  items.forEach((item, i)=>{
+    const row = document.createElement('div');
+    row.className = 'simple-row';
+    const name = typeof item === 'string' ? item : item.name;
+    const qty = typeof item === 'string' ? '' : item.qty;
+    row.innerHTML = `<span class="label">${name}${qty ? `<span class="qty">&nbsp;&middot;&nbsp;${qty}</span>` : ''}${videoLinkHtml(item)}</span>`;
+    const box = document.createElement('span');
+    box.className = 'checkbox' + (stateArr[i] ? ' done' : '');
+    box.textContent = stateArr[i] ? '✓' : '';
+    row.appendChild(box);
+    row.onclick = ()=>{
+      stateArr[i] = !stateArr[i];
+      persistState();
+      if(week && day && ds) recordIfComplete(week, day, ds);
+      renderMain();
+    };
+    card.appendChild(row);
+  });
+  section.appendChild(card);
+  return section;
+}
+
+function renderAll(){
+  renderTabs();
+  renderMain();
+}
+
+// ---------------- Timer ----------------
+let timerSeconds = 40;
+let timerRemaining = 40;
+let timerInterval = null;
+let timerRunning = false;
+
+function formatTime(s){
+  const m = Math.floor(s/60).toString().padStart(2,'0');
+  const sec = (s%60).toString().padStart(2,'0');
+  return m + ':' + sec;
+}
+function updateTimerDisplay(){
+  document.getElementById('timerDisplay').textContent = formatTime(timerRemaining);
+}
+const PRESETS = [15,20,25,30,35,40,45,60,90];
+function renderPresets(){
+  const wrap = document.getElementById('timerPresets');
+  wrap.innerHTML = '';
+  PRESETS.forEach(p=>{
+    const b = document.createElement('button');
+    b.className = 'preset-btn';
+    b.textContent = p + 's';
+    b.onclick = ()=>{
+      clearInterval(timerInterval);
+      timerRunning = false;
+      timerSeconds = p;
+      timerRemaining = p;
+      updateTimerDisplay();
+      document.getElementById('startTimer').textContent = 'Start';
+    };
+    wrap.appendChild(b);
+  });
+}
+function tick(){
+  timerRemaining--;
+  if(timerRemaining <= 0){
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerRemaining = 0;
+    updateTimerDisplay();
+    document.getElementById('startTimer').textContent = 'Start';
+    if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.frequency.value = 880;
+      g.gain.setValueAtTime(0.2, ctx.currentTime);
+      o.start();
+      o.stop(ctx.currentTime + 0.5);
+    }catch(e){}
+    return;
+  }
+  updateTimerDisplay();
+}
+document.getElementById('startTimer').onclick = ()=>{
+  if(timerRunning){
+    clearInterval(timerInterval);
+    timerRunning = false;
+    document.getElementById('startTimer').textContent = 'Start';
+  } else {
+    if(timerRemaining <= 0) timerRemaining = timerSeconds;
+    timerRunning = true;
+    document.getElementById('startTimer').textContent = 'Pause';
+    timerInterval = setInterval(tick, 1000);
+  }
+};
+document.getElementById('resetTimer').onclick = ()=>{
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timerRemaining = timerSeconds;
+  updateTimerDisplay();
+  document.getElementById('startTimer').textContent = 'Start';
+};
+
+// ---------------- Modals ----------------
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+document.getElementById('openTimer').onclick = ()=>{ renderPresets(); updateTimerDisplay(); openModal('timerOverlay'); };
+document.getElementById('closeTimer').onclick = ()=> closeModal('timerOverlay');
+document.getElementById('howToUse').onclick = ()=> openModal('guideOverlay');
+document.getElementById('closeGuide').onclick = ()=> closeModal('guideOverlay');
+
+document.getElementById('openSummary').onclick = ()=>{
+  const week = DATA.weeks[state.weekIdx];
+  const day = week.days[state.dayIdx];
+  const ds = ensureDayState(week, day);
+  let lines = [];
+  lines.push(week.label + ', ' + day.label + ': ' + day.title);
+  lines.push('');
+  day.blocks.forEach((block, bi)=>{
+    lines.push(block.name + ' (' + block.tempo + ')');
+    block.exercises.forEach((exObj, ei)=>{
+      const roundsDone = ds.blocks[bi].rounds[ei].filter(Boolean).length;
+      const w = ds.blocks[bi].weights[ei];
+      lines.push('  - ' + exObj.name + ': ' + roundsDone + '/' + block.rounds + ' rounds, weight used: ' + w);
+    });
+    lines.push('');
+  });
+  const cdDone = ds.cooldown.filter(Boolean).length;
+  lines.push('Cool down completed: ' + cdDone + '/' + day.cooldown.length);
+  document.getElementById('summaryText').value = lines.join('\n');
+  openModal('summaryOverlay');
+};
+document.getElementById('closeSummary').onclick = ()=> closeModal('summaryOverlay');
+document.getElementById('copyBtn').onclick = ()=>{
+  const ta = document.getElementById('summaryText');
+  ta.select();
+  ta.setSelectionRange(0, 999999);
+  try{
+    navigator.clipboard.writeText(ta.value);
+    document.getElementById('copyBtn').textContent = 'Copied!';
+    setTimeout(()=>{ document.getElementById('copyBtn').textContent = 'Copy to clipboard'; }, 1500);
+  }catch(e){
+    document.copyBtn = 'Select all and copy manually';
+  }
+};
+document.getElementById('resetAllData').onclick = ()=>{
+  try{
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(SESSIONS_KEY);
+  }catch(e){}
+  state.progress = {};
+  state.weekIdx = 0;
+  state.dayIdx = 0;
+  closeModal('guideOverlay');
+  renderAll();
+};
+
+[['timerOverlay'],['summaryOverlay'],['guideOverlay']].forEach(([id])=>{
+  document.getElementById(id).addEventListener('click', (e)=>{
+    if(e.target.id === id) closeModal(id);
+  });
+});
+
+renderAll();
+</script>
+</body>
+</html>

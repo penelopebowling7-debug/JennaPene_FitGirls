@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Fun Stats · Pene &amp; Jenna</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .glow-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+  @media (min-width:640px){.glow-grid{grid-template-columns:1fr 1fr;}}
+  .glow-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;}
+  .glow-card .test-name{font-weight:800;color:var(--teal-900);font-size:0.95rem;margin-bottom:8px;}
+  .glow-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:0.88rem;}
+  .glow-row .who{font-weight:700;}
+  .glow-row .who.pene{color:var(--series-pene);}
+  .glow-row .who.jenna{color:var(--series-jenna);}
+  .glow-row .change{font-weight:800;color:#0ca30c;}
+  .session-log{list-style:none;margin:0;padding:0;}
+  .session-log li{padding:10px 0;border-bottom:1px solid var(--line);font-size:0.88rem;display:flex;justify-content:space-between;gap:10px;}
+  .session-log li:last-child{border-bottom:none;}
+  .session-log .when{color:var(--ink-soft);font-size:0.78rem;white-space:nowrap;}
+  .fun-compare{font-size:0.85rem;color:var(--ink-soft);margin-top:6px;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-top">
+    <div>
+      <h1>Pene &amp; Jenna</h1>
+      <p class="tagline">Fitness Hub</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="tracker.html">Tracker</a>
+    <a href="tests.html">Fitness Tests</a>
+    <a href="stats.html" class="active">Fun Stats</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>Fun stats 🎉</h2>
+    <p>A lighthearted look at the whole program so far, how many sessions you've built together, roughly how long that adds up to, and about how much weight you've lifted.</p>
+  </div>
+
+  <div class="note-box" id="methodologyNote"></div>
+
+  <div class="stat-grid" id="statGrid"></div>
+  <p class="fun-compare" id="funCompare"></p>
+
+  <div class="card">
+    <h3>Since you started using this tracker</h3>
+    <p style="margin:0 0 4px;color:var(--ink-soft);font-size:0.85rem;">This part is live, it counts full sessions you've actually ticked off as complete in the tracker on this device.</p>
+    <div id="liveSessions"></div>
+  </div>
+
+  <div class="page-header" style="margin-top:8px;">
+    <h2 style="font-size:1.15rem;">Glow-up callouts ✨</h2>
+    <p>How far push ups, plank hold, wall sit and sit ups have come from your first test to your most recent one.</p>
+  </div>
+  <div class="glow-grid" id="glowGrid"></div>
+</main>
+
+<footer class="site-footer">Built for Pene &amp; Jenna's training block, Weeks 11&ndash;12.</footer>
+
+<script src="data.js"></script>
+<script>
+const STATS = window.SITE_DATA.programStats;
+const FT = window.SITE_DATA.fitnessTests;
+const SESSIONS_KEY = 'pj-completed-sessions-v1';
+
+document.getElementById('methodologyNote').innerHTML = `<strong>Fun facts, not a logged history:</strong> ${STATS.methodology}`;
+
+const statGrid = document.getElementById('statGrid');
+const tiles = [
+  { value: STATS.totalSessions, unit: 'sessions', label: `Programmed across ${STATS.totalProgrammedWeeks} weeks` },
+  { value: STATS.totalHoursEstimate, unit: 'hours', label: 'Estimated time training together' },
+  { value: STATS.totalKgEstimate.toLocaleString(), unit: 'kg', label: 'Estimated total weight lifted' },
+  { value: STATS.totalKgEstimateTonnes, unit: 'tonnes', label: 'That estimated weight, in tonnes' },
+];
+tiles.forEach(t=>{
+  const div = document.createElement('div');
+  div.className = 'stat-tile';
+  div.innerHTML = `<div class="value">${t.value}</div><div class="unit">${t.unit}</div><div class="label">${t.label}</div>`;
+  statGrid.appendChild(div);
+});
+
+const elephants = (STATS.totalKgEstimate / 6000).toFixed(1);
+const buses = (STATS.totalKgEstimate / 12000).toFixed(1);
+document.getElementById('funCompare').textContent =
+  `For scale, that's roughly ${elephants} African elephants, or about ${buses} double-decker buses, worth of weight moved between the two of you. Week 8 is missing from the original records, so it isn't counted here, the real number is a little higher.`;
+
+// ---------------- Live session log ----------------
+const liveWrap = document.getElementById('liveSessions');
+let log = [];
+try{
+  const raw = localStorage.getItem(SESSIONS_KEY);
+  log = raw ? JSON.parse(raw) : [];
+}catch(e){}
+
+if(log.length === 0){
+  liveWrap.innerHTML = `<p style="color:var(--ink-soft);font-size:0.88rem;margin:8px 0 0;">No completed sessions logged on this device yet. Finish ticking off every item on a day in the Tracker and it'll show up here.</p>`;
+} else {
+  const count = document.createElement('div');
+  count.className = 'stat-tile';
+  count.style.maxWidth = '220px';
+  count.style.marginBottom = '12px';
+  count.innerHTML = `<div class="value">${log.length}</div><div class="unit">sessions</div><div class="label">Completed on this device</div>`;
+  liveWrap.appendChild(count);
+
+  const list = document.createElement('ul');
+  list.className = 'session-log';
+  log.slice().reverse().forEach(entry=>{
+    const li = document.createElement('li');
+    const d = new Date(entry.completedAt);
+    const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
+    li.innerHTML = `<span>${entry.week}, ${entry.day}: ${entry.title}</span><span class="when">${when}</span>`;
+    list.appendChild(li);
+  });
+  liveWrap.appendChild(list);
+}
+
+// ---------------- Glow-up callouts ----------------
+const glowGrid = document.getElementById('glowGrid');
+FT.tests.forEach(test=>{
+  const card = document.createElement('div');
+  card.className = 'glow-card';
+  let rows = '';
+  ['Pene','Jenna'].forEach(person=>{
+    const series = test.series[person].filter(v => v != null);
+    if(series.length < 2) return;
+    const first = series[0], last = series[series.length-1];
+    const diff = last - first;
+    const pct = first !== 0 ? Math.round((diff/first)*100) : null;
+    const fmt = v => test.unit === 'seconds'
+      ? `${Math.floor(v/60)}:${String(v%60).padStart(2,'0')}`
+      : `${v}`;
+    const changeText = diff === 0 ? 'holding steady' : `${diff > 0 ? '+' : ''}${fmt(Math.abs(diff))}${test.unit === 'reps' ? ' reps' : ''}${pct != null ? ` (${diff>0?'+':''}${pct}%)` : ''}`;
+    rows += `<div class="glow-row"><span class="who ${person.toLowerCase()}">${person}</span><span>${fmt(first)} &rarr; ${fmt(last)}</span><span class="change">${changeText}</span></div>`;
+  });
+  card.innerHTML = `<div class="test-name">${test.name}</div>${rows}`;
+  glowGrid.appendChild(card);
+});
+</script>
+</body>
+</html>

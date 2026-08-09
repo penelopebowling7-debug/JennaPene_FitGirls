@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Pene & Jenna Fitness Hub - shared design system
+   Pink/purple "hot girl trendy" theme, used across every page of the site.
+   ========================================================================== */
+
+:root{
+  --teal-900:#2B0A4D;
+  --teal-700:#6A11CB;
+  --teal-500:#7B2FF7;
+  --teal-100:#F3E8FF;
+  --coral-500:#F72585;
+  --coral-100:#FDE1F5;
+  --gold-500:#FFD60A;
+  --gold-100:#FFF3CD;
+  --ink:#2B1A3D;
+  --ink-soft:#7A6A94;
+  --line:#EADCF7;
+  --bg:#FBF7FD;
+  --card:#FFFFFF;
+  --radius:16px;
+  --shadow:0 2px 12px rgba(106,17,203,0.12);
+
+  /* Chart series colors - validated for CVD-safety, contrast, and normal-vision
+     separation via the dataviz skill's palette validator (light mode). */
+  --series-pene:#6A11CB;
+  --series-jenna:#C98500;
+}
+
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  font-family:"Aptos","Calibri","Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  padding-bottom:60px;
+}
+
+a{color:var(--teal-700);}
+
+/* ---------------- Top nav (shared across all pages) ---------------- */
+.site-header{
+  background:linear-gradient(135deg,var(--teal-700),var(--teal-900));
+  color:#fff;
+  padding:16px 16px 0;
+  position:sticky;
+  top:0;
+  z-index:30;
+  box-shadow:var(--shadow);
+}
+.site-header-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding-bottom:12px;
+}
+.site-header-top h1{
+  margin:0;
+  font-size:1.15rem;
+  font-weight:800;
+  letter-spacing:0.2px;
+}
+.site-header-top .tagline{
+  margin:2px 0 0;
+  font-size:0.78rem;
+  opacity:0.85;
+}
+.site-nav{
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.site-nav::-webkit-scrollbar{display:none;}
+.site-nav a{
+  flex:0 0 auto;
+  color:#fff;
+  text-decoration:none;
+  font-size:0.85rem;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:12px 12px 0 0;
+  opacity:0.72;
+  white-space:nowrap;
+}
+.site-nav a.active{
+  background:var(--bg);
+  color:var(--teal-700);
+  opacity:1;
+}
+
+/* ---------------- Page shell ---------------- */
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:20px 16px 40px;
+}
+
+.page-header{
+  margin-bottom:20px;
+}
+.page-header h2{
+  margin:0 0 4px;
+  font-size:1.4rem;
+  font-weight:800;
+  color:var(--teal-900);
+}
+.page-header p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:0.92rem;
+  line-height:1.5;
+}
+
+/* ---------------- Cards ---------------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px;
+  margin-bottom:16px;
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:1.02rem;
+  font-weight:800;
+  color:var(--teal-900);
+}
+
+/* ---------------- Hero / landing tiles ---------------- */
+.hero{
+  background:linear-gradient(160deg,var(--teal-700) 0%, #9D2FD1 50%, var(--coral-500) 100%);
+  color:#fff;
+  border-radius:20px;
+  padding:28px 22px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+}
+.hero h2{
+  margin:0 0 6px;
+  font-size:1.5rem;
+  font-weight:800;
+}
+.hero p{
+  margin:0;
+  opacity:0.92;
+  font-size:0.95rem;
+  line-height:1.5;
+  max-width:60ch;
+}
+
+.tile-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+@media (min-width:640px){
+  .tile-grid{grid-template-columns:1fr 1fr 1fr;}
+}
+.nav-tile{
+  display:block;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  text-decoration:none;
+  color:var(--ink);
+  transition:transform 0.15s ease;
+}
+.nav-tile:hover{transform:translateY(-2px);}
+.nav-tile .icon{
+  font-size:1.8rem;
+  display:block;
+  margin-bottom:8px;
+}
+.nav-tile h3{
+  margin:0 0 4px;
+  font-size:1.05rem;
+  font-weight:800;
+  color:var(--teal-900);
+}
+.nav-tile p{
+  margin:0;
+  font-size:0.85rem;
+  color:var(--ink-soft);
+  line-height:1.45;
+}
+.nav-tile .go{
+  display:inline-block;
+  margin-top:10px;
+  font-size:0.8rem;
+  font-weight:800;
+  color:var(--coral-500);
+}
+
+/* ---------------- Stat tiles (used on Stats page) ---------------- */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+@media (min-width:640px){
+  .stat-grid{grid-template-columns:repeat(4,1fr);}
+}
+.stat-tile{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px 14px;
+  text-align:center;
+}
+.stat-tile .value{
+  font-size:1.7rem;
+  font-weight:800;
+  color:var(--teal-700);
+  font-variant-numeric:proportional-nums;
+  line-height:1.1;
+}
+.stat-tile .unit{
+  font-size:0.72rem;
+  font-weight:700;
+  color:var(--coral-500);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+}
+.stat-tile .label{
+  margin-top:4px;
+  font-size:0.78rem;
+  color:var(--ink-soft);
+}
+
+/* ---------------- Note / disclaimer boxes ---------------- */
+.note-box{
+  background:var(--gold-100);
+  border:1px solid #F2D98A;
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:0.85rem;
+  color:#6B5300;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+.note-box strong{color:#4A3900;}
+
+/* ---------------- Chart components (shared by tests.html) ---------------- */
+.viz-root{
+  --surface-1:#fcfcfb;
+  color-scheme:light;
+}
+.chart-legend{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+  font-size:0.82rem;
+}
+.chart-legend .item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:700;
+}
+.chart-legend .swatch{
+  width:12px;
+  height:12px;
+  border-radius:3px;
+  display:inline-block;
+}
+.chart-svg-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+.chart-tooltip{
+  position:absolute;
+  background:var(--ink);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:0.78rem;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.1s ease;
+  white-space:nowrap;
+  z-index:10;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
+.chart-tooltip.show{opacity:1;}
+
+.table-toggle{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--teal-700);
+  font-weight:700;
+  font-size:0.78rem;
+  padding:6px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:8px;
+}
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+  font-size:0.82rem;
+}
+.data-table th, .data-table td{
+  text-align:left;
+  padding:6px 8px;
+  border-bottom:1px solid var(--line);
+}
+.data-table th{color:var(--ink-soft);font-weight:700;}
+.data-table td{font-variant-numeric:tabular-nums;}
+
+/* ---------------- Buttons ---------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:11px 18px;
+  border-radius:12px;
+  border:none;
+  font-weight:800;
+  font-size:0.9rem;
+  cursor:pointer;
+  text-decoration:none;
+}
+.btn-primary{background:var(--coral-500);color:#fff;}
+.btn-ghost{background:#fff;color:var(--teal-700);border:1px solid var(--line);}
+
+/* ---------------- Footer ---------------- */
+.site-footer{
+  max-width:900px;
+  margin:20px auto 0;
+  padding:16px;
+  text-align:center;
+  font-size:0.78rem;
+  color:var(--ink-soft);
+}
