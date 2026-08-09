@@ -702,13 +702,47 @@ function parseTempo(tempo){
   };
 }
 
+// Personal-trainer style cues: a few hype variants per moment so it doesn't feel
+// like a robot repeating the same line every round, plus a punchier pitch/rate
+// than the browser's flat default so it actually sounds energetic.
+const CUES = {
+  start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!"],
+  warn: ["5 seconds, push through!", "Final 5, dig deep!", "5 more, don't stop now!", "Almost there, 5 seconds, go go go!"],
+  rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice round, shake it out!"],
+  complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!"]
+};
+function randomCue(key){
+  const arr = CUES[key];
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+let availableVoices = [];
+function refreshVoices(){
+  if('speechSynthesis' in window) availableVoices = window.speechSynthesis.getVoices();
+}
+if('speechSynthesis' in window){
+  refreshVoices();
+  window.speechSynthesis.onvoiceschanged = refreshVoices;
+}
+function pickTrainerVoice(){
+  if(!availableVoices.length) return null;
+  const enVoices = availableVoices.filter(v => /^en/i.test(v.lang));
+  const pool = enVoices.length ? enVoices : availableVoices;
+  // Prefer voices that tend to sound more expressive/upbeat than the flat default.
+  const named = pool.find(v => /samantha|ava|jenny|aria|female|zira|victoria|allison/i.test(v.name));
+  return named || pool[0] || null;
+}
+
 function speak(text){
   try{
     if(!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.rate = 1.0;
+    u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
+    u.pitch = 1.2;   // a bit brighter than default, less monotone
     u.volume = 1.0;
+    const voice = pickTrainerVoice();
+    if(voice) u.voice = voice;
     window.speechSynthesis.speak(u);
   }catch(e){ /* speech unavailable, timer still runs visually */ }
 }
@@ -785,7 +819,7 @@ function tick(){
   timerRemaining--;
 
   if(timerMode === 'guided' && phase === 'active' && !warnedThisPhase && timerRemaining === 5){
-    speak('5 more seconds');
+    speak(randomCue('warn'));
     warnedThisPhase = true;
   }
 
@@ -796,7 +830,7 @@ function tick(){
       timerSeconds = guidedRest;
       timerRemaining = guidedRest;
       warnedThisPhase = false;
-      speak('And rest');
+      speak(randomCue('rest'));
       if(navigator.vibrate) navigator.vibrate(120);
       updatePhaseLabel();
       updateTimerDisplay();
@@ -811,7 +845,7 @@ function tick(){
     if(timerMode === 'guided'){
       phase = 'done';
       updatePhaseLabel();
-      speak('Round complete');
+      speak(randomCue('complete'));
       document.getElementById('startTimer').textContent = 'Start Again';
     } else {
       document.getElementById('startTimer').textContent = 'Start';
@@ -841,7 +875,7 @@ document.getElementById('startTimer').onclick = ()=>{
   }
   if(timerMode === 'guided' && !hasStartedThisCycle){
     hasStartedThisCycle = true;
-    speak(phase === 'active' ? "Let's go" : 'And rest');
+    speak(phase === 'active' ? randomCue('start') : randomCue('rest'));
   }
   if(timerRemaining <= 0) timerRemaining = timerSeconds;
   timerRunning = true;
