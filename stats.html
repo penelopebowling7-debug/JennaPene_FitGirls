@@ -16,9 +16,16 @@
   .glow-row .who.jenna{color:var(--series-jenna);}
   .glow-row .change{font-weight:800;color:#0ca30c;}
   .session-log{list-style:none;margin:0;padding:0;}
-  .session-log li{padding:10px 0;border-bottom:1px solid var(--line);font-size:0.88rem;display:flex;justify-content:space-between;gap:10px;}
+  .session-log li{padding:12px 0;border-bottom:1px solid var(--line);font-size:0.88rem;}
   .session-log li:last-child{border-bottom:none;}
+  .session-log .row1{display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
   .session-log .when{color:var(--ink-soft);font-size:0.78rem;white-space:nowrap;}
+  .session-log .meta{margin-top:4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:0.78rem;color:var(--ink-soft);}
+  .diff-badge{display:inline-block;padding:2px 8px;border-radius:8px;font-weight:700;font-size:0.72rem;}
+  .diff-badge.easier{background:#E6F7EA;color:#0ca30c;}
+  .diff-badge.right{background:var(--teal-100);color:var(--teal-700);}
+  .diff-badge.tougher{background:var(--coral-100);color:var(--coral-500);}
+  .session-log .note{margin-top:6px;font-size:0.82rem;color:var(--ink);font-style:italic;}
   .fun-compare{font-size:0.85rem;color:var(--ink-soft);margin-top:6px;}
 </style>
 </head>
@@ -51,8 +58,8 @@
   <p class="fun-compare" id="funCompare"></p>
 
   <div class="card">
-    <h3>Since you started using this tracker</h3>
-    <p style="margin:0 0 4px;color:var(--ink-soft);font-size:0.85rem;">This part is live, it counts full sessions you've actually ticked off as complete in the tracker on this device.</p>
+    <h3>Your completed workout history</h3>
+    <p style="margin:0 0 4px;color:var(--ink-soft);font-size:0.85rem;">This part is real, not estimated, it's every workout you've deliberately marked "Finish Workout" on in the Tracker, on this device.</p>
     <div id="liveSessions"></div>
   </div>
 
@@ -65,11 +72,15 @@
 
 <footer class="site-footer">Built for Pene &amp; Jenna's training block, Weeks 11&ndash;12.</footer>
 
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+<script src="firebase-sync.js"></script>
 <script src="data.js"></script>
 <script>
 const STATS = window.SITE_DATA.programStats;
 const FT = window.SITE_DATA.fitnessTests;
-const SESSIONS_KEY = 'pj-completed-sessions-v1';
+const ARCHIVE_KEY = 'pj-workout-archive-v1';
 
 document.getElementById('methodologyNote').innerHTML = `<strong>Fun facts, not a logged history:</strong> ${STATS.methodology}`;
 
@@ -92,34 +103,67 @@ const buses = (STATS.totalKgEstimate / 12000).toFixed(1);
 document.getElementById('funCompare').textContent =
   `For scale, that's roughly ${elephants} African elephants, or about ${buses} double-decker buses, worth of weight moved between the two of you. Week 8 is missing from the original records, so it isn't counted here, the real number is a little higher.`;
 
-// ---------------- Live session log ----------------
+// ---------------- Completed workout archive ----------------
 const liveWrap = document.getElementById('liveSessions');
-let log = [];
-try{
-  const raw = localStorage.getItem(SESSIONS_KEY);
-  log = raw ? JSON.parse(raw) : [];
-}catch(e){}
+const DIFF_LABELS = { easier: 'Easier than expected', right: 'Just right', tougher: 'Tougher than expected' };
 
-if(log.length === 0){
-  liveWrap.innerHTML = `<p style="color:var(--ink-soft);font-size:0.88rem;margin:8px 0 0;">No completed sessions logged on this device yet. Finish ticking off every item on a day in the Tracker and it'll show up here.</p>`;
-} else {
-  const count = document.createElement('div');
-  count.className = 'stat-tile';
-  count.style.maxWidth = '220px';
-  count.style.marginBottom = '12px';
-  count.innerHTML = `<div class="value">${log.length}</div><div class="unit">sessions</div><div class="label">Completed on this device</div>`;
-  liveWrap.appendChild(count);
+function renderArchiveSection(archive){
+  liveWrap.innerHTML = '';
+  if(!archive || archive.length === 0){
+    liveWrap.innerHTML = `<p style="color:var(--ink-soft);font-size:0.88rem;margin:8px 0 0;">No finished workouts archived yet. Tap "Finish Workout" once you've ticked off every item on a day in the Tracker, and it'll show up here, synced from either of your devices.</p>`;
+    return;
+  }
+  const totalRealMinutes = archive.reduce((sum, e) => sum + (e.totalMinutes || 0), 0);
+  const tileRow = document.createElement('div');
+  tileRow.style.cssText = 'display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;';
+  const tile1 = document.createElement('div');
+  tile1.className = 'stat-tile';
+  tile1.style.cssText = 'flex:1;min-width:140px;';
+  tile1.innerHTML = `<div class="value">${archive.length}</div><div class="unit">workouts</div><div class="label">Actually finished, synced across devices</div>`;
+  tileRow.appendChild(tile1);
+  if(totalRealMinutes > 0){
+    const tile2 = document.createElement('div');
+    tile2.className = 'stat-tile';
+    tile2.style.cssText = 'flex:1;min-width:140px;';
+    tile2.innerHTML = `<div class="value">${(totalRealMinutes/60).toFixed(1)}</div><div class="unit">hours</div><div class="label">Real logged time, not estimated</div>`;
+    tileRow.appendChild(tile2);
+  }
+  liveWrap.appendChild(tileRow);
 
   const list = document.createElement('ul');
   list.className = 'session-log';
-  log.slice().reverse().forEach(entry=>{
+  archive.slice().reverse().forEach(entry=>{
     const li = document.createElement('li');
     const d = new Date(entry.completedAt);
     const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
-    li.innerHTML = `<span>${entry.week}, ${entry.day}: ${entry.title}</span><span class="when">${when}</span>`;
+    const diffBadge = entry.difficulty ? `<span class="diff-badge ${entry.difficulty}">${DIFF_LABELS[entry.difficulty] || entry.difficulty}</span>` : '';
+    const timeText = entry.totalMinutes ? `${entry.totalMinutes} min` : '';
+    li.innerHTML = `
+      <div class="row1"><span><strong>${entry.week}, ${entry.day}</strong>: ${entry.title}</span><span class="when">${when}</span></div>
+      <div class="meta">${timeText ? `<span>${timeText}</span>` : ''}${diffBadge}</div>
+      ${entry.note ? `<div class="note">"${entry.note}"</div>` : ''}
+    `;
     list.appendChild(li);
   });
   liveWrap.appendChild(list);
+}
+
+// First paint from this device's local cache (instant, works offline too)...
+let archive = [];
+try{
+  const raw = localStorage.getItem(ARCHIVE_KEY);
+  archive = raw ? JSON.parse(raw) : [];
+}catch(e){}
+renderArchiveSection(archive);
+
+// ...then reconcile with the live shared history once the cloud connects, and
+// keep re-rendering every time it changes, from either device.
+if(window.CloudSync){
+  CloudSync.onArchiveChange = function(entries){
+    archive = entries;
+    try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(entries)); }catch(e){}
+    renderArchiveSection(archive);
+  };
 }
 
 // ---------------- Glow-up callouts ----------------

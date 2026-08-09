@@ -342,6 +342,14 @@
     min-height:16px;
     margin-top:-6px;
   }
+  .timer-exercise{
+    text-align:center;
+    font-weight:700;
+    color:var(--ink);
+    font-size:0.85rem;
+    margin-bottom:2px;
+    min-height:18px;
+  }
   .round-timer-btn{
     display:block;
     width:100%;
@@ -425,6 +433,7 @@
     <button class="modal-close" id="closeTimer">&times;</button>
     <h3 id="timerTitle">Rest / Work Timer</h3>
     <div class="timer-phase" id="timerPhase"></div>
+    <div class="timer-exercise" id="timerExercise"></div>
     <div class="timer-display" id="timerDisplay">00:40</div>
     <div class="timer-presets" id="timerPresets"></div>
     <div class="timer-controls">
@@ -445,6 +454,24 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="finishOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeFinish">&times;</button>
+    <h3 id="finishTitle">Finish Workout?</h3>
+    <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
+    <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
+    <div id="finishDifficulty" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Notes (optional)</label>
+    <textarea id="finishNote" placeholder="How you felt, anything sore, what to change next time..." style="width:100%;min-height:70px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button id="cancelFinish" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Cancel</button>
+      <button id="confirmFinish" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--coral-500);color:#fff;font-weight:800;cursor:pointer;">Confirm &amp; Archive</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="guideOverlay">
   <div class="modal">
     <button class="modal-close" id="closeGuide">&times;</button>
@@ -452,20 +479,26 @@
     <p style="font-size:0.9rem;line-height:1.6;">
       Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
-      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name. Tap it once at the start of a round and it talks you through it hands-free: "Let's go" to start, "5 more seconds" as your work time winds down, "and rest" when it's time to recover, and "Round complete" at the end. Tap it again for the next round. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
+      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
       The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
+      Once every box on a day is ticked, a <strong>🏁 Finish Workout</strong> button appears. Tapping it is the only thing that actually archives a workout, just ticking every box doesn't do it automatically, that's on purpose so nothing gets accidentally recorded while you're poking around the app. Confirming asks how long it took (pre-filled with a guess based on when you started ticking, edit it if that's off), how it felt, and an optional note. Once confirmed, that day drops off your to-do list for good and moves into your history on the Fun Stats page, since the plan is to keep building new weeks forward rather than repeating old ones.<br><br>
       Before you finish, tap Copy Summary for a plain text record of what you did, weights included.<br><br>
-      <strong>Your progress is saved automatically on this device</strong> (browser storage), so it's still here if you close the tab or lose signal mid session. If you and Jenna each use your own phone, your ticks are separate on each device, they don't sync to each other. Tap "Reset this plan" below if you ever want to clear everything and start fresh.
+      <strong>Your progress saves automatically and syncs live between your devices</strong> — tick something on your phone and it shows up on the laptop or TV within a second or two, no refresh needed, so you can control it from your phone while everyone watches the bigger screen. It's also saved on this device itself, so it's still here if you close the tab or lose signal mid session, and catches up with everyone else's changes the moment you're back online. Tap "Reset in-progress ticks" below if a day's ticks get messed up and you want that one to start fresh everywhere, it won't touch anything you've already finished and archived.
     </p>
-    <button id="resetAllData" style="margin-top:6px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#B5179E;font-weight:700;cursor:pointer;">Reset this plan (clears all saved ticks)</button>
+    <button id="resetAllData" style="margin-top:6px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#B5179E;font-weight:700;cursor:pointer;">Reset in-progress ticks (keeps archived history)</button>
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+<script src="firebase-sync.js"></script>
 <script src="data.js"></script>
 <script>
 const DATA = window.SITE_DATA.tracker;
 const STORAGE_KEY = 'pj-tracker-state-v1';
-const SESSIONS_KEY = 'pj-completed-sessions-v1';
+const ARCHIVE_KEY = 'pj-workout-archive-v1';       // permanent record of finished workouts
+const COMPLETED_DAYS_KEY = 'pj-completed-days-v1'; // which week/day keys are done and should drop off the to-do list
 
 function loadSavedState(){
   try{
@@ -473,6 +506,10 @@ function loadSavedState(){
     return raw ? JSON.parse(raw) : null;
   }catch(e){ return null; }
 }
+// Saves instantly to this device (so it survives a closed tab or lost signal),
+// then hands off to CloudSync, which debounces the shared write so Pene and
+// Jenna's devices see it a moment later without hammering Firestore on every
+// keystroke in the weight box.
 function persistState(){
   try{
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
@@ -481,6 +518,18 @@ function persistState(){
       progress: state.progress
     }));
   }catch(e){ /* storage unavailable, tracker still works, just won't persist */ }
+  if(window.CloudSync) CloudSync.saveState(state.weekIdx, state.dayIdx, state.progress);
+}
+
+// Re-renders in response to a change that arrived from ANOTHER device. Skips
+// the rebuild if a weight box on THIS device currently has focus, so a sync
+// landing mid-keystroke can't yank the cursor out of an active edit — the
+// next tap or blur naturally picks up the latest data anyway.
+function safeRenderMain(){
+  const active = document.activeElement;
+  const mainEl = document.getElementById('main');
+  if(active && active.tagName === 'INPUT' && mainEl && mainEl.contains(active)) return;
+  renderMain();
 }
 
 const saved = loadSavedState();
@@ -496,6 +545,7 @@ function ensureDayState(week, day){
   const k = keyFor(week.id, day.id);
   if(!state.progress[k]){
     state.progress[k] = {
+      startedAt: null,
       warmup: day.warmup.map(()=>false),
       blocks: day.blocks.map(b => ({
         rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
@@ -507,6 +557,12 @@ function ensureDayState(week, day){
   return state.progress[k];
 }
 
+// Marks the first moment a day gets touched, so a "Finish Workout" can suggest a
+// total time later, without asking Pene/Jenna to start a separate stopwatch.
+function markStarted(ds){
+  if(!ds.startedAt) ds.startedAt = new Date().toISOString();
+}
+
 function totalTicks(ds, day){
   let total = 0, done = 0;
   ds.warmup.forEach(v=>{total++; if(v) done++;});
@@ -515,18 +571,78 @@ function totalTicks(ds, day){
   return {total, done};
 }
 
-function recordIfComplete(week, day, ds){
-  const {total, done} = totalTicks(ds, day);
-  if(total === 0 || done < total) return;
+// ---------------- Completed-day archive ----------------
+// A day only ends up here through the deliberate "Finish Workout" confirm step,
+// never just from ticking every box, that's the safeguard against accidentally
+// archiving a workout while poking around the app.
+//
+// completedDaysCache is the in-memory source of truth used everywhere below
+// (isDayCompleted, findNextIncompleteDay, renderTabs) so those stay perfectly
+// synchronous, exactly as before. It starts from this device's local storage
+// for an instant first paint, then CloudSync.onStateChange below keeps it
+// current with whatever the shared record says, phone and laptop alike.
+let completedDaysCache = (function(){
   try{
-    const raw = localStorage.getItem(SESSIONS_KEY);
-    const log = raw ? JSON.parse(raw) : [];
-    const k = keyFor(week.id, day.id) + '__' + week.label;
-    if(!log.some(entry => entry.key === k)){
-      log.push({ key: k, week: week.label, day: day.label, title: day.title, completedAt: new Date().toISOString() });
-      localStorage.setItem(SESSIONS_KEY, JSON.stringify(log));
+    const raw = localStorage.getItem(COMPLETED_DAYS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
+})();
+function isDayCompleted(week, day){
+  return completedDaysCache.includes(keyFor(week.id, day.id));
+}
+function markDayCompleted(week, day){
+  const k = keyFor(week.id, day.id);
+  if(!completedDaysCache.includes(k)){
+    completedDaysCache = completedDaysCache.concat([k]);
+    try{ localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache)); }catch(e){}
+  }
+  if(window.CloudSync) CloudSync.markDayCompleted(k);
+}
+function appendArchive(entry){
+  try{
+    const raw = localStorage.getItem(ARCHIVE_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    list.push(entry);
+    localStorage.setItem(ARCHIVE_KEY, JSON.stringify(list));
+  }catch(e){}
+  if(window.CloudSync) CloudSync.appendArchive(entry);
+}
+
+// Wires up live updates arriving from the shared cloud record (another device
+// ticking something, or this device's own change echoing back). Local storage
+// is refreshed too so the instant-first-paint path above always has the latest
+// data next time the page loads.
+if(window.CloudSync){
+  CloudSync.onStateChange = function(data){
+    if(data.weekIdx != null) state.weekIdx = data.weekIdx;
+    if(data.dayIdx != null) state.dayIdx = data.dayIdx;
+    if(data.progressJson != null){
+      try{ state.progress = JSON.parse(data.progressJson) || {}; }catch(e){ /* keep what we had */ }
     }
-  }catch(e){ /* storage unavailable */ }
+    if(Array.isArray(data.completedDays)) completedDaysCache = data.completedDays;
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ weekIdx: state.weekIdx, dayIdx: state.dayIdx, progress: state.progress }));
+      localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache));
+    }catch(e){}
+    renderTabs();
+    safeRenderMain();
+  };
+}
+
+// Finds the next day that isn't completed yet, checking the current week first,
+// then later weeks. Returns {weekIdx, dayIdx} or null if everything is done.
+function findNextIncompleteDay(fromWeekIdx){
+  for(let wi = fromWeekIdx; wi < DATA.weeks.length; wi++){
+    const w = DATA.weeks[wi];
+    const di = w.days.findIndex(d => !isDayCompleted(w, d));
+    if(di !== -1) return { weekIdx: wi, dayIdx: di };
+  }
+  for(let wi = 0; wi < fromWeekIdx; wi++){
+    const w = DATA.weeks[wi];
+    const di = w.days.findIndex(d => !isDayCompleted(w, d));
+    if(di !== -1) return { weekIdx: wi, dayIdx: di };
+  }
+  return null;
 }
 
 function renderTabs(){
@@ -544,12 +660,20 @@ function renderTabs(){
   dayTabs.innerHTML = '';
   const week = DATA.weeks[state.weekIdx];
   week.days.forEach((d, i)=>{
+    if(isDayCompleted(week, d)) return; // finished workouts drop off the to-do list
     const b = document.createElement('div');
     b.className = 'day-tab' + (i===state.dayIdx?' active':'') + (d.isNew?' new':'');
     b.innerHTML = d.label + '<span class="sub">' + d.title.split(' ')[0] + '</span>';
     b.onclick = ()=>{ state.dayIdx = i; persistState(); renderAll(); };
     dayTabs.appendChild(b);
   });
+  const completedCount = week.days.filter(d => isDayCompleted(week, d)).length;
+  if(completedCount){
+    const flag = document.createElement('div');
+    flag.style.cssText = 'color:#fff;opacity:0.75;font-size:0.75rem;align-self:center;padding:0 4px;white-space:nowrap;';
+    flag.textContent = completedCount + ' done ✓';
+    dayTabs.appendChild(flag);
+  }
 
   document.getElementById('dateLine').textContent = week.label + ' · ' + week.dates;
 }
@@ -572,14 +696,35 @@ function videoLinkHtml(item){
 function renderMain(){
   const week = DATA.weeks[state.weekIdx];
   const day = week.days[state.dayIdx];
-  const ds = ensureDayState(week, day);
   const main = document.getElementById('main');
   main.innerHTML = '';
 
+  // Current day already archived, or nothing left incomplete in this week/anywhere:
+  // show a friendly empty state instead of a stale or missing checklist.
+  if(!day || isDayCompleted(week, day)){
+    const next = findNextIncompleteDay(state.weekIdx);
+    if(next){
+      state.weekIdx = next.weekIdx;
+      state.dayIdx = next.dayIdx;
+      persistState();
+      renderTabs();
+      return renderMain();
+    }
+    main.innerHTML = `
+      <div class="day-banner" style="text-align:center;">
+        <h2>All caught up! 🎉</h2>
+        <div class="meta">Every built workout has been finished and archived. Head to Fun Stats to see your history, or ask for the next block to be built.</div>
+      </div>
+    `;
+    return;
+  }
+
+  const ds = ensureDayState(week, day);
   const banner = document.createElement('div');
   banner.className = 'day-banner';
   const {total, done} = totalTicks(ds, day);
   const pct = total ? Math.round((done/total)*100) : 0;
+  const readyToFinish = total > 0 && done === total;
   banner.innerHTML = `
     ${day.isNew ? '<div class="new-flag">New 4th day</div><br>' : ''}
     <h2>${day.label}: ${day.title}</h2>
@@ -587,8 +732,12 @@ function renderMain(){
     <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
     <div class="progress-label">${done} of ${total} items ticked (${pct}%)</div>
     ${day.note ? `<div class="note-box">${day.note}</div>` : ''}
+    ${readyToFinish ? `<button id="finishWorkoutBtn" style="margin-top:12px;width:100%;padding:13px;border-radius:12px;border:none;background:#fff;color:var(--coral-500);font-weight:800;font-size:0.95rem;cursor:pointer;">🏁 Finish Workout</button>` : ''}
   `;
   main.appendChild(banner);
+  if(readyToFinish){
+    document.getElementById('finishWorkoutBtn').onclick = ()=> openFinishModal(week, day, ds);
+  }
 
   main.appendChild(renderSimpleSection('Warm Up', day.warmup, ds.warmup, week, day, ds));
 
@@ -607,8 +756,11 @@ function renderMain(){
       const parts = [];
       if(timing.active) parts.push(timing.active + 's work');
       if(timing.rest) parts.push(timing.rest + 's rest');
-      roundBtn.textContent = '▶ Start Round Timer (' + parts.join(' / ') + ')';
-      roundBtn.onclick = ()=> openGuidedTimer(timing, block.name);
+      const n = block.exercises.length;
+      let label = '▶ Start Round Timer — ' + n + ' exercise' + (n === 1 ? '' : 's') + ' (' + parts.join(' / ') + ')';
+      if(timing.betweenRounds) label += ', ' + timing.betweenRounds + 's rest after';
+      roundBtn.textContent = label;
+      roundBtn.onclick = ()=> openGuidedTimer(block, bi, timing, week, day, ds);
       section.appendChild(roundBtn);
     }
 
@@ -633,9 +785,9 @@ function renderMain(){
       for(let r=0;r<block.rounds;r++){
         const chip = roundChip(ds.blocks[bi].rounds[ei][r], 'R' + (r+1));
         chip.onclick = ()=>{
+          markStarted(ds);
           ds.blocks[bi].rounds[ei][r] = !ds.blocks[bi].rounds[ei][r];
           persistState();
-          recordIfComplete(week, day, ds);
           renderMain();
         };
         roundsRow.appendChild(chip);
@@ -669,9 +821,9 @@ function renderSimpleSection(title, items, stateArr, week, day, ds){
     box.textContent = stateArr[i] ? '✓' : '';
     row.appendChild(box);
     row.onclick = ()=>{
+      if(ds) markStarted(ds);
       stateArr[i] = !stateArr[i];
       persistState();
-      if(week && day && ds) recordIfComplete(week, day, ds);
       renderMain();
     };
     card.appendChild(row);
@@ -688,27 +840,73 @@ function renderAll(){
 // ---------------- Timer ----------------
 // Two modes:
 //  - 'manual': the plain footer Rest Timer, a simple stopwatch (unchanged behaviour).
-//  - 'guided': opened from a block's "Start Round Timer" button. Knows that block's
-//    work/rest seconds (parsed from its tempo text) and talks you through work,
-//    the 5-second warning, the switch to rest, and round complete, using the
-//    phone's built in speech voice (no audio files needed/hosted).
+//  - 'guided': opened from a block's "Start Round Timer" button. Builds a full
+//    step-by-step sequence covering EVERY exercise in the circuit (work, then rest,
+//    exercise after exercise), not just one exercise, so "round complete" really
+//    means the whole round of the circuit is done, using the phone's built in
+//    speech voice (no audio files needed/hosted).
 function parseTempo(tempo){
-  if(!tempo) return {active:null, rest:null};
+  if(!tempo) return {active:null, rest:null, betweenRounds:null};
   const activeMatch = tempo.match(/(\d+)\s*sec\s*(?:active|work)\b/i);
   const restMatch = tempo.match(/(\d+)\s*sec\s*rest\b/i);
+  const betweenMatch = tempo.match(/(\d+)\s*sec\s*rest\s*between\s*rounds/i);
   return {
     active: activeMatch ? parseInt(activeMatch[1], 10) : null,
-    rest: restMatch ? parseInt(restMatch[1], 10) : null
+    rest: restMatch ? parseInt(restMatch[1], 10) : null,
+    betweenRounds: betweenMatch ? parseInt(betweenMatch[1], 10) : null
   };
+}
+
+// Builds the full list of work/rest steps for one round of a circuit block,
+// covering every exercise in it in order. The rest after the LAST exercise uses
+// the block's longer "rest between rounds" value if the tempo specified one
+// (e.g. "40 sec active / 20 sec rest, 90 sec rest between rounds"), otherwise
+// there's no trailing rest, the round just ends after the last exercise's work.
+function buildRoundSteps(block, timing){
+  const steps = [];
+  const exs = block.exercises;
+  const hasWorkStep = !!timing.active;
+  exs.forEach((ex, i)=>{
+    const isLast = i === exs.length - 1;
+    if(hasWorkStep){
+      steps.push({ kind:'work', seconds: timing.active, exName: ex.name, exIndex: i, isFirst: i === 0 });
+    }
+    let restSeconds = null, isBetweenRounds = false;
+    if(isLast){
+      if(timing.betweenRounds){
+        restSeconds = timing.betweenRounds; isBetweenRounds = true;
+      } else if(!hasWorkStep && timing.rest){
+        // rest-only exercise (reps, not timed work): the rest step is this exercise's
+        // ONLY marker in the sequence, so it still needs one even though it's last,
+        // otherwise the last exercise silently drops out of the guided round.
+        restSeconds = timing.rest;
+      }
+    } else {
+      restSeconds = timing.rest || null;
+    }
+    if(restSeconds){
+      steps.push({
+        kind: 'rest',
+        seconds: restSeconds,
+        exIndex: i,
+        finishedExName: ex.name,
+        nextExName: isLast ? null : exs[i + 1].name,
+        isBetweenRounds,
+        needsManualStart: !hasWorkStep   // rep-based work: can't auto-time it, wait for a tap
+      });
+    }
+  });
+  return steps;
 }
 
 // Personal-trainer style cues: a few hype variants per moment so it doesn't feel
 // like a robot repeating the same line every round, plus a punchier pitch/rate
 // than the browser's flat default so it actually sounds energetic.
+const WARN_SECONDS = 10; // cue fires with this many seconds of work left, not 5, so there's time to react
 const CUES = {
   start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!"],
-  warn: ["5 seconds, push through!", "Final 5, dig deep!", "5 more, don't stop now!", "Almost there, 5 seconds, go go go!"],
-  rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice round, shake it out!"],
+  warn: ["10 seconds, push through!", "10 to go, dig deep!", "10 more, don't stop now!", "Almost there, 10 seconds, go go go!"],
+  rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice work, shake it out!"],
   complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!"]
 };
 function randomCue(key){
@@ -748,12 +946,15 @@ function speak(text){
 }
 
 let timerMode = 'manual';       // 'manual' | 'guided'
-let guidedActive = null;        // seconds, or null if this block has no timed work phase
-let guidedRest = null;          // seconds, or null if this block has no timed rest phase
 let guidedBlockName = '';
+let guidedBlockIndex = -1;
+let guidedDayCtx = null;        // {week, day, ds} - lets a completed round auto-tick chips
+let roundSteps = [];            // the full work/rest sequence for every exercise in the block
+let stepIdx = 0;
+let lastAnnouncedStep = -1;
 let phase = 'active';           // 'active' | 'rest' | 'done'
 let warnedThisPhase = false;
-let hasStartedThisCycle = false;
+let startBtnIdleLabel = 'Start';
 let timerSeconds = 40;
 let timerRemaining = 40;
 let timerInterval = null;
@@ -775,6 +976,19 @@ function updatePhaseLabel(){
   else if(phase === 'done') el.textContent = 'Round complete!';
   else el.textContent = '';
 }
+function updateExerciseLabel(){
+  const el = document.getElementById('timerExercise');
+  if(!el) return;
+  if(timerMode !== 'guided' || phase === 'done'){ el.textContent = ''; return; }
+  const step = roundSteps[stepIdx];
+  if(!step){ el.textContent = ''; return; }
+  const total = roundSteps.filter(s => s.kind === 'work' || s.exIndex != null).reduce((max, s) => Math.max(max, s.exIndex), -1) + 1;
+  if(step.kind === 'work'){
+    el.textContent = `Exercise ${step.exIndex + 1} of ${total}: ${step.exName}`;
+  } else {
+    el.textContent = step.nextExName ? `Rest — next: ${step.nextExName}` : 'Rest — last exercise of the round';
+  }
+}
 const PRESETS = [15,20,25,30,35,40,45,60,90];
 function renderPresets(){
   const wrap = document.getElementById('timerPresets');
@@ -789,6 +1003,7 @@ function renderPresets(){
       timerSeconds = p;
       timerRemaining = p;
       updateTimerDisplay();
+      startBtnIdleLabel = 'Start';
       document.getElementById('startTimer').textContent = 'Start';
     };
     wrap.appendChild(b);
@@ -798,7 +1013,7 @@ function renderPresets(){
 function stopTimerRunning(){
   if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   timerRunning = false;
-  document.getElementById('startTimer').textContent = (timerMode === 'guided' && phase === 'done') ? 'Start Again' : 'Start';
+  document.getElementById('startTimer').textContent = startBtnIdleLabel;
 }
 
 function playCompleteCue(){
@@ -815,41 +1030,121 @@ function playCompleteCue(){
   }catch(e){}
 }
 
+// Auto-ticks this block's round chips (the first round not already fully ticked)
+// the moment a guided round finishes, so the checklist and the guided timer agree
+// on what "one round" means instead of tracking it in two separate places.
+function onRoundFullyComplete(){
+  if(guidedBlockIndex < 0 || !guidedDayCtx) return;
+  const { week, day, ds } = guidedDayCtx;
+  const blockState = ds.blocks[guidedBlockIndex];
+  if(!blockState || !blockState.rounds.length) return;
+  const numRounds = blockState.rounds[0].length;
+  let targetRound = -1;
+  for(let r = 0; r < numRounds; r++){
+    if(!blockState.rounds.every(arr => arr[r])){ targetRound = r; break; }
+  }
+  if(targetRound === -1) return; // every round already ticked, nothing to do
+  markStarted(ds);
+  blockState.rounds.forEach(arr => { arr[targetRound] = true; });
+  persistState();
+  renderMain(); // safe while the timer modal is open, the modal lives outside #main
+}
+
+function loadStep(idx){
+  const step = roundSteps[idx];
+  if(!step) return;
+  phase = step.kind === 'work' ? 'active' : 'rest';
+  timerSeconds = step.seconds;
+  timerRemaining = step.seconds;
+  warnedThisPhase = false;
+  updatePhaseLabel();
+  updateExerciseLabel();
+  updateTimerDisplay();
+}
+
+function announceStep(idx){
+  if(lastAnnouncedStep === idx) return;
+  lastAnnouncedStep = idx;
+  const step = roundSteps[idx];
+  if(!step) return;
+  if(step.kind === 'work'){
+    speak(step.isFirst ? randomCue('start') : `Next up, ${step.exName}, go!`);
+  } else if(step.kind === 'rest'){
+    if(step.needsManualStart){
+      speak("Nice work! Tap start when you're ready to rest.");
+    } else if(step.isBetweenRounds){
+      speak(`Round done, bigger rest, ${step.seconds} seconds!`);
+    } else {
+      speak(randomCue('rest'));
+    }
+  }
+}
+
+function finishRound(){
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  timerRemaining = 0;
+  phase = 'done';
+  updatePhaseLabel();
+  updateExerciseLabel();
+  updateTimerDisplay();
+  speak(randomCue('complete'));
+  playCompleteCue();
+  startBtnIdleLabel = 'Start Again';
+  document.getElementById('startTimer').textContent = startBtnIdleLabel;
+  onRoundFullyComplete();
+}
+
+function advanceStep(){
+  stepIdx++;
+  if(stepIdx >= roundSteps.length){
+    finishRound();
+    return;
+  }
+  loadStep(stepIdx);
+  const step = roundSteps[stepIdx];
+  if(step.needsManualStart){
+    // rep-based exercise just finished: pause and wait for a tap before timing the rest
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerRunning = false;
+    announceStep(stepIdx);
+    startBtnIdleLabel = 'Start Rest';
+    document.getElementById('startTimer').textContent = startBtnIdleLabel;
+    return;
+  }
+  // timed step: announce it and keep the countdown running automatically
+  announceStep(stepIdx);
+  if(navigator.vibrate) navigator.vibrate(120);
+}
+
 function tick(){
   timerRemaining--;
 
-  if(timerMode === 'guided' && phase === 'active' && !warnedThisPhase && timerRemaining === 5){
-    speak(randomCue('warn'));
-    warnedThisPhase = true;
-  }
-
-  if(timerRemaining <= 0){
-    if(timerMode === 'guided' && phase === 'active' && guidedRest){
-      // move straight into the rest phase, timer keeps running
-      phase = 'rest';
-      timerSeconds = guidedRest;
-      timerRemaining = guidedRest;
-      warnedThisPhase = false;
-      speak(randomCue('rest'));
-      if(navigator.vibrate) navigator.vibrate(120);
-      updatePhaseLabel();
-      updateTimerDisplay();
+  if(timerMode === 'guided'){
+    const step = roundSteps[stepIdx];
+    if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && timerRemaining === WARN_SECONDS){
+      speak(randomCue('warn'));
+      warnedThisPhase = true;
+    }
+    if(timerRemaining <= 0){
+      advanceStep();
       return;
     }
-    // round fully complete
+    updateTimerDisplay();
+    return;
+  }
+
+  // manual mode: simple single countdown
+  if(timerRemaining <= 0){
     clearInterval(timerInterval);
     timerInterval = null;
     timerRunning = false;
     timerRemaining = 0;
     updateTimerDisplay();
-    if(timerMode === 'guided'){
-      phase = 'done';
-      updatePhaseLabel();
-      speak(randomCue('complete'));
-      document.getElementById('startTimer').textContent = 'Start Again';
-    } else {
-      document.getElementById('startTimer').textContent = 'Start';
-    }
+    startBtnIdleLabel = 'Start';
+    document.getElementById('startTimer').textContent = 'Start';
     playCompleteCue();
     return;
   }
@@ -861,21 +1156,17 @@ document.getElementById('startTimer').onclick = ()=>{
     clearInterval(timerInterval);
     timerInterval = null;
     timerRunning = false;
-    document.getElementById('startTimer').textContent = 'Start';
+    document.getElementById('startTimer').textContent = startBtnIdleLabel;
     return;
   }
-  if(timerMode === 'guided' && phase === 'done'){
-    phase = guidedActive ? 'active' : 'rest';
-    timerSeconds = guidedActive || guidedRest || 0;
-    timerRemaining = timerSeconds;
-    warnedThisPhase = false;
-    hasStartedThisCycle = false;
-    updatePhaseLabel();
-    updateTimerDisplay();
-  }
-  if(timerMode === 'guided' && !hasStartedThisCycle){
-    hasStartedThisCycle = true;
-    speak(phase === 'active' ? randomCue('start') : randomCue('rest'));
+  if(timerMode === 'guided'){
+    if(phase === 'done'){
+      stepIdx = 0;
+      lastAnnouncedStep = -1;
+      loadStep(0);
+    }
+    announceStep(stepIdx);
+    startBtnIdleLabel = 'Start';
   }
   if(timerRemaining <= 0) timerRemaining = timerSeconds;
   timerRunning = true;
@@ -887,20 +1178,21 @@ document.getElementById('resetTimer').onclick = ()=>{
   timerInterval = null;
   timerRunning = false;
   if(timerMode === 'guided'){
-    phase = guidedActive ? 'active' : 'rest';
-    timerSeconds = guidedActive || guidedRest || 0;
-    warnedThisPhase = false;
-    hasStartedThisCycle = false;
+    stepIdx = 0;
+    lastAnnouncedStep = -1;
+    loadStep(0);
+  } else {
+    timerRemaining = timerSeconds;
+    updateTimerDisplay();
   }
-  timerRemaining = timerSeconds;
-  updatePhaseLabel();
-  updateTimerDisplay();
+  startBtnIdleLabel = 'Start';
   document.getElementById('startTimer').textContent = 'Start';
 };
 
 function openManualTimer(){
   timerMode = 'manual';
-  guidedActive = null; guidedRest = null; guidedBlockName = '';
+  roundSteps = []; stepIdx = 0; lastAnnouncedStep = -1;
+  guidedBlockName = ''; guidedBlockIndex = -1; guidedDayCtx = null;
   clearInterval(timerInterval);
   timerInterval = null;
   timerRunning = false;
@@ -910,29 +1202,29 @@ function openManualTimer(){
   document.getElementById('timerDisclaimer').textContent = 'Tip: tap a preset to load it, tap Start to begin the countdown. Your phone will vibrate when time is up if it supports it.';
   renderPresets();
   updatePhaseLabel();
+  updateExerciseLabel();
   updateTimerDisplay();
+  startBtnIdleLabel = 'Start';
   document.getElementById('startTimer').textContent = 'Start';
   openModal('timerOverlay');
 }
 
-function openGuidedTimer(timing, blockName){
+function openGuidedTimer(block, bi, timing, week, day, ds){
   timerMode = 'guided';
-  guidedActive = timing.active;
-  guidedRest = timing.rest;
-  guidedBlockName = blockName;
+  guidedBlockName = block.name;
+  guidedBlockIndex = bi;
+  guidedDayCtx = { week, day, ds };
+  roundSteps = buildRoundSteps(block, timing);
+  stepIdx = 0;
+  lastAnnouncedStep = -1;
   clearInterval(timerInterval);
   timerInterval = null;
   timerRunning = false;
-  hasStartedThisCycle = false;
-  phase = guidedActive ? 'active' : 'rest';
-  timerSeconds = guidedActive || guidedRest || 0;
-  timerRemaining = timerSeconds;
-  warnedThisPhase = false;
-  document.getElementById('timerTitle').textContent = blockName + ' — Round Timer';
+  loadStep(0);
+  document.getElementById('timerTitle').textContent = block.name + ' — Round Timer';
   document.getElementById('timerPresets').style.display = 'none';
-  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll call out when to switch and when the round's done. Turn silent mode off so you can hear it.";
-  updatePhaseLabel();
-  updateTimerDisplay();
+  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll guide you through every exercise in this round in order. Turn silent mode off so you can hear it.";
+  startBtnIdleLabel = 'Start';
   document.getElementById('startTimer').textContent = 'Start';
   openModal('timerOverlay');
 }
@@ -981,18 +1273,102 @@ document.getElementById('copyBtn').onclick = ()=>{
   }
 };
 document.getElementById('resetAllData').onclick = ()=>{
-  try{
-    localStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem(SESSIONS_KEY);
-  }catch(e){}
+  // Only clears in-progress ticks, deliberately leaves the archive and completed-day
+  // list alone, finished workouts are meant to be a permanent record, not something
+  // a stray tap here should erase.
   state.progress = {};
-  state.weekIdx = 0;
-  state.dayIdx = 0;
+  const next = findNextIncompleteDay(0);
+  state.weekIdx = next ? next.weekIdx : 0;
+  state.dayIdx = next ? next.dayIdx : 0;
+  persistState(); // also pushes the cleared progress to the shared record, otherwise
+                   // the next sync from another device would quietly restore the old ticks
   closeModal('guideOverlay');
   renderAll();
 };
 
-[['timerOverlay'],['summaryOverlay'],['guideOverlay']].forEach(([id])=>{
+// ---------------- Finish Workout ----------------
+const DIFFICULTY_OPTIONS = [
+  { id: 'easier', label: 'Easier than expected' },
+  { id: 'right', label: 'Just right' },
+  { id: 'tougher', label: 'Tougher than expected' }
+];
+let finishDifficultyChoice = 'right';
+let finishCtx = null; // {week, day, ds}
+
+function suggestedMinutes(ds){
+  if(!ds.startedAt) return '';
+  const mins = Math.round((Date.now() - new Date(ds.startedAt).getTime()) / 60000);
+  return mins > 0 ? mins : '';
+}
+
+function renderDifficultyChips(){
+  const wrap = document.getElementById('finishDifficulty');
+  wrap.innerHTML = '';
+  DIFFICULTY_OPTIONS.forEach(opt=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = opt.label;
+    b.style.cssText = 'flex:1;min-width:100px;padding:10px 6px;border-radius:10px;font-weight:700;font-size:0.78rem;cursor:pointer;border:1px solid var(--line);background:' +
+      (finishDifficultyChoice === opt.id ? 'var(--teal-700)' : '#fff') + ';color:' + (finishDifficultyChoice === opt.id ? '#fff' : 'var(--ink)') + ';';
+    b.onclick = ()=>{ finishDifficultyChoice = opt.id; renderDifficultyChips(); };
+    wrap.appendChild(b);
+  });
+}
+
+function openFinishModal(week, day, ds){
+  finishCtx = { week, day, ds };
+  finishDifficultyChoice = 'right';
+  document.getElementById('finishTitle').textContent = 'Finish ' + day.label + ': ' + day.title + '?';
+  document.getElementById('finishMinutes').value = suggestedMinutes(ds);
+  document.getElementById('finishNote').value = '';
+  renderDifficultyChips();
+  openModal('finishOverlay');
+}
+
+document.getElementById('closeFinish').onclick = ()=> closeModal('finishOverlay');
+document.getElementById('cancelFinish').onclick = ()=> closeModal('finishOverlay');
+document.getElementById('confirmFinish').onclick = ()=>{
+  if(!finishCtx) return;
+  const { week, day, ds } = finishCtx;
+  const minutesRaw = document.getElementById('finishMinutes').value;
+  const minutes = minutesRaw ? parseInt(minutesRaw, 10) : null;
+  const note = document.getElementById('finishNote').value.trim();
+
+  const exercises = [];
+  day.blocks.forEach((block, bi)=>{
+    block.exercises.forEach((exObj, ei)=>{
+      exercises.push({
+        block: block.name,
+        name: exObj.name,
+        roundsDone: ds.blocks[bi].rounds[ei].filter(Boolean).length,
+        roundsPlanned: block.rounds,
+        weight: ds.blocks[bi].weights[ei]
+      });
+    });
+  });
+
+  appendArchive({
+    key: keyFor(week.id, day.id),
+    week: week.label,
+    day: day.label,
+    title: day.title,
+    completedAt: new Date().toISOString(),
+    totalMinutes: minutes,
+    difficulty: finishDifficultyChoice,
+    note,
+    exercises
+  });
+  markDayCompleted(week, day);
+  delete state.progress[keyFor(week.id, day.id)];
+
+  const next = findNextIncompleteDay(state.weekIdx);
+  if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; }
+  persistState();
+  closeModal('finishOverlay');
+  renderAll();
+};
+
+[['timerOverlay'],['summaryOverlay'],['guideOverlay'],['finishOverlay']].forEach(([id])=>{
   document.getElementById(id).addEventListener('click', (e)=>{
     if(e.target.id === id){
       if(id === 'timerOverlay') stopTimerRunning();
