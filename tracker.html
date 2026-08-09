@@ -332,6 +332,30 @@
   }
   .btn-start{background:var(--teal-500);color:#fff;}
   .btn-reset{background:var(--line);color:var(--ink);}
+  .timer-phase{
+    text-align:center;
+    font-weight:800;
+    color:var(--coral-500);
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    min-height:16px;
+    margin-top:-6px;
+  }
+  .round-timer-btn{
+    display:block;
+    width:100%;
+    background:var(--teal-100);
+    color:var(--teal-700);
+    border:none;
+    padding:10px 12px;
+    border-radius:12px;
+    font-weight:800;
+    font-size:0.82rem;
+    cursor:pointer;
+    margin:0 0 10px;
+    text-align:center;
+  }
   .summary-box{
     width:100%;
     min-height:180px;
@@ -399,14 +423,15 @@
 <div class="modal-overlay" id="timerOverlay">
   <div class="modal">
     <button class="modal-close" id="closeTimer">&times;</button>
-    <h3>Rest / Work Timer</h3>
+    <h3 id="timerTitle">Rest / Work Timer</h3>
+    <div class="timer-phase" id="timerPhase"></div>
     <div class="timer-display" id="timerDisplay">00:40</div>
     <div class="timer-presets" id="timerPresets"></div>
     <div class="timer-controls">
       <button class="btn btn-start" id="startTimer">Start</button>
       <button class="btn btn-reset" id="resetTimer">Reset</button>
     </div>
-    <p class="disclaimer">Tip: tap a preset to load it, tap Start to begin the countdown. Your phone will vibrate when time is up if it supports it.</p>
+    <p class="disclaimer" id="timerDisclaimer">Tip: tap a preset to load it, tap Start to begin the countdown. Your phone will vibrate when time is up if it supports it.</p>
   </div>
 </div>
 
@@ -427,7 +452,8 @@
     <p style="font-size:0.9rem;line-height:1.6;">
       Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
-      Use the Rest Timer for your work and rest intervals during circuits. Tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
+      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name. Tap it once at the start of a round and it talks you through it hands-free: "Let's go" to start, "5 more seconds" as your work time winds down, "and rest" when it's time to recover, and "Round complete" at the end. Tap it again for the next round. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
+      The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
       Before you finish, tap Copy Summary for a plain text record of what you did, weights included.<br><br>
       <strong>Your progress is saved automatically on this device</strong> (browser storage), so it's still here if you close the tab or lose signal mid session. If you and Jenna each use your own phone, your ticks are separate on each device, they don't sync to each other. Tap "Reset this plan" below if you ever want to clear everything and start fresh.
     </p>
@@ -574,6 +600,18 @@ function renderMain(){
     title.innerHTML = `<span>${block.name}</span><span class="tempo">${block.tempo}</span>`;
     section.appendChild(title);
 
+    const timing = parseTempo(block.tempo);
+    if(timing.active || timing.rest){
+      const roundBtn = document.createElement('button');
+      roundBtn.className = 'round-timer-btn';
+      const parts = [];
+      if(timing.active) parts.push(timing.active + 's work');
+      if(timing.rest) parts.push(timing.rest + 's rest');
+      roundBtn.textContent = '▶ Start Round Timer (' + parts.join(' / ') + ')';
+      roundBtn.onclick = ()=> openGuidedTimer(timing, block.name);
+      section.appendChild(roundBtn);
+    }
+
     block.exercises.forEach((exObj, ei)=>{
       const card = document.createElement('div');
       card.className = 'card';
@@ -648,6 +686,40 @@ function renderAll(){
 }
 
 // ---------------- Timer ----------------
+// Two modes:
+//  - 'manual': the plain footer Rest Timer, a simple stopwatch (unchanged behaviour).
+//  - 'guided': opened from a block's "Start Round Timer" button. Knows that block's
+//    work/rest seconds (parsed from its tempo text) and talks you through work,
+//    the 5-second warning, the switch to rest, and round complete, using the
+//    phone's built in speech voice (no audio files needed/hosted).
+function parseTempo(tempo){
+  if(!tempo) return {active:null, rest:null};
+  const activeMatch = tempo.match(/(\d+)\s*sec\s*(?:active|work)\b/i);
+  const restMatch = tempo.match(/(\d+)\s*sec\s*rest\b/i);
+  return {
+    active: activeMatch ? parseInt(activeMatch[1], 10) : null,
+    rest: restMatch ? parseInt(restMatch[1], 10) : null
+  };
+}
+
+function speak(text){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1.0;
+    u.volume = 1.0;
+    window.speechSynthesis.speak(u);
+  }catch(e){ /* speech unavailable, timer still runs visually */ }
+}
+
+let timerMode = 'manual';       // 'manual' | 'guided'
+let guidedActive = null;        // seconds, or null if this block has no timed work phase
+let guidedRest = null;          // seconds, or null if this block has no timed rest phase
+let guidedBlockName = '';
+let phase = 'active';           // 'active' | 'rest' | 'done'
+let warnedThisPhase = false;
+let hasStartedThisCycle = false;
 let timerSeconds = 40;
 let timerRemaining = 40;
 let timerInterval = null;
@@ -660,6 +732,14 @@ function formatTime(s){
 }
 function updateTimerDisplay(){
   document.getElementById('timerDisplay').textContent = formatTime(timerRemaining);
+}
+function updatePhaseLabel(){
+  const el = document.getElementById('timerPhase');
+  if(timerMode !== 'guided'){ el.textContent = ''; return; }
+  if(phase === 'active') el.textContent = 'Work';
+  else if(phase === 'rest') el.textContent = 'Rest';
+  else if(phase === 'done') el.textContent = 'Round complete!';
+  else el.textContent = '';
 }
 const PRESETS = [15,20,25,30,35,40,45,60,90];
 function renderPresets(){
@@ -680,55 +760,155 @@ function renderPresets(){
     wrap.appendChild(b);
   });
 }
+
+function stopTimerRunning(){
+  if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+  timerRunning = false;
+  document.getElementById('startTimer').textContent = (timerMode === 'guided' && phase === 'done') ? 'Start Again' : 'Start';
+}
+
+function playCompleteCue(){
+  if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.value = 880;
+    g.gain.setValueAtTime(0.2, ctx.currentTime);
+    o.start();
+    o.stop(ctx.currentTime + 0.5);
+  }catch(e){}
+}
+
 function tick(){
   timerRemaining--;
+
+  if(timerMode === 'guided' && phase === 'active' && !warnedThisPhase && timerRemaining === 5){
+    speak('5 more seconds');
+    warnedThisPhase = true;
+  }
+
   if(timerRemaining <= 0){
+    if(timerMode === 'guided' && phase === 'active' && guidedRest){
+      // move straight into the rest phase, timer keeps running
+      phase = 'rest';
+      timerSeconds = guidedRest;
+      timerRemaining = guidedRest;
+      warnedThisPhase = false;
+      speak('And rest');
+      if(navigator.vibrate) navigator.vibrate(120);
+      updatePhaseLabel();
+      updateTimerDisplay();
+      return;
+    }
+    // round fully complete
     clearInterval(timerInterval);
+    timerInterval = null;
     timerRunning = false;
     timerRemaining = 0;
     updateTimerDisplay();
-    document.getElementById('startTimer').textContent = 'Start';
-    if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
-    try{
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.connect(g); g.connect(ctx.destination);
-      o.frequency.value = 880;
-      g.gain.setValueAtTime(0.2, ctx.currentTime);
-      o.start();
-      o.stop(ctx.currentTime + 0.5);
-    }catch(e){}
+    if(timerMode === 'guided'){
+      phase = 'done';
+      updatePhaseLabel();
+      speak('Round complete');
+      document.getElementById('startTimer').textContent = 'Start Again';
+    } else {
+      document.getElementById('startTimer').textContent = 'Start';
+    }
+    playCompleteCue();
     return;
   }
   updateTimerDisplay();
 }
+
 document.getElementById('startTimer').onclick = ()=>{
   if(timerRunning){
     clearInterval(timerInterval);
+    timerInterval = null;
     timerRunning = false;
     document.getElementById('startTimer').textContent = 'Start';
-  } else {
-    if(timerRemaining <= 0) timerRemaining = timerSeconds;
-    timerRunning = true;
-    document.getElementById('startTimer').textContent = 'Pause';
-    timerInterval = setInterval(tick, 1000);
+    return;
   }
+  if(timerMode === 'guided' && phase === 'done'){
+    phase = guidedActive ? 'active' : 'rest';
+    timerSeconds = guidedActive || guidedRest || 0;
+    timerRemaining = timerSeconds;
+    warnedThisPhase = false;
+    hasStartedThisCycle = false;
+    updatePhaseLabel();
+    updateTimerDisplay();
+  }
+  if(timerMode === 'guided' && !hasStartedThisCycle){
+    hasStartedThisCycle = true;
+    speak(phase === 'active' ? "Let's go" : 'And rest');
+  }
+  if(timerRemaining <= 0) timerRemaining = timerSeconds;
+  timerRunning = true;
+  document.getElementById('startTimer').textContent = 'Pause';
+  timerInterval = setInterval(tick, 1000);
 };
 document.getElementById('resetTimer').onclick = ()=>{
   clearInterval(timerInterval);
+  timerInterval = null;
   timerRunning = false;
+  if(timerMode === 'guided'){
+    phase = guidedActive ? 'active' : 'rest';
+    timerSeconds = guidedActive || guidedRest || 0;
+    warnedThisPhase = false;
+    hasStartedThisCycle = false;
+  }
   timerRemaining = timerSeconds;
+  updatePhaseLabel();
   updateTimerDisplay();
   document.getElementById('startTimer').textContent = 'Start';
 };
+
+function openManualTimer(){
+  timerMode = 'manual';
+  guidedActive = null; guidedRest = null; guidedBlockName = '';
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  phase = 'active';
+  document.getElementById('timerTitle').textContent = 'Rest / Work Timer';
+  document.getElementById('timerPresets').style.display = 'flex';
+  document.getElementById('timerDisclaimer').textContent = 'Tip: tap a preset to load it, tap Start to begin the countdown. Your phone will vibrate when time is up if it supports it.';
+  renderPresets();
+  updatePhaseLabel();
+  updateTimerDisplay();
+  document.getElementById('startTimer').textContent = 'Start';
+  openModal('timerOverlay');
+}
+
+function openGuidedTimer(timing, blockName){
+  timerMode = 'guided';
+  guidedActive = timing.active;
+  guidedRest = timing.rest;
+  guidedBlockName = blockName;
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  hasStartedThisCycle = false;
+  phase = guidedActive ? 'active' : 'rest';
+  timerSeconds = guidedActive || guidedRest || 0;
+  timerRemaining = timerSeconds;
+  warnedThisPhase = false;
+  document.getElementById('timerTitle').textContent = blockName + ' — Round Timer';
+  document.getElementById('timerPresets').style.display = 'none';
+  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll call out when to switch and when the round's done. Turn silent mode off so you can hear it.";
+  updatePhaseLabel();
+  updateTimerDisplay();
+  document.getElementById('startTimer').textContent = 'Start';
+  openModal('timerOverlay');
+}
 
 // ---------------- Modals ----------------
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
-document.getElementById('openTimer').onclick = ()=>{ renderPresets(); updateTimerDisplay(); openModal('timerOverlay'); };
-document.getElementById('closeTimer').onclick = ()=> closeModal('timerOverlay');
+document.getElementById('openTimer').onclick = ()=> openManualTimer();
+document.getElementById('closeTimer').onclick = ()=>{ stopTimerRunning(); closeModal('timerOverlay'); };
 document.getElementById('howToUse').onclick = ()=> openModal('guideOverlay');
 document.getElementById('closeGuide').onclick = ()=> closeModal('guideOverlay');
 
@@ -780,7 +960,10 @@ document.getElementById('resetAllData').onclick = ()=>{
 
 [['timerOverlay'],['summaryOverlay'],['guideOverlay']].forEach(([id])=>{
   document.getElementById(id).addEventListener('click', (e)=>{
-    if(e.target.id === id) closeModal(id);
+    if(e.target.id === id){
+      if(id === 'timerOverlay') stopTimerRunning();
+      closeModal(id);
+    }
   });
 });
 
