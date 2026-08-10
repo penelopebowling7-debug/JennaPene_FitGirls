@@ -39,6 +39,7 @@
     CloudSync.saveState = function () {};
     CloudSync.markDayCompleted = function () {};
     CloudSync.appendArchive = function () {};
+    CloudSync.saveEquipment = function () {};
     return;
   }
 
@@ -60,6 +61,7 @@
     CloudSync.saveState = function () {};
     CloudSync.markDayCompleted = function () {};
     CloudSync.appendArchive = function () {};
+    CloudSync.saveEquipment = function () {};
     return;
   }
 
@@ -88,6 +90,20 @@
     localChangedSinceLoad = true;
     if (!ready) return;
     archiveRef.add(entry).catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
+  };
+
+  // Equipment on hand + free-text notes for Claude, lives on the same shared
+  // household record, edited from either device, debounced the same way as
+  // saveState so typing doesn't spam Firestore with a write per keystroke.
+  let equipmentWriteTimer = null;
+  CloudSync.saveEquipment = function (equipment, notes) {
+    localChangedSinceLoad = true;
+    clearTimeout(equipmentWriteTimer);
+    equipmentWriteTimer = setTimeout(function () {
+      if (!ready) return;
+      houseRef.set({ equipment: equipment, notes: notes, equipmentUpdatedAt: new Date().toISOString() }, { merge: true })
+        .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
+    }, 500);
   };
 
   // Runs once, only the very first time this Firebase project sees no shared

@@ -138,10 +138,13 @@ function renderArchiveSection(archive){
     const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
     const diffBadge = entry.difficulty ? `<span class="diff-badge ${entry.difficulty}">${DIFF_LABELS[entry.difficulty] || entry.difficulty}</span>` : '';
     const timeText = entry.totalMinutes ? `${entry.totalMinutes} min` : '';
+    const skippedExNames = (entry.exercises || []).filter(e => e.skipped).map(e => e.name);
+    const skippedAll = skippedExNames.concat(entry.warmupSkipped || []).concat(entry.cooldownSkipped || []);
     li.innerHTML = `
       <div class="row1"><span><strong>${entry.week}, ${entry.day}</strong>: ${entry.title}</span><span class="when">${when}</span></div>
       <div class="meta">${timeText ? `<span>${timeText}</span>` : ''}${diffBadge}</div>
       ${entry.note ? `<div class="note">"${entry.note}"</div>` : ''}
+      ${skippedAll.length ? `<div class="meta" style="margin-top:4px;">Skipped: ${skippedAll.join(', ')}</div>` : ''}
     `;
     list.appendChild(li);
   });

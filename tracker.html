@@ -234,6 +234,89 @@
     background:var(--teal-700);
     border-color:var(--teal-700);
   }
+  .skip-toggle{
+    background:none;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:0.72rem;
+    font-weight:700;
+    padding:5px 9px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+  .skip-toggle.active{
+    background:#FFF6D9;
+    border-color:#FFD60A;
+    color:#5b4600;
+  }
+  .simple-row.skipped .label{
+    opacity:0.55;
+    text-decoration:line-through;
+  }
+  .card.skipped-card{
+    opacity:0.6;
+  }
+  .block-skip-btn{
+    display:block;
+    width:100%;
+    background:none;
+    border:1px dashed var(--line);
+    color:var(--ink-soft);
+    padding:8px 12px;
+    border-radius:12px;
+    font-weight:700;
+    font-size:0.78rem;
+    cursor:pointer;
+    margin:0 0 10px;
+    text-align:center;
+  }
+  .block-skip-btn.active{
+    background:#FFF6D9;
+    border-color:#FFD60A;
+    color:#5b4600;
+    border-style:solid;
+  }
+  .pushup-rounds{margin-top:10px;}
+  .pushup-round-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    padding:9px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .pushup-round-row:last-child{border-bottom:none;}
+  .pushup-round-label{
+    font-weight:800;
+    color:var(--teal-700);
+    font-size:0.78rem;
+    width:24px;
+    flex:0 0 auto;
+  }
+  .pushup-field{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .pushup-input{
+    width:56px;
+    padding:7px 8px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    font-size:0.85rem;
+    font-family:inherit;
+    text-align:center;
+  }
+  .pushup-result{
+    font-size:0.74rem;
+    color:var(--ink-soft);
+    flex:1 1 100%;
+  }
   .tracker-footer{
     position:fixed;
     bottom:0;
@@ -419,8 +502,9 @@
 
 <main id="main" style="padding-top:16px;"></main>
 
-<div style="text-align:center;margin:8px 0 100px;">
+<div style="text-align:center;margin:8px 0 100px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
   <button id="howToUse" style="background:none;border:none;color:var(--teal-700);font-weight:700;font-size:0.85rem;text-decoration:underline;cursor:pointer;">How to use this tracker</button>
+  <button id="openEquipment" style="background:none;border:none;color:var(--teal-700);font-weight:700;font-size:0.85rem;text-decoration:underline;cursor:pointer;">Equipment &amp; notes for Claude</button>
 </div>
 
 <div class="tracker-footer">
@@ -459,6 +543,7 @@
     <button class="modal-close" id="closeFinish">&times;</button>
     <h3 id="finishTitle">Finish Workout?</h3>
     <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
+    <div id="finishSkippedNote" style="display:none;background:#FFF6D9;color:#5b4600;padding:9px 11px;border-radius:10px;font-size:0.8rem;margin-top:8px;line-height:1.5;"></div>
     <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
     <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
     <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
@@ -481,11 +566,30 @@
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
       Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
       The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
-      Once every box on a day is ticked, a <strong>🏁 Finish Workout</strong> button appears. Tapping it is the only thing that actually archives a workout, just ticking every box doesn't do it automatically, that's on purpose so nothing gets accidentally recorded while you're poking around the app. Confirming asks how long it took (pre-filled with a guess based on when you started ticking, edit it if that's off), how it felt, and an optional note. Once confirmed, that day drops off your to-do list for good and moves into your history on the Fun Stats page, since the plan is to keep building new weeks forward rather than repeating old ones.<br><br>
+      The Push Up Block works differently to everything else: do full push ups until your form breaks down (technical fail), then finish out the reps as modified (knee) push ups. Instead of round chips, you'll see a number box for Pene and one for Jenna each round, enter how many FULL reps each of you got before switching, the rest is assumed to be modified automatically. That number becoming your record over time is the whole point, it's a much better strength indicator than just ticking a box.<br><br>
+      Didn't get to something, like a whole block or one exercise? Tap <strong>"Didn't do this one"</strong> under an exercise, or <strong>"Didn't do this block — skip it"</strong> at the top of a block to skip everything in it in one go, warm up and cool down items have a small "Skip" button next to them too. Skipped items count toward finishing the day (they won't hold you back from the Finish button), but they're saved honestly as skipped, not as done, in your history and copy summary. Tap the same button again to undo it if you change your mind.<br><br>
+      Once every box on a day is ticked or marked skipped, a <strong>🏁 Finish Workout</strong> button appears. Tapping it is the only thing that actually archives a workout, just ticking or skipping everything doesn't do it automatically, that's on purpose so nothing gets accidentally recorded while you're poking around the app. Confirming asks how long it took (pre-filled with a guess based on when you started ticking, edit it if that's off), how it felt, and an optional note, and shows you a reminder of anything marked skipped before you confirm. Once confirmed, that day drops off your to-do list for good and moves into your history on the Fun Stats page, since the plan is to keep building new weeks forward rather than repeating old ones.<br><br>
       Before you finish, tap Copy Summary for a plain text record of what you did, weights included.<br><br>
       <strong>Your progress saves automatically and syncs live between your devices</strong> — tick something on your phone and it shows up on the laptop or TV within a second or two, no refresh needed, so you can control it from your phone while everyone watches the bigger screen. It's also saved on this device itself, so it's still here if you close the tab or lose signal mid session, and catches up with everyone else's changes the moment you're back online. Tap "Reset in-progress ticks" below if a day's ticks get messed up and you want that one to start fresh everywhere, it won't touch anything you've already finished and archived.
     </p>
     <button id="resetAllData" style="margin-top:6px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#B5179E;font-weight:700;cursor:pointer;">Reset in-progress ticks (keeps archived history)</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="equipmentOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeEquipment">&times;</button>
+    <h3>Equipment &amp; notes for Claude</h3>
+    <p class="disclaimer">Claude can't see this automatically, it doesn't have a live connection to this app. But keeping it up to date here means whenever you sit down together to plan the next week, you can tap "Copy for Claude" below and paste the whole thing straight into the chat, equipment, notes and your recent history all in one go.</p>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">What equipment do we have right now?</label>
+    <textarea id="equipmentText" placeholder="e.g. Dumbbells up to 5kg, kettlebell 4kg, barbell up to 20kg, resistance bands..." style="width:100%;min-height:80px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Anything else for next week's design (how it's felt, goals, days you can/can't train)</label>
+    <textarea id="equipmentNotes" placeholder="e.g. Wednesdays don't work most weeks now, knees feeling good, want more core..." style="width:100%;min-height:80px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+    <div id="equipmentSavedFlag" class="save-flag" style="color:var(--teal-700);"></div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button id="saveEquipment" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;cursor:pointer;">Save</button>
+      <button id="copyEquipmentForClaude" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Copy for Claude</button>
+    </div>
   </div>
 </div>
 
@@ -541,20 +645,65 @@ const state = {
 
 function keyFor(weekId, dayId){ return weekId + "__" + dayId; }
 
+// Detects a "Full"/"Modified" exercise pair inside a block, e.g. "Push Up Full" +
+// "Push Up Modified" — these get treated as ONE combined technical-failure
+// exercise: do full reps until form breaks down, finish the rest as modified,
+// log how many full reps each person got per round instead of separate round
+// chips for two exercises. Name-based so it works for any future exercise built
+// the same way (e.g. a pull up progression), not just push ups specifically.
+function detectFullModifiedPair(block){
+  const exs = block.exercises;
+  let fullIdx = -1, modIdx = -1;
+  exs.forEach((e, i)=>{
+    if(/\bfull$/i.test(e.name.trim())) fullIdx = i;
+    if(/\bmodified$/i.test(e.name.trim())) modIdx = i;
+  });
+  if(fullIdx === -1 || modIdx === -1) return null;
+  const baseFull = exs[fullIdx].name.replace(/\s*full$/i, '').trim().toLowerCase();
+  const baseMod = exs[modIdx].name.replace(/\s*modified$/i, '').trim().toLowerCase();
+  if(baseFull !== baseMod) return null;
+  const qtyMatch = (exs[modIdx].qty || '').match(/(\d+)\s*reps?/i) || (exs[fullIdx].qty || '').match(/(\d+)\s*reps?/i);
+  return {
+    fullIdx, modIdx,
+    baseName: exs[fullIdx].name.replace(/\s*full$/i, '').trim(),
+    targetReps: qtyMatch ? parseInt(qtyMatch[1], 10) : null
+  };
+}
+
 function ensureDayState(week, day){
   const k = keyFor(week.id, day.id);
   if(!state.progress[k]){
     state.progress[k] = {
       startedAt: null,
       warmup: day.warmup.map(()=>false),
-      blocks: day.blocks.map(b => ({
-        rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
-        weights: b.exercises.map(e => e.weight)
-      })),
-      cooldown: day.cooldown.map(()=>false)
+      warmupSkipped: day.warmup.map(()=>false),
+      blocks: day.blocks.map(b => {
+        const pair = detectFullModifiedPair(b);
+        return {
+          rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
+          weights: b.exercises.map(e => e.weight),
+          skipped: b.exercises.map(()=>false),
+          pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
+        };
+      }),
+      cooldown: day.cooldown.map(()=>false),
+      cooldownSkipped: day.cooldown.map(()=>false)
     };
   }
-  return state.progress[k];
+  // Backfill for any day already in progress from before "skip" or the push-up
+  // technical-failure logging existed, so an in-flight session started on an
+  // older version of the app doesn't break.
+  const ds = state.progress[k];
+  if(!ds.warmupSkipped) ds.warmupSkipped = day.warmup.map(()=>false);
+  if(!ds.cooldownSkipped) ds.cooldownSkipped = day.cooldown.map(()=>false);
+  ds.blocks.forEach((b, bi)=>{
+    if(!b.skipped) b.skipped = day.blocks[bi].exercises.map(()=>false);
+    const pair = detectFullModifiedPair(day.blocks[bi]);
+    if(pair && !b.pushupLog){
+      b.pushupLog = { pene: Array(day.blocks[bi].rounds).fill(null), jenna: Array(day.blocks[bi].rounds).fill(null) };
+    }
+  });
+  return ds;
 }
 
 // Marks the first moment a day gets touched, so a "Finish Workout" can suggest a
@@ -563,12 +712,74 @@ function markStarted(ds){
   if(!ds.startedAt) ds.startedAt = new Date().toISOString();
 }
 
+// Every trackable item is either done, skipped (deliberately not done, e.g. "we
+// didn't get to the core finisher"), or still pending. Skipped items count toward
+// unlocking Finish Workout the same as done ones, so a day doesn't get stuck
+// forever at less than 100% just because something was intentionally left out —
+// but a round/item that WAS ticked still counts as done even if its exercise is
+// later marked skipped, so nothing already completed loses credit.
 function totalTicks(ds, day){
-  let total = 0, done = 0;
-  ds.warmup.forEach(v=>{total++; if(v) done++;});
-  ds.blocks.forEach(b=> b.rounds.forEach(arr=>{ arr.forEach(v=>{total++; if(v) done++;}); }));
-  ds.cooldown.forEach(v=>{total++; if(v) done++;});
-  return {total, done};
+  let total = 0, done = 0, skipped = 0;
+  day.warmup.forEach((_, i)=>{
+    total++;
+    if(ds.warmup[i]) done++;
+    else if(ds.warmupSkipped && ds.warmupSkipped[i]) skipped++;
+  });
+  day.blocks.forEach((block, bi)=>{
+    const b = ds.blocks[bi];
+    const pair = detectFullModifiedPair(block);
+    block.exercises.forEach((ex, ei)=>{
+      if(pair && ei === pair.modIdx) return; // folded into fullIdx below, not counted twice
+      if(pair && ei === pair.fullIdx){
+        const exSkipped = b.skipped && (b.skipped[pair.fullIdx] || b.skipped[pair.modIdx]);
+        for(let r=0;r<block.rounds;r++){
+          total++;
+          const pv = b.pushupLog && b.pushupLog.pene[r];
+          const jv = b.pushupLog && b.pushupLog.jenna[r];
+          if(pv != null && jv != null) done++;
+          else if(exSkipped) skipped++;
+        }
+        return;
+      }
+      const exSkipped = b.skipped && b.skipped[ei];
+      b.rounds[ei].forEach(v=>{
+        total++;
+        if(v) done++;
+        else if(exSkipped) skipped++;
+      });
+    });
+  });
+  day.cooldown.forEach((_, i)=>{
+    total++;
+    if(ds.cooldown[i]) done++;
+    else if(ds.cooldownSkipped && ds.cooldownSkipped[i]) skipped++;
+  });
+  return {total, done, skipped};
+}
+
+// Human-readable list of what's currently marked skipped for a day, used in the
+// Finish Workout confirmation and in the copy summary.
+function skippedSummary(day, ds){
+  const parts = [];
+  const warmupNames = day.warmup.filter((_,i)=> ds.warmupSkipped && ds.warmupSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
+  if(warmupNames.length) parts.push('Warm Up: ' + warmupNames.join(', '));
+  day.blocks.forEach((block, bi)=>{
+    const pair = detectFullModifiedPair(block);
+    const names = [];
+    let pairAdded = false;
+    block.exercises.forEach((e, ei)=>{
+      if(!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei])) return;
+      if(pair && (ei === pair.fullIdx || ei === pair.modIdx)){
+        if(!pairAdded){ names.push(pair.baseName); pairAdded = true; }
+        return;
+      }
+      names.push(e.name);
+    });
+    if(names.length) parts.push(block.name + ': ' + names.join(', '));
+  });
+  const cooldownNames = day.cooldown.filter((_,i)=> ds.cooldownSkipped && ds.cooldownSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
+  if(cooldownNames.length) parts.push('Cool Down: ' + cooldownNames.join(', '));
+  return parts;
 }
 
 // ---------------- Completed-day archive ----------------
@@ -608,6 +819,18 @@ function appendArchive(entry){
   if(window.CloudSync) CloudSync.appendArchive(entry);
 }
 
+// ---------------- Equipment & notes for Claude ----------------
+// Not read automatically by Claude (there's no live connection from a chat
+// session into this app), but keeping it current here means it's all in one
+// place, synced between devices, ready to copy-paste at the next planning chat.
+const EQUIPMENT_KEY = 'pj-equipment-v1';
+let equipmentCache = (function(){
+  try{
+    const raw = localStorage.getItem(EQUIPMENT_KEY);
+    return raw ? JSON.parse(raw) : { equipment: '', notes: '' };
+  }catch(e){ return { equipment: '', notes: '' }; }
+})();
+
 // Wires up live updates arriving from the shared cloud record (another device
 // ticking something, or this device's own change echoing back). Local storage
 // is refreshed too so the instant-first-paint path above always has the latest
@@ -620,6 +843,16 @@ if(window.CloudSync){
       try{ state.progress = JSON.parse(data.progressJson) || {}; }catch(e){ /* keep what we had */ }
     }
     if(Array.isArray(data.completedDays)) completedDaysCache = data.completedDays;
+    if(data.equipment != null || data.notes != null){
+      equipmentCache = { equipment: data.equipment || '', notes: data.notes || '' };
+      try{ localStorage.setItem(EQUIPMENT_KEY, JSON.stringify(equipmentCache)); }catch(e){}
+      const eqField = document.getElementById('equipmentText');
+      const noteField = document.getElementById('equipmentNotes');
+      // Same focus guard as the tracker's other inputs: don't overwrite a box
+      // Pene or Jenna is actively typing in on this device.
+      if(eqField && document.activeElement !== eqField) eqField.value = equipmentCache.equipment;
+      if(noteField && document.activeElement !== noteField) noteField.value = equipmentCache.notes;
+    }
     try{
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ weekIdx: state.weekIdx, dayIdx: state.dayIdx, progress: state.progress }));
       localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache));
@@ -693,6 +926,103 @@ function videoLinkHtml(item){
   return `<a class="${cls}" href="${item.video}" target="_blank" rel="noopener" title="${title}" onclick="event.stopPropagation()">${icon}</a>`;
 }
 
+// Builds the merged card for a "Full"/"Modified" technical-failure exercise pair
+// (e.g. Push Up Block): one row per round, a number input each for Pene and
+// Jenna to log how many FULL-form reps they got before switching to modified,
+// so the split (and the trend of "full reps" over time) is a real recorded
+// number instead of a plain done/not-done chip. Deliberately doesn't call
+// renderMain() on every keystroke (same reasoning as the weight box) so typing
+// a number doesn't lose focus mid-edit.
+function buildPushupCard(block, bi, pair, ds){
+  const isSkipped = !!(ds.blocks[bi].skipped && (ds.blocks[bi].skipped[pair.fullIdx] || ds.blocks[bi].skipped[pair.modIdx]));
+  const card = document.createElement('div');
+  card.className = 'card' + (isSkipped ? ' skipped-card' : '');
+
+  const top = document.createElement('div');
+  top.className = 'card-top';
+  const left = document.createElement('div');
+  const targetText = pair.targetReps ? ' to ' + pair.targetReps + ' total reps' : '';
+  left.innerHTML = `<div class="ex-name">${pair.baseName}${videoLinkHtml(block.exercises[pair.fullIdx])}</div><div class="ex-qty">Full reps until technical fail, finish${targetText} with modified push ups</div>`;
+  top.appendChild(left);
+  card.appendChild(top);
+
+  const roundsWrap = document.createElement('div');
+  roundsWrap.className = 'pushup-rounds';
+  for(let r = 0; r < block.rounds; r++){
+    const row = document.createElement('div');
+    row.className = 'pushup-round-row';
+    const label = document.createElement('div');
+    label.className = 'pushup-round-label';
+    label.textContent = 'R' + (r + 1);
+    row.appendChild(label);
+
+    const resultSpan = document.createElement('span');
+    resultSpan.className = 'pushup-result';
+
+    function describe(person, val){
+      if(val == null) return '';
+      const name = person === 'pene' ? 'Pene' : 'Jenna';
+      const modified = pair.targetReps != null ? Math.max(0, pair.targetReps - val) : null;
+      return name + ' ' + val + (pair.targetReps ? '/' + pair.targetReps : '') + ' full' + (modified ? ' + ' + modified + ' modified' : '');
+    }
+    function refreshResult(){
+      const pv = ds.blocks[bi].pushupLog.pene[r];
+      const jv = ds.blocks[bi].pushupLog.jenna[r];
+      resultSpan.textContent = [describe('pene', pv), describe('jenna', jv)].filter(Boolean).join(' · ');
+    }
+
+    ['pene','jenna'].forEach(person=>{
+      const field = document.createElement('label');
+      field.className = 'pushup-field';
+      field.appendChild(document.createTextNode((person === 'pene' ? 'Pene' : 'Jenna') + ' full reps '));
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.min = '0';
+      if(pair.targetReps != null) input.max = String(pair.targetReps);
+      input.className = 'pushup-input';
+      input.placeholder = '0';
+      const currentVal = ds.blocks[bi].pushupLog[person][r];
+      input.value = currentVal == null ? '' : currentVal;
+      input.oninput = (e)=>{
+        markStarted(ds);
+        let v = e.target.value === '' ? null : parseInt(e.target.value, 10);
+        if(v != null){
+          if(isNaN(v) || v < 0) v = 0;
+          if(pair.targetReps != null && v > pair.targetReps) v = pair.targetReps;
+        }
+        ds.blocks[bi].pushupLog[person][r] = v;
+        persistState();
+        refreshResult();
+      };
+      field.appendChild(input);
+      row.appendChild(field);
+    });
+
+    row.appendChild(resultSpan);
+    refreshResult();
+    roundsWrap.appendChild(row);
+  }
+  card.appendChild(roundsWrap);
+
+  const skipRow = document.createElement('div');
+  skipRow.style.cssText = 'margin-top:8px;text-align:right;';
+  const skipBtn = document.createElement('button');
+  skipBtn.type = 'button';
+  skipBtn.className = 'skip-toggle' + (isSkipped ? ' active' : '');
+  skipBtn.textContent = isSkipped ? 'Skipped ✕ (tap to undo)' : "Didn't do this one";
+  skipBtn.onclick = ()=>{
+    const newVal = !isSkipped;
+    ds.blocks[bi].skipped[pair.fullIdx] = newVal;
+    ds.blocks[bi].skipped[pair.modIdx] = newVal;
+    persistState();
+    renderMain();
+  };
+  skipRow.appendChild(skipBtn);
+  card.appendChild(skipRow);
+
+  return card;
+}
+
 function renderMain(){
   const week = DATA.weeks[state.weekIdx];
   const day = week.days[state.dayIdx];
@@ -722,15 +1052,15 @@ function renderMain(){
   const ds = ensureDayState(week, day);
   const banner = document.createElement('div');
   banner.className = 'day-banner';
-  const {total, done} = totalTicks(ds, day);
+  const {total, done, skipped} = totalTicks(ds, day);
   const pct = total ? Math.round((done/total)*100) : 0;
-  const readyToFinish = total > 0 && done === total;
+  const readyToFinish = total > 0 && (done + skipped) === total;
   banner.innerHTML = `
     ${day.isNew ? '<div class="new-flag">New 4th day</div><br>' : ''}
     <h2>${day.label}: ${day.title}</h2>
     <div class="meta">Estimated time: ${day.estTime}</div>
     <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
-    <div class="progress-label">${done} of ${total} items ticked (${pct}%)</div>
+    <div class="progress-label">${done} of ${total} items ticked (${pct}%)${skipped ? ' · ' + skipped + (skipped===1?' item':' items') + ' marked skipped' : ''}</div>
     ${day.note ? `<div class="note-box">${day.note}</div>` : ''}
     ${readyToFinish ? `<button id="finishWorkoutBtn" style="margin-top:12px;width:100%;padding:13px;border-radius:12px;border:none;background:#fff;color:var(--coral-500);font-weight:800;font-size:0.95rem;cursor:pointer;">🏁 Finish Workout</button>` : ''}
   `;
@@ -739,7 +1069,7 @@ function renderMain(){
     document.getElementById('finishWorkoutBtn').onclick = ()=> openFinishModal(week, day, ds);
   }
 
-  main.appendChild(renderSimpleSection('Warm Up', day.warmup, ds.warmup, week, day, ds));
+  main.appendChild(renderSimpleSection('Warm Up', day.warmup, ds.warmup, ds.warmupSkipped, week, day, ds));
 
   day.blocks.forEach((block, bi)=>{
     const section = document.createElement('div');
@@ -764,9 +1094,30 @@ function renderMain(){
       section.appendChild(roundBtn);
     }
 
+    // Covers "we didn't end up doing this whole block" in one tap, e.g. skipping
+    // the Ab Finisher entirely, without needing to mark each exercise separately.
+    const blockSkipped = ds.blocks[bi].skipped;
+    const allExSkipped = block.exercises.length > 0 && block.exercises.every((_,ei)=> blockSkipped[ei]);
+    const blockSkipBtn = document.createElement('button');
+    blockSkipBtn.className = 'block-skip-btn' + (allExSkipped ? ' active' : '');
+    blockSkipBtn.textContent = allExSkipped ? '↺ Undo skip for this whole block' : "Didn't do this block — skip it";
+    blockSkipBtn.onclick = ()=>{
+      const newVal = !allExSkipped;
+      ds.blocks[bi].skipped = ds.blocks[bi].skipped.map(()=> newVal);
+      persistState();
+      renderMain();
+    };
+    section.appendChild(blockSkipBtn);
+
+    const pushupPair = detectFullModifiedPair(block);
+    if(pushupPair) section.appendChild(buildPushupCard(block, bi, pushupPair, ds));
+
     block.exercises.forEach((exObj, ei)=>{
+      if(pushupPair && (ei === pushupPair.fullIdx || ei === pushupPair.modIdx)) return; // rendered together above
+
+      const isExSkipped = !!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei]);
       const card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card' + (isExSkipped ? ' skipped-card' : '');
       const top = document.createElement('div');
       top.className = 'card-top';
       const left = document.createElement('div');
@@ -793,15 +1144,30 @@ function renderMain(){
         roundsRow.appendChild(chip);
       }
       card.appendChild(roundsRow);
+
+      const skipRow = document.createElement('div');
+      skipRow.style.cssText = 'margin-top:8px;text-align:right;';
+      const skipBtn = document.createElement('button');
+      skipBtn.type = 'button';
+      skipBtn.className = 'skip-toggle' + (isExSkipped ? ' active' : '');
+      skipBtn.textContent = isExSkipped ? 'Skipped ✕ (tap to undo)' : "Didn't do this one";
+      skipBtn.onclick = ()=>{
+        ds.blocks[bi].skipped[ei] = !ds.blocks[bi].skipped[ei];
+        persistState();
+        renderMain();
+      };
+      skipRow.appendChild(skipBtn);
+      card.appendChild(skipRow);
+
       section.appendChild(card);
     });
     main.appendChild(section);
   });
 
-  main.appendChild(renderSimpleSection('Cool Down', day.cooldown, ds.cooldown, week, day, ds));
+  main.appendChild(renderSimpleSection('Cool Down', day.cooldown, ds.cooldown, ds.cooldownSkipped, week, day, ds));
 }
 
-function renderSimpleSection(title, items, stateArr, week, day, ds){
+function renderSimpleSection(title, items, stateArr, skippedArr, week, day, ds){
   const section = document.createElement('div');
   section.className = 'section';
   const t = document.createElement('div');
@@ -811,16 +1177,37 @@ function renderSimpleSection(title, items, stateArr, week, day, ds){
   const card = document.createElement('div');
   card.className = 'card';
   items.forEach((item, i)=>{
+    const isSkipped = !!(skippedArr && skippedArr[i]);
     const row = document.createElement('div');
-    row.className = 'simple-row';
+    row.className = 'simple-row' + (isSkipped ? ' skipped' : '');
     const name = typeof item === 'string' ? item : item.name;
     const qty = typeof item === 'string' ? '' : item.qty;
     row.innerHTML = `<span class="label">${name}${qty ? `<span class="qty">&nbsp;&middot;&nbsp;${qty}</span>` : ''}${videoLinkHtml(item)}</span>`;
+
+    const controls = document.createElement('div');
+    controls.style.cssText = 'display:flex;align-items:center;gap:8px;';
+    const skipBtn = document.createElement('button');
+    skipBtn.type = 'button';
+    skipBtn.className = 'skip-toggle' + (isSkipped ? ' active' : '');
+    skipBtn.textContent = isSkipped ? 'Skipped ✕' : 'Skip';
+    skipBtn.onclick = (e)=>{
+      e.stopPropagation();
+      if(!skippedArr) return;
+      skippedArr[i] = !skippedArr[i];
+      if(skippedArr[i]) stateArr[i] = false; // skipped and done are mutually exclusive
+      persistState();
+      renderMain();
+    };
+    controls.appendChild(skipBtn);
+
     const box = document.createElement('span');
     box.className = 'checkbox' + (stateArr[i] ? ' done' : '');
     box.textContent = stateArr[i] ? '✓' : '';
-    row.appendChild(box);
+    controls.appendChild(box);
+    row.appendChild(controls);
+
     row.onclick = ()=>{
+      if(isSkipped) return; // tap "Skip" again first to undo before marking done
       if(ds) markStarted(ds);
       stateArr[i] = !stateArr[i];
       persistState();
@@ -1238,6 +1625,56 @@ document.getElementById('closeTimer').onclick = ()=>{ stopTimerRunning(); closeM
 document.getElementById('howToUse').onclick = ()=> openModal('guideOverlay');
 document.getElementById('closeGuide').onclick = ()=> closeModal('guideOverlay');
 
+document.getElementById('openEquipment').onclick = ()=>{
+  document.getElementById('equipmentText').value = equipmentCache.equipment || '';
+  document.getElementById('equipmentNotes').value = equipmentCache.notes || '';
+  document.getElementById('equipmentSavedFlag').textContent = '';
+  openModal('equipmentOverlay');
+};
+document.getElementById('closeEquipment').onclick = ()=> closeModal('equipmentOverlay');
+document.getElementById('saveEquipment').onclick = ()=>{
+  equipmentCache = {
+    equipment: document.getElementById('equipmentText').value.trim(),
+    notes: document.getElementById('equipmentNotes').value.trim()
+  };
+  try{ localStorage.setItem(EQUIPMENT_KEY, JSON.stringify(equipmentCache)); }catch(e){}
+  if(window.CloudSync) CloudSync.saveEquipment(equipmentCache.equipment, equipmentCache.notes);
+  const flag = document.getElementById('equipmentSavedFlag');
+  flag.textContent = 'Saved, synced to both devices.';
+  setTimeout(()=>{ flag.textContent = ''; }, 2500);
+};
+document.getElementById('copyEquipmentForClaude').onclick = ()=>{
+  const equipment = document.getElementById('equipmentText').value.trim();
+  const notes = document.getElementById('equipmentNotes').value.trim();
+  let archive = [];
+  try{
+    const raw = localStorage.getItem(ARCHIVE_KEY);
+    archive = raw ? JSON.parse(raw) : [];
+  }catch(e){}
+  const lines = [];
+  lines.push('--- Pene & Jenna: equipment, notes and recent history ---');
+  lines.push('Equipment on hand: ' + (equipment || '(not filled in yet)'));
+  lines.push('Notes for next week: ' + (notes || '(none)'));
+  lines.push('Total workouts finished so far: ' + archive.length);
+  if(archive.length){
+    lines.push('Most recent sessions:');
+    archive.slice(-5).reverse().forEach(entry=>{
+      const d = new Date(entry.completedAt);
+      const when = isNaN(d) ? '' : d.toLocaleDateString();
+      const diffLabel = {easier:'easier than expected', right:'just right', tougher:'tougher than expected'}[entry.difficulty] || entry.difficulty || '';
+      lines.push('  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + ', ' + (entry.totalMinutes ? entry.totalMinutes + ' min, ' : '') + diffLabel + (entry.note ? ', note: "' + entry.note + '"' : ''));
+    });
+  }
+  const text = lines.join('\n');
+  try{
+    navigator.clipboard.writeText(text);
+    const btn = document.getElementById('copyEquipmentForClaude');
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(()=>{ btn.textContent = original; }, 1500);
+  }catch(e){ /* clipboard unavailable, they can still select the fields manually */ }
+};
+
 document.getElementById('openSummary').onclick = ()=>{
   const week = DATA.weeks[state.weekIdx];
   const day = week.days[state.dayIdx];
@@ -1247,15 +1684,35 @@ document.getElementById('openSummary').onclick = ()=>{
   lines.push('');
   day.blocks.forEach((block, bi)=>{
     lines.push(block.name + ' (' + block.tempo + ')');
+    const pair = detectFullModifiedPair(block);
     block.exercises.forEach((exObj, ei)=>{
+      if(pair && ei === pair.modIdx) return; // folded into the fullIdx line below
+      if(pair && ei === pair.fullIdx){
+        const isSkipped = ds.blocks[bi].skipped && (ds.blocks[bi].skipped[pair.fullIdx] || ds.blocks[bi].skipped[pair.modIdx]);
+        if(isSkipped){
+          lines.push('  - ' + pair.baseName + ': SKIPPED');
+        } else {
+          const log = ds.blocks[bi].pushupLog || {pene:[], jenna:[]};
+          const fmt = (name, arr)=> name + ' [' + arr.map((v,i)=> 'R' + (i+1) + ':' + (v==null?'-':v + (pair.targetReps ? '/' + pair.targetReps : '') + ' full')).join(', ') + ']';
+          lines.push('  - ' + pair.baseName + ' (full reps until technical fail, rest with modified): ' + fmt('Pene', log.pene) + '; ' + fmt('Jenna', log.jenna));
+        }
+        return;
+      }
+      const isSkipped = ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei];
       const roundsDone = ds.blocks[bi].rounds[ei].filter(Boolean).length;
       const w = ds.blocks[bi].weights[ei];
-      lines.push('  - ' + exObj.name + ': ' + roundsDone + '/' + block.rounds + ' rounds, weight used: ' + w);
+      const progressText = isSkipped ? 'SKIPPED (' + roundsDone + '/' + block.rounds + ' rounds done)' : roundsDone + '/' + block.rounds + ' rounds';
+      lines.push('  - ' + exObj.name + ': ' + progressText + ', weight used: ' + w);
     });
     lines.push('');
   });
   const cdDone = ds.cooldown.filter(Boolean).length;
   lines.push('Cool down completed: ' + cdDone + '/' + day.cooldown.length);
+  const skipList = skippedSummary(day, ds);
+  if(skipList.length){
+    lines.push('');
+    lines.push('Skipped this session: ' + skipList.join(' | '));
+  }
   document.getElementById('summaryText').value = lines.join('\n');
   openModal('summaryOverlay');
 };
@@ -1322,6 +1779,16 @@ function openFinishModal(week, day, ds){
   document.getElementById('finishMinutes').value = suggestedMinutes(ds);
   document.getElementById('finishNote').value = '';
   renderDifficultyChips();
+
+  const skipList = skippedSummary(day, ds);
+  const skippedNoteEl = document.getElementById('finishSkippedNote');
+  if(skipList.length){
+    skippedNoteEl.innerHTML = '<strong>Marked as skipped:</strong> ' + skipList.join(' &middot; ') + '. This will be saved as part of the record, not as if it happened.';
+    skippedNoteEl.style.display = 'block';
+  } else {
+    skippedNoteEl.style.display = 'none';
+  }
+
   openModal('finishOverlay');
 }
 
@@ -1336,16 +1803,34 @@ document.getElementById('confirmFinish').onclick = ()=>{
 
   const exercises = [];
   day.blocks.forEach((block, bi)=>{
+    const pair = detectFullModifiedPair(block);
     block.exercises.forEach((exObj, ei)=>{
+      if(pair && ei === pair.modIdx) return; // folded into the fullIdx entry below
+      if(pair && ei === pair.fullIdx){
+        const log = ds.blocks[bi].pushupLog || {pene:[], jenna:[]};
+        exercises.push({
+          block: block.name,
+          name: pair.baseName,
+          type: 'technical-failure',
+          targetReps: pair.targetReps,
+          pene: log.pene.slice(),
+          jenna: log.jenna.slice(),
+          skipped: !!(ds.blocks[bi].skipped && (ds.blocks[bi].skipped[pair.fullIdx] || ds.blocks[bi].skipped[pair.modIdx]))
+        });
+        return;
+      }
       exercises.push({
         block: block.name,
         name: exObj.name,
         roundsDone: ds.blocks[bi].rounds[ei].filter(Boolean).length,
         roundsPlanned: block.rounds,
-        weight: ds.blocks[bi].weights[ei]
+        weight: ds.blocks[bi].weights[ei],
+        skipped: !!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei])
       });
     });
   });
+  const warmupSkippedNames = day.warmup.filter((_,i)=> ds.warmupSkipped && ds.warmupSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
+  const cooldownSkippedNames = day.cooldown.filter((_,i)=> ds.cooldownSkipped && ds.cooldownSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
 
   appendArchive({
     key: keyFor(week.id, day.id),
@@ -1356,7 +1841,9 @@ document.getElementById('confirmFinish').onclick = ()=>{
     totalMinutes: minutes,
     difficulty: finishDifficultyChoice,
     note,
-    exercises
+    exercises,
+    warmupSkipped: warmupSkippedNames,
+    cooldownSkipped: cooldownSkippedNames
   });
   markDayCompleted(week, day);
   delete state.progress[keyFor(week.id, day.id)];
@@ -1368,7 +1855,7 @@ document.getElementById('confirmFinish').onclick = ()=>{
   renderAll();
 };
 
-[['timerOverlay'],['summaryOverlay'],['guideOverlay'],['finishOverlay']].forEach(([id])=>{
+[['timerOverlay'],['summaryOverlay'],['guideOverlay'],['finishOverlay'],['equipmentOverlay']].forEach(([id])=>{
   document.getElementById(id).addEventListener('click', (e)=>{
     if(e.target.id === id){
       if(id === 'timerOverlay') stopTimerRunning();
