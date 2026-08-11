@@ -30,6 +30,7 @@
   const CloudSync = {
     onStateChange: null,    // (data) => {}  data = {weekIdx, dayIdx, progressJson, completedDays}
     onArchiveChange: null,  // (entries) => {}
+    onFitnessTestsChange: null, // (entries) => {}  entries = [{date, tests:[{name, unit, Pene, Jenna}]}]
     isReady: function () { return ready; }
   };
   window.CloudSync = CloudSync;
@@ -40,6 +41,7 @@
     CloudSync.markDayCompleted = function () {};
     CloudSync.appendArchive = function () {};
     CloudSync.saveEquipment = function () {};
+    CloudSync.saveFitnessTestEntry = function () {};
     return;
   }
 
@@ -62,6 +64,7 @@
     CloudSync.markDayCompleted = function () {};
     CloudSync.appendArchive = function () {};
     CloudSync.saveEquipment = function () {};
+    CloudSync.saveFitnessTestEntry = function () {};
     return;
   }
 
@@ -106,6 +109,17 @@
     }, 500);
   };
 
+  // A new fitness retest entry, entered from either device via the Fitness
+  // Tests page. arrayUnion so two devices logging around the same moment
+  // merge instead of one overwriting the other, same pattern as
+  // markDayCompleted. entry shape: {date, tests:[{name, unit, Pene, Jenna}]}.
+  CloudSync.saveFitnessTestEntry = function (entry) {
+    localChangedSinceLoad = true;
+    if (!ready) return;
+    houseRef.set({ fitnessTestEntries: firebase.firestore.FieldValue.arrayUnion(entry) }, { merge: true })
+      .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
+  };
+
   // Runs once, only the very first time this Firebase project sees no shared
   // record yet. Copies up whatever is already saved in this device's local
   // storage so switching over to cloud sync doesn't lose anything. Only ever
@@ -145,6 +159,10 @@
         await migrateIfEmpty();
         return;
       }
+      // Fitness test entries are append-only (arrayUnion), never overwritten,
+      // so there's no clobber risk, fire this on every snapshot regardless of
+      // the local-edit guard below that only protects workout progress.
+      if (CloudSync.onFitnessTestsChange) CloudSync.onFitnessTestsChange(snap.data().fitnessTestEntries || []);
       if (!receivedFirstStateSnapshot && localChangedSinceLoad) {
         // Something was tapped on this device in the brief window before the
         // cloud connected. Trust that local edit for now rather than clobber

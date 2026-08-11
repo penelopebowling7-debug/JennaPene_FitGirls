@@ -5,6 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Fitness Tests · Pene &amp; Jenna</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(43,10,77,0.5);
+    z-index:50;
+    align-items:flex-end;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:#fff;
+    width:100%;
+    border-radius:20px 20px 0 0;
+    padding:22px 18px 26px;
+    position:relative;
+    max-height:85vh;
+    overflow-y:auto;
+  }
+  @media (min-width:640px){
+    .modal-overlay{align-items:center;justify-content:center;}
+    .modal{border-radius:20px;max-width:480px;}
+  }
+  .modal h3{margin:0 0 12px;color:var(--teal-900);}
+  .modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    background:var(--teal-100);
+    border:none;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    font-size:1rem;
+    cursor:pointer;
+  }
+  .disclaimer{font-size:0.8rem;color:var(--ink-soft);line-height:1.5;margin:0 0 6px;}
+  .log-test-btn{
+    display:block;
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:none;
+    background:var(--teal-700);
+    color:#fff;
+    font-weight:800;
+    font-size:0.9rem;
+    cursor:pointer;
+    margin-bottom:16px;
+  }
+  .test-field-row{
+    display:grid;
+    grid-template-columns:1fr 90px 90px;
+    gap:8px;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .test-field-row:last-child{border-bottom:none;}
+  .test-field-row .tf-name{font-size:0.82rem;font-weight:700;color:var(--ink);}
+  .test-field-row .tf-unit{font-size:0.72rem;color:var(--ink-soft);font-weight:400;display:block;}
+  .test-field-row input{
+    width:100%;
+    padding:8px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    font-size:0.85rem;
+    text-align:center;
+  }
+  .tf-header{
+    display:grid;
+    grid-template-columns:1fr 90px 90px;
+    gap:8px;
+    font-size:0.72rem;
+    font-weight:800;
+    color:var(--ink-soft);
+    padding-bottom:6px;
+  }
+  .save-flag{font-size:0.8rem;min-height:1.2em;margin-top:8px;}
+</style>
 </head>
 <body>
 
@@ -31,22 +111,96 @@
 
   <div class="note-box" id="methodologyNote"></div>
 
+  <button class="log-test-btn" id="openLogTest">＋ Log new test results</button>
+
   <div id="chartsWrap"></div>
 </main>
 
 <footer class="site-footer">Built for Pene &amp; Jenna's training block, Weeks 11&ndash;12.</footer>
 
+<div class="modal-overlay" id="logTestOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeLogTest">&times;</button>
+    <h3>Log new test results</h3>
+    <p class="disclaimer">Fill in whichever of you tested, leave the other blank if only one of you did it that day. This is saved to your shared data and syncs to both devices, plus it's added to the charts straight away.</p>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:10px 0 4px;color:var(--ink);">Test date</label>
+    <input type="date" id="testDate" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;">
+    <div class="tf-header" style="margin-top:16px;"><span>Test</span><span style="text-align:center;">Pene</span><span style="text-align:center;">Jenna</span></div>
+    <div id="testFieldsWrap"></div>
+    <div id="logTestSavedFlag" class="save-flag" style="color:var(--teal-700);"></div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button id="saveLogTest" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;cursor:pointer;">Save results</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+<script src="firebase-sync.js"></script>
 <script src="data.js"></script>
 <script>
-const FT = window.SITE_DATA.fitnessTests;
+const STATIC_FT = window.SITE_DATA.fitnessTests;
 const COLOR_PENE = '#6A11CB';
 const COLOR_JENNA = '#C98500';
+const LS_FT_ENTRIES = 'pj-fitness-test-entries-v1';
 
-document.getElementById('methodologyNote').innerHTML =
-  `<strong>How to read this:</strong> Push ups and sit ups are straight rep counts. Plank and wall sit hold ` +
-  `times came from the original tracking sheet in a slightly ambiguous format, so they've been read as ` +
-  `minutes.seconds (for example "1.39" = 1 minute 39 seconds). Your next retest is scheduled for ` +
-  `${FT.nextTestDate}, it isn't plotted yet since it hasn't happened.`;
+// ---------------- Merge static (spreadsheet-era) data with live entries ----------------
+// Static dates came from the original tracking sheet, ambiguous "minutes.seconds"
+// format and all. Anything logged from this page onward uses plain seconds, no
+// ambiguity, see the methodology note below.
+function parseDMY(d){
+  const [dd, mm, yyyy] = d.split('/').map(Number);
+  return new Date(yyyy, mm - 1, dd);
+}
+function toDMY(dateObj){
+  const dd = String(dateObj.getDate()).padStart(2, '0');
+  const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+  return `${dd}/${mm}/${dateObj.getFullYear()}`;
+}
+
+function buildMergedFT(liveEntries){
+  const testDefs = STATIC_FT.tests.map(t => ({ name: t.name, unit: t.unit }));
+  const recordMap = new Map();
+
+  STATIC_FT.dates.forEach((d, i) => {
+    const values = {};
+    testDefs.forEach(td => {
+      const test = STATIC_FT.tests.find(t => t.name === td.name);
+      values[td.name] = { Pene: test.series.Pene[i] ?? null, Jenna: test.series.Jenna[i] ?? null };
+    });
+    recordMap.set(d, { date: d, values });
+  });
+
+  (liveEntries || []).forEach(entry => {
+    const values = {};
+    testDefs.forEach(td => {
+      const match = (entry.tests || []).find(t => t.name === td.name);
+      values[td.name] = {
+        Pene: match && match.Pene != null ? match.Pene : null,
+        Jenna: match && match.Jenna != null ? match.Jenna : null
+      };
+    });
+    // A live entry on the same date as an existing record replaces it, so
+    // re-logging a date doesn't create a duplicate point on the chart.
+    recordMap.set(entry.date, { date: entry.date, values });
+  });
+
+  const finalRecords = Array.from(recordMap.values()).sort((a, b) => parseDMY(a.date) - parseDMY(b.date));
+
+  return {
+    dates: finalRecords.map(r => r.date),
+    nextTestDate: STATIC_FT.nextTestDate,
+    tests: testDefs.map(td => ({
+      name: td.name,
+      unit: td.unit,
+      series: {
+        Pene: finalRecords.map(r => r.values[td.name].Pene),
+        Jenna: finalRecords.map(r => r.values[td.name].Jenna)
+      }
+    }))
+  };
+}
 
 function fmtDate(d){
   // d like "07/06/2026" -> "7 Jun"
@@ -74,12 +228,12 @@ function niceCeil(max){
   return Math.ceil(max / (step*pow/5)) * (step*pow/5);
 }
 
-function buildChart(test){
-  const dates = FT.dates;
+function buildChart(test, ft){
+  const dates = ft.dates;
   const people = ['Pene','Jenna'];
   const colors = {Pene: COLOR_PENE, Jenna: COLOR_JENNA};
   const allVals = people.flatMap(p => test.series[p]).filter(v => v != null);
-  const maxVal = Math.max(...allVals);
+  const maxVal = allVals.length ? Math.max(...allVals) : 10;
   const yMax = niceCeil(maxVal * 1.15);
   const yMin = 0;
 
@@ -151,10 +305,11 @@ function buildChart(test){
   const table = document.createElement('table');
   table.className = 'data-table';
   table.style.display = 'none';
+  const nextAlreadyLogged = dates.includes(ft.nextTestDate);
   table.innerHTML = `
-    <thead><tr><th>Person</th>${dates.map(d=>`<th>${fmtDate(d)}</th>`).join('')}<th>${fmtDate(FT.nextTestDate)} (next test)</th></tr></thead>
+    <thead><tr><th>Person</th>${dates.map(d=>`<th>${fmtDate(d)}</th>`).join('')}${nextAlreadyLogged ? '' : `<th>${fmtDate(ft.nextTestDate)} (next test)</th>`}</tr></thead>
     <tbody>
-      ${people.map(p => `<tr><td style="color:${colors[p]};font-weight:700;">${p}</td>${test.series[p].map(v=>`<td>${fmtValue(v, test.unit)}</td>`).join('')}<td>—</td></tr>`).join('')}
+      ${people.map(p => `<tr><td style="color:${colors[p]};font-weight:700;">${p}</td>${test.series[p].map(v=>`<td>${fmtValue(v, test.unit)}</td>`).join('')}${nextAlreadyLogged ? '' : '<td>—</td>'}</tr>`).join('')}
     </tbody>
   `;
   tableBtn.onclick = ()=>{
@@ -202,8 +357,109 @@ function buildChart(test){
   return wrap;
 }
 
+// ---------------- Render pipeline: static + live, re-rendered on cloud change ----------------
+let liveTestEntries = [];
+try{
+  const raw = localStorage.getItem(LS_FT_ENTRIES);
+  liveTestEntries = raw ? JSON.parse(raw) : [];
+}catch(e){}
+
 const chartsWrap = document.getElementById('chartsWrap');
-FT.tests.forEach(test => chartsWrap.appendChild(buildChart(test)));
+const methodologyNote = document.getElementById('methodologyNote');
+
+function renderAll(){
+  const merged = buildMergedFT(liveTestEntries);
+  const nextAlreadyLogged = merged.dates.includes(STATIC_FT.nextTestDate);
+  methodologyNote.innerHTML =
+    `<strong>How to read this:</strong> Push ups and sit ups are straight rep counts. The first three plank and wall sit hold ` +
+    `times came from the original tracking sheet in a slightly ambiguous format, so they've been read as ` +
+    `minutes.seconds (for example "1.39" = 1 minute 39 seconds). Anything you log here from now on uses plain seconds, ` +
+    `no ambiguity. ` +
+    (nextAlreadyLogged ? '' : `Your next retest is scheduled for ${STATIC_FT.nextTestDate}, tap "＋ Log new test results" above once it happens.`);
+  chartsWrap.innerHTML = '';
+  merged.tests.forEach(test => chartsWrap.appendChild(buildChart(test, merged)));
+}
+renderAll();
+
+if(window.CloudSync){
+  CloudSync.onFitnessTestsChange = function(entries){
+    liveTestEntries = entries;
+    try{ localStorage.setItem(LS_FT_ENTRIES, JSON.stringify(entries)); }catch(e){}
+    renderAll();
+  };
+}
+
+// ---------------- Log new test results modal ----------------
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+const testFieldsWrap = document.getElementById('testFieldsWrap');
+function buildTestFields(){
+  testFieldsWrap.innerHTML = '';
+  STATIC_FT.tests.forEach(test => {
+    const row = document.createElement('div');
+    row.className = 'test-field-row';
+    row.innerHTML = `
+      <div class="tf-name">${test.name}<span class="tf-unit">${test.unit === 'seconds' ? 'in seconds' : 'reps'}</span></div>
+      <input type="number" min="0" data-test="${test.name}" data-person="Pene" placeholder="Pene">
+      <input type="number" min="0" data-test="${test.name}" data-person="Jenna" placeholder="Jenna">
+    `;
+    testFieldsWrap.appendChild(row);
+  });
+}
+buildTestFields();
+
+document.getElementById('openLogTest').onclick = ()=>{
+  document.getElementById('testDate').value = new Date().toISOString().slice(0,10);
+  testFieldsWrap.querySelectorAll('input').forEach(i => i.value = '');
+  document.getElementById('logTestSavedFlag').textContent = '';
+  openModal('logTestOverlay');
+};
+document.getElementById('closeLogTest').onclick = ()=> closeModal('logTestOverlay');
+
+document.getElementById('saveLogTest').onclick = ()=>{
+  const dateInput = document.getElementById('testDate').value; // yyyy-mm-dd
+  if(!dateInput){
+    document.getElementById('logTestSavedFlag').textContent = 'Pick a date first.';
+    document.getElementById('logTestSavedFlag').style.color = 'var(--coral-500)';
+    return;
+  }
+  const [yyyy, mm, dd] = dateInput.split('-');
+  const dateStr = `${dd}/${mm}/${yyyy}`;
+
+  const tests = [];
+  STATIC_FT.tests.forEach(test => {
+    const peneVal = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Pene"]`).value;
+    const jennaVal = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Jenna"]`).value;
+    if(peneVal === '' && jennaVal === '') return; // skip tests neither of you entered
+    tests.push({
+      name: test.name,
+      unit: test.unit,
+      Pene: peneVal === '' ? null : parseInt(peneVal, 10),
+      Jenna: jennaVal === '' ? null : parseInt(jennaVal, 10)
+    });
+  });
+
+  if(!tests.length){
+    document.getElementById('logTestSavedFlag').textContent = 'Enter at least one result before saving.';
+    document.getElementById('logTestSavedFlag').style.color = 'var(--coral-500)';
+    return;
+  }
+
+  const entry = { date: dateStr, tests };
+  liveTestEntries.push(entry);
+  try{ localStorage.setItem(LS_FT_ENTRIES, JSON.stringify(liveTestEntries)); }catch(e){}
+  if(window.CloudSync) CloudSync.saveFitnessTestEntry(entry);
+  renderAll();
+
+  document.getElementById('logTestSavedFlag').style.color = 'var(--teal-700)';
+  document.getElementById('logTestSavedFlag').textContent = 'Saved and synced to both devices.';
+  setTimeout(()=> closeModal('logTestOverlay'), 900);
+};
+
+document.getElementById('logTestOverlay').addEventListener('click', (e)=>{
+  if(e.target.id === 'logTestOverlay') closeModal('logTestOverlay');
+});
 </script>
 </body>
 </html>

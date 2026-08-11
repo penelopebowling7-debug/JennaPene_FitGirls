@@ -27,6 +27,18 @@
   .diff-badge.tougher{background:var(--coral-100);color:var(--coral-500);}
   .session-log .note{margin-top:6px;font-size:0.82rem;color:var(--ink);font-style:italic;}
   .fun-compare{font-size:0.85rem;color:var(--ink-soft);margin-top:6px;}
+  .recovery-card{
+    background:var(--teal-100);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px;
+    margin-bottom:16px;
+  }
+  .recovery-card h3{margin:0 0 4px;color:var(--teal-900);}
+  .recovery-card .sub{margin:0 0 12px;color:var(--teal-700);font-size:0.85rem;}
+  .recovery-tiles{display:flex;gap:12px;flex-wrap:wrap;}
+  .recovery-tiles .stat-tile{flex:1;min-width:130px;background:#fff;}
 </style>
 </head>
 <body>
@@ -56,6 +68,12 @@
 
   <div class="stat-grid" id="statGrid"></div>
   <p class="fun-compare" id="funCompare"></p>
+
+  <div class="recovery-card">
+    <h3>Recovery &amp; mindfulness 🌙</h3>
+    <p class="sub">Your Yoga &amp; Mobility day doesn't lift any weight, so it never showed up in the numbers above, this is where it counts.</p>
+    <div class="recovery-tiles" id="recoveryTiles"></div>
+  </div>
 
   <div class="card">
     <h3>Your completed workout history</h3>
@@ -151,6 +169,49 @@ function renderArchiveSection(archive){
   liveWrap.appendChild(list);
 }
 
+// ---------------- Recovery & mindfulness (Yoga & Mobility only) ----------------
+const recoveryTiles = document.getElementById('recoveryTiles');
+
+function renderRecoverySection(archive){
+  recoveryTiles.innerHTML = '';
+  const yogaEntries = (archive || []).filter(e => e.title === 'Yoga & Mobility');
+
+  if(!yogaEntries.length){
+    recoveryTiles.innerHTML = `<p style="color:var(--teal-900);font-size:0.85rem;margin:0;">No Yoga &amp; Mobility sessions finished yet, once you tap Finish Workout on a Wednesday this fills in.</p>`;
+    return;
+  }
+
+  const totalMindfulSeconds = yogaEntries.reduce((sum, e) => sum + (e.mindfulSeconds || 0), 0);
+  const totalMindfulMinutes = Math.round(totalMindfulSeconds / 60);
+
+  // Current streak: consecutive programmed weeks in a row with a finished
+  // Yoga & Mobility session, counting back from the most recent one.
+  const weekNums = [...new Set(yogaEntries.map(e => {
+    const m = (e.week || '').match(/(\d+)/);
+    return m ? parseInt(m[1], 10) : null;
+  }).filter(n => n != null))].sort((a,b) => b - a);
+  let streak = 0;
+  if(weekNums.length){
+    streak = 1;
+    for(let i = 1; i < weekNums.length; i++){
+      if(weekNums[i] === weekNums[i-1] - 1) streak++;
+      else break;
+    }
+  }
+
+  const tiles = [
+    { value: totalMindfulMinutes, unit: 'minutes', label: 'Mindful minutes, breathing and stretching together' },
+    { value: yogaEntries.length, unit: yogaEntries.length === 1 ? 'session' : 'sessions', label: 'Yoga & Mobility days finished' },
+    { value: streak, unit: streak === 1 ? 'week' : 'weeks', label: 'Current streak, in a row' }
+  ];
+  tiles.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'stat-tile';
+    div.innerHTML = `<div class="value">${t.value}</div><div class="unit">${t.unit}</div><div class="label">${t.label}</div>`;
+    recoveryTiles.appendChild(div);
+  });
+}
+
 // First paint from this device's local cache (instant, works offline too)...
 let archive = [];
 try{
@@ -158,6 +219,7 @@ try{
   archive = raw ? JSON.parse(raw) : [];
 }catch(e){}
 renderArchiveSection(archive);
+renderRecoverySection(archive);
 
 // ...then reconcile with the live shared history once the cloud connects, and
 // keep re-rendering every time it changes, from either device.
@@ -166,6 +228,7 @@ if(window.CloudSync){
     archive = entries;
     try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(entries)); }catch(e){}
     renderArchiveSection(archive);
+    renderRecoverySection(archive);
   };
 }
 

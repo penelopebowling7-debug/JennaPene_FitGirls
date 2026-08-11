@@ -117,6 +117,17 @@
   }
   .yoga-guide-box p{margin:0 0 8px;}
   .yoga-guide-box p:last-child{margin-bottom:0;}
+  .yoga-welcome-box{
+    background:linear-gradient(135deg,var(--teal-700),#9D2FD1);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-size:0.9rem;
+    color:#fff;
+    line-height:1.55;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .yoga-welcome-box .emoji{font-size:1.6rem;margin-bottom:6px;}
   .new-flag{
     display:inline-block;
     background:var(--gold-500);
@@ -558,18 +569,26 @@
 <div class="modal-overlay" id="finishOverlay">
   <div class="modal">
     <button class="modal-close" id="closeFinish">&times;</button>
-    <h3 id="finishTitle">Finish Workout?</h3>
-    <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
-    <div id="finishSkippedNote" style="display:none;background:#FFF6D9;color:#5b4600;padding:9px 11px;border-radius:10px;font-size:0.8rem;margin-top:8px;line-height:1.5;"></div>
-    <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
-    <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
-    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
-    <div id="finishDifficulty" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
-    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Notes (optional)</label>
-    <textarea id="finishNote" placeholder="How you felt, anything sore, what to change next time..." style="width:100%;min-height:70px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
-    <div style="display:flex;gap:10px;margin-top:16px;">
-      <button id="cancelFinish" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Cancel</button>
-      <button id="confirmFinish" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--coral-500);color:#fff;font-weight:800;cursor:pointer;">Confirm &amp; Archive</button>
+    <div id="finishFormWrap">
+      <h3 id="finishTitle">Finish Workout?</h3>
+      <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
+      <div id="finishSkippedNote" style="display:none;background:#FFF6D9;color:#5b4600;padding:9px 11px;border-radius:10px;font-size:0.8rem;margin-top:8px;line-height:1.5;"></div>
+      <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
+      <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
+      <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
+      <div id="finishDifficulty" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+      <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Notes (optional)</label>
+      <textarea id="finishNote" placeholder="How you felt, anything sore, what to change next time..." style="width:100%;min-height:70px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button id="cancelFinish" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Cancel</button>
+        <button id="confirmFinish" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--coral-500);color:#fff;font-weight:800;cursor:pointer;">Confirm &amp; Archive</button>
+      </div>
+    </div>
+    <div id="finishYogaClosing" style="display:none;text-align:center;padding:8px 0;">
+      <div style="font-size:2rem;margin-bottom:8px;">🌙</div>
+      <h3 style="margin-bottom:10px;">Well done, both of you</h3>
+      <p id="yogaClosingMessage" style="font-size:0.95rem;line-height:1.6;color:var(--ink);margin:0 0 18px;"></p>
+      <button id="yogaClosingContinue" style="width:100%;padding:13px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;cursor:pointer;">Continue</button>
     </div>
   </div>
 </div>
@@ -1087,6 +1106,19 @@ function renderMain(){
   `;
   main.appendChild(banner);
 
+  // A personalised welcome, shown only on the Yoga & Mobility day, calling Pene
+  // and Jenna by name. Cached per day key so it doesn't reshuffle every time
+  // something is ticked and renderMain() runs again mid-session.
+  if(day.title === 'Yoga & Mobility'){
+    const welcomeBox = document.createElement('div');
+    welcomeBox.className = 'yoga-welcome-box';
+    welcomeBox.innerHTML = `
+      <div class="emoji">🌿</div>
+      <div>${getYogaWelcomeMessage(keyFor(week.id, day.id))}</div>
+    `;
+    main.appendChild(welcomeBox);
+  }
+
   // A short, no-experience-needed breathing + hold-time guide, shown only on
   // days that actually have a Yoga Flow block, so it's there every single
   // time without Pene having to remember or re-ask. Kept brief on purpose,
@@ -1346,6 +1378,40 @@ const CUES_CALM = {
 function randomCue(key){
   const arr = guidedIsCalm ? CUES_CALM[key] : CUES[key];
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Personalised Wednesday messages, added 2026-08-11 at Pene's request: something
+// that welcomes her and Jenna by name when they open the Yoga & Mobility day,
+// and a grounding, wholesome message when they finish it. Kept separate from
+// CUES_CALM above, those are short mid-timer voice cues, these are the
+// once-per-session bookends around the whole day.
+const YOGA_WELCOME_MESSAGES = [
+  "Hey Pene and Jenna, welcome to your Wednesday reset. Today isn't about pushing hard, it's about giving your bodies the recovery they've earned.",
+  "Welcome back, ladies. Two strength days down, this one is just for breathing, stretching and feeling good in your bodies.",
+  "Hi Pene, hi Jenna. Slow down today, this is where the gains actually lock in, while your muscles rebuild and your mind gets a break too.",
+  "Welcome to your mobility day, Pene and Jenna. No rush, no pressure, just the two of you, your breath, and some time to feel great.",
+  "Hey team Pene and Jenna, today is a gift to your future self. Stretch it out, breathe deep, and enjoy the quiet.",
+  "Welcome, Pene and Jenna. Cardio girl turned strength girl turned yoga girl, look at you go. Today is all about ease."
+];
+const YOGA_CLOSING_MESSAGES = [
+  "Well done, Pene and Jenna. Your bodies just got the recovery they needed, and that matters just as much as any weight lifted this week.",
+  "That's it, you're both done. Notice how much calmer you feel right now, that's real, and it's yours for the rest of the day.",
+  "Beautifully held, both of you. Every stretch and every breath today helps you show up stronger on your next strength day.",
+  "Nicely done, Pene and Jenna. You gave your nervous systems a break today, and that is exactly what keeps this whole journey sustainable.",
+  "That's a wrap on your mobility day. Two committed women, showing up for themselves and for each other, week after week.",
+  "Well held, both of you. Carry that calm with you into the rest of your day, you've earned it."
+];
+// Cached per week/day key so the message stays put across re-renders (every
+// tick calls renderMain), rather than reshuffling mid-session and looking buggy.
+let yogaWelcomeCache = {};
+function getYogaWelcomeMessage(dayKey){
+  if(!yogaWelcomeCache[dayKey]){
+    yogaWelcomeCache[dayKey] = YOGA_WELCOME_MESSAGES[Math.floor(Math.random() * YOGA_WELCOME_MESSAGES.length)];
+  }
+  return yogaWelcomeCache[dayKey];
+}
+function randomYogaClosingMessage(){
+  return YOGA_CLOSING_MESSAGES[Math.floor(Math.random() * YOGA_CLOSING_MESSAGES.length)];
 }
 
 let availableVoices = [];
@@ -1830,7 +1896,23 @@ function renderDifficultyChips(){
   });
 }
 
+// The finish modal has two views: the normal form, and (Yoga & Mobility only)
+// a grounding closing message shown after Confirm & Archive. These two helpers
+// swap between them; resetFinishModalView() is called both when the modal is
+// freshly opened (in case it was left mid-closing-message last time) and after
+// the closing message's Continue button is tapped.
+function resetFinishModalView(){
+  document.getElementById('finishFormWrap').style.display = '';
+  document.getElementById('finishYogaClosing').style.display = 'none';
+}
+function showYogaClosingMessage(){
+  document.getElementById('finishFormWrap').style.display = 'none';
+  document.getElementById('yogaClosingMessage').textContent = randomYogaClosingMessage();
+  document.getElementById('finishYogaClosing').style.display = 'block';
+}
+
 function openFinishModal(week, day, ds){
+  resetFinishModalView();
   finishCtx = { week, day, ds };
   finishDifficultyChoice = 'right';
   document.getElementById('finishTitle').textContent = 'Finish ' + day.label + ': ' + day.title + '?';
@@ -1890,6 +1972,23 @@ document.getElementById('confirmFinish').onclick = ()=>{
   const warmupSkippedNames = day.warmup.filter((_,i)=> ds.warmupSkipped && ds.warmupSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
   const cooldownSkippedNames = day.cooldown.filter((_,i)=> ds.cooldownSkipped && ds.cooldownSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
 
+  // "Mindful minutes" for Fun Stats: only meaningful on Yoga & Mobility, computed
+  // from the plan's own programmed pose duration (block tempo's active seconds)
+  // times how many rounds actually got ticked, rather than needing a separate
+  // stopwatch. Reuses roundsDone already captured above, no new tracking needed.
+  let mindfulSeconds = 0;
+  if(day.title === 'Yoga & Mobility'){
+    day.blocks.forEach(block=>{
+      if(block.name !== 'Yoga Flow' && block.name !== 'Core & Balance') return;
+      const activeSeconds = parseTempo(block.tempo).active || 0;
+      exercises.forEach(ex=>{
+        if(ex.block === block.name && typeof ex.roundsDone === 'number'){
+          mindfulSeconds += ex.roundsDone * activeSeconds;
+        }
+      });
+    });
+  }
+
   appendArchive({
     key: keyFor(week.id, day.id),
     week: week.label,
@@ -1901,7 +2000,8 @@ document.getElementById('confirmFinish').onclick = ()=>{
     note,
     exercises,
     warmupSkipped: warmupSkippedNames,
-    cooldownSkipped: cooldownSkippedNames
+    cooldownSkipped: cooldownSkippedNames,
+    mindfulSeconds: mindfulSeconds
   });
   markDayCompleted(week, day);
   delete state.progress[keyFor(week.id, day.id)];
@@ -1909,6 +2009,22 @@ document.getElementById('confirmFinish').onclick = ()=>{
   const next = findNextIncompleteDay(state.weekIdx);
   if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; }
   persistState();
+
+  // Yoga & Mobility gets a grounding closing message instead of snapping
+  // straight back to the checklist. The data is already saved above (via
+  // persistState/appendArchive/markDayCompleted) so there's no risk of losing
+  // anything while it sits on this screen, closeModal/renderAll just wait for
+  // the "Continue" tap instead of firing immediately.
+  if(day.title === 'Yoga & Mobility'){
+    showYogaClosingMessage();
+  } else {
+    closeModal('finishOverlay');
+    renderAll();
+  }
+};
+
+document.getElementById('yogaClosingContinue').onclick = ()=>{
+  resetFinishModalView();
   closeModal('finishOverlay');
   renderAll();
 };
