@@ -485,46 +485,46 @@ window.SITE_DATA = {
               {
                 "name": "Yoga Flow",
                 "rounds": 2,
-                "tempo": "move slowly, breathe steadily, minimal rest between poses",
+                "tempo": "30 sec active, flows straight into the next pose, no pause, right side round 1 / left side round 2",
                 "exercises": [
                   {
                     "name": "Downward Dog to Cobra Flow",
-                    "qty": "6 slow reps",
+                    "qty": "about 5 sec each way, 6 slow reps in the 30 sec window",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Low Lunge with Reach (Crescent Lunge)",
-                    "qty": "30 sec each side",
+                    "qty": "hold the full 30 sec, right side round 1, left side round 2",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Low%20Lunge%20with%20Reach%20Crescent%20Lunge%20yoga%20stretch",
                     "videoKnown": false
                   },
                   {
                     "name": "Seated Forward Fold",
-                    "qty": "30 seconds",
+                    "qty": "hold the full 30 sec",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Seated%20Forward%20Fold%20yoga%20stretch",
                     "videoKnown": false
                   },
                   {
                     "name": "Thread The Needle",
-                    "qty": "6 each side",
+                    "qty": "about 5 sec each rep, 6 reps in the 30 sec window",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Deep Squat Hold with Thoracic Reach",
-                    "qty": "30 seconds",
+                    "qty": "hold the full 30 sec",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Deep%20Squat%20Hold%20with%20Thoracic%20Reach%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Figure-4 Stretch",
-                    "qty": "30 sec each side",
+                    "qty": "hold the full 30 sec, right side round 1, left side round 2",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Figure%204%20Stretch%20hip%20opener",
                     "videoKnown": false
@@ -1308,46 +1308,46 @@ window.SITE_DATA = {
               {
                 "name": "Yoga Flow",
                 "rounds": 2,
-                "tempo": "move slowly, breathe steadily, minimal rest between poses",
+                "tempo": "up from 30 sec last week, 35 sec active, flows straight into the next pose, no pause, right side round 1 / left side round 2",
                 "exercises": [
                   {
                     "name": "Downward Dog to Cobra Flow",
-                    "qty": "6 slow reps",
+                    "qty": "about 6 sec each way, 6 slow reps in the 35 sec window",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Low Lunge with Reach (Crescent Lunge)",
-                    "qty": "35 sec each side",
+                    "qty": "hold the full 35 sec, right side round 1, left side round 2",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Low%20Lunge%20with%20Reach%20Crescent%20Lunge%20yoga%20stretch",
                     "videoKnown": false
                   },
                   {
                     "name": "Seated Forward Fold",
-                    "qty": "35 seconds",
+                    "qty": "hold the full 35 sec",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Seated%20Forward%20Fold%20yoga%20stretch",
                     "videoKnown": false
                   },
                   {
                     "name": "Thread The Needle",
-                    "qty": "6 each side",
+                    "qty": "about 6 sec each rep, 6 reps in the 35 sec window",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Deep Squat Hold with Thoracic Reach",
-                    "qty": "40 seconds",
+                    "qty": "hold the full 35 sec",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Deep%20Squat%20Hold%20with%20Thoracic%20Reach%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Figure-4 Stretch",
-                    "qty": "35 sec each side",
+                    "qty": "hold the full 35 sec, right side round 1, left side round 2",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Figure%204%20Stretch%20hip%20opener",
                     "videoKnown": false

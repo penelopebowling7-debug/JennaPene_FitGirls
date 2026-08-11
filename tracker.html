@@ -100,6 +100,23 @@
     margin-bottom:0;
   }
   .day-banner .note-box strong{color:#fff;}
+  .yoga-guide-box{
+    background:var(--teal-100);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    font-size:0.85rem;
+    color:var(--teal-900);
+    line-height:1.55;
+    margin-bottom:16px;
+  }
+  .yoga-guide-box h4{
+    margin:0 0 6px;
+    font-size:0.9rem;
+    color:var(--teal-700);
+  }
+  .yoga-guide-box p{margin:0 0 8px;}
+  .yoga-guide-box p:last-child{margin-bottom:0;}
   .new-flag{
     display:inline-block;
     background:var(--gold-500);
@@ -1069,6 +1086,23 @@ function renderMain(){
     ${readyToFinish ? `<button id="finishWorkoutBtn" style="margin-top:12px;width:100%;padding:13px;border-radius:12px;border:none;background:#fff;color:var(--coral-500);font-weight:800;font-size:0.95rem;cursor:pointer;">🏁 Finish Workout</button>` : ''}
   `;
   main.appendChild(banner);
+
+  // A short, no-experience-needed breathing + hold-time guide, shown only on
+  // days that actually have a Yoga Flow block, so it's there every single
+  // time without Pene having to remember or re-ask. Kept brief on purpose,
+  // this is a quick reference mid-session, not a yoga course.
+  if(day.blocks.some(b => b.name === 'Yoga Flow')){
+    const guide = document.createElement('div');
+    guide.className = 'yoga-guide-box';
+    guide.innerHTML = `
+      <h4>New to yoga? Quick guide</h4>
+      <p><strong>Use the timer:</strong> tap "Start Round Timer" on each block, same button you already use Monday, Tuesday and Thursday, but with a calmer voice on this day instead of the "push through!" trainer voice. In Yoga Flow it moves you straight from one pose into the next with no stop in between, that's on purpose, a real flow doesn't pause, you just breathe your way from one shape to the next. In Core & Balance there's a short breather between holds, since those take genuine effort. For poses marked "each side", do the right side in round 1 and the left side in round 2, the timer runs through the same list twice.</p>
+      <p><strong>Breathing:</strong> in and out through your nose, slow and steady, roughly one full breath every 4 to 6 seconds. Don't hold your breath during a hold, that's the biggest habit to unlearn, just keep breathing calmly the whole way through. For flows like Downward Dog to Cobra, breathe in as you open up and lengthen, breathe out as you fold or release, roughly 5 seconds each way is a good pace to aim for.</p>
+      <p><strong>How long to hold:</strong> 30 seconds is the standard beginner guideline for a static stretch, that's not a guess, it's what's built into every pose here, and the timer counts it for you. If a hold feels too intense before the time's up, it's completely fine to come out early, a shorter comfortable hold beats a strained long one.</p>
+      <p>The reason this matters for a Wednesday specifically: slow nasal breathing helps shift your body out of "training mode" and into recovery mode, which is the whole point of this day sitting between your two strength sessions.</p>
+    `;
+    main.appendChild(guide);
+  }
   if(readyToFinish){
     document.getElementById('finishWorkoutBtn').onclick = ()=> openFinishModal(week, day, ds);
   }
@@ -1292,7 +1326,10 @@ function buildRoundSteps(block, timing){
 
 // Personal-trainer style cues: a few hype variants per moment so it doesn't feel
 // like a robot repeating the same line every round, plus a punchier pitch/rate
-// than the browser's flat default so it actually sounds energetic.
+// than the browser's flat default so it actually sounds energetic. A second,
+// calmer set (CUES_CALM) is used instead for Yoga & Mobility, since a "push
+// through, dig deep!" personal-trainer voice is completely wrong for a
+// breathing-paced stretch, Pene flagged this in real use (2026-08-11).
 const WARN_SECONDS = 10; // cue fires with this many seconds of work left, not 5, so there's time to react
 const CUES = {
   start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!"],
@@ -1300,8 +1337,14 @@ const CUES = {
   rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice work, shake it out!"],
   complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!"]
 };
+const CUES_CALM = {
+  start: ["Whenever you're ready, settle in.", "Take a breath, and ease into this one.", "Nice and slow, here we go.", "Find your breath, then begin."],
+  warn: ["A few more breaths here.", "Nearly there, stay soft.", "Keep breathing, almost done.", "A little longer, stay easy."],
+  rest: ["Lovely, breathe here a moment.", "Well held, let it go gently.", "Nice work, take a breath.", "Good, release and breathe."],
+  complete: ["Beautifully done, breathe here a moment.", "That's the block complete, well done.", "Lovely work, take a breath before the next one.", "Well held, all done for now."]
+};
 function randomCue(key){
-  const arr = CUES[key];
+  const arr = guidedIsCalm ? CUES_CALM[key] : CUES[key];
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -1327,8 +1370,13 @@ function speak(text){
     if(!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
-    u.pitch = 1.2;   // a bit brighter than default, less monotone
+    if(guidedIsCalm){
+      u.rate = 0.88;   // slower, unhurried, matches a breath-paced stretch rather than a circuit
+      u.pitch = 1.0;   // flatter/warmer, not the bright "hype" pitch used for strength cues
+    } else {
+      u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
+      u.pitch = 1.2;   // a bit brighter than default, less monotone
+    }
     u.volume = 1.0;
     const voice = pickTrainerVoice();
     if(voice) u.voice = voice;
@@ -1340,6 +1388,7 @@ let timerMode = 'manual';       // 'manual' | 'guided'
 let guidedBlockName = '';
 let guidedBlockIndex = -1;
 let guidedDayCtx = null;        // {week, day, ds} - lets a completed round auto-tick chips
+let guidedIsCalm = false;       // true for Yoga & Mobility's blocks: calmer voice, gentler cue wording
 let roundSteps = [];            // the full work/rest sequence for every exercise in the block
 let stepIdx = 0;
 let lastAnnouncedStep = -1;
@@ -1459,12 +1508,16 @@ function announceStep(idx){
   const step = roundSteps[idx];
   if(!step) return;
   if(step.kind === 'work'){
-    speak(step.isFirst ? randomCue('start') : `Next up, ${step.exName}, go!`);
+    if(step.isFirst){
+      speak(randomCue('start'));
+    } else {
+      speak(guidedIsCalm ? `Now flow into ${step.exName}.` : `Next up, ${step.exName}, go!`);
+    }
   } else if(step.kind === 'rest'){
     if(step.needsManualStart){
-      speak("Nice work! Tap start when you're ready to rest.");
+      speak(guidedIsCalm ? "Well held. Tap start when you're ready for the next one." : "Nice work! Tap start when you're ready to rest.");
     } else if(step.isBetweenRounds){
-      speak(`Round done, bigger rest, ${step.seconds} seconds!`);
+      speak(guidedIsCalm ? `Take a longer breath here, ${step.seconds} seconds.` : `Round done, bigger rest, ${step.seconds} seconds!`);
     } else {
       speak(randomCue('rest'));
     }
@@ -1605,6 +1658,7 @@ function openGuidedTimer(block, bi, timing, week, day, ds){
   guidedBlockName = block.name;
   guidedBlockIndex = bi;
   guidedDayCtx = { week, day, ds };
+  guidedIsCalm = day.title === 'Yoga & Mobility';
   roundSteps = buildRoundSteps(block, timing);
   stepIdx = 0;
   lastAnnouncedStep = -1;
