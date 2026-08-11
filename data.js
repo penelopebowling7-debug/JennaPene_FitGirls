@@ -441,7 +441,7 @@ window.SITE_DATA = {
           {
             "id": "wed",
             "label": "Wednesday",
-            "title": "Mobility + Core",
+            "title": "Yoga & Mobility",
             "isNew": true,
             "estTime": "45 to 55 min",
             "warmup": [
@@ -483,22 +483,36 @@ window.SITE_DATA = {
             ],
             "blocks": [
               {
-                "name": "Mobility Flow",
+                "name": "Yoga Flow",
                 "rounds": 2,
-                "tempo": "flow through, minimal rest",
+                "tempo": "move slowly, breathe steadily, minimal rest between poses",
                 "exercises": [
                   {
-                    "name": "Bird Dog",
-                    "qty": "8 each side",
+                    "name": "Downward Dog to Cobra Flow",
+                    "qty": "6 slow reps",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
-                    "videoKnown": true
+                    "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
+                    "videoKnown": false
                   },
                   {
-                    "name": "Glute Bridge",
-                    "qty": "12 reps",
+                    "name": "Low Lunge with Reach (Crescent Lunge)",
+                    "qty": "30 sec each side",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Low%20Lunge%20with%20Reach%20Crescent%20Lunge%20yoga%20stretch",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Seated Forward Fold",
+                    "qty": "30 seconds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Seated%20Forward%20Fold%20yoga%20stretch",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Thread The Needle",
+                    "qty": "6 each side",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -509,32 +523,18 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Downward Dog to Cobra Flow",
-                    "qty": "6 slow reps",
+                    "name": "Figure-4 Stretch",
+                    "qty": "30 sec each side",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Standing Hip Openers",
-                    "qty": "8 each side",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Standing%20Hip%20Openers%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Thread The Needle",
-                    "qty": "6 each side",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Figure%204%20Stretch%20hip%20opener",
                     "videoKnown": false
                   }
                 ]
               },
               {
-                "name": "Core Circuit",
+                "name": "Core & Balance",
                 "rounds": 2,
-                "tempo": "30 sec active / 15 sec rest",
+                "tempo": "hold steady, 30 sec active / 15 sec rest",
                 "exercises": [
                   {
                     "name": "Dead Bug",
@@ -558,17 +558,17 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Bird Dog Hold",
-                    "qty": "2 rounds",
+                    "name": "Bridge Pose Hold",
+                    "qty": "2 rounds, 30 sec",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
-                    "videoKnown": true
+                    "video": "https://www.youtube.com/results?search_query=Bridge%20Pose%20Setu%20Bandhasana%20yoga%20hold",
+                    "videoKnown": false
                   },
                   {
-                    "name": "Hollow Hold",
-                    "qty": "2 rounds",
+                    "name": "Boat Pose Hold",
+                    "qty": "2 rounds, 20 sec",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Boat%20Pose%20Navasana%20yoga%20hold",
                     "videoKnown": false
                   }
                 ]
@@ -618,7 +618,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "New 4th day. Lower intensity by design, this protects recovery between your strength days and Thursday's conditioning session."
+            "note": "New 4th day, redesigned 2026-08-11 to lean into yoga-style holds and flows rather than a second strength circuit. No yoga experience needed: move slowly, breathe steadily, and treat each 'rep' as a slow controlled cycle rather than a burnout set. Lower intensity by design, this protects recovery between your strength days and Thursday's conditioning session."
           },
           {
             "id": "thu",
@@ -1264,7 +1264,7 @@ window.SITE_DATA = {
           {
             "id": "wed",
             "label": "Wednesday",
-            "title": "Mobility + Core",
+            "title": "Yoga & Mobility",
             "isNew": true,
             "estTime": "50 to 55 min",
             "warmup": [
@@ -1306,22 +1306,36 @@ window.SITE_DATA = {
             ],
             "blocks": [
               {
-                "name": "Mobility Flow",
+                "name": "Yoga Flow",
                 "rounds": 2,
-                "tempo": "flow through, minimal rest",
+                "tempo": "move slowly, breathe steadily, minimal rest between poses",
                 "exercises": [
                   {
-                    "name": "Bird Dog",
-                    "qty": "8 each side",
+                    "name": "Downward Dog to Cobra Flow",
+                    "qty": "6 slow reps",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
-                    "videoKnown": true
+                    "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
+                    "videoKnown": false
                   },
                   {
-                    "name": "Glute Bridge",
-                    "qty": "12 reps",
+                    "name": "Low Lunge with Reach (Crescent Lunge)",
+                    "qty": "35 sec each side",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Low%20Lunge%20with%20Reach%20Crescent%20Lunge%20yoga%20stretch",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Seated Forward Fold",
+                    "qty": "35 seconds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Seated%20Forward%20Fold%20yoga%20stretch",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Thread The Needle",
+                    "qty": "6 each side",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -1332,32 +1346,18 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Downward Dog to Cobra Flow",
-                    "qty": "6 slow reps",
+                    "name": "Figure-4 Stretch",
+                    "qty": "35 sec each side",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Downward%20Dog%20to%20Cobra%20Flow%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Standing Hip Openers",
-                    "qty": "8 each side",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Standing%20Hip%20Openers%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Thread The Needle",
-                    "qty": "6 each side",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Thread%20The%20Needle%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Figure%204%20Stretch%20hip%20opener",
                     "videoKnown": false
                   }
                 ]
               },
               {
-                "name": "Core Circuit",
+                "name": "Core & Balance",
                 "rounds": 3,
-                "tempo": "up from 2 rounds, 30 sec active / 15 sec rest",
+                "tempo": "up from 2 rounds, hold steady, 30 sec active / 15 sec rest",
                 "exercises": [
                   {
                     "name": "Dead Bug",
@@ -1381,17 +1381,17 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Bird Dog Hold",
-                    "qty": "3 rounds",
+                    "name": "Bridge Pose Hold",
+                    "qty": "3 rounds, 35 sec",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
-                    "videoKnown": true
+                    "video": "https://www.youtube.com/results?search_query=Bridge%20Pose%20Setu%20Bandhasana%20yoga%20hold",
+                    "videoKnown": false
                   },
                   {
-                    "name": "Hollow Hold",
-                    "qty": "3 rounds",
+                    "name": "Boat Pose Hold",
+                    "qty": "3 rounds, 25 sec",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Boat%20Pose%20Navasana%20yoga%20hold",
                     "videoKnown": false
                   }
                 ]
@@ -1441,7 +1441,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Your Fitness Tests sheet has a retest pencilled in for 30 Aug, just over a week after this session. Good week to notice how push ups, plank and wall sit feel."
+            "note": "Redesigned 2026-08-11 to lean into yoga-style holds and flows. Your Fitness Tests sheet has a retest pencilled in for 30 Aug, just over a week after this session, good week to notice how push ups, plank and wall sit feel."
           },
           {
             "id": "thu",

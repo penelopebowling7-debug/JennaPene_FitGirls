@@ -736,7 +736,11 @@ function totalTicks(ds, day){
           total++;
           const pv = b.pushupLog && b.pushupLog.pene[r];
           const jv = b.pushupLog && b.pushupLog.jenna[r];
-          if(pv != null && jv != null) done++;
+          // A round counts as done once EITHER Pene's or Jenna's number is
+          // logged for it, not both — requiring both silently blocked Finish
+          // Workout whenever one of you hadn't gotten around to entering
+          // yours yet, with no visible sign of why (real bug, caught 2026-08-11).
+          if(pv != null || jv != null) done++;
           else if(exSkipped) skipped++;
         }
         return;
