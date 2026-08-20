@@ -100,34 +100,6 @@
     margin-bottom:0;
   }
   .day-banner .note-box strong{color:#fff;}
-  .yoga-guide-box{
-    background:var(--teal-100);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:14px 16px;
-    font-size:0.85rem;
-    color:var(--teal-900);
-    line-height:1.55;
-    margin-bottom:16px;
-  }
-  .yoga-guide-box h4{
-    margin:0 0 6px;
-    font-size:0.9rem;
-    color:var(--teal-700);
-  }
-  .yoga-guide-box p{margin:0 0 8px;}
-  .yoga-guide-box p:last-child{margin-bottom:0;}
-  .yoga-welcome-box{
-    background:linear-gradient(135deg,var(--teal-700),#9D2FD1);
-    border-radius:var(--radius);
-    padding:16px 18px;
-    font-size:0.9rem;
-    color:#fff;
-    line-height:1.55;
-    margin-bottom:16px;
-    text-align:center;
-  }
-  .yoga-welcome-box .emoji{font-size:1.6rem;margin-bottom:6px;}
   .new-flag{
     display:inline-block;
     background:var(--gold-500);
@@ -226,6 +198,12 @@
   .round-chip.done{
     background:var(--coral-500);
     color:#fff;
+  }
+  .round-chip.skipped{
+    background:#FFF6D9;
+    color:#5b4600;
+    border:1px solid #FFD60A;
+    text-decoration:line-through;
   }
   .simple-row{
     display:flex;
@@ -569,26 +547,18 @@
 <div class="modal-overlay" id="finishOverlay">
   <div class="modal">
     <button class="modal-close" id="closeFinish">&times;</button>
-    <div id="finishFormWrap">
-      <h3 id="finishTitle">Finish Workout?</h3>
-      <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
-      <div id="finishSkippedNote" style="display:none;background:#FFF6D9;color:#5b4600;padding:9px 11px;border-radius:10px;font-size:0.8rem;margin-top:8px;line-height:1.5;"></div>
-      <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
-      <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
-      <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
-      <div id="finishDifficulty" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
-      <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Notes (optional)</label>
-      <textarea id="finishNote" placeholder="How you felt, anything sore, what to change next time..." style="width:100%;min-height:70px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
-      <div style="display:flex;gap:10px;margin-top:16px;">
-        <button id="cancelFinish" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Cancel</button>
-        <button id="confirmFinish" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--coral-500);color:#fff;font-weight:800;cursor:pointer;">Confirm &amp; Archive</button>
-      </div>
-    </div>
-    <div id="finishYogaClosing" style="display:none;text-align:center;padding:8px 0;">
-      <div style="font-size:2rem;margin-bottom:8px;">🌙</div>
-      <h3 style="margin-bottom:10px;">Well done, both of you</h3>
-      <p id="yogaClosingMessage" style="font-size:0.95rem;line-height:1.6;color:var(--ink);margin:0 0 18px;"></p>
-      <button id="yogaClosingContinue" style="width:100%;padding:13px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;cursor:pointer;">Continue</button>
+    <h3 id="finishTitle">Finish Workout?</h3>
+    <p class="disclaimer" id="finishSubtitle">This moves it to your history and takes it off your to-do list, so make sure it's actually done.</p>
+    <div id="finishSkippedNote" style="display:none;background:#FFF6D9;color:#5b4600;padding:9px 11px;border-radius:10px;font-size:0.8rem;margin-top:8px;line-height:1.5;"></div>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">Total time (minutes)</label>
+    <input type="number" id="finishMinutes" min="1" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:0.95rem;font-family:inherit;" />
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 6px;color:var(--ink);">How did it feel?</label>
+    <div id="finishDifficulty" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Notes (optional)</label>
+    <textarea id="finishNote" placeholder="How you felt, anything sore, what to change next time..." style="width:100%;min-height:70px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button id="cancelFinish" style="flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:800;cursor:pointer;">Cancel</button>
+      <button id="confirmFinish" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--coral-500);color:#fff;font-weight:800;cursor:pointer;">Confirm &amp; Archive</button>
     </div>
   </div>
 </div>
@@ -661,14 +631,20 @@ function persistState(){
   if(window.CloudSync) CloudSync.saveState(state.weekIdx, state.dayIdx, state.progress);
 }
 
+// True while a weight box, push-up rep field, or any other input inside the
+// tracker is actively focused on THIS device.
+function isMainInputFocused(){
+  const active = document.activeElement;
+  const mainEl = document.getElementById('main');
+  return !!(active && active.tagName === 'INPUT' && mainEl && mainEl.contains(active));
+}
+
 // Re-renders in response to a change that arrived from ANOTHER device. Skips
 // the rebuild if a weight box on THIS device currently has focus, so a sync
 // landing mid-keystroke can't yank the cursor out of an active edit — the
 // next tap or blur naturally picks up the latest data anyway.
 function safeRenderMain(){
-  const active = document.activeElement;
-  const mainEl = document.getElementById('main');
-  if(active && active.tagName === 'INPUT' && mainEl && mainEl.contains(active)) return;
+  if(isMainInputFocused()) return;
   renderMain();
 }
 
@@ -717,6 +693,7 @@ function ensureDayState(week, day){
         const pair = detectFullModifiedPair(b);
         return {
           rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
+          roundSkipped: b.exercises.map(()=> Array(b.rounds).fill(false)),
           weights: b.exercises.map(e => e.weight),
           skipped: b.exercises.map(()=>false),
           pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
@@ -734,6 +711,16 @@ function ensureDayState(week, day){
   if(!ds.cooldownSkipped) ds.cooldownSkipped = day.cooldown.map(()=>false);
   ds.blocks.forEach((b, bi)=>{
     if(!b.skipped) b.skipped = day.blocks[bi].exercises.map(()=>false);
+    // Backfill for any day already in progress from before per-round skip
+    // existed (added 2026-08-19). Migrates the old whole-exercise skip flag
+    // down to round level: any round that wasn't already ticked done on an
+    // exercise flagged skipped becomes individually skipped, so nothing
+    // already completed loses credit and nothing new is silently marked done.
+    // Push-up pair exercises keep using the old whole-exercise flag as-is,
+    // they log reps per round rather than rendering round chips.
+    if(!b.roundSkipped){
+      b.roundSkipped = b.rounds.map((roundArr, ei) => roundArr.map((done, r) => !done && !!(b.skipped && b.skipped[ei])));
+    }
     const pair = detectFullModifiedPair(day.blocks[bi]);
     if(pair && !b.pushupLog){
       b.pushupLog = { pene: Array(day.blocks[bi].rounds).fill(null), jenna: Array(day.blocks[bi].rounds).fill(null) };
@@ -781,11 +768,11 @@ function totalTicks(ds, day){
         }
         return;
       }
-      const exSkipped = b.skipped && b.skipped[ei];
-      b.rounds[ei].forEach(v=>{
+      const roundSkipArr = b.roundSkipped && b.roundSkipped[ei];
+      b.rounds[ei].forEach((v, r)=>{
         total++;
         if(v) done++;
-        else if(exSkipped) skipped++;
+        else if(roundSkipArr && roundSkipArr[r]) skipped++;
       });
     });
   });
@@ -808,12 +795,15 @@ function skippedSummary(day, ds){
     const names = [];
     let pairAdded = false;
     block.exercises.forEach((e, ei)=>{
-      if(!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei])) return;
       if(pair && (ei === pair.fullIdx || ei === pair.modIdx)){
+        if(!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei])) return;
         if(!pairAdded){ names.push(pair.baseName); pairAdded = true; }
         return;
       }
-      names.push(e.name);
+      const roundSkipArr = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
+      const skippedCount = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
+      if(!skippedCount) return;
+      names.push(skippedCount === roundSkipArr.length ? e.name : e.name + ' (' + skippedCount + ' of ' + roundSkipArr.length + ' rounds)');
     });
     if(names.length) parts.push(block.name + ': ' + names.join(', '));
   });
@@ -877,6 +867,25 @@ let equipmentCache = (function(){
 // data next time the page loads.
 if(window.CloudSync){
   CloudSync.onStateChange = function(data){
+    // Real bug, found 2026-08-19 from Pene's push-up numbers going missing:
+    // this used to replace state.progress unconditionally on every snapshot,
+    // including this same device's own write echoing straight back (Firestore
+    // fires onSnapshot for local writes too, often within the same second).
+    // The DOM re-render was already guarded against stealing focus mid-edit
+    // (safeRenderMain), but the underlying state.progress object was NOT —
+    // so typing Pene's push-up reps, then Jenna's, could have a snapshot land
+    // in between, silently swapping state.progress out from under the open
+    // card. The next keystroke then edited an orphaned copy nobody was
+    // saving, so only whichever field was typed first (before the first
+    // snapshot echo) actually persisted; everything after quietly vanished
+    // and resurfaced as zeros the moment anything else triggered a render
+    // (e.g. marking the next exercise done/skipped). Fix: skip applying an
+    // incoming snapshot at all — not just skip the re-render — while any
+    // input in the tracker has focus. Our own debounced write already saved
+    // the latest value locally and to Firestore; a later snapshot (once
+    // nothing has focus) will reflect it correctly, so nothing is lost by
+    // waiting.
+    if(isMainInputFocused()) return;
     if(data.weekIdx != null) state.weekIdx = data.weekIdx;
     if(data.dayIdx != null) state.dayIdx = data.dayIdx;
     if(data.progressJson != null){
@@ -951,9 +960,15 @@ function renderTabs(){
   document.getElementById('dateLine').textContent = week.label + ' · ' + week.dates;
 }
 
-function roundChip(done, label){
+// state is 'blank' | 'done' | 'skipped'. Tapping a round chip cycles through
+// all three (see the click handler where chips are built), so a single round
+// can be marked done, marked skipped (e.g. "we stopped after round 3"), or
+// cleared back to blank, without touching any other round or the rest of the
+// exercise (added 2026-08-19, Pene's real-world feedback: could only skip a
+// whole exercise/block before, not just one round).
+function roundChip(state, label){
   const d = document.createElement('div');
-  d.className = 'round-chip' + (done?' done':'');
+  d.className = 'round-chip' + (state === 'done' ? ' done' : state === 'skipped' ? ' skipped' : '');
   d.textContent = label;
   return d;
 }
@@ -1106,62 +1121,13 @@ function renderMain(){
   `;
   main.appendChild(banner);
 
-  // A personalised welcome, shown only on the Yoga & Mobility day, calling Pene
-  // and Jenna by name. Cached per day key so it doesn't reshuffle every time
-  // something is ticked and renderMain() runs again mid-session. Spoken aloud
-  // once per day-session too (added 2026-08-11, Pene didn't want to have to
-  // read it on screen), guarded by welcomeSpokenFor so it doesn't repeat on
-  // every re-render.
-  if(day.title === 'Yoga & Mobility'){
-    const dayKey = keyFor(week.id, day.id);
-    const welcomeBox = document.createElement('div');
-    welcomeBox.className = 'yoga-welcome-box';
-    welcomeBox.innerHTML = `
-      <div class="emoji">🌿</div>
-      <div>${getYogaWelcomeMessage(dayKey)}</div>
-    `;
-    main.appendChild(welcomeBox);
-    if(welcomeSpokenFor !== dayKey){
-      welcomeSpokenFor = dayKey;
-      speakYogaWelcome(dayKey);
-    }
-
-    // The main event, added 2026-08-11 after real-session feedback: one tap and
-    // the voice carries you through warm up, Yoga Flow, Core & Balance and
-    // cooldown with no more taps needed, so there's no reason to look at (or
-    // search for anything on) your phone once you press start.
-    const guideBtn = document.createElement('button');
-    guideBtn.id = 'fullSessionGuideBtn';
-    guideBtn.style.cssText = 'width:100%;padding:15px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;font-size:0.95rem;cursor:pointer;margin-bottom:16px;';
-    guideBtn.textContent = '🎧 Guide me through today\'s session';
-    guideBtn.onclick = ()=> openFullSessionGuide(week, day, ds);
-    main.appendChild(guideBtn);
-  }
-
-  // A short, no-experience-needed breathing + hold-time guide, shown only on
-  // days that actually have a Yoga Flow block, so it's there every single
-  // time without Pene having to remember or re-ask. Kept brief on purpose,
-  // this is a quick reference mid-session, not a yoga course.
-  if(day.blocks.some(b => b.name === 'Yoga Flow')){
-    const guide = document.createElement('div');
-    guide.className = 'yoga-guide-box';
-    guide.innerHTML = `
-      <h4>New to yoga? Quick guide</h4>
-      <p><strong>The easiest way:</strong> tap "🎧 Guide me through today's session" above and just follow the voice. It walks you through every single movement, start to finish, warm up through cooldown, telling you how to move into each pose and reminding you to breathe, no taps needed in between and nothing to look up. Each block also still has its own "Start Round Timer" if you'd rather do one section on its own.</p>
-      <p><strong>Breathing:</strong> in and out through your nose, slow and steady, roughly one full breath every 4 to 6 seconds. Don't hold your breath during a hold, that's the biggest habit to unlearn, the voice will remind you partway through longer holds too.</p>
-      <p><strong>How long to hold:</strong> 30 seconds is the standard beginner guideline for a static stretch, that's not a guess, it's what's built into every pose here, and the guide counts it for you. If a hold feels too intense before the time's up, it's completely fine to come out early, a shorter comfortable hold beats a strained long one.</p>
-      <p><strong>New pose, first time?</strong> Every exercise has a link to one specific short video, worth a glance before you start your mat if the name is unfamiliar, not something to stop and search for mid-flow.</p>
-    `;
-    main.appendChild(guide);
-  }
   if(readyToFinish){
     document.getElementById('finishWorkoutBtn').onclick = ()=> openFinishModal(week, day, ds);
   }
 
-  // Yoga & Mobility's warm up and cooldown now live inside day.blocks (as "Warm
-  // Up" and "Cooldown" blocks) so they get the same guided-voice timer as every
-  // other block, see the "Guide me through today's session" button below. Only
-  // render this plain tap list when a day still has a separate warmup array.
+  // Only render this plain tap list when a day has a separate warmup array
+  // (every remaining day does; Yoga & Mobility used to fold warmup/cooldown
+  // into day.blocks instead, removed 2026-08-19, see project notes).
   if(day.warmup.length){
     main.appendChild(renderSimpleSection('Warm Up', day.warmup, ds.warmup, ds.warmupSkipped, week, day, ds));
   }
@@ -1191,28 +1157,65 @@ function renderMain(){
 
     // Covers "we didn't end up doing this whole block" in one tap, e.g. skipping
     // the Ab Finisher entirely, without needing to mark each exercise separately.
+    // Since 2026-08-19, regular exercises track skip per round (see the round
+    // chips below), so "fully skipped" here means every round of every exercise
+    // is either done or individually skipped — the block button only ever acts
+    // on rounds that are still blank, it never overwrites a round already ticked
+    // done, and "undo" only clears skip flags, never un-ticks a done round.
+    const pushupPair = detectFullModifiedPair(block);
     const blockSkipped = ds.blocks[bi].skipped;
-    const allExSkipped = block.exercises.length > 0 && block.exercises.every((_,ei)=> blockSkipped[ei]);
+    const allExSkipped = block.exercises.length > 0 && block.exercises.every((_,ei)=>{
+      if(pushupPair && ei === pushupPair.modIdx) return true; // covered by the fullIdx check below
+      if(pushupPair && ei === pushupPair.fullIdx){
+        return !!(blockSkipped && (blockSkipped[pushupPair.fullIdx] || blockSkipped[pushupPair.modIdx]));
+      }
+      const roundsArr = ds.blocks[bi].rounds[ei];
+      const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
+      return roundsArr.every((done, r)=> done || (roundSkipArr && roundSkipArr[r]));
+    });
     const blockSkipBtn = document.createElement('button');
     blockSkipBtn.className = 'block-skip-btn' + (allExSkipped ? ' active' : '');
     blockSkipBtn.textContent = allExSkipped ? '↺ Undo skip for this whole block' : "Didn't do this block — skip it";
     blockSkipBtn.onclick = ()=>{
       const newVal = !allExSkipped;
-      ds.blocks[bi].skipped = ds.blocks[bi].skipped.map(()=> newVal);
+      block.exercises.forEach((_, ei)=>{
+        if(pushupPair && ei === pushupPair.modIdx) return;
+        if(pushupPair && ei === pushupPair.fullIdx){
+          ds.blocks[bi].skipped[pushupPair.fullIdx] = newVal;
+          ds.blocks[bi].skipped[pushupPair.modIdx] = newVal;
+          return;
+        }
+        const roundsArr = ds.blocks[bi].rounds[ei];
+        const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
+        roundsArr.forEach((done, r)=>{
+          if(newVal){ if(!done) roundSkipArr[r] = true; }
+          else{ roundSkipArr[r] = false; }
+        });
+      });
       persistState();
       renderMain();
     };
     section.appendChild(blockSkipBtn);
 
-    const pushupPair = detectFullModifiedPair(block);
     if(pushupPair) section.appendChild(buildPushupCard(block, bi, pushupPair, ds));
 
     block.exercises.forEach((exObj, ei)=>{
       if(pushupPair && (ei === pushupPair.fullIdx || ei === pushupPair.modIdx)) return; // rendered together above
 
-      const isExSkipped = !!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei]);
+      const roundsArr = ds.blocks[bi].rounds[ei];
+      const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
+      const doneCount = roundsArr.filter(Boolean).length;
+      const skippedCount = roundSkipArr.filter(Boolean).length;
+      const blankCount = block.rounds - doneCount - skippedCount;
+      // "Fully skipped" (the old all-or-nothing meaning) only greys out the
+      // whole card when every round is skipped and none are done. A day with
+      // 3 of 4 rounds done and just round 4 skipped stays a normal card —
+      // the round chips already show that clearly, one grey card would be
+      // misleading (real feedback from Pene, 2026-08-19: it read as if the
+      // whole exercise had been thrown away, not 75% completed).
+      const fullySkipped = block.rounds > 0 && skippedCount === block.rounds;
       const card = document.createElement('div');
-      card.className = 'card' + (isExSkipped ? ' skipped-card' : '');
+      card.className = 'card' + (fullySkipped ? ' skipped-card' : '');
       const top = document.createElement('div');
       top.className = 'card-top';
       const left = document.createElement('div');
@@ -1229,10 +1232,21 @@ function renderMain(){
       const roundsRow = document.createElement('div');
       roundsRow.className = 'rounds-row';
       for(let r=0;r<block.rounds;r++){
-        const chip = roundChip(ds.blocks[bi].rounds[ei][r], 'R' + (r+1));
+        const done = roundsArr[r];
+        const skippedR = roundSkipArr[r];
+        const rState = done ? 'done' : (skippedR ? 'skipped' : 'blank');
+        const chip = roundChip(rState, 'R' + (r+1));
+        chip.title = rState === 'blank' ? 'Tap: mark done' : rState === 'done' ? 'Tap: mark skipped instead' : 'Tap: clear';
         chip.onclick = ()=>{
           markStarted(ds);
-          ds.blocks[bi].rounds[ei][r] = !ds.blocks[bi].rounds[ei][r];
+          if(rState === 'blank'){
+            roundsArr[r] = true;
+          } else if(rState === 'done'){
+            roundsArr[r] = false;
+            roundSkipArr[r] = true;
+          } else {
+            roundSkipArr[r] = false;
+          }
           persistState();
           renderMain();
         };
@@ -1240,19 +1254,31 @@ function renderMain(){
       }
       card.appendChild(roundsRow);
 
-      const skipRow = document.createElement('div');
-      skipRow.style.cssText = 'margin-top:8px;text-align:right;';
-      const skipBtn = document.createElement('button');
-      skipBtn.type = 'button';
-      skipBtn.className = 'skip-toggle' + (isExSkipped ? ' active' : '');
-      skipBtn.textContent = isExSkipped ? 'Skipped ✕ (tap to undo)' : "Didn't do this one";
-      skipBtn.onclick = ()=>{
-        ds.blocks[bi].skipped[ei] = !ds.blocks[bi].skipped[ei];
-        persistState();
-        renderMain();
-      };
-      skipRow.appendChild(skipBtn);
-      card.appendChild(skipRow);
+      // The button is only needed when there's something left to act on: fully
+      // done exercises have nothing to skip or undo, so it disappears entirely
+      // rather than sitting there doing nothing.
+      if(blankCount > 0 || skippedCount > 0){
+        const skipRow = document.createElement('div');
+        skipRow.style.cssText = 'margin-top:8px;text-align:right;';
+        const skipBtn = document.createElement('button');
+        skipBtn.type = 'button';
+        const allAccountedFor = blankCount === 0 && skippedCount > 0;
+        skipBtn.className = 'skip-toggle' + (allAccountedFor ? ' active' : '');
+        skipBtn.textContent = allAccountedFor
+          ? '↺ Undo skip' + (skippedCount > 1 ? ' (' + skippedCount + ' rounds)' : '')
+          : (doneCount > 0 ? 'Skip remaining round' + (blankCount > 1 ? 's' : '') : "Didn't do this one");
+        skipBtn.onclick = ()=>{
+          if(allAccountedFor){
+            roundSkipArr.forEach((v, r)=>{ if(v) roundSkipArr[r] = false; });
+          } else {
+            roundsArr.forEach((done, r)=>{ if(!done && !roundSkipArr[r]) roundSkipArr[r] = true; });
+          }
+          persistState();
+          renderMain();
+        };
+        skipRow.appendChild(skipBtn);
+        card.appendChild(skipRow);
+      }
 
       section.appendChild(card);
     });
@@ -1385,10 +1411,7 @@ function buildRoundSteps(block, timing){
 
 // Personal-trainer style cues: a few hype variants per moment so it doesn't feel
 // like a robot repeating the same line every round, plus a punchier pitch/rate
-// than the browser's flat default so it actually sounds energetic. A second,
-// calmer set (CUES_CALM) is used instead for Yoga & Mobility, since a "push
-// through, dig deep!" personal-trainer voice is completely wrong for a
-// breathing-paced stretch, Pene flagged this in real use (2026-08-11).
+// than the browser's flat default so it actually sounds energetic.
 const WARN_SECONDS = 10; // cue fires with this many seconds of work left, not 5, so there's time to react
 const CUES = {
   start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!"],
@@ -1396,138 +1419,9 @@ const CUES = {
   rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice work, shake it out!"],
   complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!"]
 };
-const CUES_CALM = {
-  start: ["Whenever you're ready, settle in.", "Take a breath, and ease into this one.", "Nice and slow, here we go.", "Find your breath, then begin."],
-  warn: ["A few more breaths here.", "Nearly there, stay soft.", "Keep breathing, almost done.", "A little longer, stay easy."],
-  rest: ["Lovely, breathe here a moment.", "Well held, let it go gently.", "Nice work, take a breath.", "Good, release and breathe."],
-  complete: ["Beautifully done, breathe here a moment.", "That's the block complete, well done.", "Lovely work, take a breath before the next one.", "Well held, all done for now."]
-};
 function randomCue(key){
-  const arr = guidedIsCalm ? CUES_CALM[key] : CUES[key];
+  const arr = CUES[key];
   return arr[Math.floor(Math.random() * arr.length)];
-}
-
-// Personalised Wednesday messages, added 2026-08-11 at Pene's request: something
-// that welcomes her and Jenna by name when they open the Yoga & Mobility day,
-// and a grounding, wholesome message when they finish it. Kept separate from
-// CUES_CALM above, those are short mid-timer voice cues, these are the
-// once-per-session bookends around the whole day.
-const YOGA_WELCOME_MESSAGES = [
-  "Hey Pene and Jenna, welcome to your Wednesday reset. Today isn't about pushing hard, it's about giving your bodies the recovery they've earned.",
-  "Welcome back, ladies. Two strength days down, this one is just for breathing, stretching and feeling good in your bodies.",
-  "Hi Pene, hi Jenna. Slow down today, this is where the gains actually lock in, while your muscles rebuild and your mind gets a break too.",
-  "Welcome to your mobility day, Pene and Jenna. No rush, no pressure, just the two of you, your breath, and some time to feel great.",
-  "Hey team Pene and Jenna, today is a gift to your future self. Stretch it out, breathe deep, and enjoy the quiet.",
-  "Welcome, Pene and Jenna. Cardio girl turned strength girl turned yoga girl, look at you go. Today is all about ease."
-];
-const YOGA_CLOSING_MESSAGES = [
-  "Well done, Pene and Jenna. Your bodies just got the recovery they needed, and that matters just as much as any weight lifted this week.",
-  "That's it, you're both done. Notice how much calmer you feel right now, that's real, and it's yours for the rest of the day.",
-  "Beautifully held, both of you. Every stretch and every breath today helps you show up stronger on your next strength day.",
-  "Nicely done, Pene and Jenna. You gave your nervous systems a break today, and that is exactly what keeps this whole journey sustainable.",
-  "That's a wrap on your mobility day. Two committed women, showing up for themselves and for each other, week after week.",
-  "Well held, both of you. Carry that calm with you into the rest of your day, you've earned it."
-];
-// Cached per week/day key so the message stays put across re-renders (every
-// tick calls renderMain), rather than reshuffling mid-session and looking buggy.
-// Stores the chosen INDEX (not the text) so both the on-screen text and the
-// spoken clip key can be derived from the same pick.
-let yogaWelcomeCache = {};
-let welcomeSpokenFor = null; // dayKey of the last spoken welcome, so it only speaks once per day-session
-function getYogaWelcomeIndex(dayKey){
-  if(yogaWelcomeCache[dayKey] == null){
-    yogaWelcomeCache[dayKey] = Math.floor(Math.random() * YOGA_WELCOME_MESSAGES.length);
-  }
-  return yogaWelcomeCache[dayKey];
-}
-function getYogaWelcomeMessage(dayKey){
-  return YOGA_WELCOME_MESSAGES[getYogaWelcomeIndex(dayKey)];
-}
-function randomYogaClosingIndex(){
-  return Math.floor(Math.random() * YOGA_CLOSING_MESSAGES.length);
-}
-
-// Recorded-voice fallback layer, added 2026-08-11 after Pene offered to record
-// her own voice for the welcome/closing messages and breathing reminders,
-// which will land far warmer than a synthesized voice for something this
-// personal. Empty for now, nothing has been recorded yet, so every call below
-// quietly falls back to the synthesized voice. Once real clips exist, add
-// entries here pointing at an audio file (e.g. 'welcome_1': 'audio/welcome_1.mp3')
-// and drop the matching file into an /audio folder next to this page, no other
-// code needs to change. See the project notes for the exact phrase list and
-// suggested filenames.
-const VOICE_CLIPS = {
-  // 'welcome_1': 'audio/welcome_1.mp3',
-  // 'closing_1': 'audio/closing_1.mp3',
-  // 'breath_1': 'audio/breath_1.mp3',
-};
-function speakOrPlay(text, clipKey){
-  const clipPath = clipKey && VOICE_CLIPS[clipKey];
-  if(clipPath){
-    try{
-      const audio = new Audio(clipPath);
-      audio.onerror = ()=> speak(text);
-      audio.play().catch(()=> speak(text));
-      return;
-    }catch(e){ /* fall through to the synthesized voice below */ }
-  }
-  speak(text);
-}
-function speakYogaWelcome(dayKey){
-  const idx = getYogaWelcomeIndex(dayKey);
-  guidedIsCalm = true;
-  speakOrPlay(YOGA_WELCOME_MESSAGES[idx], 'welcome_' + (idx + 1));
-}
-function speakYogaClosing(idx){
-  guidedIsCalm = true;
-  speakOrPlay(YOGA_CLOSING_MESSAGES[idx], 'closing_' + (idx + 1));
-}
-
-// Rich per-pose spoken instructions for the Yoga & Mobility day, added 2026-08-11
-// after real-session feedback that the guided voice only ever said a pose's name,
-// never how to actually move into it, so the full session guide (see
-// openFullSessionGuide) can describe each pose out loud instead of leaving
-// Pene and Jenna to look it up mid-flow. Keyed by the exact exercise name used
-// in data.js. Only Wednesday's poses are covered here, every other day's
-// exercises are common strength moves already familiar from the gym, so they
-// keep the plain "Next up, X" cue instead.
-const POSE_NARRATION = {
-  "Arrival Breath": "Settle in, close your eyes if that feels good, and breathe slowly in through your nose and out through your mouth.",
-  "Neck & Shoulder Rolls": "Roll your neck and shoulders slowly in one direction, then the other, letting any tension melt away with each breath.",
-  "Cat-Cow Flow": "Onto hands and knees. Breathe in as you arch your back and lift your chest, breathe out as you round your spine and tuck your chin.",
-  "Standing Forward Fold Flow": "Reach both arms up tall on an inhale, then hinge at your hips and fold forward on the exhale, letting your head hang heavy.",
-  "Gentle Side Body Stretch": "Reach one arm overhead and lean gently to that side, feeling the stretch along your ribs, then switch whenever feels right.",
-  "Downward Dog to Cobra Flow": "Push back into downward dog, hips high and heels reaching down, then shift forward low to the ground and lift your chest into cobra.",
-  "Low Lunge with Reach (Crescent Lunge)": "Step one foot forward into a low lunge, sink your hips down, and reach both arms overhead.",
-  "Seated Forward Fold": "Sit with your legs extended, hinge forward from your hips, and let your hands rest wherever they naturally reach.",
-  "Thread The Needle": "From hands and knees, slide one arm underneath your body and rest your shoulder and head gently on the ground.",
-  "Deep Squat Hold with Thoracic Reach": "Sink into a deep squat, press your elbows gently into your knees, and reach one arm up towards the ceiling.",
-  "Figure-4 Stretch": "Lying on your back, cross one ankle over the opposite knee, and gently pull the standing leg towards your chest.",
-  "Dead Bug": "Lying on your back, arms reaching up and knees bent to 90 degrees, slowly lower the opposite arm and leg towards the floor.",
-  "Side Plank - Left": "Prop up on your left forearm or hand, stack your feet, and lift your hips into a straight line.",
-  "Side Plank - Right": "Prop up on your right forearm or hand, stack your feet, and lift your hips into a straight line.",
-  "Bridge Pose Hold": "Lying on your back, feet flat on the floor, press through your heels and lift your hips towards the ceiling.",
-  "Boat Pose Hold": "Balance on your seat, lift your chest, and float your shins parallel to the floor, or extend your legs if that feels steady.",
-  "Hamstring Stretch": "Extend one leg long and gently hinge forward over it, keeping your back long rather than rounded.",
-  "Quad Stretch": "Standing tall, bend one knee and gently draw your heel towards your seat, holding something steady if you need balance.",
-  "Hip Flexor Stretch": "Step one foot forward into a gentle kneeling lunge and sink your hips down, feeling the stretch at the front of your back hip.",
-  "Child's Pose": "Sink your hips back towards your heels, arms reaching forward, forehead resting down towards the mat.",
-  "Cobra Stretch": "Lying on your front, press through your hands and lift your chest gently, keeping your shoulders relaxed and away from your ears.",
-  "Supine Spinal Twist": "Lying on your back, drop both knees gently over to one side while keeping your shoulders flat on the ground."
-};
-
-// Short breathing reminders spoken partway through a longer calm hold (20 sec
-// or more), not just once at the start, added 2026-08-11 after Pene said she
-// felt unprepared on breathing timing mid-pose and wanted reminders that don't
-// break the flow.
-const BREATH_REMINDERS = [
-  "Breathe in, and out.",
-  "Nice and easy, keep breathing.",
-  "In through the nose, out through the mouth.",
-  "Stay soft, keep your breath moving."
-];
-function randomBreathReminder(){
-  return BREATH_REMINDERS[Math.floor(Math.random() * BREATH_REMINDERS.length)];
 }
 
 let availableVoices = [];
@@ -1552,13 +1446,8 @@ function speak(text){
     if(!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    if(guidedIsCalm){
-      u.rate = 0.88;   // slower, unhurried, matches a breath-paced stretch rather than a circuit
-      u.pitch = 1.0;   // flatter/warmer, not the bright "hype" pitch used for strength cues
-    } else {
-      u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
-      u.pitch = 1.2;   // a bit brighter than default, less monotone
-    }
+    u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
+    u.pitch = 1.2;   // a bit brighter than default, less monotone
     u.volume = 1.0;
     const voice = pickTrainerVoice();
     if(voice) u.voice = voice;
@@ -1570,29 +1459,13 @@ let timerMode = 'manual';       // 'manual' | 'guided'
 let guidedBlockName = '';
 let guidedBlockIndex = -1;
 let guidedDayCtx = null;        // {week, day, ds} - lets a completed round auto-tick chips
-let guidedIsCalm = false;       // true for Yoga & Mobility's blocks: calmer voice, gentler cue wording
 let roundSteps = [];            // the full work/rest sequence for every exercise in the block
 let stepIdx = 0;
 let lastAnnouncedStep = -1;
 let phase = 'active';           // 'active' | 'rest' | 'done'
 let warnedThisPhase = false;
-let warnedBreathThisPhase = false; // separate flag: the mid-hold breathing reminder, not the 10-sec warning
+let warnedBreathThisPhase = false; // unused now that the calm/breathing-reminder voice profile is gone, kept so loadStep() doesn't need touching
 let startBtnIdleLabel = 'Start';
-
-// "Full session guide" state, added 2026-08-11 after real-session feedback that
-// having to tap "Start Round Timer" separately for every block (and again for
-// every round) broke the flow. chainActive means the guide should automatically
-// carry on into the next round/block instead of sitting idle waiting for a tap.
-// chainQueue holds the blocks still to come; chainRoundsLeftInBlock counts down
-// the current block's remaining rounds. Reuses the exact same single-round
-// engine underneath (openGuidedTimer/buildRoundSteps/tick), nothing new there,
-// this just decides what happens the moment one round finishes.
-let chainActive = false;
-let chainQueue = [];
-let chainRoundsLeftInBlock = 0;
-let chainTimeoutId = null;   // the pause-between-rounds/blocks setTimeout, cleared if the guide is closed mid-pause
-let chainElapsedSeconds = 0; // real seconds the guide was actually running (paused time excluded), used to prefill Finish Workout's minutes field
-let chainElapsedForKey = null; // which day (week.id__day.id) chainElapsedSeconds belongs to, so a stale measurement from a past session never leaks into a different day's Finish Workout
 let timerSeconds = 40;
 let timerRemaining = 40;
 let timerInterval = null;
@@ -1652,11 +1525,6 @@ function stopTimerRunning(){
   if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   timerRunning = false;
   document.getElementById('startTimer').textContent = startBtnIdleLabel;
-  // Closing the timer modal always ends a full-session chain (a plain pause/
-  // resume tap does NOT call this function, so pausing mid-guide is safe and
-  // the chain picks back up where it left off).
-  if(chainTimeoutId){ clearTimeout(chainTimeoutId); chainTimeoutId = null; }
-  chainActive = false;
 }
 
 function playCompleteCue(){
@@ -1688,7 +1556,13 @@ function onRoundFullyComplete(){
   }
   if(targetRound === -1) return; // every round already ticked, nothing to do
   markStarted(ds);
-  blockState.rounds.forEach(arr => { arr[targetRound] = true; });
+  blockState.rounds.forEach((arr, ei) => {
+    arr[targetRound] = true;
+    // Clear any earlier manual "skipped" mark on this round now that the
+    // guided timer has actually carried it through — done always wins over a
+    // stale skip flag from before.
+    if(blockState.roundSkipped && blockState.roundSkipped[ei]) blockState.roundSkipped[ei][targetRound] = false;
+  });
   persistState();
   renderMain(); // safe while the timer modal is open, the modal lives outside #main
 }
@@ -1712,22 +1586,16 @@ function announceStep(idx){
   const step = roundSteps[idx];
   if(!step) return;
   if(step.kind === 'work'){
-    // Rich pose narration for Wednesday, added 2026-08-11 so the guide actually
-    // describes how to move into each pose instead of just naming it, falls
-    // back to the plain name-based cue for every other day's exercises.
-    const narration = guidedIsCalm ? POSE_NARRATION[step.exName] : null;
     if(step.isFirst){
-      speak(narration ? `${randomCue('start')} ${narration}` : randomCue('start'));
-    } else if(narration){
-      speak(narration);
+      speak(randomCue('start'));
     } else {
-      speak(guidedIsCalm ? `Now flow into ${step.exName}.` : `Next up, ${step.exName}, go!`);
+      speak(`Next up, ${step.exName}, go!`);
     }
   } else if(step.kind === 'rest'){
     if(step.needsManualStart){
-      speak(guidedIsCalm ? "Well held. Tap start when you're ready for the next one." : "Nice work! Tap start when you're ready to rest.");
+      speak("Nice work! Tap start when you're ready to rest.");
     } else if(step.isBetweenRounds){
-      speak(guidedIsCalm ? `Take a longer breath here, ${step.seconds} seconds.` : `Round done, bigger rest, ${step.seconds} seconds!`);
+      speak(`Round done, bigger rest, ${step.seconds} seconds!`);
     } else {
       speak(randomCue('rest'));
     }
@@ -1745,56 +1613,10 @@ function finishRound(){
   updateTimerDisplay();
   onRoundFullyComplete();
 
-  if(chainActive){
-    continueChain();
-    return;
-  }
-
   speak(randomCue('complete'));
   playCompleteCue();
   startBtnIdleLabel = 'Start Again';
   document.getElementById('startTimer').textContent = startBtnIdleLabel;
-}
-
-// Decides what happens next when a round finishes while the full session guide
-// is running: another round of the same block, the next block in the queue, or
-// the whole session is done. Reuses openGuidedTimer to actually start the next
-// piece, the exact same call a manual "Start Round Timer" tap makes, so there's
-// only one code path doing the real work of setting up a round.
-function continueChain(){
-  const { week, day, ds } = guidedDayCtx;
-  chainRoundsLeftInBlock--;
-  if(chainRoundsLeftInBlock > 0){
-    const block = day.blocks[guidedBlockIndex];
-    const timing = parseTempo(block.tempo);
-    speak(randomCue('complete'));
-    playCompleteCue();
-    chainTimeoutId = setTimeout(()=>{
-      if(!chainActive) return;
-      openGuidedTimer(block, guidedBlockIndex, timing, week, day, ds);
-      startTimerRun(); // auto-start, no tap needed, that's the whole point of chaining
-    }, 2500);
-    return;
-  }
-  if(chainQueue.length){
-    const finishedName = guidedBlockName;
-    const nextItem = chainQueue.shift();
-    chainRoundsLeftInBlock = nextItem.block.rounds;
-    speak(`${finishedName} complete. Moving on to ${nextItem.block.name}.`);
-    playCompleteCue();
-    chainTimeoutId = setTimeout(()=>{
-      if(!chainActive) return;
-      openGuidedTimer(nextItem.block, nextItem.bi, nextItem.timing, week, day, ds);
-      startTimerRun(); // auto-start, no tap needed
-    }, 2500);
-    return;
-  }
-  chainActive = false;
-  speak("That's your full session complete, well done both of you.");
-  playCompleteCue();
-  startBtnIdleLabel = 'Session Complete';
-  document.getElementById('startTimer').textContent = startBtnIdleLabel;
-  document.getElementById('timerTitle').textContent = 'Session Complete 🌙';
 }
 
 function advanceStep(){
@@ -1823,26 +1645,11 @@ function advanceStep(){
 function tick(){
   timerRemaining--;
 
-  // Only counts while the full session guide is actually running, since this
-  // only fires once per second while timerInterval is alive, pausing stops the
-  // interval and stops the count too, so it reflects real time spent, not wall
-  // clock time including any pause.
-  if(chainActive) chainElapsedSeconds++;
-
   if(timerMode === 'guided'){
     const step = roundSteps[stepIdx];
     if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && timerRemaining === WARN_SECONDS){
       speak(randomCue('warn'));
       warnedThisPhase = true;
-    }
-    // Mid-hold breathing reminder for longer calm holds, fired once around the
-    // halfway point, separate from the warning above, so a longer hold gets
-    // both a reminder to breathe partway through AND the usual near-the-end cue.
-    if(step && step.kind === 'work' && guidedIsCalm && !warnedBreathThisPhase && step.seconds >= 20){
-      if(timerRemaining === Math.floor(step.seconds / 2)){
-        speak(randomBreathReminder());
-        warnedBreathThisPhase = true;
-      }
     }
     if(timerRemaining <= 0){
       advanceStep();
@@ -1867,10 +1674,9 @@ function tick(){
   updateTimerDisplay();
 }
 
-// Pulled out of the Start button's onclick so the chain-continuation code
-// (continueChain, below) can trigger exactly the same "begin counting down and
-// announce the first step" behaviour on its own, without a tap, that's the
-// whole point of the full session guide being hands-free between blocks.
+// Begins counting down and announces the first step. Its own named function
+// (rather than being inlined in the Start button's onclick) since the now-
+// removed hands-free "full session guide" chain used to call it directly too.
 function startTimerRun(){
   if(timerMode === 'guided'){
     if(phase === 'done'){
@@ -1938,7 +1744,6 @@ function openGuidedTimer(block, bi, timing, week, day, ds){
   guidedBlockName = block.name;
   guidedBlockIndex = bi;
   guidedDayCtx = { week, day, ds };
-  guidedIsCalm = day.title === 'Yoga & Mobility';
   roundSteps = buildRoundSteps(block, timing);
   stepIdx = 0;
   lastAnnouncedStep = -1;
@@ -1946,32 +1751,12 @@ function openGuidedTimer(block, bi, timing, week, day, ds){
   timerInterval = null;
   timerRunning = false;
   loadStep(0);
-  document.getElementById('timerTitle').textContent = chainActive ? ('Full Session Guide — ' + block.name) : (block.name + ' — Round Timer');
+  document.getElementById('timerTitle').textContent = block.name + ' — Round Timer';
   document.getElementById('timerPresets').style.display = 'none';
-  document.getElementById('timerDisclaimer').textContent = chainActive
-    ? "Just listen and follow along, it moves through the whole session on its own once you tap Start, no more taps needed. Turn silent mode off so you can hear it."
-    : "Tap Start, then keep your phone nearby, we'll guide you through every exercise in this round in order. Turn silent mode off so you can hear it.";
+  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll guide you through every exercise in this round in order. Turn silent mode off so you can hear it.";
   startBtnIdleLabel = 'Start';
   document.getElementById('startTimer').textContent = 'Start';
   openModal('timerOverlay');
-}
-
-// The single entry point for "🎧 Guide me through today's session": builds the
-// ordered queue of every timed block on the day (Warm Up, Yoga Flow, Core &
-// Balance, Cooldown for Wednesday) and starts the first one with chaining on,
-// so finishRound()/continueChain() automatically carries through every round
-// of every block without any further taps, see continueChain() above.
-function openFullSessionGuide(week, day, ds){
-  const eligible = day.blocks
-    .map((block, bi) => ({ block, bi, timing: parseTempo(block.tempo) }))
-    .filter(x => x.timing.active || x.timing.rest);
-  if(!eligible.length) return;
-  chainQueue = eligible.slice(1);
-  chainRoundsLeftInBlock = eligible[0].block.rounds;
-  chainElapsedSeconds = 0;
-  chainElapsedForKey = keyFor(week.id, day.id);
-  chainActive = true;
-  openGuidedTimer(eligible[0].block, eligible[0].bi, eligible[0].timing, week, day, ds);
 }
 
 // ---------------- Modals ----------------
@@ -2056,10 +1841,14 @@ document.getElementById('openSummary').onclick = ()=>{
         }
         return;
       }
-      const isSkipped = ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei];
       const roundsDone = ds.blocks[bi].rounds[ei].filter(Boolean).length;
+      const roundSkipArr = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
+      const roundsSkipped = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
       const w = ds.blocks[bi].weights[ei];
-      const progressText = isSkipped ? 'SKIPPED (' + roundsDone + '/' + block.rounds + ' rounds done)' : roundsDone + '/' + block.rounds + ' rounds';
+      let progressText;
+      if(roundsSkipped === block.rounds) progressText = 'SKIPPED (' + roundsDone + '/' + block.rounds + ' rounds done)';
+      else if(roundsSkipped > 0) progressText = roundsDone + '/' + block.rounds + ' rounds (' + roundsSkipped + ' skipped)';
+      else progressText = roundsDone + '/' + block.rounds + ' rounds';
       lines.push('  - ' + exObj.name + ': ' + progressText + ', weight used: ' + w);
     });
     lines.push('');
@@ -2132,36 +1921,11 @@ function renderDifficultyChips(){
   });
 }
 
-// The finish modal has two views: the normal form, and (Yoga & Mobility only)
-// a grounding closing message shown after Confirm & Archive. These two helpers
-// swap between them; resetFinishModalView() is called both when the modal is
-// freshly opened (in case it was left mid-closing-message last time) and after
-// the closing message's Continue button is tapped.
-function resetFinishModalView(){
-  document.getElementById('finishFormWrap').style.display = '';
-  document.getElementById('finishYogaClosing').style.display = 'none';
-}
-function showYogaClosingMessage(){
-  const idx = randomYogaClosingIndex();
-  document.getElementById('finishFormWrap').style.display = 'none';
-  document.getElementById('yogaClosingMessage').textContent = YOGA_CLOSING_MESSAGES[idx];
-  document.getElementById('finishYogaClosing').style.display = 'block';
-  speakYogaClosing(idx); // spoken aloud too, added 2026-08-11, not just text on screen
-}
-
 function openFinishModal(week, day, ds){
-  resetFinishModalView();
   finishCtx = { week, day, ds };
   finishDifficultyChoice = 'right';
   document.getElementById('finishTitle').textContent = 'Finish ' + day.label + ': ' + day.title + '?';
-  // If the full session guide was used THIS day (checked via chainElapsedForKey
-  // so a stale measurement from a past session never leaks in), this is real
-  // measured time, only counts while it was actually running, paused time
-  // doesn't count, more accurate than a guess, so prefer it. Still fully editable.
-  const sessionKey = keyFor(week.id, day.id);
-  document.getElementById('finishMinutes').value = (day.title === 'Yoga & Mobility' && chainElapsedForKey === sessionKey && chainElapsedSeconds > 0)
-    ? Math.max(1, Math.round(chainElapsedSeconds / 60))
-    : suggestedMinutes(ds);
+  document.getElementById('finishMinutes').value = suggestedMinutes(ds);
   document.getElementById('finishNote').value = '';
   renderDifficultyChips();
 
@@ -2204,26 +1968,25 @@ document.getElementById('confirmFinish').onclick = ()=>{
         });
         return;
       }
+      // roundsSkipped is the real count (new 2026-08-19); skipped stays a plain
+      // boolean ("was anything on this exercise skipped at all") so stats.html's
+      // existing Fun Stats history read of entry.exercises[].skipped keeps
+      // working unchanged, it just now reflects partial skips honestly too.
+      const roundSkipArrFinish = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
+      const roundsSkippedFinish = roundSkipArrFinish ? roundSkipArrFinish.filter(Boolean).length : 0;
       exercises.push({
         block: block.name,
         name: exObj.name,
         roundsDone: ds.blocks[bi].rounds[ei].filter(Boolean).length,
         roundsPlanned: block.rounds,
+        roundsSkipped: roundsSkippedFinish,
         weight: ds.blocks[bi].weights[ei],
-        skipped: !!(ds.blocks[bi].skipped && ds.blocks[bi].skipped[ei])
+        skipped: roundsSkippedFinish > 0
       });
     });
   });
   const warmupSkippedNames = day.warmup.filter((_,i)=> ds.warmupSkipped && ds.warmupSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
   const cooldownSkippedNames = day.cooldown.filter((_,i)=> ds.cooldownSkipped && ds.cooldownSkipped[i]).map(w => typeof w === 'string' ? w : w.name);
-
-  // "Mindful minutes" for Fun Stats: only meaningful on Yoga & Mobility.
-  // Originally computed from just the Yoga Flow / Core & Balance blocks' timer
-  // data, which undercounted (missed warm up, cooldown, and anything done
-  // without the timer) — Pene caught this in real use (2026-08-11). Fixed to
-  // simply use the same "Total time" she already enters below for every day,
-  // which reflects the whole session she actually experienced.
-  const mindfulSeconds = day.title === 'Yoga & Mobility' ? (minutes || 0) * 60 : 0;
 
   appendArchive({
     key: keyFor(week.id, day.id),
@@ -2236,8 +1999,7 @@ document.getElementById('confirmFinish').onclick = ()=>{
     note,
     exercises,
     warmupSkipped: warmupSkippedNames,
-    cooldownSkipped: cooldownSkippedNames,
-    mindfulSeconds: mindfulSeconds
+    cooldownSkipped: cooldownSkippedNames
   });
   markDayCompleted(week, day);
   delete state.progress[keyFor(week.id, day.id)];
@@ -2245,22 +2007,6 @@ document.getElementById('confirmFinish').onclick = ()=>{
   const next = findNextIncompleteDay(state.weekIdx);
   if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; }
   persistState();
-
-  // Yoga & Mobility gets a grounding closing message instead of snapping
-  // straight back to the checklist. The data is already saved above (via
-  // persistState/appendArchive/markDayCompleted) so there's no risk of losing
-  // anything while it sits on this screen, closeModal/renderAll just wait for
-  // the "Continue" tap instead of firing immediately.
-  if(day.title === 'Yoga & Mobility'){
-    showYogaClosingMessage();
-  } else {
-    closeModal('finishOverlay');
-    renderAll();
-  }
-};
-
-document.getElementById('yogaClosingContinue').onclick = ()=>{
-  resetFinishModalView();
   closeModal('finishOverlay');
   renderAll();
 };
