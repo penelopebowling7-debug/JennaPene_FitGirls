@@ -1282,6 +1282,1086 @@ window.SITE_DATA = {
             "note": "Milestone week: 4th round added, the hardest session of the block. Renegade Row and Goblet Squat hold at your 5 kg dumbbell cap, Kettlebell Swing holds at 4 kg, the extra round is the overload this week. A lighter deload week after this is a good idea if energy is low."
           }
         ]
+      },
+      {
+        "id": "week13",
+        "label": "Week 13",
+        "dates": "Mon 24 to Tue 25 Aug",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Lower Body (Athletic Focus)",
+            "estTime": "45 to 50 min",
+            "warmup": [
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              },
+              {
+                "name": "Sitting Hamstring Stretch",
+                "qty": "20 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Sitting%20Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Deep Squat Hold",
+                "qty": "30 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Deep%20Squat%20Hold%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 each leg",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Glute Bridge March",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20March%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Side Lunges",
+                "qty": "8 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Side%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Air Squats",
+                "qty": "15 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Air%20Squats%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength Circuit",
+                "rounds": 3,
+                "tempo": "40 sec active / 20 sec rest, 75 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Goblet Squat",
+                    "qty": "3 rounds, 3 sec lower + 1 sec hold",
+                    "weight": "5 kg dumbbell + Loop Band (heaviest band you have)",
+                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bulgarian Split Squat (Left)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec pause at bottom",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bulgarian Split Squat (Right)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec pause at bottom",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Romanian Deadlift",
+                    "qty": "3 rounds",
+                    "weight": "15 kg barbell",
+                    "video": "https://youtube.com/shorts/_TchJLlBO-4?si=kpKOAIS5Glblf1j1",
+                    "videoKnown": true
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Left)",
+                    "qty": "3 rounds",
+                    "weight": "2 kg dumbbell on hips",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Right)",
+                    "qty": "3 rounds",
+                    "weight": "2 kg dumbbell on hips",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Athletic Circuit",
+                "rounds": 2,
+                "tempo": "40 sec active / 20 sec rest",
+                "exercises": [
+                  {
+                    "name": "Lateral Lunges",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Lateral%20Lunges%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bear Crawl",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Skater Jumps",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Skater%20Jumps%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Prisoner Squats",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Prisoner%20Squats%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Mountain Climbers",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Core",
+                "rounds": 2,
+                "tempo": "35 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Deadbug Med Ball",
+                    "qty": "2 rounds",
+                    "weight": "Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Deadbug%20Med%20Ball%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank - Left",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Side%20Plank%20-%20Left%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank - Right",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Side%20Plank%20-%20Right%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hip%20Flexor%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Hamstring Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Figure 4 / Glute Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Figure%204%20/%20Glute%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "note": "Deload week: dropping to 3 rounds on the Strength Circuit and 2 on the Athletic Circuit on purpose, same exercises and weights as Week 12 (RDL eased back to 15 kg), not more. You're away for work Wednesday and Thursday this week, so Thursday's Conditioning day is skipped entirely rather than crammed in, and this lighter Monday and Tuesday double as recovery before the fitness retest on 30/08. Push through it, but this is not the week to chase a new PR."
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Upper Body",
+            "estTime": "50 min",
+            "warmup": [
+              {
+                "name": "Treadmill / Jog in Place",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Treadmill%20/%20Jog%20in%20Place%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Band Pull Aparts",
+                "qty": "15 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Band%20Pull%20Aparts%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "10 forward, 10 backwards",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Wall Slides",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Wall%20Slides%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Shoulder Rolls",
+                "qty": "10 reps",
+                "weight": "Light Band",
+                "video": "https://www.youtube.com/results?search_query=Shoulder%20Rolls%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bird Dog",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
+                "videoKnown": true
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength",
+                "rounds": 2,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Dumbbell Shoulder Press",
+                    "qty": "2 rounds",
+                    "weight": "5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Shoulder%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Dumbbell Floor Press",
+                    "qty": "2 rounds, 3 sec lower to chest",
+                    "weight": "5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Floor%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Overhead Tricep Extension",
+                    "qty": "2 rounds",
+                    "weight": "5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Overhead%20Tricep%20Extension%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Arm Row (Right)",
+                    "qty": "2 rounds, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Arm Row (Left)",
+                    "qty": "2 rounds, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Band Face Pulls",
+                    "qty": "2 rounds",
+                    "weight": "Medium Band",
+                    "video": "https://www.youtube.com/results?search_query=Band%20Face%20Pulls%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Push Up Block",
+                "rounds": 3,
+                "tempo": "10 reps, 20 sec rest",
+                "exercises": [
+                  {
+                    "name": "Push Up Full",
+                    "qty": "Till technical fail",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20Full%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Push Up Modified",
+                    "qty": "To 10 reps",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20Modified%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Arm Finisher",
+                "rounds": 2,
+                "tempo": "15 reps",
+                "exercises": [
+                  {
+                    "name": "Hammer Curls",
+                    "qty": "2 rounds",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Hammer%20Curls%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Tricep Kick Backs",
+                    "qty": "2 rounds",
+                    "weight": "4 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Tricep%20Kick%20Backs%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Pull Through",
+                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Hold",
+                    "qty": "Hold comfortably, no need to chase a new time this week",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Ab Finisher",
+                "rounds": 2,
+                "tempo": "20 sec work / 10 sec rest",
+                "exercises": [
+                  {
+                    "name": "Russian Twist",
+                    "qty": "2 rounds",
+                    "weight": "2 kg Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bicycle Crunch",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Chest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Chest%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cross Body Shoulder Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cross%20Body%20Shoulder%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Overhead Triceps Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Overhead%20Triceps%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              }
+            ],
+            "note": "Deload week: Strength down to 2 rounds, Push Up Block to 3, Ab Finisher to 2, same weights as Week 12, no new load. Arm Finisher stays at 2 rounds since it was already light. This is your last tracked session before the 30/08 fitness retest, so the goal is feeling fresh and moving well, not grinding out extra volume. Wednesday and Thursday are skipped this week (away for work) — back to the full 3-day split in Week 14."
+          }
+        ]
+      },
+      {
+        "id": "week14",
+        "label": "Week 14",
+        "dates": "Mon 31 Aug to Thu 3 Sep",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Lower Body (Athletic Focus)",
+            "estTime": "60 to 65 min",
+            "warmup": [
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              },
+              {
+                "name": "Sitting Hamstring Stretch",
+                "qty": "20 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Sitting%20Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Deep Squat Hold",
+                "qty": "30 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Deep%20Squat%20Hold%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 each leg",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Glute Bridge March",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20March%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Side Lunges",
+                "qty": "8 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Side%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Air Squats",
+                "qty": "15 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Air%20Squats%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength Circuit",
+                "rounds": 4,
+                "tempo": "40 sec active / 20 sec rest, 90 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Goblet Squat",
+                    "qty": "4 rounds, 3 sec lower + 1 sec hold",
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bulgarian Split Squat (Left)",
+                    "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
+                    "weight": "7.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bulgarian Split Squat (Right)",
+                    "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
+                    "weight": "7.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Romanian Deadlift",
+                    "qty": "4 rounds",
+                    "weight": "20 kg barbell",
+                    "video": "https://youtube.com/shorts/_TchJLlBO-4?si=kpKOAIS5Glblf1j1",
+                    "videoKnown": true
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Left)",
+                    "qty": "4 rounds",
+                    "weight": "4 kg dumbbell on hips",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Right)",
+                    "qty": "4 rounds",
+                    "weight": "4 kg dumbbell on hips",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Athletic Circuit",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Lateral Lunges",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Lateral%20Lunges%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bear Crawl",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Skater Jumps",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Skater%20Jumps%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Reverse Lunge",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Reverse%20Lunge%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Mountain Climbers",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Core",
+                "rounds": 2,
+                "tempo": "35 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Deadbug Med Ball",
+                    "qty": "2 rounds",
+                    "weight": "Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Deadbug%20Med%20Ball%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank - Left",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Side%20Plank%20-%20Left%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank - Right",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Side%20Plank%20-%20Right%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hip%20Flexor%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Hamstring Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Figure 4 / Glute Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Figure%204%20/%20Glute%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "note": "First week back at full intensity after the Week 13 deload, and the first week with your new equipment: dumbbells up to 25 kg and the EZ (wiggle) bar are both available now, but loads below are a moderate step up, not a jump to the new max — goblet squat to 10 kg, split squats to 7.5 kg, barbell RDL to 20 kg. If any of these feels like too big a jump after the lighter week, drop back to the Week 12 weight and add 2 reps of tempo instead. Athletic Circuit swaps Prisoner Squats for Reverse Lunge for some variety — same bodyweight, same 3 rounds."
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Upper Body",
+            "estTime": "65 min",
+            "warmup": [
+              {
+                "name": "Treadmill / Jog in Place",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Treadmill%20/%20Jog%20in%20Place%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Band Pull Aparts",
+                "qty": "15 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Band%20Pull%20Aparts%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "10 forward, 10 backwards",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Wall Slides",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Wall%20Slides%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Shoulder Rolls",
+                "qty": "10 reps",
+                "weight": "Light Band",
+                "video": "https://www.youtube.com/results?search_query=Shoulder%20Rolls%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bird Dog",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
+                "videoKnown": true
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Dumbbell Shoulder Press",
+                    "qty": "3 rounds",
+                    "weight": "8 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Shoulder%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Dumbbell Floor Press",
+                    "qty": "3 rounds, 3 sec lower to chest",
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Floor%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Overhead Tricep Extension",
+                    "qty": "3 rounds",
+                    "weight": "7.5 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Overhead%20Tricep%20Extension%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Arm Row (Right)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Arm Row (Left)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Band Face Pulls",
+                    "qty": "3 rounds",
+                    "weight": "Medium Band",
+                    "video": "https://www.youtube.com/results?search_query=Band%20Face%20Pulls%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Push Up Block",
+                "rounds": 4,
+                "tempo": "10 reps, 20 sec rest",
+                "exercises": [
+                  {
+                    "name": "Push Up Full",
+                    "qty": "Till technical fail",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20Full%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Push Up Modified",
+                    "qty": "To 14 reps",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20Modified%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Arm Finisher",
+                "rounds": 2,
+                "tempo": "15 reps",
+                "exercises": [
+                  {
+                    "name": "EZ Bar Bicep Curl",
+                    "qty": "2 rounds",
+                    "weight": "EZ bar + 5 kg plates each side (10 kg total)",
+                    "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "EZ Bar Skull Crusher",
+                    "qty": "2 rounds",
+                    "weight": "EZ bar + 2.5 kg plates each side (5 kg total)",
+                    "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Pull Through",
+                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "weight": "7.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Hold",
+                    "qty": "Beat last week's time",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Ab Finisher",
+                "rounds": 3,
+                "tempo": "up from 2 rounds, 20 sec work / 10 sec rest",
+                "exercises": [
+                  {
+                    "name": "Russian Twist",
+                    "qty": "3 rounds",
+                    "weight": "3 kg Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bicycle Crunch",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Chest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Chest%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cross Body Shoulder Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cross%20Body%20Shoulder%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Overhead Triceps Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Overhead%20Triceps%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              }
+            ],
+            "note": "Building back up after the deload, and the first outing for the EZ (wiggle) bar — swapped in for Hammer Curls and Tricep Kick Backs in the Arm Finisher, starting light (10 kg and 5 kg total) since it's a new implement, not because that's a ceiling. Every dumbbell exercise in the Strength block steps up now that dumbbells go up to 25 kg, but these are moderate increases (8-10 kg), not the new max — isolation moves like shoulder press and tricep extension don't need anywhere near as much load as a squat or deadlift to keep progressing safely. Push Up Modified target nudges up to 14 reps. Ab Finisher holds at 3 rounds, Russian Twist up slightly to 3 kg."
+          },
+          {
+            "id": "thu",
+            "label": "Thursday",
+            "title": "Conditioning",
+            "estTime": "60 to 65 min",
+            "warmup": [
+              {
+                "name": "Jumping Jacks",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Jumping%20Jacks%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Swings (cross body)",
+                "qty": "10 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Swings%20%28cross%20body%29%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunge with Twist",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunge%20with%20Twist%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat-Cow",
+                "qty": "8 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Cat-Cow%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bird Dog",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
+                "videoKnown": true
+              },
+              {
+                "name": "Ankle Bounces",
+                "qty": "20 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Ankle%20Bounces%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Inchworm to Push Up",
+                "qty": "6 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Inchworm%20to%20Push%20Up%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Conditioning Circuit",
+                "rounds": 4,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Jump Squats",
+                    "qty": "4 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Jump%20Squats%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Kettlebell Swing",
+                    "qty": "4 rounds",
+                    "weight": "4 kg",
+                    "video": "https://www.youtube.com/results?search_query=Kettlebell%20Swing%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Renegade Row",
+                    "qty": "4 rounds",
+                    "weight": "7.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Renegade%20Row%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Farmer Carry",
+                    "qty": "4 rounds",
+                    "weight": "2 x 12 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Farmer%20Carry%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Goblet Squat",
+                    "qty": "4 rounds",
+                    "weight": "8 kg",
+                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Push Up to Shoulder Tap",
+                    "qty": "4 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20to%20Shoulder%20Tap%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Barbell Deadlift",
+                    "qty": "4 rounds",
+                    "weight": "18 to 20 kg, keep it lighter if form slips",
+                    "video": "https://www.youtube.com/results?search_query=Barbell%20Deadlift%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Jacks",
+                    "qty": "4 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Core Finisher",
+                "rounds": 2,
+                "tempo": "30 sec work",
+                "exercises": [
+                  {
+                    "name": "Russian Twist",
+                    "qty": "2 rounds",
+                    "weight": "4 kg",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Superman Hold",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Superman%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Mountain Climber Twist",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climber%20Twist%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Hamstring Stretch (4 each side)",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20%284%20each%20side%29%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Seated Figure 4",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Seated%20Figure%204%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat-Cow Flow",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cat-Cow%20Flow%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Chest Opener",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Chest%20Opener%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Lying Spinal Twist",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Lying%20Spinal%20Twist%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "note": "Building back up after the deload. Lateral Shuffle swapped for Farmer Carry to put the new heavier dumbbells to work in a way that fits a conditioning day (a loaded carry, not a max-effort lift) — 2 x 12 kg to start, add weight once that feels easy for the full 4 rounds. Renegade Row and Goblet Squat step up moderately (7.5 kg and 8 kg), Barbell Deadlift to 18-20 kg. Same caution as Monday and Tuesday: these are deliberate moderate jumps, not maxing out the new equipment in one week, drop back to Week 12 numbers if form starts to slip under fatigue."
+          }
+        ]
       }
     ]
   },
@@ -2196,6 +3276,24 @@ window.SITE_DATA = {
       "Primary Muscle": "Core",
       "Intensity": "Low",
       "Equipment": "Mat"
+    },
+    {
+      "ID": "A007",
+      "Exercise": "EZ Bar Bicep Curl",
+      "Category": "Strength",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Biceps",
+      "Intensity": "Moderate",
+      "Equipment": "EZ Bar"
+    },
+    {
+      "ID": "A008",
+      "Exercise": "EZ Bar Skull Crusher",
+      "Category": "Strength",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Triceps",
+      "Intensity": "Moderate",
+      "Equipment": "EZ Bar"
     }
   ],
   "programStats": {
