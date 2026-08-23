@@ -30,15 +30,16 @@
     var map = {
       connecting: ['#FFD60A', 'Connecting'],
       live: ['#0ca30c', 'Synced'],
-      offline: ['#B5179E', 'Offline — saved here'],
+      offline: ['#B5179E', 'Offline'],
       error: ['#B5179E', 'Sync problem']
     };
     var conf = map[s] || map.connecting;
     dot.style.background = conf[0];
     text.textContent = conf[1];
-    pill.title = s === 'live'
+    pill.title = (s === 'live'
       ? 'Changes are syncing between your devices.'
-      : 'Everything is still being saved on this device and will sync when the connection is back.';
+      : 'Everything is still being saved on this device and will sync when the connection is back.')
+      + ' Tap to force refresh the app from the server.';
   }
 
   function mountPill() {
@@ -49,8 +50,33 @@
     dot = document.createElement('span');
     dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:#FFD60A;flex:0 0 auto;';
     text = document.createElement('span');
+    var refresh = document.createElement('span');
+    refresh.textContent = '\u21bb';
+    refresh.style.cssText = 'font-size:0.95rem;line-height:1;opacity:0.85;';
+    refresh.setAttribute('aria-hidden', 'true');
     pill.appendChild(dot);
     pill.appendChild(text);
+    pill.appendChild(refresh);
+    // Tap the pill to force-refresh the app: clears the offline cache, drops the
+    // service worker and reloads from the server. The recovery for "my phone
+    // won't load today's workout" without digging through browser settings.
+    // Nothing logged is touched — workouts live in local storage and the cloud.
+    pill.style.cursor = 'pointer';
+    pill.onclick = function () {
+      if (!confirm('Force refresh the app from the server? Your logged workouts are not affected.')) return;
+      var jobs = [];
+      if (window.caches && caches.keys) {
+        jobs.push(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); }));
+      }
+      if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) {
+        jobs.push(navigator.serviceWorker.getRegistrations().then(function (rs) {
+          return Promise.all(rs.map(function (r) { return r.unregister(); }));
+        }));
+      }
+      Promise.all(jobs).catch(function () {}).then(function () {
+        location.replace(location.pathname + '?fresh=' + Date.now());
+      });
+    };
     host.appendChild(pill);
     paint();
   }

@@ -1090,6 +1090,7 @@ try{
 
 // Show completed weeks in the tab row only when asked (per session).
 let showCompletedWeeks = false;
+let showCompletedDays = false;
 
 function appendArchive(entry){
   archiveCache = archiveCache.concat([entry]); // so "last time" is right immediately
@@ -1217,18 +1218,24 @@ function renderTabs(){
   dayTabs.innerHTML = '';
   const week = DATA.weeks[state.weekIdx];
   week.days.forEach((d, i)=>{
-    if(isDayCompleted(week, d)) return; // finished workouts drop off the to-do list
+    const dayDone = isDayCompleted(week, d);
+    // Finished workouts drop off the to-do list, unless you've asked to see them
+    // (or you're standing on one) — so a day is never unreachable.
+    if(dayDone && !showCompletedDays && i !== state.dayIdx) return;
     const b = document.createElement('div');
     b.className = 'day-tab' + (i===state.dayIdx?' active':'') + (d.isNew?' new':'');
-    b.innerHTML = d.label + '<span class="sub">' + d.title.split(' ')[0] + '</span>';
+    if(dayDone) b.style.opacity = '0.6';
+    b.innerHTML = (dayDone ? d.label + ' ✓' : d.label) + '<span class="sub">' + d.title.split(' ')[0] + '</span>';
     b.onclick = ()=>{ state.dayIdx = i; persistState(); renderAll(); };
     dayTabs.appendChild(b);
   });
   const completedCount = week.days.filter(d => isDayCompleted(week, d)).length;
   if(completedCount){
-    const flag = document.createElement('div');
-    flag.style.cssText = 'color:#fff;opacity:0.75;font-size:0.75rem;align-self:center;padding:0 4px;white-space:nowrap;';
-    flag.textContent = completedCount + ' done ✓';
+    const flag = document.createElement('button');
+    flag.style.cssText = 'flex:0 0 auto;align-self:center;background:transparent;border:1px solid rgba(255,255,255,0.35);color:#fff;opacity:0.9;font:inherit;font-size:0.72rem;font-weight:700;padding:6px 9px;border-radius:8px;cursor:pointer;white-space:nowrap;';
+    flag.textContent = showCompletedDays ? 'Hide done' : completedCount + ' done ✓';
+    flag.title = 'Show the days already finished this week';
+    flag.onclick = ()=>{ showCompletedDays = !showCompletedDays; renderTabs(); };
     dayTabs.appendChild(flag);
   }
   const weekDone = isWeekCompleted(week);
@@ -1514,7 +1521,7 @@ function renderMain(){
 
   // Current day already archived, or nothing left incomplete in this week/anywhere:
   // show a friendly empty state instead of a stale or missing checklist.
-  if(!day || isDayCompleted(week, day)){
+  if(!day || (isDayCompleted(week, day) && !showCompletedDays)){
     const next = findNextIncompleteDay(state.weekIdx);
     if(next){
       state.weekIdx = next.weekIdx;
@@ -1540,6 +1547,7 @@ function renderMain(){
   const readyToFinish = total > 0 && (done + skipped) === total;
   banner.innerHTML = `
     ${day.isNew ? '<div class="new-flag">New 4th day</div><br>' : ''}
+    ${isDayCompleted(week, day) ? '<div class="note-box" style="margin-bottom:10px;">Already finished and archived — this is a fresh blank copy if you want to do it again. Your logged numbers are safe in Progress and Fun Stats.</div>' : ''}
     <h2>${day.label}: ${day.title}</h2>
     <div class="meta">Estimated time: ${day.estTime}</div>
     <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
