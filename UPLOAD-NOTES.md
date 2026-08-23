@@ -2,6 +2,11 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 4 — Jenna in theme pink + energetic audio (23 Aug)
+- **styles.css / tests.html** — Jenna's colour moved off amber (#C98500) to the theme's bright pink #F72585 (--coral-500). Still separates from Pene's purple on both hue and lightness, so charts stay readable.
+- **tracker.html** — voice cues now have per-moment delivery profiles (hype / push / calm / count) and are read in beats rather than one flat line; 3-2-1 rising ticks before every phase change; the round-complete blip replaced with a rising chord; one shared AudioContext so iOS doesn't go silent mid-workout; bigger cue phrase pools.
+- **Optional:** drop MP3s in an `audio/` folder and your own voice replaces the robot — see AUDIO-RECORDING-GUIDE.md in this zip.
+
 ## Batch 3 — home page said "Offline" (23 Aug)
 - **index.html** — it never loaded firebase-sync.js, so the home screen's pill was *always* "Offline — saved here" even when sync was fine. Now loads the Firebase SDK + firebase-sync.js like the other pages.
 - **app-shell.js** — the pill now shows a visible ⟳ so the force-refresh is discoverable; label shortened to "Offline".

@@ -688,6 +688,7 @@
       Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
       Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
+      <strong>The voice cues</strong> are the phone's own voice, read with a different pace and brightness per moment (hype on "go", calmer on rest), plus a 3-2-1 tick before every change and a chord when a round lands. If you'd rather hear yourselves: record short MP3s and drop them in an <code>audio</code> folder in the repo (<code>start-1.mp3</code>, <code>warn-1.mp3</code>, <code>rest-1.mp3</code>, <code>complete-1.mp3</code>, up to <code>-3</code> of each) and the app uses them instead, falling back to the phone voice for any that aren't there.<br><br>
       The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
       The Push Up Block works differently to everything else: do full push ups until your form breaks down (technical fail), then finish out the reps as modified (knee) push ups. Instead of round chips, you'll see a number box for Pene and one for Jenna each round, enter how many FULL reps each of you got before switching, the rest is assumed to be modified automatically. That number becoming your record over time is the whole point, it's a much better strength indicator than just ticking a box.<br><br>
       Didn't get to something, like a whole block or one exercise? Tap <strong>"Didn't do this one"</strong> under an exercise, or <strong>"Didn't do this block — skip it"</strong> at the top of a block to skip everything in it in one go, warm up and cool down items have a small "Skip" button next to them too. Skipped items count toward finishing the day (they won't hold you back from the Finish button), but they're saved honestly as skipped, not as done, in your history and copy summary. Tap the same button again to undo it if you change your mind.<br><br>
@@ -1810,14 +1811,93 @@ function buildRoundSteps(block, timing){
 // than the browser's flat default so it actually sounds energetic.
 const WARN_SECONDS = 10; // cue fires with this many seconds of work left, not 5, so there's time to react
 const CUES = {
-  start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!"],
-  warn: ["10 seconds, push through!", "10 to go, dig deep!", "10 more, don't stop now!", "Almost there, 10 seconds, go go go!"],
-  rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice work, shake it out!"],
-  complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!"]
+  start: ["Let's go! Come on!", "Here we go, let's crush this!", "Go time, you've got this!", "Let's move, right now, go!", "Up we go, big energy!", "Right then, show me what you've got!"],
+  warn: ["10 seconds, push through!", "10 to go, dig deep!", "10 more, don't stop now!", "Almost there, 10 seconds, go go go!", "Last 10, empty the tank!", "10 seconds, this is where it counts!"],
+  rest: ["And... rest! Great work!", "Time to rest, awesome job!", "Rest up, you earned that!", "Nice work, shake it out!", "Breathe. That was strong.", "Rest. Big breath in, and out."],
+  complete: ["Round complete, you crushed it!", "That's a wrap, amazing round!", "Boom! Round done, keep that energy!", "Round complete, so strong!", "Done! That's how it's done!", "Round finished. Absolutely flying."]
 };
 function randomCue(key){
   const arr = CUES[key];
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ---------------- Your own recorded voice clips (optional) ----------------
+// Drop MP3s in an /audio folder in the repo and they're used instead of the
+// phone's robot voice, falling back to speech whenever a file isn't there. So
+// this works with no files, with some files, or with all of them.
+//
+// Filenames it looks for (any that exist; numbered variants are picked at
+// random so it doesn't repeat):
+//   audio/start-1.mp3   audio/start-2.mp3   audio/start-3.mp3
+//   audio/warn-1.mp3    audio/warn-2.mp3    audio/warn-3.mp3
+//   audio/rest-1.mp3    audio/rest-2.mp3    audio/rest-3.mp3
+//   audio/complete-1.mp3 … audio/complete-3.mp3
+// Keep each clip under about 2 seconds so it lands before the next interval.
+const CLIP_VARIANTS = 3;
+const CLIP_KEYS = ['start','warn','rest','complete'];
+const CLIP_CACHE_KEY = 'pj-audio-clips-v1';
+
+// Which clips actually exist is checked ONCE up front, not at the moment a cue
+// fires. Doing it at cue time (the first version of this) meant a missing file
+// only failed asynchronously, after the moment had passed — so the cue went
+// silent instead of falling back to the phone voice. Now: unknown = speak.
+let clipReady = (function(){
+  try{
+    const raw = sessionStorage.getItem(CLIP_CACHE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+})();
+function rememberClips(){
+  try{ sessionStorage.setItem(CLIP_CACHE_KEY, JSON.stringify(clipReady)); }catch(e){}
+}
+function probeClips(){
+  const seen = Object.keys(clipReady).length > 0;
+  if(seen) return; // already probed this session
+  const jobs = [];
+  CLIP_KEYS.forEach(key=>{
+    for(let i = 1; i <= CLIP_VARIANTS; i++){
+      const src = 'audio/' + key + '-' + i + '.mp3';
+      jobs.push(
+        fetch(src, { method: 'HEAD' })
+          .then(r => { clipReady[src] = !!(r && r.ok); })
+          .catch(() => { clipReady[src] = false; })
+      );
+    }
+  });
+  Promise.all(jobs).then(rememberClips).catch(rememberClips);
+}
+probeClips();
+
+function readyClips(key){
+  const out = [];
+  for(let i = 1; i <= CLIP_VARIANTS; i++){
+    const src = 'audio/' + key + '-' + i + '.mp3';
+    if(clipReady[src] === true) out.push(src);
+  }
+  return out;
+}
+// Only ever called with a clip we already know is there.
+function playClip(key){
+  const pool = readyClips(key);
+  if(!pool.length) return false;
+  const src = pool[Math.floor(Math.random() * pool.length)];
+  try{
+    const a = new Audio(src);
+    a.volume = 1.0;
+    // If it fails anyway (file removed mid-session), forget it and speak now,
+    // so a cue is never lost twice for the same reason.
+    a.onerror = ()=>{ clipReady[src] = false; rememberClips(); speak(randomCue(key), 'push'); };
+    const p = a.play();
+    if(p && p.catch) p.catch(()=>{ clipReady[src] = false; rememberClips(); speak(randomCue(key), 'push'); });
+    return true;
+  }catch(e){ clipReady[src] = false; rememberClips(); return false; }
+}
+// One call site for every cue: a known-good recorded clip if there is one,
+// energetic speech otherwise. Speech is the default, never the afterthought.
+function cue(key, textOverride, style){
+  const text = textOverride || randomCue(key);
+  if(playClip(key)) return;
+  speak(text, style);
 }
 
 let availableVoices = [];
@@ -1837,18 +1917,63 @@ function pickTrainerVoice(){
   return named || pool[0] || null;
 }
 
-function speak(text){
+// Delivery profiles. One flat rate/pitch for everything is what made the old
+// cues sound like a station announcement: a hype line should be fast and bright,
+// a rest line slower and lower, a countdown clipped. Same voice, different read.
+const VOICE_STYLES = {
+  hype:  { rate: 1.22, pitch: 1.4 },
+  push:  { rate: 1.15, pitch: 1.3 },
+  calm:  { rate: 0.95, pitch: 1.0 },
+  count: { rate: 1.35, pitch: 1.5 }
+};
+function speak(text, style){
   try{
     if(!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.rate = 1.08;   // a touch faster than flat/default, reads as more energetic
-    u.pitch = 1.2;   // a bit brighter than default, less monotone
-    u.volume = 1.0;
-    const voice = pickTrainerVoice();
-    if(voice) u.voice = voice;
-    window.speechSynthesis.speak(u);
+    const prof = VOICE_STYLES[style] || VOICE_STYLES.push;
+    // Split on the punctuation and read each part with its own emphasis, so
+    // "And... rest! Great work!" lands as two beats instead of one flat line.
+    const parts = String(text).split(/(?<=[!?.])\s+/).filter(Boolean);
+    parts.forEach((part, i)=>{
+      const u = new SpeechSynthesisUtterance(part);
+      const bump = i === 0 ? 0 : -0.06 * i;   // ease off slightly on trailing beats
+      u.rate = Math.max(0.6, prof.rate + bump);
+      u.pitch = Math.max(0.4, prof.pitch + bump);
+      u.volume = 1.0;
+      const voice = pickTrainerVoice();
+      if(voice) u.voice = voice;
+      window.speechSynthesis.speak(u);
+    });
   }catch(e){ /* speech unavailable, timer still runs visually */ }
+}
+
+// ---------------- Tones ----------------
+// One shared AudioContext: making a new one per beep is what iOS eventually
+// refuses to do, going silent mid-workout.
+let audioCtx = null;
+function tone(freq, startIn, dur, gain){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    const t0 = audioCtx.currentTime + (startIn || 0);
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = 'triangle';
+    o.frequency.value = freq;
+    o.connect(g); g.connect(audioCtx.destination);
+    // Shaped envelope rather than a hard on/off: a click reads as an error,
+    // a ping reads as a cue.
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain || 0.22, t0 + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + (dur || 0.18));
+    o.start(t0);
+    o.stop(t0 + (dur || 0.18) + 0.02);
+  }catch(e){}
+}
+// Rising 3-2-1 ticks, then a brighter one on the change.
+function playTick(secondsLeft){
+  const map = { 3: 660, 2: 780, 1: 920 };
+  if(map[secondsLeft]) tone(map[secondsLeft], 0, 0.12, 0.18);
 }
 
 let timerMode = 'manual';       // 'manual' | 'guided'
@@ -1933,16 +2058,10 @@ function stopTimerRunning(){
 
 function playCompleteCue(){
   if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
-  try{
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.value = 880;
-    g.gain.setValueAtTime(0.2, ctx.currentTime);
-    o.start();
-    o.stop(ctx.currentTime + 0.5);
-  }catch(e){}
+  // A rising major triad + octave instead of one long 880Hz tone: it sounds
+  // like finishing something rather than a microwave.
+  [[587.33, 0], [739.99, 0.11], [880, 0.22], [1174.66, 0.34]]
+    .forEach(([f, at]) => tone(f, at, at === 0.34 ? 0.5 : 0.2, 0.22));
 }
 
 // Auto-ticks this block's round chips (the first round not already fully ticked)
@@ -1997,18 +2116,20 @@ function announceStep(idx){
   const step = roundSteps[idx];
   if(!step) return;
   if(step.kind === 'work'){
+    tone(880, 0, 0.16, 0.24);   // short "go" ping under the voice
     if(step.isFirst){
-      speak(randomCue('start'));
+      cue('start', null, 'hype');
     } else {
-      speak(`Next up, ${step.exName}, go!`);
+      speak(`Next up! ${step.exName}. Go!`, 'hype');
     }
   } else if(step.kind === 'rest'){
+    tone(523.25, 0, 0.22, 0.18);
     if(step.needsManualStart){
-      speak("Nice work! Tap start when you're ready to rest.");
+      speak("Nice work! Tap start when you're ready to rest.", 'calm');
     } else if(step.isBetweenRounds){
-      speak(`Round done, bigger rest, ${step.seconds} seconds!`);
+      speak(`Round done! Bigger rest. ${step.seconds} seconds.`, 'calm');
     } else {
-      speak(randomCue('rest'));
+      cue('rest', null, 'calm');
     }
   }
 }
@@ -2026,7 +2147,7 @@ function finishRound(){
   updateTimerDisplay();
   onRoundFullyComplete();
 
-  speak(randomCue('complete'));
+  cue('complete', null, 'hype');
   playCompleteCue();
   startBtnIdleLabel = 'Start Again';
   document.getElementById('startTimer').textContent = startBtnIdleLabel;
@@ -2076,11 +2197,14 @@ function tick(){
     const rem = Math.max(0, Math.ceil((timerEndsAt - Date.now()) / 1000));
     const step = roundSteps[stepIdx];
     if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && rem <= WARN_SECONDS && rem > 0){
-      speak(randomCue('warn'));
+      cue('warn', null, 'push');
       warnedThisPhase = true;
     }
     if(rem !== timerRemaining){
       timerRemaining = rem;
+      // 3-2-1 ticks rising in pitch, so a change of phase is felt a beat before
+      // it happens instead of arriving out of nowhere.
+      if(rem <= 3 && rem >= 1) playTick(rem);
       updateTimerDisplay();
     }
     return;

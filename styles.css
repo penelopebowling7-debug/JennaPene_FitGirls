@@ -20,10 +20,12 @@
   --radius:16px;
   --shadow:0 2px 12px rgba(106,17,203,0.12);
 
-  /* Chart series colors - validated for CVD-safety, contrast, and normal-vision
-     separation via the dataviz skill's palette validator (light mode). */
+  /* Chart series colors. Jenna is the theme's bright pink (--coral-500) rather
+     than the old amber: it reads as part of the palette, and against Pene's
+     purple it still separates on hue AND lightness, so the two lines stay
+     tellable apart (including for red-green colour blindness). */
   --series-pene:#6A11CB;
-  --series-jenna:#C98500;
+  --series-jenna:#F72585;
 }
 
 *{box-sizing:border-box;}
