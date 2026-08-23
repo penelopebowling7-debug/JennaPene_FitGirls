@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6A11CB">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fitness Hub">
+<title>Progress · Pene &amp; Jenna</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .who-toggle{display:flex;gap:8px;margin-bottom:16px;}
+  .who-toggle button{
+    flex:1;padding:11px;border-radius:12px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);font-weight:800;font-size:0.9rem;
+    cursor:pointer;font-family:inherit;
+  }
+  .who-toggle button.active{background:var(--teal-700);border-color:var(--teal-700);color:#fff;}
+  .chart-card{margin-bottom:12px;}
+  .chart-card h4{margin:0 0 2px;font-size:0.92rem;font-weight:800;color:var(--teal-900);}
+  .chart-card .sub{font-size:0.76rem;color:var(--ink-soft);margin-bottom:6px;}
+  .pr-row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:0.86rem;}
+  .pr-row:last-child{border-bottom:none;}
+  .pr-row .val{font-weight:800;color:var(--teal-700);}
+  .cue{
+    background:var(--teal-100);border-radius:12px;padding:12px 14px;
+    font-size:0.86rem;line-height:1.55;color:var(--ink);margin-bottom:10px;
+  }
+  .cue strong{color:var(--teal-900);}
+  .empty{color:var(--ink-soft);font-size:0.88rem;line-height:1.55;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-top">
+    <div>
+      <h1>Pene &amp; Jenna</h1>
+      <p class="tagline">Fitness Hub</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="tracker.html">Tracker</a>
+    <a href="tests.html">Fitness Tests</a>
+    <a href="progress.html" class="active">Progress</a>
+    <a href="stats.html">Fun Stats</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-header">
+    <h2>Your progress</h2>
+    <p>Everything here is your own record — weights you logged, rounds you finished, versions you used. Switch between the two of you below.</p>
+  </div>
+
+  <div class="who-toggle" id="whoToggle"></div>
+  <div class="stat-grid" id="statGrid"></div>
+  <div id="cues"></div>
+  <div id="charts"></div>
+
+  <div class="card">
+    <h3>Personal bests</h3>
+    <div id="prList"></div>
+  </div>
+</main>
+
+<footer class="site-footer">Your bests are your own — beating last week is the only comparison that counts.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+<script src="firebase-sync.js"></script>
+<script src="data.js"></script>
+<script src="app-shell.js"></script>
+<script>
+const ARCHIVE_KEY = 'pj-workout-archive-v1';
+const PKEYS = ['pene', 'jenna'];
+const PNAME = { pene: 'Pene', jenna: 'Jenna' };
+const COLOR = { pene: 'var(--series-pene)', jenna: 'var(--series-jenna)' };
+let who = 'pene';
+
+let archive = [];
+try{
+  const raw = localStorage.getItem(ARCHIVE_KEY);
+  archive = raw ? JSON.parse(raw) : [];
+}catch(e){}
+
+function parseLoad(v){
+  if(v == null) return null;
+  const m = String(v).match(/(\d+(?:\.\d+)?)/);
+  return m ? parseFloat(m[1]) : null;
+}
+function fmtDate(iso){
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
+}
+
+// One series per exercise: the numbers this person logged, oldest first.
+// Push-up style entries record full reps instead of a weight, so those become
+// the series value — it's the number that actually improves.
+function seriesFor(person){
+  const out = {};
+  archive.forEach(entry=>{
+    (entry.exercises || []).forEach(ex=>{
+      let value = null, unit = 'kg';
+      if(ex.type === 'technical-failure' && ex[person]){
+        const reps = ex[person].filter(v=>v!=null);
+        if(reps.length){ value = Math.max.apply(null, reps); unit = 'full reps'; }
+      } else {
+        const w = ex.weightBy ? ex.weightBy[person] : ex.weight;
+        value = parseLoad(w);
+      }
+      if(value == null) return;
+      const done = ex.roundsDoneBy ? ex.roundsDoneBy[person] : ex.roundsDone;
+      if(!out[ex.name]) out[ex.name] = { unit: unit, points: [] };
+      out[ex.name].points.push({ v: value, at: entry.completedAt, done: done, planned: ex.roundsPlanned });
+    });
+  });
+  return out;
+}
+
+function chartSvg(points, color){
+  const W = 320, H = 110, padL = 16, padR = 16, top = 16, bottom = 90;
+  const max = Math.max.apply(null, points.map(p=>p.v));
+  const min = Math.min.apply(null, points.map(p=>p.v));
+  const span = (max - min) || 1;
+  const step = points.length > 1 ? (W - padL - padR) / (points.length - 1) : 0;
+  const xy = points.map((p, i)=>{
+    const x = padL + i * step;
+    const y = bottom - ((p.v - min) / span) * (bottom - top);
+    return { x: x, y: y, v: p.v };
+  });
+  const line = xy.map(p=> p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+  const dots = xy.map(p=> '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3.5" fill="' + color + '"></circle>').join('');
+  const labels = xy.map(p=> '<text x="' + p.x.toFixed(1) + '" y="' + (p.y - 8).toFixed(1) + '" font-size="9" fill="#7A6A94" text-anchor="middle">' + p.v + '</text>').join('');
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;">' +
+    '<polyline points="' + line + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"></polyline>' +
+    dots + labels +
+    '<text x="' + padL + '" y="106" font-size="9" fill="#7A6A94">' + fmtDate(points[0].at) + '</text>' +
+    '<text x="' + (W - padR) + '" y="106" font-size="9" fill="#7A6A94" text-anchor="end">' + fmtDate(points[points.length-1].at) + '</text>' +
+    '</svg>';
+}
+
+// Weeks in a row with at least one finished workout, counting back from the
+// most recent one.
+function streakWeeks(){
+  if(!archive.length) return 0;
+  const weekOf = iso => {
+    const d = new Date(iso);
+    if(isNaN(d)) return null;
+    const day = (d.getDay() + 6) % 7;      // Monday = 0
+    d.setHours(0,0,0,0);
+    d.setDate(d.getDate() - day);
+    return d.getTime();
+  };
+  const weeks = Array.from(new Set(archive.map(e=> weekOf(e.completedAt)).filter(Boolean))).sort((a,b)=> b - a);
+  let streak = 1;
+  const WEEK = 7 * 24 * 3600 * 1000;
+  for(let i = 1; i < weeks.length; i++){
+    if(weeks[i-1] - weeks[i] === WEEK) streak++;
+    else break;
+  }
+  return streak;
+}
+
+// A plain-language read of what the numbers say, per exercise: went up, held
+// steady, or ready to try more (all rounds finished and it didn't feel tough).
+function buildCues(person, series){
+  const cues = [];
+  const lastEntry = archive[archive.length - 1];
+  const felt = lastEntry && lastEntry.difficultyBy ? lastEntry.difficultyBy[person] : (lastEntry ? lastEntry.difficulty : null);
+  Object.keys(series).forEach(name=>{
+    const pts = series[name].points;
+    if(pts.length < 2) return;
+    const first = pts[0].v, last = pts[pts.length-1].v, prev = pts[pts.length-2].v;
+    if(last > prev){
+      cues.push('<strong>' + name + '</strong> went up to ' + last + ' ' + series[name].unit + ' — that is ' + (last - first > 0 ? '+' + (Math.round((last - first)*10)/10) + ' ' + series[name].unit + ' since you started.' : 'your highest so far.'));
+    } else if(last === prev && felt !== 'tougher'){
+      const complete = pts[pts.length-1].planned == null || pts[pts.length-1].done >= pts[pts.length-1].planned;
+      if(complete) cues.push('<strong>' + name + '</strong> has been at ' + last + ' ' + series[name].unit + ' for two sessions and you finished every round — worth trying a small step up next time.');
+    }
+  });
+  if(felt === 'tougher') cues.unshift('Last session felt tough for ' + PNAME[person] + ' — holding the same loads for one more session is the right call.');
+  return cues.slice(0, 4);
+}
+
+function render(){
+  document.getElementById('whoToggle').innerHTML = PKEYS
+    .map(p=> '<button data-who="' + p + '" class="' + (p === who ? 'active' : '') + '">' + PNAME[p] + '</button>')
+    .join('');
+  document.querySelectorAll('#whoToggle button').forEach(b=>{
+    b.onclick = ()=>{ who = b.getAttribute('data-who'); render(); };
+  });
+
+  const series = seriesFor(who);
+  const names = Object.keys(series);
+
+  const totalRounds = archive.reduce((sum, e)=> sum + (e.exercises || []).reduce((s, ex)=> s + ((ex.roundsDoneBy ? ex.roundsDoneBy[who] : ex.roundsDone) || 0), 0), 0);
+  const bests = names.filter(n=> series[n].points.length > 1).length;
+  const tiles = [
+    { value: archive.length, unit: 'workouts', label: 'Finished and archived' },
+    { value: streakWeeks(), unit: 'weeks', label: 'In a row with a session' },
+    { value: totalRounds, unit: 'rounds', label: PNAME[who] + ' has completed' },
+    { value: bests, unit: 'tracked', label: 'Exercises with a trend' }
+  ];
+  document.getElementById('statGrid').innerHTML = tiles
+    .map(t=> '<div class="stat-tile"><div class="value">' + t.value + '</div><div class="unit">' + t.unit + '</div><div class="label">' + t.label + '</div></div>')
+    .join('');
+
+  const cues = buildCues(who, series);
+  document.getElementById('cues').innerHTML = cues.length
+    ? cues.map(c=> '<div class="cue">' + c + '</div>').join('')
+    : '';
+
+  const chartsEl = document.getElementById('charts');
+  const charted = names.filter(n=> series[n].points.length > 1).slice(0, 8);
+  if(!charted.length){
+    chartsEl.innerHTML = '<div class="card"><p class="empty">Nothing charted yet. Finish a couple of workouts in the Tracker — once ' + PNAME[who] + ' has logged the same exercise twice, its trend appears here automatically.</p></div>';
+  } else {
+    chartsEl.innerHTML = charted.map(n=>{
+      const s = series[n];
+      return '<div class="card chart-card"><h4>' + n + '</h4><div class="sub">' + s.unit + ', per session</div>' + chartSvg(s.points, COLOR[who]) + '</div>';
+    }).join('');
+  }
+
+  const prs = names.map(n=>{
+    const pts = series[n].points;
+    const best = Math.max.apply(null, pts.map(p=>p.v));
+    const at = pts.filter(p=> p.v === best).pop();
+    return { name: n, best: best, unit: series[n].unit, at: at.at };
+  }).sort((a,b)=> new Date(b.at) - new Date(a.at));
+
+  document.getElementById('prList').innerHTML = prs.length
+    ? prs.map(p=> '<div class="pr-row"><span>' + p.name + '</span><span class="val">' + p.best + ' ' + p.unit + ' <span style="color:var(--ink-soft);font-weight:600;">· ' + fmtDate(p.at) + '</span></span></div>').join('')
+    : '<p class="empty">Your bests will show up here after your first finished workout.</p>';
+}
+
+render();
+
+// Live history from the shared record, so both phones show the same thing.
+if(window.CloudSync){
+  CloudSync.onArchiveChange = function(entries){
+    archive = entries || [];
+    try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archive)); }catch(e){}
+    render();
+  };
+}
+</script>
+</body>
+</html>

@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6A11CB">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fitness Hub">
 <title>Workout Tracker · Pene &amp; Jenna</title>
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -480,6 +484,118 @@
     margin-top:8px;
     line-height:1.5;
   }
+  .person-row{
+    margin-top:10px;
+    padding-top:9px;
+    border-top:1px dashed var(--line);
+  }
+  .person-head{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+    font-size:0.82rem;
+  }
+  .who-dot{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.66rem;
+    font-weight:800;
+    color:#fff;
+    flex:0 0 auto;
+  }
+  .who-dot.pene{background:var(--series-pene);}
+  .who-dot.jenna{background:var(--series-jenna);}
+  .who-name{font-weight:800;}
+  .variant-btn{
+    background:var(--teal-100);
+    border:none;
+    color:var(--teal-700);
+    font-size:0.7rem;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .last-note{
+    margin-left:auto;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    text-align:right;
+  }
+  .last-note.pr{color:#0ca30c;font-weight:800;}
+  .person-controls{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:7px;
+  }
+  .person-controls .weight-input{width:104px;text-align:center;}
+  .howto-btn{
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--teal-700);
+    font-size:0.72rem;
+    font-weight:800;
+    padding:6px 10px;
+    border-radius:9px;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  .howto-steps{list-style:none;margin:10px 0 0;padding:0;}
+  .howto-steps li{
+    display:flex;
+    gap:9px;
+    padding:5px 0;
+    font-size:0.86rem;
+    line-height:1.5;
+  }
+  .howto-steps .n{color:var(--coral-500);font-weight:800;flex:0 0 auto;}
+  .howto-watch{
+    margin-top:10px;
+    background:var(--gold-100);
+    border:1px solid #F2D98A;
+    color:#6B5300;
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:0.82rem;
+    line-height:1.5;
+  }
+  .variant-option{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    margin-bottom:6px;
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--ink);
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .variant-option.active{
+    border-color:var(--teal-700);
+    background:var(--teal-100);
+    color:var(--teal-700);
+  }
+  .variant-option .tier{
+    font-size:0.68rem;
+    font-weight:800;
+    color:var(--ink-soft);
+    width:56px;
+    flex:0 0 auto;
+    text-transform:uppercase;
+  }
   .save-flag{
     font-size:0.74rem;
     opacity:0.85;
@@ -500,6 +616,7 @@
     <a href="index.html">Home</a>
     <a href="tracker.html" class="active">Tracker</a>
     <a href="tests.html">Fitness Tests</a>
+    <a href="progress.html">Progress</a>
     <a href="stats.html">Fun Stats</a>
   </nav>
   <div class="tabs-row" id="weekTabs"></div>
@@ -576,9 +693,24 @@
       Didn't get to something, like a whole block or one exercise? Tap <strong>"Didn't do this one"</strong> under an exercise, or <strong>"Didn't do this block — skip it"</strong> at the top of a block to skip everything in it in one go, warm up and cool down items have a small "Skip" button next to them too. Skipped items count toward finishing the day (they won't hold you back from the Finish button), but they're saved honestly as skipped, not as done, in your history and copy summary. Tap the same button again to undo it if you change your mind.<br><br>
       Once every box on a day is ticked or marked skipped, a <strong>🏁 Finish Workout</strong> button appears. Tapping it is the only thing that actually archives a workout, just ticking or skipping everything doesn't do it automatically, that's on purpose so nothing gets accidentally recorded while you're poking around the app. Confirming asks how long it took (pre-filled with a guess based on when you started ticking, edit it if that's off), how it felt, and an optional note, and shows you a reminder of anything marked skipped before you confirm. Once confirmed, that day drops off your to-do list for good and moves into your history on the Fun Stats page, since the plan is to keep building new weeks forward rather than repeating old ones.<br><br>
       Before you finish, tap Copy Summary for a plain text record of what you did, weights included.<br><br>
+      <strong>Each of you logs your own numbers.</strong> Every exercise now has a row for Pene and a row for Jenna: your own weight box, your own round chips, your own skip. Under your weight box it shows what you used last time, and a green star when you beat your own best. Tap "How to" on any exercise for three plain steps, the thing to watch for, and easier or harder versions — pick your own version, you don't both have to be on the same one. At the end, each of you says how the session felt, and that's what the next block is built from (tap "Equipment &amp; notes for Claude" to copy the whole brief).<br><br>
       <strong>Your progress saves automatically and syncs live between your devices</strong> — tick something on your phone and it shows up on the laptop or TV within a second or two, no refresh needed, so you can control it from your phone while everyone watches the bigger screen. It's also saved on this device itself, so it's still here if you close the tab or lose signal mid session, and catches up with everyone else's changes the moment you're back online. Tap "Reset in-progress ticks" below if a day's ticks get messed up and you want that one to start fresh everywhere, it won't touch anything you've already finished and archived.
     </p>
     <button id="resetAllData" style="margin-top:6px;width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#B5179E;font-weight:700;cursor:pointer;">Reset in-progress ticks (keeps archived history)</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="howtoOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeHowto">&times;</button>
+    <h3 id="howtoTitle">How to do it</h3>
+    <p class="disclaimer" id="howtoVideoLine"></p>
+    <div style="font-size:0.72rem;font-weight:800;color:var(--ink-soft);letter-spacing:0.05em;text-transform:uppercase;margin-top:14px;">Do it like this</div>
+    <ul class="howto-steps" id="howtoSteps"></ul>
+    <div class="howto-watch" id="howtoWatch"></div>
+    <div style="font-size:0.72rem;font-weight:800;color:var(--ink-soft);letter-spacing:0.05em;text-transform:uppercase;margin:18px 0 8px;" id="howtoVariantLabel">Version</div>
+    <div id="howtoVariants"></div>
+    <p class="disclaimer">Pick the version that lets you do every rep well. You each get your own — Pene can be on the harder one while Jenna is on the easier one, same session, same timer.</p>
   </div>
 </div>
 
@@ -591,6 +723,10 @@
     <textarea id="equipmentText" placeholder="e.g. Dumbbells up to 5kg, kettlebell 4kg, barbell up to 20kg, resistance bands..." style="width:100%;min-height:80px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
     <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Anything else for next week's design (how it's felt, goals, days you can/can't train)</label>
     <textarea id="equipmentNotes" placeholder="e.g. Wednesdays don't work most weeks now, knees feeling good, want more core..." style="width:100%;min-height:80px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-size:0.82rem;font-weight:700;color:var(--ink);cursor:pointer;">
+      <input type="checkbox" id="wantVariety" style="width:18px;height:18px;accent-color:var(--teal-700);">
+      Ask for different exercises next block (variety)
+    </label>
     <div id="equipmentSavedFlag" class="save-flag" style="color:var(--teal-700);"></div>
     <div style="display:flex;gap:10px;margin-top:14px;">
       <button id="saveEquipment" style="flex:1;padding:12px;border-radius:12px;border:none;background:var(--teal-700);color:#fff;font-weight:800;cursor:pointer;">Save</button>
@@ -604,8 +740,14 @@
 <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
 <script src="firebase-sync.js"></script>
 <script src="data.js"></script>
+<script src="app-shell.js"></script>
 <script>
 const DATA = window.SITE_DATA.tracker;
+// Everything logged in a session belongs to ONE of you. The plan is shared,
+// the record is not: weights, round ticks, chosen exercise version, push-up
+// reps and personal bests are all stored per person.
+const PKEYS = ['pene', 'jenna'];
+const PNAME = { pene: 'Pene', jenna: 'Jenna' };
 const STORAGE_KEY = 'pj-tracker-state-v1';
 const ARCHIVE_KEY = 'pj-workout-archive-v1';       // permanent record of finished workouts
 const COMPLETED_DAYS_KEY = 'pj-completed-days-v1'; // which week/day keys are done and should drop off the to-do list
@@ -692,9 +834,10 @@ function ensureDayState(week, day){
       blocks: day.blocks.map(b => {
         const pair = detectFullModifiedPair(b);
         return {
-          rounds: b.exercises.map(()=> Array(b.rounds).fill(false)),
-          roundSkipped: b.exercises.map(()=> Array(b.rounds).fill(false)),
-          weights: b.exercises.map(e => e.weight),
+          rounds: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
+          roundSkipped: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
+          weights: byPerson(()=> b.exercises.map(e => e.weight)),
+          variant: byPerson(()=> b.exercises.map(()=> null)),
           skipped: b.exercises.map(()=>false),
           pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
         };
@@ -721,12 +864,69 @@ function ensureDayState(week, day){
     if(!b.roundSkipped){
       b.roundSkipped = b.rounds.map((roundArr, ei) => roundArr.map((done, r) => !done && !!(b.skipped && b.skipped[ei])));
     }
+    // Migration (2026-08-23): rounds, round-skips and weights used to be one
+    // shared array per exercise. They're now one per person. A session that
+    // was already in progress gets its existing ticks copied to BOTH of you,
+    // which is what they meant at the time — you were logging together.
+    migrateBlockToPerPerson(b, day.blocks[bi]);
     const pair = detectFullModifiedPair(day.blocks[bi]);
     if(pair && !b.pushupLog){
       b.pushupLog = { pene: Array(day.blocks[bi].rounds).fill(null), jenna: Array(day.blocks[bi].rounds).fill(null) };
     }
   });
   return ds;
+}
+
+function byPerson(make){ return { pene: make(), jenna: make() }; }
+
+function migrateBlockToPerPerson(b, block){
+  if(Array.isArray(b.rounds)) b.rounds = byPerson(()=> b.rounds.map(a => a.slice()));
+  if(Array.isArray(b.roundSkipped)) b.roundSkipped = byPerson(()=> b.roundSkipped.map(a => a.slice()));
+  if(Array.isArray(b.weights)) b.weights = byPerson(()=> b.weights.slice());
+  if(!b.variant || Array.isArray(b.variant)) b.variant = byPerson(()=> block.exercises.map(()=> null));
+  PKEYS.forEach(p=>{
+    if(!b.rounds[p]) b.rounds[p] = block.exercises.map(()=> Array(block.rounds).fill(false));
+    if(!b.roundSkipped[p]) b.roundSkipped[p] = block.exercises.map(()=> Array(block.rounds).fill(false));
+    if(!b.weights[p]) b.weights[p] = block.exercises.map(e => e.weight);
+    if(!b.variant[p]) b.variant[p] = block.exercises.map(()=> null);
+  });
+}
+
+// ---------------- Your own history ----------------
+// Reads the finished-workout archive to answer two questions per exercise, per
+// person: what did I use last time, and what's my best ever? That's what turns
+// a logged weight into something useful the next week instead of a dead number.
+function loadArchive(){
+  try{
+    const raw = localStorage.getItem(ARCHIVE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
+}
+let archiveCache = loadArchive();
+
+function parseLoad(v){
+  if(v == null) return null;
+  const m = String(v).match(/(\d+(?:\.\d+)?)/);
+  return m ? parseFloat(m[1]) : null;
+}
+
+// {last: {weight, rounds}, best: number|null} for one exercise and one person.
+function historyFor(name, person){
+  let last = null, best = null;
+  archiveCache.forEach(entry=>{
+    (entry.exercises || []).forEach(ex=>{
+      if(ex.name !== name) return;
+      // New per-person shape first, old shared shape as the fallback so
+      // everything logged before this change still counts.
+      const w = ex.weightBy ? ex.weightBy[person] : ex.weight;
+      const rounds = ex.roundsDoneBy ? ex.roundsDoneBy[person] : ex.roundsDone;
+      const reps = ex.type === 'technical-failure' && ex[person] ? Math.max.apply(null, ex[person].filter(v=>v!=null).concat([0])) : null;
+      const num = reps != null && reps > 0 ? reps : parseLoad(w);
+      if(w != null || reps != null) last = { weight: reps != null && reps > 0 ? reps + ' full reps' : w, rounds: rounds, at: entry.completedAt };
+      if(num != null && (best == null || num > best)) best = num;
+    });
+  });
+  return { last, best };
 }
 
 // Marks the first moment a day gets touched, so a "Finish Workout" can suggest a
@@ -768,11 +968,13 @@ function totalTicks(ds, day){
         }
         return;
       }
-      const roundSkipArr = b.roundSkipped && b.roundSkipped[ei];
-      b.rounds[ei].forEach((v, r)=>{
-        total++;
-        if(v) done++;
-        else if(roundSkipArr && roundSkipArr[r]) skipped++;
+      PKEYS.forEach(p=>{
+        const roundSkipArr = b.roundSkipped[p] && b.roundSkipped[p][ei];
+        b.rounds[p][ei].forEach((v, r)=>{
+          total++;
+          if(v) done++;
+          else if(roundSkipArr && roundSkipArr[r]) skipped++;
+        });
       });
     });
   });
@@ -800,10 +1002,12 @@ function skippedSummary(day, ds){
         if(!pairAdded){ names.push(pair.baseName); pairAdded = true; }
         return;
       }
-      const roundSkipArr = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
-      const skippedCount = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
-      if(!skippedCount) return;
-      names.push(skippedCount === roundSkipArr.length ? e.name : e.name + ' (' + skippedCount + ' of ' + roundSkipArr.length + ' rounds)');
+      PKEYS.forEach(p=>{
+        const roundSkipArr = ds.blocks[bi].roundSkipped[p] && ds.blocks[bi].roundSkipped[p][ei];
+        const skippedCount = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
+        if(!skippedCount) return;
+        names.push(e.name + ' — ' + PNAME[p] + (skippedCount === roundSkipArr.length ? '' : ' (' + skippedCount + ' of ' + roundSkipArr.length + ' rounds)'));
+      });
     });
     if(names.length) parts.push(block.name + ': ' + names.join(', '));
   });
@@ -839,7 +1043,56 @@ function markDayCompleted(week, day){
   }
   if(window.CloudSync) CloudSync.markDayCompleted(k);
 }
+
+// ---------------- Week-level completion ----------------
+// A finished week should drop off the week tabs entirely, not just lose its
+// day tabs. The marker rides in the same synced completedDays array as a
+// "<weekId>__ALL" key, so it syncs between phones with no schema change and
+// isDayCompleted (which only ever looks up real day keys) ignores it.
+// Everything logged stays in the archive: Progress and Fun Stats read that,
+// not the tabs.
+function weekDoneKey(week){ return week.id + '__ALL'; }
+function isWeekCompleted(week){
+  if(completedDaysCache.includes(weekDoneKey(week))) return true;
+  return week.days.length > 0 && week.days.every(d => isDayCompleted(week, d));
+}
+function setWeekCompleted(week, done){
+  const k = weekDoneKey(week);
+  if(done && !completedDaysCache.includes(k)) completedDaysCache = completedDaysCache.concat([k]);
+  if(!done){
+    // Reopening a week clears both its week marker and its per-day markers,
+    // otherwise the week would still read as complete via the every() check.
+    const dayKeys = week.days.map(d => keyFor(week.id, d.id));
+    completedDaysCache = completedDaysCache.filter(x => x !== k && dayKeys.indexOf(x) === -1);
+  }
+  try{ localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache)); }catch(e){}
+  if(window.CloudSync){
+    if(done) CloudSync.markDayCompleted(k);
+    else if(CloudSync.setCompletedDays) CloudSync.setCompletedDays(completedDaysCache);
+  }
+}
+
+// Weeks 11 and 12 were trained and written up before the app tracked finishes,
+// so nothing in the log marks them done and they kept reappearing as if they
+// were still to do. Close them once (this device or any synced one), and
+// remember we did it so a deliberate reopen isn't undone on next load.
+const LEGACY_CLOSED_KEY = 'pj-legacy-weeks-closed-v1';
+const LEGACY_DONE_WEEKS = ['week11','week12'];
+try{
+  if(!localStorage.getItem(LEGACY_CLOSED_KEY)){
+    LEGACY_DONE_WEEKS.forEach(id=>{
+      const w = DATA.weeks.find(x => x.id === id);
+      if(w) setWeekCompleted(w, true);
+    });
+    localStorage.setItem(LEGACY_CLOSED_KEY, '1');
+  }
+}catch(e){}
+
+// Show completed weeks in the tab row only when asked (per session).
+let showCompletedWeeks = false;
+
 function appendArchive(entry){
+  archiveCache = archiveCache.concat([entry]); // so "last time" is right immediately
   try{
     const raw = localStorage.getItem(ARCHIVE_KEY);
     const list = raw ? JSON.parse(raw) : [];
@@ -866,6 +1119,11 @@ let equipmentCache = (function(){
 // is refreshed too so the instant-first-paint path above always has the latest
 // data next time the page loads.
 if(window.CloudSync){
+  CloudSync.onArchiveChange = function(entries){
+    archiveCache = entries || [];
+    try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archiveCache)); }catch(e){}
+    safeRenderMain();
+  };
   CloudSync.onStateChange = function(data){
     // Real bug, found 2026-08-19 from Pene's push-up numbers going missing:
     // this used to replace state.progress unconditionally on every snapshot,
@@ -916,11 +1174,13 @@ if(window.CloudSync){
 function findNextIncompleteDay(fromWeekIdx){
   for(let wi = fromWeekIdx; wi < DATA.weeks.length; wi++){
     const w = DATA.weeks[wi];
+    if(isWeekCompleted(w)) continue; // a closed week is done, even if its day markers aren't set
     const di = w.days.findIndex(d => !isDayCompleted(w, d));
     if(di !== -1) return { weekIdx: wi, dayIdx: di };
   }
   for(let wi = 0; wi < fromWeekIdx; wi++){
     const w = DATA.weeks[wi];
+    if(isWeekCompleted(w)) continue;
     const di = w.days.findIndex(d => !isDayCompleted(w, d));
     if(di !== -1) return { weekIdx: wi, dayIdx: di };
   }
@@ -930,13 +1190,28 @@ function findNextIncompleteDay(fromWeekIdx){
 function renderTabs(){
   const weekTabs = document.getElementById('weekTabs');
   weekTabs.innerHTML = '';
+  const doneWeeks = DATA.weeks.filter(w => isWeekCompleted(w));
   DATA.weeks.forEach((w, i)=>{
+    const done = isWeekCompleted(w);
+    // Finished weeks drop off the tabs; the current week always stays visible
+    // so you can see where you are (and reopen it) after closing it.
+    if(done && !showCompletedWeeks && i !== state.weekIdx) return;
     const b = document.createElement('button');
     b.className = 'week-tab' + (i===state.weekIdx?' active':'');
-    b.textContent = w.label;
+    b.textContent = done ? w.label + ' ✓' : w.label;
+    if(done) b.style.opacity = '0.6';
     b.onclick = ()=>{ state.weekIdx = i; state.dayIdx = 0; persistState(); renderAll(); };
     weekTabs.appendChild(b);
   });
+  if(doneWeeks.length){
+    const t = document.createElement('button');
+    t.className = 'week-tab';
+    t.style.cssText = 'flex:0 0 auto;background:transparent;border:1px solid rgba(255,255,255,0.35);font-size:0.75rem;padding:9px 10px;';
+    t.textContent = showCompletedWeeks ? 'Hide done' : doneWeeks.length + ' done ✓';
+    t.title = 'Completed weeks stay in Progress and Fun Stats';
+    t.onclick = ()=>{ showCompletedWeeks = !showCompletedWeeks; renderTabs(); };
+    weekTabs.appendChild(t);
+  }
 
   const dayTabs = document.getElementById('dayTabs');
   dayTabs.innerHTML = '';
@@ -956,6 +1231,24 @@ function renderTabs(){
     flag.textContent = completedCount + ' done ✓';
     dayTabs.appendChild(flag);
   }
+  const weekDone = isWeekCompleted(week);
+  const closeBtn = document.createElement('button');
+  closeBtn.style.cssText = 'flex:0 0 auto;align-self:center;margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,0.35);color:#fff;font-size:0.72rem;font-weight:700;padding:6px 9px;border-radius:8px;cursor:pointer;white-space:nowrap;';
+  closeBtn.textContent = weekDone ? 'Reopen week' : 'Close week';
+  closeBtn.title = weekDone
+    ? 'Put this week back on the tabs'
+    : 'Take this week off the tabs — everything logged stays in Progress and Fun Stats';
+  closeBtn.onclick = ()=>{
+    if(!weekDone && !confirm('Close ' + week.label + '? It comes off the tabs, and everything you logged stays in Progress and Fun Stats.')) return;
+    setWeekCompleted(week, !weekDone);
+    if(!weekDone){
+      const next = findNextIncompleteDay(state.weekIdx);
+      if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; }
+    }
+    persistState();
+    renderAll();
+  };
+  dayTabs.appendChild(closeBtn);
 
   document.getElementById('dateLine').textContent = week.label + ' · ' + week.dates;
 }
@@ -1078,6 +1371,141 @@ function buildPushupCard(block, bi, pair, ds){
   return card;
 }
 
+// One row per person on every exercise card: their own version of the movement,
+// their own weight box with what they used last time (and a star when they beat
+// their best), their own round chips, and their own skip.
+function variantsFor(exObj){
+  const lib = window.HOWTO ? (HOWTO.lookup(exObj.name) || HOWTO.generic) : null;
+  return lib ? lib.variants : null;
+}
+
+function buildPersonRow(block, bi, ei, exObj, ds, p, counts){
+  const b = ds.blocks[bi];
+  const row = document.createElement('div');
+  row.className = 'person-row';
+
+  const head = document.createElement('div');
+  head.className = 'person-head';
+  head.innerHTML = '<span class="who-dot ' + p + '">' + PNAME[p].charAt(0) + '</span><span class="who-name">' + PNAME[p] + '</span>';
+
+  const variants = variantsFor(exObj);
+  if(variants){
+    const vIdx = b.variant[p][ei];
+    const vBtn = document.createElement('button');
+    vBtn.type = 'button';
+    vBtn.className = 'variant-btn';
+    vBtn.textContent = (vIdx == null ? 'As written' : variants[vIdx]) + ' ▾';
+    vBtn.onclick = ()=> openHowto(exObj, bi, ei, p, ds);
+    head.appendChild(vBtn);
+  }
+
+  const hist = historyFor(exObj.name, p);
+  const nowVal = parseLoad(b.weights[p][ei]);
+  const isPR = nowVal != null && hist.best != null && nowVal > hist.best;
+  const note = document.createElement('span');
+  note.className = 'last-note' + (isPR ? ' pr' : '');
+  if(isPR) note.textContent = '★ new best, was ' + hist.best;
+  else if(hist.last) note.textContent = 'Last ' + hist.last.weight + (hist.last.rounds != null ? ' · ' + hist.last.rounds + ' rounds' : '');
+  else note.textContent = 'First time — log what you use';
+  head.appendChild(note);
+  row.appendChild(head);
+
+  const controls = document.createElement('div');
+  controls.className = 'person-controls';
+
+  const weightInput = document.createElement('input');
+  weightInput.className = 'weight-input';
+  weightInput.value = b.weights[p][ei];
+  weightInput.setAttribute('aria-label', PNAME[p] + ' weight for ' + exObj.name);
+  weightInput.oninput = (e)=>{ b.weights[p][ei] = e.target.value; persistState(); };
+  weightInput.onblur = ()=> renderMain(); // repaint so a new best shows straight away
+  controls.appendChild(weightInput);
+
+  const roundsArr = b.rounds[p][ei];
+  const roundSkipArr = b.roundSkipped[p][ei];
+  for(let r=0;r<block.rounds;r++){
+    const rState = roundsArr[r] ? 'done' : (roundSkipArr[r] ? 'skipped' : 'blank');
+    const chip = roundChip(rState, 'R' + (r+1));
+    chip.title = rState === 'blank' ? 'Tap: mark done' : rState === 'done' ? 'Tap: mark skipped instead' : 'Tap: clear';
+    chip.onclick = ()=>{
+      markStarted(ds);
+      if(rState === 'blank') roundsArr[r] = true;
+      else if(rState === 'done'){ roundsArr[r] = false; roundSkipArr[r] = true; }
+      else roundSkipArr[r] = false;
+      persistState();
+      renderMain();
+    };
+    controls.appendChild(chip);
+  }
+
+  if(counts.blank > 0 || counts.skipped > 0){
+    const allAccountedFor = counts.blank === 0 && counts.skipped > 0;
+    const skipBtn = document.createElement('button');
+    skipBtn.type = 'button';
+    skipBtn.className = 'skip-toggle' + (allAccountedFor ? ' active' : '');
+    skipBtn.style.marginLeft = 'auto';
+    skipBtn.textContent = allAccountedFor
+      ? '↺ Undo'
+      : (counts.done > 0 ? 'Skip rest' : "Didn't do");
+    skipBtn.onclick = ()=>{
+      if(allAccountedFor) roundSkipArr.forEach((v, r)=>{ if(v) roundSkipArr[r] = false; });
+      else roundsArr.forEach((done, r)=>{ if(!done && !roundSkipArr[r]) roundSkipArr[r] = true; });
+      persistState();
+      renderMain();
+    };
+    controls.appendChild(skipBtn);
+  }
+
+  row.appendChild(controls);
+  return row;
+}
+
+// The how-to sheet: three plain steps, the one thing to watch for, and the
+// easier/harder versions. Opened per person, so choosing a version here only
+// changes that person's row.
+function openHowto(exObj, bi, ei, person, ds){
+  const lib = window.HOWTO ? (HOWTO.lookup(exObj.name) || HOWTO.generic) : null;
+  document.getElementById('howtoTitle').textContent = exObj.name;
+  const videoLine = document.getElementById('howtoVideoLine');
+  if(exObj.video){
+    videoLine.innerHTML = '<a href="' + exObj.video + '" target="_blank" rel="noopener">' + (exObj.videoKnown ? 'Watch a demo video' : 'Search a demo video on YouTube') + '</a> — opens in a new tab.';
+  } else {
+    videoLine.textContent = '';
+  }
+  const stepsEl = document.getElementById('howtoSteps');
+  stepsEl.innerHTML = '';
+  (lib ? lib.steps : []).forEach((s, i)=>{
+    const li = document.createElement('li');
+    li.innerHTML = '<span class="n">' + (i+1) + '</span><span>' + s + '</span>';
+    stepsEl.appendChild(li);
+  });
+  document.getElementById('howtoWatch').innerHTML = lib ? '<strong>Watch for:</strong> ' + lib.watch : '';
+
+  document.getElementById('howtoVariantLabel').textContent = 'Version for ' + PNAME[person];
+  const wrap = document.getElementById('howtoVariants');
+  wrap.innerHTML = '';
+  const variants = lib ? lib.variants : null;
+  const tiers = ['Easier', 'Standard', 'Harder'];
+  if(variants && ds){
+    const current = ds.blocks[bi].variant[person][ei];
+    const options = [{ label: 'As written', idx: null, tier: 'Plan' }].concat(variants.map((v, i)=> ({ label: v, idx: i, tier: tiers[i] || '' })));
+    options.forEach(opt=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'variant-option' + (current === opt.idx ? ' active' : '');
+      b.innerHTML = '<span class="tier">' + opt.tier + '</span><span>' + opt.label + '</span>';
+      b.onclick = ()=>{
+        ds.blocks[bi].variant[person][ei] = opt.idx;
+        persistState();
+        closeModal('howtoOverlay');
+        renderMain();
+      };
+      wrap.appendChild(b);
+    });
+  }
+  openModal('howtoOverlay');
+}
+
 function renderMain(){
   const week = DATA.weeks[state.weekIdx];
   const day = week.days[state.dayIdx];
@@ -1169,9 +1597,11 @@ function renderMain(){
       if(pushupPair && ei === pushupPair.fullIdx){
         return !!(blockSkipped && (blockSkipped[pushupPair.fullIdx] || blockSkipped[pushupPair.modIdx]));
       }
-      const roundsArr = ds.blocks[bi].rounds[ei];
-      const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
-      return roundsArr.every((done, r)=> done || (roundSkipArr && roundSkipArr[r]));
+      return PKEYS.every(p=>{
+        const roundsArr = ds.blocks[bi].rounds[p][ei];
+        const roundSkipArr = ds.blocks[bi].roundSkipped[p][ei];
+        return roundsArr.every((done, r)=> done || (roundSkipArr && roundSkipArr[r]));
+      });
     });
     const blockSkipBtn = document.createElement('button');
     blockSkipBtn.className = 'block-skip-btn' + (allExSkipped ? ' active' : '');
@@ -1185,11 +1615,13 @@ function renderMain(){
           ds.blocks[bi].skipped[pushupPair.modIdx] = newVal;
           return;
         }
-        const roundsArr = ds.blocks[bi].rounds[ei];
-        const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
-        roundsArr.forEach((done, r)=>{
-          if(newVal){ if(!done) roundSkipArr[r] = true; }
-          else{ roundSkipArr[r] = false; }
+        PKEYS.forEach(p=>{
+          const roundsArr = ds.blocks[bi].rounds[p][ei];
+          const roundSkipArr = ds.blocks[bi].roundSkipped[p][ei];
+          roundsArr.forEach((done, r)=>{
+            if(newVal){ if(!done) roundSkipArr[r] = true; }
+            else{ roundSkipArr[r] = false; }
+          });
         });
       });
       persistState();
@@ -1202,18 +1634,22 @@ function renderMain(){
     block.exercises.forEach((exObj, ei)=>{
       if(pushupPair && (ei === pushupPair.fullIdx || ei === pushupPair.modIdx)) return; // rendered together above
 
-      const roundsArr = ds.blocks[bi].rounds[ei];
-      const roundSkipArr = ds.blocks[bi].roundSkipped[ei];
-      const doneCount = roundsArr.filter(Boolean).length;
-      const skippedCount = roundSkipArr.filter(Boolean).length;
-      const blankCount = block.rounds - doneCount - skippedCount;
+      const perP = {};
+      PKEYS.forEach(p=>{
+        const ra = ds.blocks[bi].rounds[p][ei], sa = ds.blocks[bi].roundSkipped[p][ei];
+        perP[p] = { rounds: ra, skips: sa, done: ra.filter(Boolean).length, skipped: sa.filter(Boolean).length };
+        perP[p].blank = block.rounds - perP[p].done - perP[p].skipped;
+      });
+      const doneCount = perP.pene.done + perP.jenna.done;
+      const skippedCount = perP.pene.skipped + perP.jenna.skipped;
+      const blankCount = perP.pene.blank + perP.jenna.blank;
       // "Fully skipped" (the old all-or-nothing meaning) only greys out the
       // whole card when every round is skipped and none are done. A day with
       // 3 of 4 rounds done and just round 4 skipped stays a normal card —
       // the round chips already show that clearly, one grey card would be
       // misleading (real feedback from Pene, 2026-08-19: it read as if the
       // whole exercise had been thrown away, not 75% completed).
-      const fullySkipped = block.rounds > 0 && skippedCount === block.rounds;
+      const fullySkipped = block.rounds > 0 && skippedCount === block.rounds * PKEYS.length;
       const card = document.createElement('div');
       card.className = 'card' + (fullySkipped ? ' skipped-card' : '');
       const top = document.createElement('div');
@@ -1222,63 +1658,15 @@ function renderMain(){
       left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>`;
       top.appendChild(left);
 
-      const weightInput = document.createElement('input');
-      weightInput.className = 'weight-input';
-      weightInput.value = ds.blocks[bi].weights[ei];
-      weightInput.oninput = (e)=>{ ds.blocks[bi].weights[ei] = e.target.value; persistState(); };
-      top.appendChild(weightInput);
+      const howBtn = document.createElement('button');
+      howBtn.type = 'button';
+      howBtn.className = 'howto-btn';
+      howBtn.textContent = 'How to';
+      howBtn.onclick = ()=> openHowto(exObj, bi, ei, 'pene', ds);
+      top.appendChild(howBtn);
       card.appendChild(top);
 
-      const roundsRow = document.createElement('div');
-      roundsRow.className = 'rounds-row';
-      for(let r=0;r<block.rounds;r++){
-        const done = roundsArr[r];
-        const skippedR = roundSkipArr[r];
-        const rState = done ? 'done' : (skippedR ? 'skipped' : 'blank');
-        const chip = roundChip(rState, 'R' + (r+1));
-        chip.title = rState === 'blank' ? 'Tap: mark done' : rState === 'done' ? 'Tap: mark skipped instead' : 'Tap: clear';
-        chip.onclick = ()=>{
-          markStarted(ds);
-          if(rState === 'blank'){
-            roundsArr[r] = true;
-          } else if(rState === 'done'){
-            roundsArr[r] = false;
-            roundSkipArr[r] = true;
-          } else {
-            roundSkipArr[r] = false;
-          }
-          persistState();
-          renderMain();
-        };
-        roundsRow.appendChild(chip);
-      }
-      card.appendChild(roundsRow);
-
-      // The button is only needed when there's something left to act on: fully
-      // done exercises have nothing to skip or undo, so it disappears entirely
-      // rather than sitting there doing nothing.
-      if(blankCount > 0 || skippedCount > 0){
-        const skipRow = document.createElement('div');
-        skipRow.style.cssText = 'margin-top:8px;text-align:right;';
-        const skipBtn = document.createElement('button');
-        skipBtn.type = 'button';
-        const allAccountedFor = blankCount === 0 && skippedCount > 0;
-        skipBtn.className = 'skip-toggle' + (allAccountedFor ? ' active' : '');
-        skipBtn.textContent = allAccountedFor
-          ? '↺ Undo skip' + (skippedCount > 1 ? ' (' + skippedCount + ' rounds)' : '')
-          : (doneCount > 0 ? 'Skip remaining round' + (blankCount > 1 ? 's' : '') : "Didn't do this one");
-        skipBtn.onclick = ()=>{
-          if(allAccountedFor){
-            roundSkipArr.forEach((v, r)=>{ if(v) roundSkipArr[r] = false; });
-          } else {
-            roundsArr.forEach((done, r)=>{ if(!done && !roundSkipArr[r]) roundSkipArr[r] = true; });
-          }
-          persistState();
-          renderMain();
-        };
-        skipRow.appendChild(skipBtn);
-        card.appendChild(skipRow);
-      }
+      PKEYS.forEach(p=> card.appendChild(buildPersonRow(block, bi, ei, exObj, ds, p, perP[p])));
 
       section.appendChild(card);
     });
@@ -1470,6 +1858,12 @@ let timerSeconds = 40;
 let timerRemaining = 40;
 let timerInterval = null;
 let timerRunning = false;
+// The countdown is anchored to the wall clock rather than counted in ticks:
+// background tabs throttle setInterval (and stop it entirely on a locked
+// phone), which used to make a guided round drift minutes behind. Now every
+// tick just asks "what time is it", and a round that ran while the screen was
+// off catches up to the correct step instead of falling behind.
+let timerEndsAt = null;
 
 function formatTime(s){
   const m = Math.floor(s/60).toString().padStart(2,'0');
@@ -1524,6 +1918,8 @@ function renderPresets(){
 function stopTimerRunning(){
   if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   timerRunning = false;
+  timerEndsAt = null;
+  if(window.KeepAwake) KeepAwake.release();
   document.getElementById('startTimer').textContent = startBtnIdleLabel;
 }
 
@@ -1548,20 +1944,24 @@ function onRoundFullyComplete(){
   if(guidedBlockIndex < 0 || !guidedDayCtx) return;
   const { week, day, ds } = guidedDayCtx;
   const blockState = ds.blocks[guidedBlockIndex];
-  if(!blockState || !blockState.rounds.length) return;
-  const numRounds = blockState.rounds[0].length;
+  if(!blockState || !blockState.rounds || !blockState.rounds.pene || !blockState.rounds.pene.length) return;
+  const numRounds = blockState.rounds.pene[0].length;
   let targetRound = -1;
   for(let r = 0; r < numRounds; r++){
-    if(!blockState.rounds.every(arr => arr[r])){ targetRound = r; break; }
+    const allDone = PKEYS.every(p => blockState.rounds[p].every(arr => arr[r]));
+    if(!allDone){ targetRound = r; break; }
   }
   if(targetRound === -1) return; // every round already ticked, nothing to do
   markStarted(ds);
-  blockState.rounds.forEach((arr, ei) => {
-    arr[targetRound] = true;
-    // Clear any earlier manual "skipped" mark on this round now that the
-    // guided timer has actually carried it through — done always wins over a
-    // stale skip flag from before.
-    if(blockState.roundSkipped && blockState.roundSkipped[ei]) blockState.roundSkipped[ei][targetRound] = false;
+  // You did the round together, so it ticks on both records.
+  PKEYS.forEach(p=>{
+    blockState.rounds[p].forEach((arr, ei) => {
+      arr[targetRound] = true;
+      // Clear any earlier manual "skipped" mark on this round now that the
+      // guided timer has actually carried it through — done always wins over a
+      // stale skip flag from before.
+      if(blockState.roundSkipped[p] && blockState.roundSkipped[p][ei]) blockState.roundSkipped[p][ei][targetRound] = false;
+    });
   });
   persistState();
   renderMain(); // safe while the timer modal is open, the modal lives outside #main
@@ -1573,6 +1973,9 @@ function loadStep(idx){
   phase = step.kind === 'work' ? 'active' : 'rest';
   timerSeconds = step.seconds;
   timerRemaining = step.seconds;
+  // Carry any overrun forward so a step that ended while the phone was locked
+  // doesn't hand the next step a full fresh duration.
+  timerEndsAt = (timerRunning && timerEndsAt != null) ? timerEndsAt + step.seconds * 1000 : null;
   warnedThisPhase = false;
   warnedBreathThisPhase = false;
   updatePhaseLabel();
@@ -1607,6 +2010,8 @@ function finishRound(){
   timerInterval = null;
   timerRunning = false;
   timerRemaining = 0;
+  timerEndsAt = null;
+  if(window.KeepAwake) KeepAwake.release();
   phase = 'done';
   updatePhaseLabel();
   updateExerciseLabel();
@@ -1619,7 +2024,7 @@ function finishRound(){
   document.getElementById('startTimer').textContent = startBtnIdleLabel;
 }
 
-function advanceStep(){
+function advanceStep(quiet){
   stepIdx++;
   if(stepIdx >= roundSteps.length){
     finishRound();
@@ -1632,47 +2037,68 @@ function advanceStep(){
     clearInterval(timerInterval);
     timerInterval = null;
     timerRunning = false;
+    timerEndsAt = null;
     announceStep(stepIdx);
     startBtnIdleLabel = 'Start Rest';
     document.getElementById('startTimer').textContent = startBtnIdleLabel;
     return;
   }
-  // timed step: announce it and keep the countdown running automatically
-  announceStep(stepIdx);
-  if(navigator.vibrate) navigator.vibrate(120);
+  // timed step: announce it and keep the countdown running automatically.
+  // "quiet" is set when we're catching up several steps at once after the
+  // phone was locked — announcing each one would be a burst of nonsense.
+  if(!quiet){
+    announceStep(stepIdx);
+    if(navigator.vibrate) navigator.vibrate(120);
+  } else {
+    lastAnnouncedStep = stepIdx;
+  }
 }
 
 function tick(){
-  timerRemaining--;
+  if(timerEndsAt == null) return;
 
   if(timerMode === 'guided'){
+    let guard = 0;
+    while(timerRunning && timerEndsAt != null && (timerEndsAt - Date.now()) <= 0 && guard++ < 400){
+      const behindSeconds = (Date.now() - timerEndsAt) / 1000;
+      advanceStep(behindSeconds > 1.5);
+      if(!timerRunning || timerEndsAt == null) return;
+    }
+    if(timerEndsAt == null) return;
+    const rem = Math.max(0, Math.ceil((timerEndsAt - Date.now()) / 1000));
     const step = roundSteps[stepIdx];
-    if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && timerRemaining === WARN_SECONDS){
+    if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && rem <= WARN_SECONDS && rem > 0){
       speak(randomCue('warn'));
       warnedThisPhase = true;
     }
-    if(timerRemaining <= 0){
-      advanceStep();
-      return;
+    if(rem !== timerRemaining){
+      timerRemaining = rem;
+      updateTimerDisplay();
     }
-    updateTimerDisplay();
     return;
   }
 
   // manual mode: simple single countdown
-  if(timerRemaining <= 0){
+  const rem = Math.max(0, Math.ceil((timerEndsAt - Date.now()) / 1000));
+  if(rem !== timerRemaining){
+    timerRemaining = rem;
+    updateTimerDisplay();
+  }
+  if(rem <= 0){
     clearInterval(timerInterval);
     timerInterval = null;
     timerRunning = false;
-    timerRemaining = 0;
-    updateTimerDisplay();
+    timerEndsAt = null;
+    if(window.KeepAwake) KeepAwake.release();
     startBtnIdleLabel = 'Start';
     document.getElementById('startTimer').textContent = 'Start';
     playCompleteCue();
-    return;
   }
-  updateTimerDisplay();
 }
+
+// Coming back to the tab: repaint immediately rather than waiting for the
+// next interval, so the clock is never briefly wrong on screen.
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'visible') tick(); });
 
 // Begins counting down and announces the first step. Its own named function
 // (rather than being inlined in the Start button's onclick) since the now-
@@ -1689,15 +2115,22 @@ function startTimerRun(){
   }
   if(timerRemaining <= 0) timerRemaining = timerSeconds;
   timerRunning = true;
+  timerEndsAt = Date.now() + timerRemaining * 1000;
+  // Stop the phone sleeping mid-set — released as soon as the timer stops.
+  if(window.KeepAwake) KeepAwake.request();
   document.getElementById('startTimer').textContent = 'Pause';
-  timerInterval = setInterval(tick, 1000);
+  clearInterval(timerInterval);
+  timerInterval = setInterval(tick, 200);
 }
 
 document.getElementById('startTimer').onclick = ()=>{
   if(timerRunning){
+    if(timerEndsAt != null) timerRemaining = Math.max(0, Math.ceil((timerEndsAt - Date.now()) / 1000));
     clearInterval(timerInterval);
     timerInterval = null;
     timerRunning = false;
+    timerEndsAt = null;
+    if(window.KeepAwake) KeepAwake.release();
     document.getElementById('startTimer').textContent = startBtnIdleLabel;
     return;
   }
@@ -1707,6 +2140,8 @@ document.getElementById('resetTimer').onclick = ()=>{
   clearInterval(timerInterval);
   timerInterval = null;
   timerRunning = false;
+  timerEndsAt = null;
+  if(window.KeepAwake) KeepAwake.release();
   if(timerMode === 'guided'){
     stepIdx = 0;
     lastAnnouncedStep = -1;
@@ -1774,6 +2209,7 @@ document.getElementById('openEquipment').onclick = ()=>{
   document.getElementById('equipmentSavedFlag').textContent = '';
   openModal('equipmentOverlay');
 };
+document.getElementById('closeHowto').onclick = ()=> closeModal('howtoOverlay');
 document.getElementById('closeEquipment').onclick = ()=> closeModal('equipmentOverlay');
 document.getElementById('saveEquipment').onclick = ()=>{
   equipmentCache = {
@@ -1794,20 +2230,64 @@ document.getElementById('copyEquipmentForClaude').onclick = ()=>{
     const raw = localStorage.getItem(ARCHIVE_KEY);
     archive = raw ? JSON.parse(raw) : [];
   }catch(e){}
+  const wantsVariety = document.getElementById('wantVariety') && document.getElementById('wantVariety').checked;
+  const diffWord = {easier:'easier than expected', right:'just right', tougher:'tougher than expected'};
+
   const lines = [];
-  lines.push('--- Pene & Jenna: equipment, notes and recent history ---');
+  lines.push('--- Pene & Jenna: next block brief ---');
+  lines.push('We are beginners training together, usually side by side, each logging our own weights.');
   lines.push('Equipment on hand: ' + (equipment || '(not filled in yet)'));
-  lines.push('Notes for next week: ' + (notes || '(none)'));
+  lines.push('Notes / goals for next block: ' + (notes || '(none)'));
   lines.push('Total workouts finished so far: ' + archive.length);
+  lines.push('');
+
   if(archive.length){
     lines.push('Most recent sessions:');
     archive.slice(-5).reverse().forEach(entry=>{
       const d = new Date(entry.completedAt);
       const when = isNaN(d) ? '' : d.toLocaleDateString();
-      const diffLabel = {easier:'easier than expected', right:'just right', tougher:'tougher than expected'}[entry.difficulty] || entry.difficulty || '';
-      lines.push('  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + ', ' + (entry.totalMinutes ? entry.totalMinutes + ' min, ' : '') + diffLabel + (entry.note ? ', note: "' + entry.note + '"' : ''));
+      const felt = entry.difficultyBy
+        ? 'Pene ' + (diffWord[entry.difficultyBy.pene] || '?') + ', Jenna ' + (diffWord[entry.difficultyBy.jenna] || '?')
+        : (diffWord[entry.difficulty] || entry.difficulty || '');
+      lines.push('  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + ', ' + (entry.totalMinutes ? entry.totalMinutes + ' min, ' : '') + felt + (entry.note ? ', note: "' + entry.note + '"' : ''));
     });
+    lines.push('');
+
+    // What each of us has actually been lifting, per exercise, so the next
+    // block can progress the two of us independently.
+    const names = [];
+    archive.forEach(e=> (e.exercises || []).forEach(ex=>{ if(names.indexOf(ex.name) === -1) names.push(ex.name); }));
+    PKEYS.forEach(p=>{
+      lines.push(PNAME[p] + "'s recent loads and bests:");
+      names.forEach(n=>{
+        const h = historyFor(n, p);
+        if(!h.last) return;
+        lines.push('  - ' + n + ': last ' + h.last.weight + (h.best != null ? ', best ' + h.best : ''));
+      });
+      lines.push('');
+    });
+
+    const versions = [];
+    (archive[archive.length-1].exercises || []).forEach(ex=>{
+      if(!ex.versionBy) return;
+      PKEYS.forEach(p=>{ if(ex.versionBy[p]) versions.push(PNAME[p] + ' does ' + ex.name + ' as: ' + ex.versionBy[p]); });
+    });
+    if(versions.length){
+      lines.push('Modified versions we are using:');
+      versions.forEach(v=> lines.push('  - ' + v));
+      lines.push('');
+    }
+
+    const skips = [];
+    archive.slice(-3).forEach(e=> (e.exercises || []).forEach(ex=>{ if(ex.skipped && skips.indexOf(ex.name) === -1) skips.push(ex.name); }));
+    if(skips.length) lines.push('Kept getting skipped lately (maybe rethink or move these): ' + skips.join(', '));
   }
+
+  lines.push('');
+  lines.push(wantsVariety
+    ? 'Please change the movements this block — same patterns and difficulty, new exercises, we want variety.'
+    : 'Keep most movements the same so we can keep beating our own numbers, and progress the loads per person based on the above.');
+  lines.push('Please also tell us, per person, where to add weight and where to hold.');
   const text = lines.join('\n');
   try{
     navigator.clipboard.writeText(text);
@@ -1841,15 +2321,21 @@ document.getElementById('openSummary').onclick = ()=>{
         }
         return;
       }
-      const roundsDone = ds.blocks[bi].rounds[ei].filter(Boolean).length;
-      const roundSkipArr = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
-      const roundsSkipped = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
-      const w = ds.blocks[bi].weights[ei];
-      let progressText;
-      if(roundsSkipped === block.rounds) progressText = 'SKIPPED (' + roundsDone + '/' + block.rounds + ' rounds done)';
-      else if(roundsSkipped > 0) progressText = roundsDone + '/' + block.rounds + ' rounds (' + roundsSkipped + ' skipped)';
-      else progressText = roundsDone + '/' + block.rounds + ' rounds';
-      lines.push('  - ' + exObj.name + ': ' + progressText + ', weight used: ' + w);
+      lines.push('  - ' + exObj.name + ':');
+      PKEYS.forEach(p=>{
+        const roundsDone = ds.blocks[bi].rounds[p][ei].filter(Boolean).length;
+        const roundSkipArr = ds.blocks[bi].roundSkipped[p] && ds.blocks[bi].roundSkipped[p][ei];
+        const roundsSkipped = roundSkipArr ? roundSkipArr.filter(Boolean).length : 0;
+        const w = ds.blocks[bi].weights[p][ei];
+        const variants = variantsFor(exObj);
+        const vIdx = ds.blocks[bi].variant[p][ei];
+        const versionText = (variants && vIdx != null) ? ' [' + variants[vIdx] + ']' : '';
+        let progressText;
+        if(roundsSkipped === block.rounds) progressText = 'SKIPPED (' + roundsDone + '/' + block.rounds + ' rounds done)';
+        else if(roundsSkipped > 0) progressText = roundsDone + '/' + block.rounds + ' rounds (' + roundsSkipped + ' skipped)';
+        else progressText = roundsDone + '/' + block.rounds + ' rounds';
+        lines.push('      ' + PNAME[p] + ': ' + progressText + ', ' + w + versionText);
+      });
     });
     lines.push('');
   });
@@ -1898,7 +2384,10 @@ const DIFFICULTY_OPTIONS = [
   { id: 'right', label: 'Just right' },
   { id: 'tougher', label: 'Tougher than expected' }
 ];
-let finishDifficultyChoice = 'right';
+// How it felt is asked of each of you separately — it's the input that decides
+// whether the next block adds weight, adds reps, or holds steady, and you
+// won't always feel the same session the same way.
+let finishDifficultyChoice = { pene: 'right', jenna: 'right' };
 let finishCtx = null; // {week, day, ds}
 
 function suggestedMinutes(ds){
@@ -1910,20 +2399,31 @@ function suggestedMinutes(ds){
 function renderDifficultyChips(){
   const wrap = document.getElementById('finishDifficulty');
   wrap.innerHTML = '';
-  DIFFICULTY_OPTIONS.forEach(opt=>{
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.textContent = opt.label;
-    b.style.cssText = 'flex:1;min-width:100px;padding:10px 6px;border-radius:10px;font-weight:700;font-size:0.78rem;cursor:pointer;border:1px solid var(--line);background:' +
-      (finishDifficultyChoice === opt.id ? 'var(--teal-700)' : '#fff') + ';color:' + (finishDifficultyChoice === opt.id ? '#fff' : 'var(--ink)') + ';';
-    b.onclick = ()=>{ finishDifficultyChoice = opt.id; renderDifficultyChips(); };
-    wrap.appendChild(b);
+  wrap.style.cssText = 'display:flex;flex-direction:column;gap:8px;';
+  PKEYS.forEach(p=>{
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:6px;align-items:center;flex-wrap:wrap;';
+    const who = document.createElement('span');
+    who.className = 'who-dot ' + p;
+    who.textContent = PNAME[p].charAt(0);
+    row.appendChild(who);
+    DIFFICULTY_OPTIONS.forEach(opt=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = opt.label;
+      const on = finishDifficultyChoice[p] === opt.id;
+      b.style.cssText = 'flex:1;min-width:92px;padding:9px 6px;border-radius:10px;font-weight:700;font-size:0.75rem;cursor:pointer;font-family:inherit;border:1px solid var(--line);background:' +
+        (on ? 'var(--teal-700)' : '#fff') + ';color:' + (on ? '#fff' : 'var(--ink)') + ';';
+      b.onclick = ()=>{ finishDifficultyChoice[p] = opt.id; renderDifficultyChips(); };
+      row.appendChild(b);
+    });
+    wrap.appendChild(row);
   });
 }
 
 function openFinishModal(week, day, ds){
   finishCtx = { week, day, ds };
-  finishDifficultyChoice = 'right';
+  finishDifficultyChoice = { pene: 'right', jenna: 'right' };
   document.getElementById('finishTitle').textContent = 'Finish ' + day.label + ': ' + day.title + '?';
   document.getElementById('finishMinutes').value = suggestedMinutes(ds);
   document.getElementById('finishNote').value = '';
@@ -1972,15 +2472,31 @@ document.getElementById('confirmFinish').onclick = ()=>{
       // boolean ("was anything on this exercise skipped at all") so stats.html's
       // existing Fun Stats history read of entry.exercises[].skipped keeps
       // working unchanged, it just now reflects partial skips honestly too.
-      const roundSkipArrFinish = ds.blocks[bi].roundSkipped && ds.blocks[bi].roundSkipped[ei];
-      const roundsSkippedFinish = roundSkipArrFinish ? roundSkipArrFinish.filter(Boolean).length : 0;
+      const variants = variantsFor(exObj);
+      const doneBy = {}, skippedBy = {}, weightBy = {}, versionBy = {};
+      PKEYS.forEach(p=>{
+        const skipArr = ds.blocks[bi].roundSkipped[p] && ds.blocks[bi].roundSkipped[p][ei];
+        doneBy[p] = ds.blocks[bi].rounds[p][ei].filter(Boolean).length;
+        skippedBy[p] = skipArr ? skipArr.filter(Boolean).length : 0;
+        weightBy[p] = ds.blocks[bi].weights[p][ei];
+        const vIdx = ds.blocks[bi].variant[p][ei];
+        versionBy[p] = (variants && vIdx != null) ? variants[vIdx] : null;
+      });
+      const roundsSkippedFinish = skippedBy.pene + skippedBy.jenna;
       exercises.push({
         block: block.name,
         name: exObj.name,
-        roundsDone: ds.blocks[bi].rounds[ei].filter(Boolean).length,
+        // Per person — this is what the Progress page and the "last time"
+        // prompts read back.
+        roundsDoneBy: doneBy,
+        roundsSkippedBy: skippedBy,
+        weightBy: weightBy,
+        versionBy: versionBy,
+        // Legacy fields kept so the Fun Stats history keeps working unchanged.
+        roundsDone: doneBy.pene,
         roundsPlanned: block.rounds,
         roundsSkipped: roundsSkippedFinish,
-        weight: ds.blocks[bi].weights[ei],
+        weight: weightBy.pene,
         skipped: roundsSkippedFinish > 0
       });
     });
@@ -1995,7 +2511,12 @@ document.getElementById('confirmFinish').onclick = ()=>{
     title: day.title,
     completedAt: new Date().toISOString(),
     totalMinutes: minutes,
-    difficulty: finishDifficultyChoice,
+    difficultyBy: { pene: finishDifficultyChoice.pene, jenna: finishDifficultyChoice.jenna },
+    // Legacy single value for the Fun Stats page: the tougher of the two, so
+    // a session that was hard for one of you never reads as easy.
+    difficulty: [finishDifficultyChoice.pene, finishDifficultyChoice.jenna].indexOf('tougher') > -1
+      ? 'tougher'
+      : ([finishDifficultyChoice.pene, finishDifficultyChoice.jenna].indexOf('right') > -1 ? 'right' : 'easier'),
     note,
     exercises,
     warmupSkipped: warmupSkippedNames,
@@ -2011,7 +2532,7 @@ document.getElementById('confirmFinish').onclick = ()=>{
   renderAll();
 };
 
-[['timerOverlay'],['summaryOverlay'],['guideOverlay'],['finishOverlay'],['equipmentOverlay']].forEach(([id])=>{
+[['timerOverlay'],['summaryOverlay'],['guideOverlay'],['finishOverlay'],['equipmentOverlay'],['howtoOverlay']].forEach(([id])=>{
   document.getElementById(id).addEventListener('click', (e)=>{
     if(e.target.id === id){
       if(id === 'timerOverlay') stopTimerRunning();
@@ -2019,6 +2540,16 @@ document.getElementById('confirmFinish').onclick = ()=>{
     }
   });
 });
+
+// If the week we were last on has since been closed (here or on the other
+// phone), land on the next week that's actually still to do.
+(function(){
+  const w = DATA.weeks[state.weekIdx];
+  if(!w || isWeekCompleted(w)){
+    const next = findNextIncompleteDay(0);
+    if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; persistState(); }
+  }
+})();
 
 renderAll();
 </script>

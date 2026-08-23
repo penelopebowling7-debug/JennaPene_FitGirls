@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6A11CB">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fitness Hub">
 <title>Fun Stats · Pene &amp; Jenna</title>
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -42,6 +46,7 @@
     <a href="index.html">Home</a>
     <a href="tracker.html">Tracker</a>
     <a href="tests.html">Fitness Tests</a>
+    <a href="progress.html">Progress</a>
     <a href="stats.html" class="active">Fun Stats</a>
   </nav>
 </header>
@@ -77,6 +82,7 @@
 <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
 <script src="firebase-sync.js"></script>
 <script src="data.js"></script>
+<script src="app-shell.js"></script>
 <script>
 const STATS = window.SITE_DATA.programStats;
 const FT = window.SITE_DATA.fitnessTests;
@@ -130,25 +136,65 @@ function renderArchiveSection(archive){
   }
   liveWrap.appendChild(tileRow);
 
-  const list = document.createElement('ul');
-  list.className = 'session-log';
-  archive.slice().reverse().forEach(entry=>{
-    const li = document.createElement('li');
-    const d = new Date(entry.completedAt);
-    const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
-    const diffBadge = entry.difficulty ? `<span class="diff-badge ${entry.difficulty}">${DIFF_LABELS[entry.difficulty] || entry.difficulty}</span>` : '';
-    const timeText = entry.totalMinutes ? `${entry.totalMinutes} min` : '';
-    const skippedExNames = (entry.exercises || []).filter(e => e.skipped).map(e => e.name);
-    const skippedAll = skippedExNames.concat(entry.warmupSkipped || []).concat(entry.cooldownSkipped || []);
-    li.innerHTML = `
-      <div class="row1"><span><strong>${entry.week}, ${entry.day}</strong>: ${entry.title}</span><span class="when">${when}</span></div>
-      <div class="meta">${timeText ? `<span>${timeText}</span>` : ''}${diffBadge}</div>
-      ${entry.note ? `<div class="note">"${entry.note}"</div>` : ''}
-      ${skippedAll.length ? `<div class="meta" style="margin-top:4px;">Skipped: ${skippedAll.join(', ')}</div>` : ''}
-    `;
-    list.appendChild(li);
+  // One collapsed line per week instead of one row per session forever: the
+  // list stays a fixed handful of rows however long the program runs, and the
+  // detail is a tap away. Newest week open, older weeks collapsed.
+  const byWeek = [];
+  archive.forEach(entry=>{
+    const label = entry.week || 'Other';
+    let g = byWeek.find(x => x.label === label);
+    if(!g){ g = { label: label, entries: [] }; byWeek.push(g); }
+    g.entries.push(entry);
   });
-  liveWrap.appendChild(list);
+  byWeek.reverse();
+
+  byWeek.forEach((group, gi)=>{
+    const mins = group.entries.reduce((s,e)=> s + (e.totalMinutes || 0), 0);
+    const dates = group.entries.map(e => new Date(e.completedAt)).filter(d => !isNaN(d)).sort((a,b)=>a-b);
+    const span = dates.length
+      ? dates[0].toLocaleDateString(undefined,{day:'numeric',month:'short'}) +
+        (dates.length > 1 ? ' – ' + dates[dates.length-1].toLocaleDateString(undefined,{day:'numeric',month:'short'}) : '')
+      : '';
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'border:1px solid var(--line, rgba(0,0,0,0.1));border-radius:12px;margin-bottom:8px;overflow:hidden;';
+
+    const head = document.createElement('button');
+    head.style.cssText = 'width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;padding:11px 13px;font:inherit;text-align:left;cursor:pointer;';
+    head.innerHTML = `
+      <strong style="font-size:0.92rem;">${group.label}</strong>
+      <span style="color:var(--ink-soft);font-size:0.8rem;">${group.entries.length} workout${group.entries.length===1?'':'s'}${mins?` · ${mins} min`:''}${span?` · ${span}`:''}</span>
+      <span class="chev" style="margin-left:auto;color:var(--ink-soft);font-size:0.8rem;">${gi===0?'▲':'▼'}</span>`;
+
+    const body = document.createElement('ul');
+    body.className = 'session-log';
+    body.style.cssText = 'margin:0;padding:0 13px 10px;' + (gi===0 ? '' : 'display:none;');
+    group.entries.slice().reverse().forEach(entry=>{
+      const li = document.createElement('li');
+      const d = new Date(entry.completedAt);
+      const when = isNaN(d) ? '' : d.toLocaleDateString(undefined, {day:'numeric', month:'short'});
+      const diffBadge = entry.difficulty ? `<span class="diff-badge ${entry.difficulty}">${DIFF_LABELS[entry.difficulty] || entry.difficulty}</span>` : '';
+      const timeText = entry.totalMinutes ? `${entry.totalMinutes} min` : '';
+      const skippedExNames = (entry.exercises || []).filter(e => e.skipped).map(e => e.name);
+      const skippedAll = skippedExNames.concat(entry.warmupSkipped || []).concat(entry.cooldownSkipped || []);
+      li.innerHTML = `
+        <div class="row1"><span><strong>${entry.day}</strong>: ${entry.title}</span><span class="when">${when}</span></div>
+        <div class="meta">${timeText ? `<span>${timeText}</span>` : ''}${diffBadge}</div>
+        ${entry.note ? `<div class="note">"${entry.note}"</div>` : ''}
+        ${skippedAll.length ? `<div class="meta" style="margin-top:4px;">Skipped: ${skippedAll.join(', ')}</div>` : ''}
+      `;
+      body.appendChild(li);
+    });
+
+    head.onclick = ()=>{
+      const open = body.style.display !== 'none';
+      body.style.display = open ? 'none' : '';
+      head.querySelector('.chev').textContent = open ? '▼' : '▲';
+    };
+    wrap.appendChild(head);
+    wrap.appendChild(body);
+    liveWrap.appendChild(wrap);
+  });
 }
 
 // First paint from this device's local cache (instant, works offline too)...

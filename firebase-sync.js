@@ -31,14 +31,25 @@
     onStateChange: null,    // (data) => {}  data = {weekIdx, dayIdx, progressJson, completedDays}
     onArchiveChange: null,  // (entries) => {}
     onFitnessTestsChange: null, // (entries) => {}  entries = [{date, tests:[{name, unit, Pene, Jenna}]}]
-    isReady: function () { return ready; }
+    isReady: function () { return ready; },
+    // Live connection state for the header pill in app-shell.js:
+    // 'connecting' | 'live' | 'offline' | 'error'. Nothing depends on it
+    // working — it only ever changes what the pill says.
+    status: 'connecting',
+    onStatus: null
   };
+  function setStatus(s) {
+    CloudSync.status = s;
+    if (CloudSync.onStatus) { try { CloudSync.onStatus(s); } catch (e) {} }
+  }
   window.CloudSync = CloudSync;
 
   if (typeof firebase === 'undefined') {
     console.warn('Firebase SDK did not load, tracker will stay local-only on this device.');
+    CloudSync.status = 'offline';
     CloudSync.saveState = function () {};
     CloudSync.markDayCompleted = function () {};
+    CloudSync.setCompletedDays = function () {};
     CloudSync.appendArchive = function () {};
     CloudSync.saveEquipment = function () {};
     CloudSync.saveFitnessTestEntry = function () {};
@@ -60,8 +71,10 @@
     archiveRef = houseRef.collection('archive');
   } catch (e) {
     console.warn('Could not set up cloud sync, staying local-only:', e);
+    CloudSync.status = 'offline';
     CloudSync.saveState = function () {};
     CloudSync.markDayCompleted = function () {};
+    CloudSync.setCompletedDays = function () {};
     CloudSync.appendArchive = function () {};
     CloudSync.saveEquipment = function () {};
     CloudSync.saveFitnessTestEntry = function () {};
@@ -86,6 +99,17 @@
     localChangedSinceLoad = true;
     if (!ready) return;
     houseRef.set({ completedDays: firebase.firestore.FieldValue.arrayUnion(key) }, { merge: true })
+      .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
+  };
+
+  // Reopening a closed week REMOVES keys, which arrayUnion can't express, so
+  // this writes the whole list. Only used by the deliberate "Reopen week"
+  // action, so the overwrite risk (another device closing a week in the same
+  // second) is acceptable and self-correcting on the next close.
+  CloudSync.setCompletedDays = function (list) {
+    localChangedSinceLoad = true;
+    if (!ready) return;
+    houseRef.set({ completedDays: list || [] }, { merge: true })
       .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
   };
 
@@ -172,17 +196,20 @@
         return;
       }
       receivedFirstStateSnapshot = true;
+      setStatus('live');
       if (CloudSync.onStateChange) CloudSync.onStateChange(snap.data());
-    }, function (err) { console.warn('Cloud sync (state) issue:', err); });
+    }, function (err) { setStatus('error'); console.warn('Cloud sync (state) issue:', err); });
 
     if (archiveUnsub) archiveUnsub();
     archiveUnsub = archiveRef.orderBy('completedAt', 'asc').onSnapshot(function (snap) {
       const entries = snap.docs.map(function (d) { return d.data(); });
       if (CloudSync.onArchiveChange) CloudSync.onArchiveChange(entries);
-    }, function (err) { console.warn('Cloud sync (archive) issue:', err); });
+      setStatus('live');
+    }, function (err) { setStatus('error'); console.warn('Cloud sync (archive) issue:', err); });
   });
 
   firebase.auth().signInAnonymously().catch(function (err) {
+    setStatus('offline');
     console.warn('Anonymous sign-in failed, staying local-only on this device:', err);
   });
 })();
