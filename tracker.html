@@ -719,7 +719,7 @@
   <div class="modal">
     <button class="modal-close" id="closeEquipment">&times;</button>
     <h3>Equipment &amp; notes for Claude</h3>
-    <p class="disclaimer">Claude can't see this automatically, it doesn't have a live connection to this app. But keeping it up to date here means whenever you sit down together to plan the next week, you can tap "Copy for Claude" below and paste the whole thing straight into the chat, equipment, notes and your recent history all in one go.</p>
+    <p class="disclaimer">Claude can't see this automatically, it doesn't have a live connection to this app. Keeping it up to date here means the button below gives a quick brief (equipment, notes, and your last few sessions). For the FULL picture — every fitness test result and your whole training history too — head to the <a href="progress.html">Progress page</a> and use "Export everything for Claude" there instead.</p>
     <label style="display:block;font-weight:700;font-size:0.85rem;margin:12px 0 4px;color:var(--ink);">What equipment do we have right now?</label>
     <textarea id="equipmentText" placeholder="e.g. Dumbbells up to 5kg, kettlebell 4kg, barbell up to 20kg, resistance bands..." style="width:100%;min-height:80px;padding:10px;border-radius:10px;border:1px solid var(--line);font-family:inherit;font-size:0.85rem;resize:vertical;"></textarea>
     <label style="display:block;font-weight:700;font-size:0.85rem;margin:14px 0 4px;color:var(--ink);">Anything else for next week's design (how it's felt, goals, days you can/can't train)</label>
@@ -907,7 +907,12 @@ let archiveCache = loadArchive();
 
 function parseLoad(v){
   if(v == null) return null;
-  const m = String(v).match(/(\d+(?:\.\d+)?)/);
+  const s = String(v);
+  // "2 x 12 kg dumbbells" means 12 kg per dumbbell, not the "2" count —
+  // match that pattern first so per-item load is what gets compared/tracked.
+  const pair = s.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i);
+  if(pair) return parseFloat(pair[2]);
+  const m = s.match(/(\d+(?:\.\d+)?)/);
   return m ? parseFloat(m[1]) : null;
 }
 

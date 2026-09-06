@@ -1799,14 +1799,14 @@ window.SITE_DATA = {
                   {
                     "name": "Bulgarian Split Squat (Left)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "7.5 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Left%29%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bulgarian Split Squat (Right)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "7.5 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Right%29%20exercise%20form",
                     "videoKnown": false
                   },
@@ -1941,7 +1941,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "First week back at full intensity after the Week 13 deload, and the first week with your new equipment: dumbbells up to 25 kg and the EZ (wiggle) bar are both available now, but loads below are a moderate step up, not a jump to the new max — goblet squat to 10 kg, split squats to 7.5 kg, barbell RDL to 20 kg. If any of these feels like too big a jump after the lighter week, drop back to the Week 12 weight and add 2 reps of tempo instead. Athletic Circuit swaps Prisoner Squats for Reverse Lunge for some variety — same bodyweight, same 3 rounds."
+            "note": "First week back at full intensity after the Week 13 deload, and the first week with your new equipment: dumbbells up to 25 kg and the EZ (wiggle) bar are both available now, but loads below are a moderate step up, not a jump to the new max — goblet squat to 10 kg, split squats to 7 kg, barbell RDL to 20 kg. If any of these feels like too big a jump after the lighter week, drop back to the Week 12 weight and add 2 reps of tempo instead. Athletic Circuit swaps Prisoner Squats for Reverse Lunge for some variety — same bodyweight, same 3 rounds."
           },
           {
             "id": "tue",
@@ -2022,7 +2022,7 @@ window.SITE_DATA = {
                   {
                     "name": "Overhead Tricep Extension",
                     "qty": "3 rounds",
-                    "weight": "7.5 kg dumbbell",
+                    "weight": "7 kg dumbbell",
                     "video": "https://www.youtube.com/results?search_query=Overhead%20Tricep%20Extension%20exercise%20form",
                     "videoKnown": false
                   },
@@ -2092,7 +2092,7 @@ window.SITE_DATA = {
                   {
                     "name": "Plank Pull Through",
                     "qty": "2 rounds, slow and controlled, no rotation",
-                    "weight": "7.5 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
                   },
@@ -2238,7 +2238,7 @@ window.SITE_DATA = {
                   {
                     "name": "Renegade Row",
                     "qty": "4 rounds",
-                    "weight": "7.5 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Renegade%20Row%20exercise%20form",
                     "videoKnown": false
                   },
@@ -2359,7 +2359,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Building back up after the deload. Lateral Shuffle swapped for Farmer Carry to put the new heavier dumbbells to work in a way that fits a conditioning day (a loaded carry, not a max-effort lift) — 2 x 12 kg to start, add weight once that feels easy for the full 4 rounds. Renegade Row and Goblet Squat step up moderately (7.5 kg and 8 kg), Barbell Deadlift to 18-20 kg. Same caution as Monday and Tuesday: these are deliberate moderate jumps, not maxing out the new equipment in one week, drop back to Week 12 numbers if form starts to slip under fatigue."
+            "note": "Building back up after the deload. Lateral Shuffle swapped for Farmer Carry to put the new heavier dumbbells to work in a way that fits a conditioning day (a loaded carry, not a max-effort lift) — 2 x 12 kg to start, add weight once that feels easy for the full 4 rounds. Renegade Row and Goblet Squat step up moderately (7 kg and 8 kg), Barbell Deadlift to 18-20 kg. Same caution as Monday and Tuesday: these are deliberate moderate jumps, not maxing out the new equipment in one week, drop back to Week 12 numbers if form starts to slip under fatigue."
           }
         ]
       }

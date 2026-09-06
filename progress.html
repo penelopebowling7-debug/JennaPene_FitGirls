@@ -29,6 +29,10 @@
   }
   .cue strong{color:var(--teal-900);}
   .empty{color:var(--ink-soft);font-size:0.88rem;line-height:1.55;}
+  .export-note{font-size:0.86rem;color:var(--ink-soft);line-height:1.55;margin-bottom:12px;}
+  .export-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .export-actions .btn{flex:1;min-width:150px;}
+  .export-flag{font-size:0.82rem;color:var(--teal-700);font-weight:700;margin-top:10px;min-height:1.2em;}
 </style>
 </head>
 <body>
@@ -55,6 +59,16 @@
     <p>Everything here is your own record — weights you logged, rounds you finished, versions you used. Switch between the two of you below.</p>
   </div>
 
+  <div class="card" id="exportCard">
+    <h3>Export everything for Claude</h3>
+    <p class="export-note">Equipment, notes, every fitness test result, your full exercise history and recent sessions, all in one document. Claude has no live connection into this app, so this is the bridge: copy it straight into a chat, or download it as a file to attach or send however's easiest.</p>
+    <div class="export-actions">
+      <button class="btn btn-primary" id="copyExportBtn">📋 Copy everything</button>
+      <button class="btn btn-ghost" id="downloadExportBtn">⬇️ Download as file</button>
+    </div>
+    <div class="export-flag" id="exportFlag"></div>
+  </div>
+
   <div class="who-toggle" id="whoToggle"></div>
   <div class="stat-grid" id="statGrid"></div>
   <div id="cues"></div>
@@ -76,6 +90,7 @@
 <script src="app-shell.js"></script>
 <script>
 const ARCHIVE_KEY = 'pj-workout-archive-v1';
+const EQUIPMENT_KEY = 'pj-equipment-v1';
 const PKEYS = ['pene', 'jenna'];
 const PNAME = { pene: 'Pene', jenna: 'Jenna' };
 const COLOR = { pene: 'var(--series-pene)', jenna: 'var(--series-jenna)' };
@@ -87,9 +102,22 @@ try{
   archive = raw ? JSON.parse(raw) : [];
 }catch(e){}
 
+let equipmentCache = (function(){
+  try{
+    const raw = localStorage.getItem(EQUIPMENT_KEY);
+    return raw ? JSON.parse(raw) : { equipment: '', notes: '' };
+  }catch(e){ return { equipment: '', notes: '' }; }
+})();
+let liveFitnessEntries = [];
+
 function parseLoad(v){
   if(v == null) return null;
-  const m = String(v).match(/(\d+(?:\.\d+)?)/);
+  const s = String(v);
+  // "2 x 12 kg dumbbells" means 12 kg per dumbbell, not the "2" count —
+  // match that pattern first so per-item load is what gets charted/exported.
+  const pair = s.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i);
+  if(pair) return parseFloat(pair[2]);
+  const m = s.match(/(\d+(?:\.\d+)?)/);
   return m ? parseFloat(m[1]) : null;
 }
 function fmtDate(iso){
@@ -163,6 +191,162 @@ function streakWeeks(){
     else break;
   }
   return streak;
+}
+
+// ---------------- Export everything for Claude ----------------
+function fmtTestValue(v, unit){
+  if(v == null) return '—';
+  if(unit === 'seconds'){
+    const m = Math.floor(v / 60), s = v % 60;
+    return m + ':' + String(s).padStart(2, '0');
+  }
+  return v + ' reps';
+}
+function parseDMY(d){
+  const parts = String(d).split('/').map(Number);
+  return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+// Same merge as tests.html: the original spreadsheet-era dates baked into
+// data.js, plus anything logged live since, a live entry on the same date
+// replaces the static one rather than duplicating it.
+function mergedFitnessTests(){
+  const staticFt = window.SITE_DATA.fitnessTests;
+  const testDefs = staticFt.tests.map(t=> ({ name: t.name, unit: t.unit }));
+  const recordMap = new Map();
+  staticFt.dates.forEach((d, i)=>{
+    const values = {};
+    testDefs.forEach(td=>{
+      const test = staticFt.tests.find(t=> t.name === td.name);
+      values[td.name] = { Pene: test.series.Pene[i] != null ? test.series.Pene[i] : null, Jenna: test.series.Jenna[i] != null ? test.series.Jenna[i] : null };
+    });
+    recordMap.set(d, { date: d, values: values });
+  });
+  (liveFitnessEntries || []).forEach(entry=>{
+    const values = {};
+    testDefs.forEach(td=>{
+      const match = (entry.tests || []).find(t=> t.name === td.name);
+      values[td.name] = { Pene: match && match.Pene != null ? match.Pene : null, Jenna: match && match.Jenna != null ? match.Jenna : null };
+    });
+    recordMap.set(entry.date, { date: entry.date, values: values });
+  });
+  const finalRecords = Array.from(recordMap.values()).sort((a, b)=> parseDMY(a.date) - parseDMY(b.date));
+  return {
+    dates: finalRecords.map(r=> r.date),
+    nextTestDate: staticFt.nextTestDate,
+    tests: testDefs.map(td=> ({
+      name: td.name,
+      unit: td.unit,
+      Pene: finalRecords.map(r=> r.values[td.name].Pene),
+      Jenna: finalRecords.map(r=> r.values[td.name].Jenna)
+    }))
+  };
+}
+function weeklySummaryLines(){
+  const byWeek = new Map();
+  archive.forEach(e=>{
+    if(!byWeek.has(e.week)) byWeek.set(e.week, []);
+    byWeek.get(e.week).push(e);
+  });
+  const lines = [];
+  byWeek.forEach((entries, week)=>{
+    lines.push('  - ' + week + ': ' + entries.map(e=> e.day).join(', '));
+  });
+  return lines;
+}
+function exerciseHistoryLines(){
+  const lines = [];
+  PKEYS.forEach(p=>{
+    const series = seriesFor(p);
+    const names = Object.keys(series);
+    if(!names.length) return;
+    lines.push(PNAME[p] + ':');
+    names.forEach(n=>{
+      const pts = series[n].points;
+      const last = pts[pts.length - 1];
+      const best = Math.max.apply(null, pts.map(x=> x.v));
+      lines.push('  - ' + n + ': last ' + last.v + ' ' + series[n].unit + (best !== last.v ? ', best ' + best + ' ' + series[n].unit : ''));
+    });
+  });
+  return lines;
+}
+function modifiedVersionLines(){
+  const versions = [];
+  if(archive.length){
+    (archive[archive.length - 1].exercises || []).forEach(ex=>{
+      if(!ex.versionBy) return;
+      PKEYS.forEach(p=>{ if(ex.versionBy[p]) versions.push(PNAME[p] + ' does ' + ex.name + ' as: ' + ex.versionBy[p]); });
+    });
+  }
+  return versions;
+}
+function recentSkipLines(){
+  const skips = [];
+  archive.slice(-3).forEach(e=> (e.exercises || []).forEach(ex=>{ if(ex.skipped && skips.indexOf(ex.name) === -1) skips.push(ex.name); }));
+  return skips;
+}
+function recentSessionLines(n){
+  const diffWord = { easier: 'easier than expected', right: 'just right', tougher: 'tougher than expected' };
+  return archive.slice(-n).reverse().map(entry=>{
+    const d = new Date(entry.completedAt);
+    const when = isNaN(d) ? '' : d.toLocaleDateString();
+    const felt = entry.difficultyBy
+      ? 'Pene ' + (diffWord[entry.difficultyBy.pene] || '?') + ', Jenna ' + (diffWord[entry.difficultyBy.jenna] || '?')
+      : (diffWord[entry.difficulty] || entry.difficulty || '');
+    return '  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + (entry.totalMinutes ? ', ' + entry.totalMinutes + ' min' : '') + (felt ? ', ' + felt : '') + (entry.note ? ', note: "' + entry.note + '"' : '');
+  });
+}
+function buildFullExportText(){
+  const lines = [];
+  lines.push('=== Pene & Jenna Fitness — Full Export ===');
+  lines.push('Generated ' + new Date().toLocaleDateString() + ' from the Progress page.');
+  lines.push('');
+  lines.push('EQUIPMENT ON HAND:');
+  lines.push(equipmentCache.equipment || '(not filled in yet — add this in the Tracker\'s Equipment & notes panel)');
+  lines.push('');
+  lines.push('NOTES FOR CLAUDE:');
+  lines.push(equipmentCache.notes || '(none)');
+  lines.push('');
+
+  const ft = mergedFitnessTests();
+  lines.push('FITNESS TEST RESULTS (all recorded dates: ' + ft.dates.join(', ') + '):');
+  ft.tests.forEach(t=>{
+    lines.push('  ' + t.name + ' (' + t.unit + ')');
+    lines.push('    Pene: ' + t.Pene.map(v=> fmtTestValue(v, t.unit)).join(' -> '));
+    lines.push('    Jenna: ' + t.Jenna.map(v=> fmtTestValue(v, t.unit)).join(' -> '));
+  });
+  lines.push('  Next retest date: ' + ft.nextTestDate);
+  lines.push('');
+
+  lines.push('COMPLETED WORKOUTS: ' + archive.length + ' total, current streak ' + streakWeeks() + ' week(s)');
+  weeklySummaryLines().forEach(l=> lines.push(l));
+  lines.push('');
+
+  lines.push('FULL EXERCISE HISTORY (last logged, and best, per person):');
+  const histLines = exerciseHistoryLines();
+  if(histLines.length) histLines.forEach(l=> lines.push(l));
+  else lines.push('  (nothing logged yet)');
+  lines.push('');
+
+  const versions = modifiedVersionLines();
+  if(versions.length){
+    lines.push('MODIFIED VERSIONS IN USE:');
+    versions.forEach(v=> lines.push('  - ' + v));
+    lines.push('');
+  }
+
+  const skips = recentSkipLines();
+  if(skips.length){
+    lines.push('KEPT GETTING SKIPPED LATELY (last 3 sessions): ' + skips.join(', '));
+    lines.push('');
+  }
+
+  lines.push('RECENT SESSIONS (most recent first):');
+  const recent = recentSessionLines(8);
+  if(recent.length) recent.forEach(l=> lines.push(l));
+  else lines.push('  (none finished yet)');
+  lines.push('');
+  lines.push('--- End of export. Paste this whole thing into a Claude chat to plan the next block. ---');
+  return lines.join('\n');
 }
 
 // A plain-language read of what the numbers say, per exercise: went up, held
@@ -239,12 +423,49 @@ function render(){
 
 render();
 
+document.getElementById('copyExportBtn').onclick = ()=>{
+  const flag = document.getElementById('exportFlag');
+  try{
+    navigator.clipboard.writeText(buildFullExportText());
+    flag.textContent = 'Copied! Paste it into your Claude chat.';
+  }catch(e){
+    flag.textContent = 'Could not copy automatically — try the download button instead.';
+  }
+  setTimeout(()=>{ flag.textContent = ''; }, 4000);
+};
+document.getElementById('downloadExportBtn').onclick = ()=>{
+  const text = buildFullExportText();
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'PeneJenna-Fitness-Export-' + new Date().toISOString().slice(0, 10) + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 1000);
+  const flag = document.getElementById('exportFlag');
+  flag.textContent = 'Downloaded — attach or share that file wherever is easiest.';
+  setTimeout(()=>{ flag.textContent = ''; }, 4000);
+};
+
 // Live history from the shared record, so both phones show the same thing.
 if(window.CloudSync){
   CloudSync.onArchiveChange = function(entries){
     archive = entries || [];
     try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archive)); }catch(e){}
     render();
+  };
+  // The shared household doc also carries equipment/notes (kept live so the
+  // export is current even if you last edited them from the Tracker page).
+  CloudSync.onStateChange = function(data){
+    if(data && (data.equipment != null || data.notes != null)){
+      equipmentCache = { equipment: data.equipment || '', notes: data.notes || '' };
+      try{ localStorage.setItem(EQUIPMENT_KEY, JSON.stringify(equipmentCache)); }catch(e){}
+    }
+  };
+  CloudSync.onFitnessTestsChange = function(entries){
+    liveFitnessEntries = entries || [];
   };
 }
 </script>
