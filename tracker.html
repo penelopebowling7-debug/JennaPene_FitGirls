@@ -908,10 +908,21 @@ let archiveCache = loadArchive();
 function parseLoad(v){
   if(v == null) return null;
   const s = String(v);
-  // "2 x 12 kg dumbbells" means 12 kg per dumbbell, not the "2" count —
-  // match that pattern first so per-item load is what gets compared/tracked.
+  // Weights that already state their own combined/total figure (e.g. "EZ bar
+  // (~13 kg) + 1 kg plate each side (~15 kg total)") should report that stated
+  // total, not the first number the string happens to mention.
+  const total = s.match(/(\d+(?:\.\d+)?)\s*kg\s*total\b/i);
+  if(total) return parseFloat(total[1]);
+  // "2 x 12 kg dumbbells": an explicit count of dumbbells at a given weight —
+  // the load actually worked is both added together (combined, not per-item).
   const pair = s.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i);
-  if(pair) return parseFloat(pair[2]);
+  if(pair) return parseFloat(pair[1]) * parseFloat(pair[2]);
+  // "9 kg dumbbells" (plural, no explicit count): a matched set, one in each
+  // hand. The tracker card still just says "9 kg dumbbells" as the equipment
+  // instruction — but progress/results should record the combined weight
+  // actually worked, i.e. both added together.
+  const set = s.match(/(\d+(?:\.\d+)?)\s*kg\s*dumbbells\b/i);
+  if(set) return parseFloat(set[1]) * 2;
   const m = s.match(/(\d+(?:\.\d+)?)/);
   return m ? parseFloat(m[1]) : null;
 }

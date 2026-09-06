@@ -2433,21 +2433,21 @@ window.SITE_DATA = {
                   {
                     "name": "Goblet Squat",
                     "qty": "4 rounds, 3 sec lower + 1 sec hold",
-                    "weight": "12.5 kg dumbbell",
+                    "weight": "10 kg dumbbell",
                     "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bulgarian Split Squat (Left)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "9 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Left%29%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bulgarian Split Squat (Right)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "9 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Right%29%20exercise%20form",
                     "videoKnown": false
                   },
@@ -2582,7 +2582,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way."
+            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way. Eased back for tomorrow specifically, per Pene (6 Sep) — a rough weekend (poor sleep, alcohol, not feeling well) — Goblet Squat down to 10kg and Bulgarian Split Squat back to a 7kg pair, no progression yet on either. Everything else on the day stays as planned, but there's no shame in using the skip/round-chip tools live in the app if more needs to come off on the day."
           },
           {
             "id": "tue",
@@ -3053,21 +3053,21 @@ window.SITE_DATA = {
                   {
                     "name": "Goblet Squat",
                     "qty": "4 rounds, 3 sec lower + 1 sec hold",
-                    "weight": "12.5 kg dumbbell",
+                    "weight": "10 kg dumbbell",
                     "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bulgarian Split Squat (Left)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "9 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Left%29%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bulgarian Split Squat (Right)",
                     "qty": "4 rounds, 3 sec lower + 1 sec pause at bottom",
-                    "weight": "9 kg dumbbells",
+                    "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Bulgarian%20Split%20Squat%20%28Right%29%20exercise%20form",
                     "videoKnown": false
                   },
@@ -3202,7 +3202,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet."
+            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Eased back for tomorrow specifically, per Pene (6 Sep) — a rough weekend (poor sleep, alcohol, not feeling well) — Goblet Squat down to 10kg and Bulgarian Split Squat back to a 7kg pair, no progression yet on either. Everything else on the day stays as planned, but there's no shame in using the skip/round-chip tools live in the app if more needs to come off on the day."
           },
           {
             "id": "tue",

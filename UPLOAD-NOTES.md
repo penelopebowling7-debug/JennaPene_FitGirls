@@ -2,6 +2,22 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 10 — Monday eased back, and "results" now reflect combined weight (6 Sep)
+Pene: "I want to goblet squat at 10kg, no progression yet. Especially tomorrow, we've had a big weekend, poor sleep too much alcohol and not feeling well. Bulgarian split squat keep at 7kg dumbell set, which should then show its 14 kg in our results. I see the exercise tracker as the equipment instruction, but our progress should acurately record the weight we worked out so if an exercise uses a set, it should calculate the combined weight."
+
+Two separate things here — a day-specific ease-back, and a genuine calculation bug in how "progress" gets worked out.
+
+**1. Monday eased back (Week 15 and Week 16)**: rough weekend, poor sleep, alcohol, not feeling well — no shame in that, and no progression either.
+- Goblet Squat: down to **10 kg dumbbell** (was 12.5kg in Week 15, 15kg in Week 16).
+- Bulgarian Split Squat (both sides): back to a **7 kg dumbbell pair** (was 9kg in Week 15, 10kg in Week 16).
+- Monday's day note now explains why, and reminds that the in-app skip/round-chip tools are there live on the day if more needs to come off.
+
+**2. The real bug — "results" were reporting per-dumbbell weight, not combined weight**. The exercise card itself is correctly just an equipment instruction ("7 kg dumbbells" tells you which dumbbells to pick up) and that display text is untouched. But everywhere the app calculates a number from that — the Progress page's charts, Personal Bests, the "★ new best" badges on exercise cards, and both export-to-Claude features — was quietly using only ONE dumbbell's weight for any exercise using a matched pair. So a 7kg pair (14kg of actual load, one in each hand) was being charted and exported as "7kg." Bulgarian Split Squat, Dumbbell Shoulder Press, Dumbbell Floor Press, Renegade Row, and Plank Pull Through were all affected.
+
+**Fixed** in both `progress.html` and `tracker.html` (they each keep their own copy of the parsing function): a plural "X kg dumbbells" with no explicit count is now treated as a matched set and doubled for results (7 kg dumbbells → 14kg tracked); an explicit "2 x 12 kg dumbbells" is now correctly multiplied out (24kg, not 12kg); and a weight string that already states its own combined total in brackets (the EZ bar and light bar composite strings from Batch 7, e.g. "...18.5 kg total") now correctly pulls that stated total instead of the first number it happens to contain (that one was a pre-existing bug too — light bar sets were charting as "1kg"). Singular "X kg dumbbell" (Goblet Squat, Overhead Tricep Extension, Single Arm Row, and the "on hips" Single Leg Glute Bridge variant, all one implement) are correctly left alone, not doubled.
+
+**Testing**: audited every distinct weight string across all 6 weeks against the new logic and confirmed each parses correctly (singular vs. plural dumbbells, explicit "N x M", EZ bar/light bar stated totals, barbells, kettlebells, bands, Med Ball, bodyweight). Ran the full 5-page Playwright regression — zero unexpected console errors. Confirmed Monday's Goblet Squat and Bulgarian Split Squat inputs render the eased-back numbers correctly in both Week 15 and Week 16, for both Pene and Jenna. Confirmed directly in the browser that `parseLoad('7 kg dumbbells')` now returns 14, `parseLoad('10 kg dumbbell')` still returns 10, and the EZ bar / light bar total-stated strings return their correct totals.
+
 ## Batch 9 — Arm Finisher never had a timer or explicit reps (6 Sep)
 Pene noticed Tuesday's Arm Finisher block has no timer and doesn't tell you how many reps to do. Real bug, not a design choice — it's been like this since Week 11.
 
