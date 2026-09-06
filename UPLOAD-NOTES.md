@@ -2,6 +2,17 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 11 — EZ bar exercises share one weight, Core Finisher refreshed (6 Sep)
+Pene: "let's vary the core finisher some how. Also having the ez bar and the ez bar skull crusher won't work by having different weights - there is not enough time to take the plates off between an exercise in the same circuit."
+
+**1. EZ Bar Bicep Curl and EZ Bar Skull Crusher now share one weight (Week 15 and Week 16, Tuesday's Arm Finisher)**. Real problem, not a nitpick: both exercises sit in the same circuit with only 20 seconds rest between them, and up to now they were set at different plate loads — no realistic way to add or remove plates from an EZ bar in 20 seconds. Fixed by matching Curl DOWN to Skull Crusher's current bar-alone setup ("EZ bar alone (~13 kg), no added plates yet") rather than loading Skull Crusher up to match Curl — same "hold steady, don't guess a progression" logic as everywhere else in this program. Same bar, same setup, zero plate changes needed, for both exercises, for both Pene and Jenna. Once that feels comfortable across a full session, plates can go on for both together next time — not just one of them. Tuesday's day note explains the change.
+
+**2. Core Finisher refreshed (Week 16 Thursday)**. It had been the exact same 4 exercises — Russian Twist, Hollow Hold, Superman Hold, Mountain Climber Twist — since Week 11, with only the Russian Twist's med ball getting heavier over time. Swapped two out: Russian Twist → **Bicycle Crunch** (dynamic rotation instead of a loaded static one) and Hollow Hold → **Plank Shoulder Taps** (anti-rotation stability) — chosen so this block doesn't just repeat what Monday's Core block already covers (Hollow Hold, Deadbug, Side Planks). Superman Hold and Mountain Climber Twist stay, they're still doing distinct work. Thursday's day note explains the swap and suggests rotating this block's exercises every few weeks going forward so it doesn't go stale again — happy to set up a rotation if that's useful rather than doing it ad hoc.
+
+**Testing**: confirmed via Playwright that both EZ Bar exercises now show the identical weight string for both people in Week 15 and Week 16, ran the full 5-page regression (zero unexpected console errors), and confirmed the Core Finisher's guided timer still renders correctly ("▶ Start Round Timer — 4 exercises (30s work)") with the new exercise names showing on the cards.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 10 zip) via the usual manual upload workflow.
+
 ## Batch 10 — Monday eased back, and "results" now reflect combined weight (6 Sep)
 Pene: "I want to goblet squat at 10kg, no progression yet. Especially tomorrow, we've had a big weekend, poor sleep too much alcohol and not feeling well. Bulgarian split squat keep at 7kg dumbell set, which should then show its 14 kg in our results. I see the exercise tracker as the equipment instruction, but our progress should acurately record the weight we worked out so if an exercise uses a set, it should calculate the combined weight."
 

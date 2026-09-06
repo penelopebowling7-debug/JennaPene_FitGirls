@@ -2698,13 +2698,13 @@ window.SITE_DATA = {
                   {
                     "name": "EZ Bar Bicep Curl",
                     "qty": "2 rounds, 15 reps",
-                    "weight": "EZ bar (~13 kg) + 1 kg plate each side (~15 kg total)",
+                    "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "EZ Bar Skull Crusher",
-                    "qty": "2 rounds, 15 reps — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
                     "videoKnown": false
@@ -2777,7 +2777,7 @@ window.SITE_DATA = {
                 "videoKnown": true
               }
             ],
-            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair."
+            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair. Curl and Skull Crusher now share the exact same bar setup (no plates) since they run back-to-back in this circuit with only 20 seconds rest — not enough time to add or remove plates between them. Once both feel comfortable at bar-alone for a full session, plates can go on for both together, not just one."
           },
           {
             "id": "fri",
@@ -3318,13 +3318,13 @@ window.SITE_DATA = {
                   {
                     "name": "EZ Bar Bicep Curl",
                     "qty": "2 rounds, 15 reps",
-                    "weight": "EZ bar (~13 kg) + 1 kg plate each side (~15 kg total)",
+                    "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "EZ Bar Skull Crusher",
-                    "qty": "2 rounds, 15 reps — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
                     "videoKnown": false
@@ -3397,7 +3397,7 @@ window.SITE_DATA = {
                 "videoKnown": true
               }
             ],
-            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet."
+            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Curl and Skull Crusher now share the exact same bar setup (no plates) since they run back-to-back in this circuit with only 20 seconds rest — not enough time to add or remove plates between them. Once both feel comfortable at bar-alone for a full session, plates can go on for both together, not just one."
           },
           {
             "id": "thu",
@@ -3525,17 +3525,17 @@ window.SITE_DATA = {
                 "tempo": "30 sec work",
                 "exercises": [
                   {
-                    "name": "Russian Twist",
+                    "name": "Bicycle Crunch",
                     "qty": "2 rounds",
-                    "weight": "4 kg Med Ball",
-                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
                     "videoKnown": false
                   },
                   {
-                    "name": "Hollow Hold",
+                    "name": "Plank Shoulder Taps",
                     "qty": "2 rounds",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -3599,7 +3599,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Back in its normal Thursday slot this week — no travel, so no need to shift it to Friday. Conditioning Circuit is deliberately 3 rounds, not 4: Week 14's real note said you ran out of time for the fourth round but it felt like enough anyway, so this matches your actual time and effort rather than being a step back. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Renegade Row (7kg pair) and Farmer Carry (2 x 12.5kg, back to a normal two-hand carry) are both back to their proper bilateral form rather than the single-arm workaround from the first draft. Barbell Deadlift: same light bar as Monday's RDL, confirmed at ~1kg empty with matched-pair plates — maxed out at 18.5kg total loaded with everything you've got, so this is the ceiling on this bar for now. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet."
+            "note": "Back in its normal Thursday slot this week — no travel, so no need to shift it to Friday. Conditioning Circuit is deliberately 3 rounds, not 4: Week 14's real note said you ran out of time for the fourth round but it felt like enough anyway, so this matches your actual time and effort rather than being a step back. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Renegade Row (7kg pair) and Farmer Carry (2 x 12.5kg, back to a normal two-hand carry) are both back to their proper bilateral form rather than the single-arm workaround from the first draft. Barbell Deadlift: same light bar as Monday's RDL, confirmed at ~1kg empty with matched-pair plates — maxed out at 18.5kg total loaded with everything you've got, so this is the ceiling on this bar for now. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Core Finisher gets a refresh this week too — it had been the exact same 4 exercises since Week 11. Russian Twist and Hollow Hold are swapped out for Bicycle Crunch (dynamic rotation instead of a loaded static one) and Plank Shoulder Taps (anti-rotation stability), so this week trains a different mix without overlapping Monday's Core block. Superman Hold and Mountain Climber Twist stay, they're still doing distinct work. Worth rotating this block's exercises every few weeks going forward so it doesn't go stale again."
           }
         ]
       }
