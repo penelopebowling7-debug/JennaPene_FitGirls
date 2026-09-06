@@ -2,6 +2,17 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 9 — Arm Finisher never had a timer or explicit reps (6 Sep)
+Pene noticed Tuesday's Arm Finisher block has no timer and doesn't tell you how many reps to do. Real bug, not a design choice — it's been like this since Week 11.
+
+**Root cause**: every other timed block's tempo string looks like "40 sec active / 20 sec rest" or, for the old rep-based Push Up Block, "10 reps, 20 sec rest" — both formats the app's tempo parser understands, so it shows a working "▶ Start Round Timer" button. Arm Finisher's tempo has only ever said "15 reps" — no rest value — which the parser doesn't recognize as anything, so the button never appeared for this block, in any week, ever. On top of that, the "15 reps" figure only ever showed as a small label next to the block's name; the individual exercise cards themselves just said "2 rounds" with no rep count at all, easy to miss.
+
+**Fixed, across every week (11 through 16)**:
+- Arm Finisher's tempo is now "15 reps, 20 sec rest between exercises" — the same format Push Up Block used successfully, so the guided timer now works properly: "▶ Start Round Timer — 4 exercises (20s rest)", walking through each exercise at your own pace and cueing the 20-second rest between them.
+- Every rep-based exercise in the block (Hammer Curls/Tricep Kick Backs in Weeks 11-13, EZ Bar Bicep Curl/Skull Crusher in Weeks 14-16, and Plank Pull Through throughout) now states its own qty as "2 rounds, 15 reps" directly on the card, not just in the small block header. Plank Hold is untouched since it's a timed hold, not reps — "Beat last week's time" already covers it.
+
+**Testing**: confirmed via Playwright that the "Start Round Timer" button now renders for Arm Finisher in both Week 15 and Week 16 with the correct exercise count and rest time, confirmed every affected exercise card now shows its rep count explicitly, and ran the full 5-page regression — zero unexpected console errors.
+
 ## Batch 8 — Week 16 holds steady, doesn't progress (6 Sep)
 Pene's call right after Batch 7 shipped: "I think week 16 should not progress higher weights, we didn't manage to complete everything in week 14. That's the sort of stuff I want you to be looking at and making adjustments so that our progress is steady not unsuccessful."
 

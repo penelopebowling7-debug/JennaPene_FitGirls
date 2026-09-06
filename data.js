@@ -352,25 +352,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "Hammer Curls",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Hammer%20Curls%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Tricep Kick Backs",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "4 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Tricep%20Kick%20Backs%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
@@ -993,25 +993,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "Hammer Curls",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Hammer%20Curls%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Tricep Kick Backs",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "4 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Tricep%20Kick%20Backs%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
@@ -1634,25 +1634,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "Hammer Curls",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Hammer%20Curls%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Tricep Kick Backs",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "4 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Tricep%20Kick%20Backs%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
                     "weight": "5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
@@ -2073,25 +2073,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "EZ Bar Bicep Curl",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar + 5 kg plates each side (10 kg total)",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "EZ Bar Skull Crusher",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar + 2.5 kg plates each side (5 kg total)",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
@@ -2693,25 +2693,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "EZ Bar Bicep Curl",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar (~13 kg) + 1 kg plate each side (~15 kg total)",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "EZ Bar Skull Crusher",
-                    "qty": "2 rounds — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
+                    "qty": "2 rounds, 15 reps — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
                     "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
@@ -3313,25 +3313,25 @@ window.SITE_DATA = {
               {
                 "name": "Arm Finisher",
                 "rounds": 2,
-                "tempo": "15 reps",
+                "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
                   {
                     "name": "EZ Bar Bicep Curl",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "EZ bar (~13 kg) + 1 kg plate each side (~15 kg total)",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "EZ Bar Skull Crusher",
-                    "qty": "2 rounds — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
+                    "qty": "2 rounds, 15 reps — start with just the bar, this is already more load than the old \"5kg total\" assumed, see Tuesday note",
                     "weight": "EZ bar alone (~13 kg), no added plates yet",
                     "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Plank Pull Through",
-                    "qty": "2 rounds, slow and controlled, no rotation",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
