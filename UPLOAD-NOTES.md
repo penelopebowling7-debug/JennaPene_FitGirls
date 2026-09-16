@@ -2,6 +2,60 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 15 — real cardio added, core coverage confirmed, Week 16 and Week 17 (15 Sep)
+Pene: "Can we make sure we work our core, I would like more aerobic or cardio, get our bodies moving. I'm not sure but I feel like we have just been doing weights?" A fair read of the program as it stood — worth checking properly rather than just reassuring her.
+
+**What was actually true**: Monday already covers this well (Athletic Circuit is bodyweight cardio-style work — Skipping Rope, Broad Jump, Lateral Bound, Mountain Climbers — plus a dedicated Core block). Thursday had a Core Finisher and a cardio finisher, but that finisher was marked **optional**, so it was easy to skip past exactly when time got tight — which, given the recent "ran out of time" pattern, it probably was. Tuesday was the real gap: Strength, Arm Finisher, and a small Ab Finisher at the end, but genuinely zero dedicated cardio beyond the 2-minute warmup jog.
+
+**Fixed, applied to both Week 16 Thursday (still upcoming) and Week 17 (all three days)**:
+- **Thursday's cardio finisher is no longer optional.** Renamed "Cardio Finisher," bumped from 5 to 6-8 minutes, and it's now just part of the session rather than a bonus that's easy to drop.
+- **Tuesday gets a new "Cardio Burst" block**: 2 rounds of High Knees and Star Jumps, about 4 minutes total, placed right after Strength and before Arm Finisher. Star Jumps is a new Exercise Library entry (CD019); High Knees already existed (CD006).
+- **Monday needed nothing added** — its existing Athletic Circuit and Core block already do what Pene's asking for, noted directly in Monday's day note so it's clear that side of the program was already covered, not overlooked.
+- Tuesday's estimated time nudged up slightly (50-55 min) to reflect the added block, still well under the pre-trim 60-65 min sessions from before Batch 12.
+
+**Testing**: same Node-level structural validation as recent batches — every week's blocks/exercises still follow the same schema, `data.js` syntax verified, both Week 16 and Week 17's Thursday and Tuesday blocks confirmed to contain the new content. Full in-browser Playwright regression still not run this session, same honest caveat as recent batches.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 14 zip) via the usual manual upload workflow.
+
+## Batch 14 — Week 16 Thursday refreshed too, same boredom fix, brought forward (15 Sep)
+Pene: "Can we change the Thursday for week 16 too. I'm bored and I don't feel like working out because I'm bored with it." Week 16's Thursday session hasn't happened yet and comes before Week 17 does, so the same freshness fix built for Week 17 Thursday is brought forward onto this one now rather than making her wait a week for it.
+
+**Built** — Week 16 Thursday gets the identical treatment Week 17 Thursday already got:
+- Conditioning Circuit trimmed from 8 exercises to 5 (Renegade Row, the extra Goblet Squat and Plank Jacks rest this week, not deleted).
+- Core Finisher swaps Mountain Climber Twist for Flutter Kicks.
+- New optional "Fun Cardio Finisher" block added: 5 minutes of easy jog or skipping rope, entirely optional.
+- **Weights untouched** — this is purely a variety and session-length fix, not a load change; Week 16 was already holding steady at Week 15's numbers per Batch 8, and that stays exactly as it was.
+
+**Testing**: same Node-level structural validation as Batch 12 — every week's blocks/exercises still follow the same schema, `data.js` syntax verified. Full in-browser Playwright regression still not run this session, same honest caveat as Batch 12.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 13 zip) via the usual manual upload workflow.
+
+## Batch 13 — Week 17 Tuesday: real dumbbell clash fixed before it happens again (15 Sep)
+Pene, straight after completing Week 16 Tuesday in full: "we had to move the overhead tricep extension dumbbell shoulder press and dumbbell floor press back to 7kg because the arm rows used the 9kg. Which felt just right today, we didn't feel very strong but got everything done." Week 16 Tuesday and Monday are both now marked complete for the first time in a while — genuinely good news, worth noting.
+
+**The real issue**: you and Jenna train side by side at the same time, but only one pair exists of most dumbbell weights (5kg is the only weight with two owned pairs). When two exercises in the same session both call for 9kg, only one 9kg pair is actually available between the two of you, so something has to give. Today that was Shoulder Press, Floor Press and Overhead Tricep Extension all easing to 7kg while Single Arm Row kept the 9kg — and it worked, felt right, everything got done.
+
+**Fixed directly in Week 17's Tuesday** (before it gets uploaded and hits the same clash): Dumbbell Shoulder Press, Dumbbell Floor Press and Overhead Tricep Extension all set to 7kg to match what you just proved works, Single Arm Row (Alternating) stays at 9kg. Tuesday's day note explains why.
+
+**Worth flagging as a standing thing to watch**: any future week that clusters multiple exercises at the same dumbbell weight in one session risks this same clash, since you only own one pair per weight outside of 5kg. Worth checking for this the same deliberate way progression and variety already get checked.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 12 zip) via the usual manual upload workflow.
+
+## Batch 12 — Week 17 built: trimmed, varied, and genuinely new (15 Sep)
+Pene: "I'm so bored with our workouts and we aren't completing them properly." The real signal behind this: the app's own export showed the same block of exercises being skipped across three sessions running (Goblet Squat, both Bulgarian Split Squats, Romanian Deadlift, both Glute Bridges, all of Athletic Circuit, all of Core, Russian Twist, Bicycle Crunch), Tuesday sessions running 57-60 min with a note saying "Ran out of time to do core finisher," and loads sitting flat since Week 14. Boredom and incompletion are the same problem here, not two — the sessions are too long and too repetitive, so the tail keeps getting cut.
+
+**Week 17 built (Mon 21, Tue 22, Thu 24 Sep)**, trimmed and refreshed rather than just re-run at bigger numbers:
+- **Monday**: Strength Circuit cut from 6 exercises to 4 (Bulgarian Split Squat's Left/Right pair merged into one flowing Curtsy Lunge card, one of the two Glute Bridge sides replaced by Step Up onto Block — first time the stepping block's actually been used). Athletic Circuit cut from 5 exercises to 4, swapping in Skipping Rope, Broad Jump and Lateral Bound for Lateral Lunges, Bear Crawl and Skater Jumps — skipping rope has never featured in the program despite Pene owning one. Core swaps Hollow Hold and both Side Planks for Ab Wheel Rollout (ab roller, also never used until now) and a Band Pallof Press. Rounds trimmed 4→3 and 3→2 across the board.
+- **Tuesday**: the two Single Arm Row cards merged into one alternating card (same total reps, one less thing to track). Plank Hold dropped from Arm Finisher (redundant with the Fitness Test). Ab Finisher swaps Russian Twist for Med Ball Slam. EZ Bar Curl/Skull Crusher keep sharing one weight, same reasoning as Batch 11.
+- **Thursday**: Conditioning Circuit cut from 8 exercises to 5 (Renegade Row, the second Goblet Squat and Plank Jacks rested this week, not deleted — they'll rotate back). Core Finisher swaps Mountain Climber Twist for Flutter Kicks so it doesn't repeat Monday's new Mountain Climbers. New optional "Fun Cardio Finisher" block at the end — 5 minutes of easy jog or skipping rope, entirely optional — directly off Pene's own note that the short jog she added after Week 15 Monday "felt nice."
+- **All weights held at Week 16's numbers, nothing progressed** — same "hold steady until a week's actually completed successfully" principle as Batch 8, now also applied to the brand new exercises (they get a session to find their feet before any load gets added).
+- **9 new Exercise Library entries added**: L012 Curtsy Lunge, L013 Step Up onto Block, CD015 Skipping Rope, CD016 Broad Jump, CD017 Lateral Bound, CR010 Ab Wheel Rollout, CR011 Band Pallof Press, B007 Single Arm Row (Alternating), CR012 Med Ball Slam, CR013 Flutter Kicks, CD018 Easy Jog or Skipping Rope Intervals.
+- Push Up Block was deliberately **not** brought back into Week 17 — trimming for time and reintroducing a whole block in the same week would work against each other. Worth bringing back once the trimmed structure is finishing comfortably.
+
+**Testing**: the new week loads and parses correctly (Node-level structural check against every week's blocks/exercises, `data.js` syntax verified), and every block/exercise/day object follows the exact same schema every other week already uses successfully. **Not done this round**: the full in-browser Playwright regression that earlier batches ran couldn't complete in this session (the headless browser didn't come up in time) — the data itself is verified sound, but the live rendering in a real browser hasn't been re-confirmed the way Batches 1-11 were. Worth a quick look on your end after uploading, particularly the new "Fun Cardio Finisher" block (it won't show a guided round timer, since it's one continuous 5-minute block rather than a work/rest circuit — that's expected, not a bug).
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 11 zip) via the usual manual upload workflow.
+
 ## Batch 11 — EZ bar exercises share one weight, Core Finisher refreshed (6 Sep)
 Pene: "let's vary the core finisher some how. Also having the ez bar and the ez bar skull crusher won't work by having different weights - there is not enough time to take the plates off between an exercise in the same circuit."
 

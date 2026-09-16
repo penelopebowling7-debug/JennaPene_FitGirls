@@ -3202,13 +3202,13 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Eased back for tomorrow specifically, per Pene (6 Sep) — a rough weekend (poor sleep, alcohol, not feeling well) — Goblet Squat down to 10kg and Bulgarian Split Squat back to a 7kg pair, no progression yet on either. Everything else on the day stays as planned, but there's no shame in using the skip/round-chip tools live in the app if more needs to come off on the day."
+            "note": "Real correction from Pene (6 Sep): every dumbbell weight is actually a matching PAIR, not a single (the 5kg set alone has two pairs, four dumbbells total) — so Bulgarian Split Squat is back to a normal bilateral hold, now at a real 9kg pair rather than the 7kg it was stuck at. Goblet Squat steps up to 12.5kg. Romanian Deadlift: the \"light bar\" is confirmed at ~1kg empty with matched-pair plates (2.5/1.25/5kg each side) — loaded with everything you've got, that bar now maxes out at 18.5kg total, so this is as heavy as it currently goes; further progress on this lift comes from tempo, not load, until there's a heavier bar or more plates. Athletic Circuit and Core both add a round since they're bodyweight (or light Med Ball) and lower risk to progress that way. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Eased back for tomorrow specifically, per Pene (6 Sep) — a rough weekend (poor sleep, alcohol, not feeling well) — Goblet Squat down to 10kg and Bulgarian Split Squat back to a 7kg pair, no progression yet on either. Everything else on the day stays as planned, but there's no shame in using the skip/round-chip tools live in the app if more needs to come off on the day. Monday's Athletic Circuit (Skipping Rope, Broad Jump, Lateral Bound, Mountain Climbers) and dedicated Core block already cover the aerobic and core work Pene asked for, so nothing extra needed here, just flagging it so the whole week's coverage is clear."
           },
           {
             "id": "tue",
             "label": "Tuesday",
             "title": "Upper Body",
-            "estTime": "65 min",
+            "estTime": "50 to 55 min",
             "warmup": [
               {
                 "name": "Treadmill / Jog in Place",
@@ -3311,6 +3311,27 @@ window.SITE_DATA = {
                 ]
               },
               {
+                "name": "Cardio Burst",
+                "rounds": 2,
+                "tempo": "30 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "High Knees",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Star Jumps",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Star%20Jumps%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
                 "name": "Arm Finisher",
                 "rounds": 2,
                 "tempo": "15 reps, 20 sec rest between exercises",
@@ -3397,13 +3418,13 @@ window.SITE_DATA = {
                 "videoKnown": true
               }
             ],
-            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Curl and Skull Crusher now share the exact same bar setup (no plates) since they run back-to-back in this circuit with only 20 seconds rest — not enough time to add or remove plates between them. Once both feel comfortable at bar-alone for a full session, plates can go on for both together, not just one."
+            "note": "Push Up Block is gone for good now, per your call — the rest of the session already had enough in it, so Strength stays at 3 rounds rather than adding volume to fill the gap. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Shoulder Press and Floor Press are back to normal bilateral holds (9kg and 10kg pairs) rather than the single-arm workaround from the first draft. The EZ bar itself weighs about 13kg empty, more than the \"10kg total\" this block assumed for two weeks, so curls and skull crushers start from that real baseline — its plates are now confirmed as matched pairs too, so there's real room to add more once these starting loads feel comfortable. Band Face Pulls references your actual band set (13.6kg), Plank Pull Through now uses a proper 7kg pair. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Curl and Skull Crusher now share the exact same bar setup (no plates) since they run back-to-back in this circuit with only 20 seconds rest — not enough time to add or remove plates between them. Once both feel comfortable at bar-alone for a full session, plates can go on for both together, not just one. Added a short Cardio Burst block today too — Tuesday had zero real cardio in it beyond the warmup jog, and Pene asked for more aerobic work and to make sure core keeps getting hit, not just weights. Two rounds of High Knees and Star Jumps, about 4 minutes total, right after Strength and before Arm Finisher."
           },
           {
             "id": "thu",
             "label": "Thursday",
             "title": "Conditioning",
-            "estTime": "60 to 65 min",
+            "estTime": "45 to 50 min",
             "warmup": [
               {
                 "name": "Jumping Jacks",
@@ -3476,24 +3497,10 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Renegade Row",
-                    "qty": "3 rounds",
-                    "weight": "7 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=Renegade%20Row%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
                     "name": "Farmer Carry",
                     "qty": "3 rounds",
                     "weight": "2 x 12.5 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Farmer%20Carry%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Goblet Squat",
-                    "qty": "4 rounds",
-                    "weight": "9 kg dumbbell",
-                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -3508,13 +3515,6 @@ window.SITE_DATA = {
                     "qty": "4 rounds",
                     "weight": "~1 kg bar + full plate set each side (2.5+1.25+5 kg, matched pairs), 18.5 kg total — same bar as Monday's RDL, also now maxed out",
                     "video": "https://www.youtube.com/results?search_query=Barbell%20Deadlift%20exercise%20form",
-                    "videoKnown": false
-                  },
-                  {
-                    "name": "Plank Jacks",
-                    "qty": "4 rounds",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
                     "videoKnown": false
                   }
                 ]
@@ -3546,10 +3546,24 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Mountain Climber Twist",
+                    "name": "Flutter Kicks",
                     "qty": "2 rounds",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climber%20Twist%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Cardio Finisher",
+                "rounds": 1,
+                "tempo": "6 to 8 min continuous, easy pace",
+                "exercises": [
+                  {
+                    "name": "Easy Jog or Skipping Rope Intervals",
+                    "qty": "6 to 8 minutes",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Easy%20Jog%20or%20Skipping%20Rope%20Intervals%20exercise%20form",
                     "videoKnown": false
                   }
                 ]
@@ -3599,7 +3613,578 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "Back in its normal Thursday slot this week — no travel, so no need to shift it to Friday. Conditioning Circuit is deliberately 3 rounds, not 4: Week 14's real note said you ran out of time for the fourth round but it felt like enough anyway, so this matches your actual time and effort rather than being a step back. Correction from Pene (6 Sep): every dumbbell weight is a real matching pair, so Renegade Row (7kg pair) and Farmer Carry (2 x 12.5kg, back to a normal two-hand carry) are both back to their proper bilateral form rather than the single-arm workaround from the first draft. Barbell Deadlift: same light bar as Monday's RDL, confirmed at ~1kg empty with matched-pair plates — maxed out at 18.5kg total loaded with everything you've got, so this is the ceiling on this bar for now. Holding weights and tempo exactly at Week 15's numbers this week rather than progressing further — Week 14 wasn't fully completed (see the real-world feedback notes), so the priority right now is nailing a full, successful week at these loads before adding more, not stacking another jump on top of ones that haven't been tested yet. Core Finisher gets a refresh this week too — it had been the exact same 4 exercises since Week 11. Russian Twist and Hollow Hold are swapped out for Bicycle Crunch (dynamic rotation instead of a loaded static one) and Plank Shoulder Taps (anti-rotation stability), so this week trains a different mix without overlapping Monday's Core block. Superman Hold and Mountain Climber Twist stay, they're still doing distinct work. Worth rotating this block's exercises every few weeks going forward so it doesn't go stale again."
+            "note": "Refreshed for variety, same real reason as Week 17: you told me you're bored, and this Thursday is coming up before that week does, so it gets the same treatment now rather than waiting. Conditioning Circuit trimmed from 8 exercises to 5, Renegade Row, the extra Goblet Squat and Plank Jacks are resting this week, not gone, they'll rotate back. Core Finisher swaps Mountain Climber Twist for Flutter Kicks, a fresh anti-extension move that doesn't repeat Monday's Athletic Circuit. New optional finisher at the end too: 5 minutes of easy jog or skipping rope, whatever feels good, entirely optional, straight from your own note that the little jog after Week 15 Monday felt nice. All weights held exactly as they were, this is purely about freshness and a shorter session, not a load change. Made the cardio finisher a real, non-optional part of the session now (not just an option to skip past) — Pene asked directly for more aerobic work across the program, so this is no longer a bonus, it's the plan."
+          }
+        ]
+      },
+      {
+        "id": "week17",
+        "label": "Week 17",
+        "dates": "Mon 21, Tue 22, Thu 24 Sep",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Lower Body (Athletic Focus)",
+            "estTime": "45 to 50 min",
+            "warmup": [
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              },
+              {
+                "name": "Sitting Hamstring Stretch",
+                "qty": "20 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Sitting%20Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Deep Squat Hold",
+                "qty": "30 seconds",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Deep%20Squat%20Hold%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 each leg",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Side Lunges",
+                "qty": "8 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Side%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Air Squats",
+                "qty": "12 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Air%20Squats%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength Circuit",
+                "rounds": 3,
+                "tempo": "40 sec active / 20 sec rest, 90 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Goblet Squat",
+                    "qty": "3 rounds, 3 sec lower + 1 sec hold",
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Curtsy Lunge (Alternating)",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Curtsy%20Lunge%20%28Alternating%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Romanian Deadlift",
+                    "qty": "3 rounds",
+                    "weight": "~1 kg bar + full plate set each side (2.5+1.25+5 kg, matched pairs), 18.5 kg total — the max this bar can currently take",
+                    "video": "https://youtube.com/shorts/_TchJLlBO-4?si=kpKOAIS5Glblf1j1",
+                    "videoKnown": true
+                  },
+                  {
+                    "name": "Step Up onto Block",
+                    "qty": "3 rounds each leg",
+                    "weight": "7 kg dumbbells, held at sides",
+                    "video": "https://www.youtube.com/results?search_query=Step%20Up%20onto%20Block%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Athletic Circuit",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Skipping Rope",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Skipping%20Rope%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Broad Jump",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Broad%20Jump%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Lateral Bound",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Lateral%20Bound%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Mountain Climbers",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Core",
+                "rounds": 2,
+                "tempo": "35 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Ab Wheel Rollout (Kneeling)",
+                    "qty": "2 rounds",
+                    "weight": "Ab roller",
+                    "video": "https://www.youtube.com/results?search_query=Ab%20Wheel%20Rollout%20%28Kneeling%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Band Pallof Press",
+                    "qty": "2 rounds each side",
+                    "weight": "4.6 kg rated band",
+                    "video": "https://www.youtube.com/results?search_query=Band%20Pallof%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Deadbug Med Ball",
+                    "qty": "2 rounds",
+                    "weight": "4 kg Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Deadbug%20Med%20Ball%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hip%20Flexor%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Hamstring Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Figure 4 / Glute Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Figure%204%20/%20Glute%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "note": "New moves in today's session, on purpose! You told me you're bored and getting skipped a lot, so this week trims the list right down and swaps in fresh exercises for the ones that kept getting bypassed. Curtsy Lunge replaces the Bulgarian Split Squat pair (same single-leg strength work, one flowing card instead of two, and a bit kinder on tired legs). Step Up onto Block finally puts your stepping block to use instead of another glute bridge. Athletic Circuit is down to 4 moves including your skipping rope, which has never actually featured in the program before now, worth a laugh the first time you pick it back up! Core swaps in the ab roller (also unused until today) and a Band Pallof Press for anti-rotation strength. Everything is held at Week 16's weights, no progression this week, since a fresh exercise deserves a session to find its feet before adding load. Rounds are trimmed across the board so this should run noticeably shorter than recent weeks. If anything still feels like too much, the skip tools are right there, no guilt. Monday's Athletic Circuit (Skipping Rope, Broad Jump, Lateral Bound, Mountain Climbers) and dedicated Core block already cover the aerobic and core work Pene asked for, so nothing extra needed here, just flagging it so the whole week's coverage is clear."
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Upper Body",
+            "estTime": "50 to 55 min",
+            "warmup": [
+              {
+                "name": "Treadmill / Jog in Place",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Treadmill%20/%20Jog%20in%20Place%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Band Pull Aparts",
+                "qty": "15 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Band%20Pull%20Aparts%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "10 forward, 10 backwards",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Wall Slides",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Wall%20Slides%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bird Dog",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/watch?v=QABW99qPiNM",
+                "videoKnown": true
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Strength",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Dumbbell Shoulder Press",
+                    "qty": "3 rounds",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Shoulder%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Dumbbell Floor Press",
+                    "qty": "3 rounds, 3 sec lower to chest",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Floor%20Press%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Overhead Tricep Extension",
+                    "qty": "3 rounds",
+                    "weight": "7 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Overhead%20Tricep%20Extension%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Arm Row (Alternating)",
+                    "qty": "3 rounds each arm, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "9 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Alternating%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Band Face Pulls",
+                    "qty": "3 rounds",
+                    "weight": "13.6 kg rated band",
+                    "video": "https://www.youtube.com/results?search_query=Band%20Face%20Pulls%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Cardio Burst",
+                "rounds": 2,
+                "tempo": "30 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "High Knees",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Star Jumps",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Star%20Jumps%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Arm Finisher",
+                "rounds": 2,
+                "tempo": "15 reps, 20 sec rest between exercises",
+                "exercises": [
+                  {
+                    "name": "EZ Bar Bicep Curl",
+                    "qty": "2 rounds, 15 reps",
+                    "weight": "EZ bar alone (~13 kg), no added plates yet",
+                    "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Bicep%20Curl%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "EZ Bar Skull Crusher",
+                    "qty": "2 rounds, 15 reps",
+                    "weight": "EZ bar alone (~13 kg), no added plates yet",
+                    "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Pull Through",
+                    "qty": "2 rounds, 15 reps, slow and controlled, no rotation",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Ab Finisher",
+                "rounds": 2,
+                "tempo": "20 sec work / 10 sec rest",
+                "exercises": [
+                  {
+                    "name": "Med Ball Slam",
+                    "qty": "2 rounds",
+                    "weight": "4 kg Med Ball",
+                    "video": "https://www.youtube.com/results?search_query=Med%20Ball%20Slam%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bicycle Crunch",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Chest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Chest%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cross Body Shoulder Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cross%20Body%20Shoulder%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Overhead Triceps Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Overhead%20Triceps%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/watch?v=-CiWQ2IvY34",
+                "videoKnown": true
+              }
+            ],
+            "note": "Trimmed for time today. The two Single Arm Rows are now one alternating card (same total reps, one less thing to track), and Plank Hold has been folded out since your Fitness Test already covers that. Arm Finisher is down to 3 moves. Ab Finisher swaps Russian Twist for Med Ball Slam, same rotational core work but a genuinely fun way to let a bit of steam out! Weights held at Week 16's numbers, EZ Bar Curl and Skull Crusher still share one setup since there's no time to swap plates mid-circuit. Push Up Block isn't gone forever, once this trimmed version feels easy to finish in full, that's the natural week to bring it back in. Real-world update from Week 16 Tuesday (15 Sep, completed in full, felt just right): Shoulder Press, Floor Press and Overhead Tricep Extension eased to a 7 kg dumbbell/pair, since the Single Arm Row needed the only 9 kg pair you own at the same point in the circuit and there wasn't a second one free. Same principle as always, holding at what's actually been tested and worked, not what looked fine on paper. Added a short Cardio Burst block today too — Tuesday had zero real cardio in it beyond the warmup jog, and Pene asked for more aerobic work and to make sure core keeps getting hit, not just weights. Two rounds of High Knees and Star Jumps, about 4 minutes total, right after Strength and before Arm Finisher."
+          },
+          {
+            "id": "thu",
+            "label": "Thursday",
+            "title": "Conditioning",
+            "estTime": "45 to 50 min",
+            "warmup": [
+              {
+                "name": "Jumping Jacks",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Jumping%20Jacks%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Swings (cross body)",
+                "qty": "10 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Swings%20%28cross%20body%29%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunge with Twist",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunge%20with%20Twist%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat-Cow",
+                "qty": "8 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Cat-Cow%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Ankle Bounces",
+                "qty": "20 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Ankle%20Bounces%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Inchworm to Push Up",
+                "qty": "6 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Inchworm%20to%20Push%20Up%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Conditioning Circuit",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest",
+                "exercises": [
+                  {
+                    "name": "Jump Squats",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Jump%20Squats%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Kettlebell Swing",
+                    "qty": "3 rounds",
+                    "weight": "4 kg kettlebell",
+                    "video": "https://www.youtube.com/results?search_query=Kettlebell%20Swing%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Farmer Carry",
+                    "qty": "3 rounds",
+                    "weight": "2 x 12.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Farmer%20Carry%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Push Up to Shoulder Tap",
+                    "qty": "3 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Up%20to%20Shoulder%20Tap%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Barbell Deadlift",
+                    "qty": "3 rounds",
+                    "weight": "~1 kg bar + full plate set each side (2.5+1.25+5 kg, matched pairs), 18.5 kg total — same bar as Monday's RDL, also maxed out",
+                    "video": "https://www.youtube.com/results?search_query=Barbell%20Deadlift%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Core Finisher",
+                "rounds": 2,
+                "tempo": "30 sec work",
+                "exercises": [
+                  {
+                    "name": "Bicycle Crunch",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Shoulder Taps",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Superman Hold",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Superman%20Hold%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Flutter Kicks",
+                    "qty": "2 rounds",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Cardio Finisher",
+                "rounds": 1,
+                "tempo": "6 to 8 min continuous, easy pace",
+                "exercises": [
+                  {
+                    "name": "Easy Jog or Skipping Rope Intervals",
+                    "qty": "6 to 8 minutes",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Easy%20Jog%20or%20Skipping%20Rope%20Intervals%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Hamstring Stretch (4 each side)",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20(4%20each%20side)%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Seated Figure 4",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Seated%20Figure%204%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat-Cow Flow",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cat-Cow%20Flow%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Chest Opener",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Chest%20Opener%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Lying Spinal Twist",
+                "qty": "",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Lying%20Spinal%20Twist%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "note": "Conditioning Circuit is trimmed from 8 exercises down to 5, the biggest cut in the program this week, since this was the day most likely to run over. Renegade Row, the extra Goblet Squat and Plank Jacks are resting this week (they'll rotate back in later), keeping Jump Squats, Kettlebell Swing, Farmer Carry, Push Up to Shoulder Tap and Barbell Deadlift. Core Finisher swaps Mountain Climber Twist for Flutter Kicks so it doesn't repeat Monday's new Mountain Climbers. And there's a brand new optional finisher at the end: 5 minutes of easy jogging or skipping rope, whatever feels good, completely optional, no pressure, just there because you mentioned that little jog after Week 15 Monday felt genuinely nice. All weights held at Week 16's numbers, same reasoning as Monday and Tuesday, this week is about a shorter, fresher session actually getting finished in full. Made the cardio finisher a real, non-optional part of the session now (not just an option to skip past) — Pene asked directly for more aerobic work across the program, so this is no longer a bonus, it's the plan."
           }
         ]
       }
@@ -4561,6 +5146,114 @@ window.SITE_DATA = {
       "Primary Muscle": "Core",
       "Intensity": "Moderate",
       "Equipment": "Dumbbells"
+    },
+    {
+      "ID": "L012",
+      "Exercise": "Curtsy Lunge (Alternating)",
+      "Category": "Strength",
+      "Movement Pattern": "Lunge",
+      "Primary Muscle": "Glutes",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "L013",
+      "Exercise": "Step Up onto Block",
+      "Category": "Strength",
+      "Movement Pattern": "Lunge",
+      "Primary Muscle": "Legs",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbells, Stepping Block"
+    },
+    {
+      "ID": "CD015",
+      "Exercise": "Skipping Rope",
+      "Category": "Conditioning",
+      "Movement Pattern": "Cardio",
+      "Primary Muscle": "Full Body",
+      "Intensity": "Moderate",
+      "Equipment": "Skipping Rope"
+    },
+    {
+      "ID": "CD016",
+      "Exercise": "Broad Jump",
+      "Category": "Conditioning",
+      "Movement Pattern": "Power",
+      "Primary Muscle": "Legs",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "CD017",
+      "Exercise": "Lateral Bound",
+      "Category": "Conditioning",
+      "Movement Pattern": "Power",
+      "Primary Muscle": "Legs",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "CR010",
+      "Exercise": "Ab Wheel Rollout (Kneeling)",
+      "Category": "Core",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Core",
+      "Intensity": "Moderate",
+      "Equipment": "Ab Roller"
+    },
+    {
+      "ID": "CR011",
+      "Exercise": "Band Pallof Press",
+      "Category": "Core",
+      "Movement Pattern": "Anti-Rotation",
+      "Primary Muscle": "Core",
+      "Intensity": "Low",
+      "Equipment": "Resistance Band"
+    },
+    {
+      "ID": "B007",
+      "Exercise": "Single Arm Row (Alternating)",
+      "Category": "Strength",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Back",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbells"
+    },
+    {
+      "ID": "CR012",
+      "Exercise": "Med Ball Slam",
+      "Category": "Core",
+      "Movement Pattern": "Rotational/Power",
+      "Primary Muscle": "Core",
+      "Intensity": "Moderate",
+      "Equipment": "Medicine Ball"
+    },
+    {
+      "ID": "CR013",
+      "Exercise": "Flutter Kicks",
+      "Category": "Core",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Core",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "CD018",
+      "Exercise": "Easy Jog or Skipping Rope Intervals",
+      "Category": "Conditioning",
+      "Movement Pattern": "Cardio",
+      "Primary Muscle": "Full Body",
+      "Intensity": "Low",
+      "Equipment": "Skipping Rope (optional)"
+    },
+    {
+      "ID": "CD019",
+      "Exercise": "Star Jumps",
+      "Category": "Conditioning",
+      "Movement Pattern": "Cardio",
+      "Primary Muscle": "Full Body",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
     }
   ],
   "programStats": {
