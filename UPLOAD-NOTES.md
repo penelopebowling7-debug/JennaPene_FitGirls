@@ -2,6 +2,30 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 17 — Week 17 Tuesday Strength: variety swapped in (20 Sep)
+Pene: "The Tuesday the upper body first strength circuit is the same and I'm looking for variety." Fair — Week 17's Tuesday Strength block was carrying over the same 5 moves from Week 16, just at eased weights.
+
+**Swapped in Week 17's Tuesday Strength**:
+- Dumbbell Floor Press → **Dumbbell Chest Fly** (chest, shoulders) — 5kg pair, deliberately not the same weight as Shoulder Press (7kg), so both bilateral pair exercises don't compete for the same dumbbells mid-circuit (the exact clash from Batch 13).
+- Overhead Tricep Extension → **Dumbbell Pullover** (lats, chest, triceps) — a fresh hybrid move, single dumbbell at 9kg, same weight as Single Arm Row but that's fine since both are single-implement (one pair covers two people).
+- Shoulder Press, Single Arm Row, Band Face Pulls unchanged.
+
+Day note rewritten in the short format from Batch 16 — one line per new exercise, muscle group only.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 16 zip) via the usual manual upload workflow.
+
+## Batch 16 — Week 17 Monday: Goblet Squat and RDL swapped, day notes now short (20 Sep)
+Pene: "I want to change out the goblet squat and rdl on the Monday. Let's do some new things." Plus a standing instruction for every future new exercise: the day note should briefly name the muscle group or benefit, not run long the way notes have been.
+
+**Swapped in Week 17's Monday Strength Circuit**:
+- Goblet Squat → **Kettlebell Sumo Squat** (glutes, inner thighs, quads) — first time the kettlebell's been used for a squat rather than just swings.
+- Romanian Deadlift → **Single Leg RDL** (hamstrings, glutes, balance) — a dumbbell unilateral variant, sidesteps the light bar's maxed-out 18.5kg ceiling entirely.
+- Curtsy Lunge and Step Up onto Block unchanged.
+
+**Day notes are now short by default going forward** — one line per new exercise naming the muscle group or benefit, nothing more. Monday's note is now 5 short lines instead of a paragraph. Applying this format to all new exercises from here on, not just this one.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 15 zip) via the usual manual upload workflow.
+
 ## Batch 15 — real cardio added, core coverage confirmed, Week 16 and Week 17 (15 Sep)
 Pene: "Can we make sure we work our core, I would like more aerobic or cardio, get our bodies moving. I'm not sure but I feel like we have just been doing weights?" A fair read of the program as it stood — worth checking properly rather than just reassuring her.
 

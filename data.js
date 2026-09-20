@@ -3678,10 +3678,10 @@ window.SITE_DATA = {
                 "tempo": "40 sec active / 20 sec rest, 90 sec rest between rounds",
                 "exercises": [
                   {
-                    "name": "Goblet Squat",
+                    "name": "Kettlebell Sumo Squat",
                     "qty": "3 rounds, 3 sec lower + 1 sec hold",
-                    "weight": "10 kg dumbbell",
-                    "video": "https://www.youtube.com/results?search_query=Goblet%20Squat%20exercise%20form",
+                    "weight": "4 kg kettlebell",
+                    "video": "https://www.youtube.com/results?search_query=Kettlebell%20Sumo%20Squat%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -3692,11 +3692,11 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Romanian Deadlift",
-                    "qty": "3 rounds",
-                    "weight": "~1 kg bar + full plate set each side (2.5+1.25+5 kg, matched pairs), 18.5 kg total — the max this bar can currently take",
-                    "video": "https://youtube.com/shorts/_TchJLlBO-4?si=kpKOAIS5Glblf1j1",
-                    "videoKnown": true
+                    "name": "Single Leg RDL",
+                    "qty": "3 rounds each leg",
+                    "weight": "7 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20RDL%20exercise%20form",
+                    "videoKnown": false
                   },
                   {
                     "name": "Step Up onto Block",
@@ -3801,7 +3801,7 @@ window.SITE_DATA = {
                 "videoKnown": false
               }
             ],
-            "note": "New moves in today's session, on purpose! You told me you're bored and getting skipped a lot, so this week trims the list right down and swaps in fresh exercises for the ones that kept getting bypassed. Curtsy Lunge replaces the Bulgarian Split Squat pair (same single-leg strength work, one flowing card instead of two, and a bit kinder on tired legs). Step Up onto Block finally puts your stepping block to use instead of another glute bridge. Athletic Circuit is down to 4 moves including your skipping rope, which has never actually featured in the program before now, worth a laugh the first time you pick it back up! Core swaps in the ab roller (also unused until today) and a Band Pallof Press for anti-rotation strength. Everything is held at Week 16's weights, no progression this week, since a fresh exercise deserves a session to find its feet before adding load. Rounds are trimmed across the board so this should run noticeably shorter than recent weeks. If anything still feels like too much, the skip tools are right there, no guilt. Monday's Athletic Circuit (Skipping Rope, Broad Jump, Lateral Bound, Mountain Climbers) and dedicated Core block already cover the aerobic and core work Pene asked for, so nothing extra needed here, just flagging it so the whole week's coverage is clear."
+            "note": "Kettlebell Sumo Squat — glutes, inner thighs, quads. Single Leg RDL — hamstrings, glutes, balance. Curtsy Lunge — glutes, inner thighs. Step Up onto Block — glutes, quads. Weights held, no progression this week."
           },
           {
             "id": "tue",
@@ -3866,17 +3866,17 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Dumbbell Floor Press",
-                    "qty": "3 rounds, 3 sec lower to chest",
-                    "weight": "7 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Floor%20Press%20exercise%20form",
+                    "name": "Dumbbell Chest Fly",
+                    "qty": "3 rounds, slow and controlled",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Chest%20Fly%20exercise%20form",
                     "videoKnown": false
                   },
                   {
-                    "name": "Overhead Tricep Extension",
+                    "name": "Dumbbell Pullover",
                     "qty": "3 rounds",
-                    "weight": "7 kg dumbbell",
-                    "video": "https://www.youtube.com/results?search_query=Overhead%20Tricep%20Extension%20exercise%20form",
+                    "weight": "9 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Dumbbell%20Pullover%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -3996,7 +3996,7 @@ window.SITE_DATA = {
                 "videoKnown": true
               }
             ],
-            "note": "Trimmed for time today. The two Single Arm Rows are now one alternating card (same total reps, one less thing to track), and Plank Hold has been folded out since your Fitness Test already covers that. Arm Finisher is down to 3 moves. Ab Finisher swaps Russian Twist for Med Ball Slam, same rotational core work but a genuinely fun way to let a bit of steam out! Weights held at Week 16's numbers, EZ Bar Curl and Skull Crusher still share one setup since there's no time to swap plates mid-circuit. Push Up Block isn't gone forever, once this trimmed version feels easy to finish in full, that's the natural week to bring it back in. Real-world update from Week 16 Tuesday (15 Sep, completed in full, felt just right): Shoulder Press, Floor Press and Overhead Tricep Extension eased to a 7 kg dumbbell/pair, since the Single Arm Row needed the only 9 kg pair you own at the same point in the circuit and there wasn't a second one free. Same principle as always, holding at what's actually been tested and worked, not what looked fine on paper. Added a short Cardio Burst block today too — Tuesday had zero real cardio in it beyond the warmup jog, and Pene asked for more aerobic work and to make sure core keeps getting hit, not just weights. Two rounds of High Knees and Star Jumps, about 4 minutes total, right after Strength and before Arm Finisher."
+            "note": "Dumbbell Chest Fly — chest, shoulders. Dumbbell Pullover — lats, chest, triceps. Single Arm Row (Alternating) — back. Band Face Pulls — rear delts, upper back. EZ Bar Curl and Skull Crusher share one setup, no time to swap plates mid-circuit. Weights held, no progression this week."
           },
           {
             "id": "thu",
@@ -5254,6 +5254,33 @@ window.SITE_DATA = {
       "Primary Muscle": "Full Body",
       "Intensity": "Moderate",
       "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "L014",
+      "Exercise": "Kettlebell Sumo Squat",
+      "Category": "Strength",
+      "Movement Pattern": "Squat",
+      "Primary Muscle": "Glutes, Inner Thighs",
+      "Intensity": "Moderate",
+      "Equipment": "Kettlebell"
+    },
+    {
+      "ID": "C007",
+      "Exercise": "Dumbbell Chest Fly",
+      "Category": "Strength",
+      "Movement Pattern": "Push (Isolation)",
+      "Primary Muscle": "Chest, Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbells"
+    },
+    {
+      "ID": "B008",
+      "Exercise": "Dumbbell Pullover",
+      "Category": "Strength",
+      "Movement Pattern": "Pull/Push Hybrid",
+      "Primary Muscle": "Lats, Chest, Triceps",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbell"
     }
   ],
   "programStats": {
