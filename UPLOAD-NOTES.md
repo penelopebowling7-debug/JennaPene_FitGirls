@@ -2,6 +2,21 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 18 — Week 17 Tuesday: Single Arm Row timer fixed, EZ bar clash removed, two big circuits instead of four (22 Sep)
+Pene, on the actual workout day: "There needs to be separation in the arm finisher, we can't both use the ez bar. Also the first section... no even split for us to rotate the exercises with the limited equipment... over the arm band pull... High knees and star jumps are fine but it feels like rather than one or two circuits we have multiple mini circuits." Followed up: the "no even split" complaint was actually about Single Arm Row — "the timer won't work if there are two exercises planned for that, as in left arm then right arm."
+
+**The Single Arm Row bug**: Batch 12 merged the Left/Right cards into one "(Alternating)" card to reduce clutter. That's exactly what broke the guided timer — the app gives each exercise card ONE timed work step per round (45 sec, in this block), so an alternating card was cramming both arms into a single 45-second window instead of giving each arm its own turn. Split back into two separate cards, **Single Arm Row (Left Arm)** and **Single Arm Row (Right Arm)**, same 9kg dumbbell, same tempo — now each arm gets its own full 45-second round timer step, properly.
+
+**Built**:
+- **Strength & Cardio** (merged, was "Strength" + "Cardio Burst"): Dumbbell Shoulder Press, Dumbbell Chest Fly, Dumbbell Pullover, Single Arm Row (Left Arm), Single Arm Row (Right Arm), High Knees, Star Jumps — 3 rounds, 45s/15s, one continuous circuit. Band Face Pulls dropped per Pene's "I'm over the arm band pull."
+- **Arm & Ab Finisher** (merged, was "Arm Finisher" + "Ab Finisher"): EZ Bar Bicep Curl, Tricep Kick Backs, Plank Pull Through, Med Ball Slam, Bicycle Crunch — 2 rounds, 15 reps/20s rest between exercises. Skull Crusher swapped out for Tricep Kick Backs (5kg dumbbells, its old Week 11-13 identity) so the EZ bar is only needed for one exercise, not two — you're never both waiting on the single bar at once.
+- Four blocks down to two, per Pene's pick of "two bigger circuits" over a single mega-circuit or just trimming the existing four.
+- Two new Exercise Library entries: B008 Single Arm Row (Left Arm), B009 Single Arm Row (Right Arm).
+
+**Testing**: headless-browser (Playwright) against the real cloned repo (which turned out to already be at Batch 17, five batches ahead of the project doc's last note at Batch 11 — same "clone first" lesson from earlier in this project, applied again). Confirmed both round timer buttons render correctly ("7 exercises (45s work / 15s rest)" and "5 exercises (20s rest)"), confirmed Band Face Pulls and EZ Bar Skull Crusher are gone from the rendered page, confirmed every other exercise (including both new Single Arm Row cards) renders correctly for both Pene and Jenna, confirmed zero console errors, visually confirmed via screenshot.
+
+**Delivered**: a corrected 14-file zip (supersedes the Batch 17 zip) via the usual manual upload workflow.
+
 ## Batch 17 — Week 17 Tuesday Strength: variety swapped in (20 Sep)
 Pene: "The Tuesday the upper body first strength circuit is the same and I'm looking for variety." Fair — Week 17's Tuesday Strength block was carrying over the same 5 moves from Week 16, just at eased weights.
 

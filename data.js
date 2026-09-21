@@ -3854,7 +3854,7 @@ window.SITE_DATA = {
             ],
             "blocks": [
               {
-                "name": "Strength",
+                "name": "Strength & Cardio",
                 "rounds": 3,
                 "tempo": "45 sec active / 15 sec rest",
                 "exercises": [
@@ -3880,36 +3880,29 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "Single Arm Row (Alternating)",
-                    "qty": "3 rounds each arm, 3 sec lower + 1 sec squeeze at top",
+                    "name": "Single Arm Row (Left Arm)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec squeeze at top",
                     "weight": "9 kg dumbbell",
-                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20%28Alternating%29%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20exercise%20form",
                     "videoKnown": false
                   },
                   {
-                    "name": "Band Face Pulls",
-                    "qty": "3 rounds",
-                    "weight": "13.6 kg rated band",
-                    "video": "https://www.youtube.com/results?search_query=Band%20Face%20Pulls%20exercise%20form",
+                    "name": "Single Arm Row (Right Arm)",
+                    "qty": "3 rounds, 3 sec lower + 1 sec squeeze at top",
+                    "weight": "9 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Arm%20Row%20exercise%20form",
                     "videoKnown": false
-                  }
-                ]
-              },
-              {
-                "name": "Cardio Burst",
-                "rounds": 2,
-                "tempo": "30 sec active / 15 sec rest",
-                "exercises": [
+                  },
                   {
                     "name": "High Knees",
-                    "qty": "2 rounds",
+                    "qty": "3 rounds",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Star Jumps",
-                    "qty": "2 rounds",
+                    "qty": "3 rounds",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Star%20Jumps%20exercise%20form",
                     "videoKnown": false
@@ -3917,7 +3910,7 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "Arm Finisher",
+                "name": "Arm & Ab Finisher",
                 "rounds": 2,
                 "tempo": "15 reps, 20 sec rest between exercises",
                 "exercises": [
@@ -3929,10 +3922,10 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "name": "EZ Bar Skull Crusher",
+                    "name": "Tricep Kick Backs",
                     "qty": "2 rounds, 15 reps",
-                    "weight": "EZ bar alone (~13 kg), no added plates yet",
-                    "video": "https://www.youtube.com/results?search_query=EZ%20Bar%20Skull%20Crusher%20exercise%20form",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=Tricep%20Kick%20Backs%20exercise%20form",
                     "videoKnown": false
                   },
                   {
@@ -3941,24 +3934,17 @@ window.SITE_DATA = {
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=Plank%20Pull%20Through%20exercise%20form",
                     "videoKnown": false
-                  }
-                ]
-              },
-              {
-                "name": "Ab Finisher",
-                "rounds": 2,
-                "tempo": "20 sec work / 10 sec rest",
-                "exercises": [
+                  },
                   {
                     "name": "Med Ball Slam",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps",
                     "weight": "4 kg Med Ball",
                     "video": "https://www.youtube.com/results?search_query=Med%20Ball%20Slam%20exercise%20form",
                     "videoKnown": false
                   },
                   {
                     "name": "Bicycle Crunch",
-                    "qty": "2 rounds",
+                    "qty": "2 rounds, 15 reps each side",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
                     "videoKnown": false
@@ -3996,7 +3982,7 @@ window.SITE_DATA = {
                 "videoKnown": true
               }
             ],
-            "note": "Dumbbell Chest Fly — chest, shoulders. Dumbbell Pullover — lats, chest, triceps. Single Arm Row (Alternating) — back. Band Face Pulls — rear delts, upper back. EZ Bar Curl and Skull Crusher share one setup, no time to swap plates mid-circuit. Weights held, no progression this week."
+            "note": "Redesigned as two bigger circuits instead of four small ones. Single Arm Row is now Left Arm then Right Arm as two separate exercises, so the round timer gives each arm its own full timed turn. Band Face Pulls dropped. High Knees and Star Jumps folded into the same circuit as the strength moves. Arm and Ab Finisher merged into one — EZ Bar Bicep Curl is the only EZ bar move now (Tricep Kick Backs takes Skull Crusher's place with dumbbells instead), so one bar is never needed by two exercises at once. Weights held, no progression this week."
           },
           {
             "id": "thu",
@@ -5218,6 +5204,24 @@ window.SITE_DATA = {
       "Primary Muscle": "Back",
       "Intensity": "Moderate",
       "Equipment": "Dumbbells"
+    },
+    {
+      "ID": "B008",
+      "Exercise": "Single Arm Row (Left Arm)",
+      "Category": "Strength",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Back",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbell"
+    },
+    {
+      "ID": "B009",
+      "Exercise": "Single Arm Row (Right Arm)",
+      "Category": "Strength",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Back",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbell"
     },
     {
       "ID": "CR012",
