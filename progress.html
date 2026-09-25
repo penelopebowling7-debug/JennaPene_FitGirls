@@ -301,7 +301,7 @@ function recentSessionLines(n){
     const d = new Date(entry.completedAt);
     const when = isNaN(d) ? '' : d.toLocaleDateString();
     const felt = entry.difficultyBy
-      ? 'Pene ' + (diffWord[entry.difficultyBy.pene] || '?') + ', Jenna ' + (diffWord[entry.difficultyBy.jenna] || '?')
+      ? ['pene','jenna'].filter(p => entry.difficultyBy[p]).map(p => PNAME[p] + ' ' + (diffWord[entry.difficultyBy[p]] || '?')).join(', ') + (entry.who && entry.who !== 'both' ? ' (' + PNAME[entry.who] + ' solo)' : '')
       : (diffWord[entry.difficulty] || entry.difficulty || '');
     return '  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + (entry.totalMinutes ? ', ' + entry.totalMinutes + ' min' : '') + (felt ? ', ' + felt : '') + (entry.note ? ', note: "' + entry.note + '"' : '');
   });
@@ -362,9 +362,13 @@ function buildFullExportText(){
 
 // A plain-language read of what the numbers say, per exercise: went up, held
 // steady, or ready to try more (all rounds finished and it didn't feel tough).
+// Sessions that belong to one person: everything done together, plus their
+// own solo sessions (Batch 20), never the other person's solo ones.
+function sessionsFor(p){ return archive.filter(e => !e.who || e.who === 'both' || e.who === p); }
 function buildCues(person, series){
   const cues = [];
-  const lastEntry = archive[archive.length - 1];
+  const mineList = sessionsFor(person);
+  const lastEntry = mineList[mineList.length - 1];
   const felt = lastEntry && lastEntry.difficultyBy ? lastEntry.difficultyBy[person] : (lastEntry ? lastEntry.difficulty : null);
   Object.keys(series).forEach(name=>{
     const pts = series[name].points;
@@ -395,7 +399,7 @@ function render(){
   const totalRounds = archive.reduce((sum, e)=> sum + (e.exercises || []).reduce((s, ex)=> s + ((ex.roundsDoneBy ? ex.roundsDoneBy[who] : ex.roundsDone) || 0), 0), 0);
   const bests = names.filter(n=> series[n].points.length > 1).length;
   const tiles = [
-    { value: archive.length, unit: 'workouts', label: 'Finished and archived' },
+    { value: sessionsFor(who).length, unit: 'workouts', label: 'Finished and archived' },
     { value: streakWeeks(), unit: 'weeks', label: 'In a row with a session' },
     { value: totalRounds, unit: 'rounds', label: PNAME[who] + ' has completed' },
     { value: bests, unit: 'tracked', label: 'Exercises with a trend' }

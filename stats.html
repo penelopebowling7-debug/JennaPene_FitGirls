@@ -179,7 +179,7 @@ function renderArchiveSection(archive){
       const skippedExNames = (entry.exercises || []).filter(e => e.skipped).map(e => e.name);
       const skippedAll = skippedExNames.concat(entry.warmupSkipped || []).concat(entry.cooldownSkipped || []);
       li.innerHTML = `
-        <div class="row1"><span><strong>${entry.day}</strong>: ${entry.title}</span><span class="when">${when}</span></div>
+        <div class="row1"><span><strong>${entry.day}</strong>: ${entry.title}${entry.who === 'pene' ? ' · Pene solo' : (entry.who === 'jenna' ? ' · Jenna solo' : '')}</span><span class="when">${when}</span></div>
         <div class="meta">${timeText ? `<span>${timeText}</span>` : ''}${diffBadge}</div>
         ${entry.note ? `<div class="note">"${entry.note}"</div>` : ''}
         ${skippedAll.length ? `<div class="meta" style="margin-top:4px;">Skipped: ${skippedAll.join(', ')}</div>` : ''}

@@ -31,6 +31,47 @@
     background:#fff;
     color:var(--teal-700);
   }
+  .mode-row{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    flex-wrap:wrap;
+  }
+  .mode-label{
+    font-size:0.72rem;
+    font-weight:700;
+    color:rgba(255,255,255,0.8);
+    margin-right:2px;
+  }
+  .mode-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    font-family:inherit;
+    font-weight:700;
+    font-size:0.78rem;
+    cursor:pointer;
+  }
+  .mode-pill.active{ background:#fff; color:var(--teal-700); border-color:#fff; }
+  .mode-dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .mode-dot.pene{ background:var(--series-pene); }
+  .mode-dot.jenna{ background:var(--series-jenna); }
+  .mode-dot.both{ background:linear-gradient(90deg, var(--series-pene) 50%, var(--series-jenna) 50%); }
+  .solo-banner{
+    background:#fff;
+    border:2px solid var(--line);
+    border-radius:14px;
+    padding:10px 14px;
+    margin:0 16px 14px;
+    font-size:0.85rem;
+    line-height:1.4;
+  }
   .day-row{
     display:flex;
     gap:6px;
@@ -621,6 +662,7 @@
   </nav>
   <div class="tabs-row" id="weekTabs"></div>
   <div class="day-row" id="dayTabs"></div>
+  <div class="mode-row" id="modeRow"></div>
 </header>
 
 <main id="main" style="padding-top:16px;"></main>
@@ -747,15 +789,30 @@ const DATA = window.SITE_DATA.tracker;
 // Everything logged in a session belongs to ONE of you. The plan is shared,
 // the record is not: weights, round ticks, chosen exercise version, push-up
 // reps and personal bests are all stored per person.
-const PKEYS = ['pene', 'jenna'];
+// Who's training on THIS phone (added Batch 20, Week 18 travel week).
+// 'together' is the original shared session: both of you on one record.
+// 'pene' or 'jenna' is a solo session: its own progress record (its own
+// field in the cloud, so two phones training apart never overwrite each
+// other), only that person's rows on screen, its own Finish Workout.
+// Saved per device, not synced, so each phone remembers who's holding it.
+const MODE_KEY = 'pj-training-mode-v1';
+let trainingMode = (function(){
+  try{ const m = localStorage.getItem(MODE_KEY); return (m === 'pene' || m === 'jenna') ? m : 'together'; }
+  catch(e){ return 'together'; }
+})();
+function isSolo(){ return trainingMode !== 'together'; }
+function peopleForMode(){ return isSolo() ? [trainingMode] : ['pene', 'jenna']; }
+let PKEYS = peopleForMode();
+let lastCloudData = null;
 const PNAME = { pene: 'Pene', jenna: 'Jenna' };
 const STORAGE_KEY = 'pj-tracker-state-v1';
+function modeStorageKey(){ return isSolo() ? STORAGE_KEY + '-' + trainingMode : STORAGE_KEY; }
 const ARCHIVE_KEY = 'pj-workout-archive-v1';       // permanent record of finished workouts
 const COMPLETED_DAYS_KEY = 'pj-completed-days-v1'; // which week/day keys are done and should drop off the to-do list
 
 function loadSavedState(){
   try{
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(modeStorageKey());
     return raw ? JSON.parse(raw) : null;
   }catch(e){ return null; }
 }
@@ -765,13 +822,15 @@ function loadSavedState(){
 // keystroke in the weight box.
 function persistState(){
   try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    localStorage.setItem(modeStorageKey(), JSON.stringify({
       weekIdx: state.weekIdx,
       dayIdx: state.dayIdx,
       progress: state.progress
     }));
   }catch(e){ /* storage unavailable, tracker still works, just won't persist */ }
-  if(window.CloudSync) CloudSync.saveState(state.weekIdx, state.dayIdx, state.progress);
+  if(!window.CloudSync) return;
+  if(isSolo()){ if(CloudSync.saveSoloState) CloudSync.saveSoloState(trainingMode, state.progress); }
+  else CloudSync.saveState(state.weekIdx, state.dayIdx, state.progress);
 }
 
 // True while a weight box, push-up rep field, or any other input inside the
@@ -1049,11 +1108,16 @@ let completedDaysCache = (function(){
     return raw ? JSON.parse(raw) : [];
   }catch(e){ return []; }
 })();
+// A day finished together counts as done for both of you; a day finished solo
+// is stored with an "@pene" / "@jenna" suffix, so it only drops off the tabs on
+// that person's phone.
+function soloSuffix(){ return isSolo() ? '@' + trainingMode : ''; }
 function isDayCompleted(week, day){
-  return completedDaysCache.includes(keyFor(week.id, day.id));
+  const base = keyFor(week.id, day.id);
+  return completedDaysCache.includes(base) || (isSolo() && completedDaysCache.includes(base + soloSuffix()));
 }
 function markDayCompleted(week, day){
-  const k = keyFor(week.id, day.id);
+  const k = keyFor(week.id, day.id) + soloSuffix();
   if(!completedDaysCache.includes(k)){
     completedDaysCache = completedDaysCache.concat([k]);
     try{ localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache)); }catch(e){}
@@ -1071,16 +1135,19 @@ function markDayCompleted(week, day){
 function weekDoneKey(week){ return week.id + '__ALL'; }
 function isWeekCompleted(week){
   if(completedDaysCache.includes(weekDoneKey(week))) return true;
+  if(isSolo() && completedDaysCache.includes(weekDoneKey(week) + soloSuffix())) return true;
   return week.days.length > 0 && week.days.every(d => isDayCompleted(week, d));
 }
 function setWeekCompleted(week, done){
-  const k = weekDoneKey(week);
+  const k = weekDoneKey(week) + soloSuffix();
   if(done && !completedDaysCache.includes(k)) completedDaysCache = completedDaysCache.concat([k]);
   if(!done){
     // Reopening a week clears both its week marker and its per-day markers,
     // otherwise the week would still read as complete via the every() check.
     const dayKeys = week.days.map(d => keyFor(week.id, d.id));
-    completedDaysCache = completedDaysCache.filter(x => x !== k && dayKeys.indexOf(x) === -1);
+    const sfx = soloSuffix();
+    const drop = [weekDoneKey(week), k].concat(dayKeys, dayKeys.map(x => x + sfx));
+    completedDaysCache = completedDaysCache.filter(x => drop.indexOf(x) === -1);
   }
   try{ localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache)); }catch(e){}
   if(window.CloudSync){
@@ -1161,11 +1228,21 @@ if(window.CloudSync){
     // the latest value locally and to Firestore; a later snapshot (once
     // nothing has focus) will reflect it correctly, so nothing is lost by
     // waiting.
+    lastCloudData = data;
     if(isMainInputFocused()) return;
-    if(data.weekIdx != null) state.weekIdx = data.weekIdx;
-    if(data.dayIdx != null) state.dayIdx = data.dayIdx;
-    if(data.progressJson != null){
-      try{ state.progress = JSON.parse(data.progressJson) || {}; }catch(e){ /* keep what we had */ }
+    if(!isSolo()){
+      if(data.weekIdx != null) state.weekIdx = data.weekIdx;
+      if(data.dayIdx != null) state.dayIdx = data.dayIdx;
+      if(data.progressJson != null){
+        try{ state.progress = JSON.parse(data.progressJson) || {}; }catch(e){ /* keep what we had */ }
+      }
+    } else {
+      // Solo: only this person's own record, and the other phone switching
+      // days never moves this screen.
+      const solo = data['progressJson_' + trainingMode];
+      if(solo != null){
+        try{ state.progress = JSON.parse(solo) || {}; }catch(e){ /* keep what we had */ }
+      }
     }
     if(Array.isArray(data.completedDays)) completedDaysCache = data.completedDays;
     if(data.equipment != null || data.notes != null){
@@ -1179,7 +1256,7 @@ if(window.CloudSync){
       if(noteField && document.activeElement !== noteField) noteField.value = equipmentCache.notes;
     }
     try{
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ weekIdx: state.weekIdx, dayIdx: state.dayIdx, progress: state.progress }));
+      localStorage.setItem(modeStorageKey(), JSON.stringify({ weekIdx: state.weekIdx, dayIdx: state.dayIdx, progress: state.progress }));
       localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache));
     }catch(e){}
     renderTabs();
@@ -1343,7 +1420,7 @@ function buildPushupCard(block, bi, pair, ds){
       resultSpan.textContent = [describe('pene', pv), describe('jenna', jv)].filter(Boolean).join(' · ');
     }
 
-    ['pene','jenna'].forEach(person=>{
+    PKEYS.forEach(person=>{
       const field = document.createElement('label');
       field.className = 'pushup-field';
       field.appendChild(document.createTextNode((person === 'pene' ? 'Pene' : 'Jenna') + ' full reps '));
@@ -1556,6 +1633,14 @@ function renderMain(){
     return;
   }
 
+  if(isSolo()){
+    const other = trainingMode === 'pene' ? 'Jenna' : 'Pene';
+    const banner = document.createElement('div');
+    banner.className = 'solo-banner';
+    banner.innerHTML = '<span class="mode-dot ' + trainingMode + '"></span> <strong>' + PNAME[trainingMode] + ' solo.</strong> This phone logs just your record. ' + other + ' logs hers on her own phone, and you both still land in the same history.';
+    main.appendChild(banner);
+  }
+
   const ds = ensureDayState(week, day);
   const banner = document.createElement('div');
   banner.className = 'day-banner';
@@ -1665,9 +1750,10 @@ function renderMain(){
         perP[p] = { rounds: ra, skips: sa, done: ra.filter(Boolean).length, skipped: sa.filter(Boolean).length };
         perP[p].blank = block.rounds - perP[p].done - perP[p].skipped;
       });
-      const doneCount = perP.pene.done + perP.jenna.done;
-      const skippedCount = perP.pene.skipped + perP.jenna.skipped;
-      const blankCount = perP.pene.blank + perP.jenna.blank;
+      const sumP = f => PKEYS.reduce((t, p)=> t + perP[p][f], 0);
+      const doneCount = sumP('done');
+      const skippedCount = sumP('skipped');
+      const blankCount = sumP('blank');
       // "Fully skipped" (the old all-or-nothing meaning) only greys out the
       // whole card when every round is skipped and none are done. A day with
       // 3 of 4 rounds done and just round 4 skipped stays a normal card —
@@ -1687,7 +1773,7 @@ function renderMain(){
       howBtn.type = 'button';
       howBtn.className = 'howto-btn';
       howBtn.textContent = 'How to';
-      howBtn.onclick = ()=> openHowto(exObj, bi, ei, 'pene', ds);
+      howBtn.onclick = ()=> openHowto(exObj, bi, ei, PKEYS[0], ds);
       top.appendChild(howBtn);
       card.appendChild(top);
 
@@ -1755,8 +1841,61 @@ function renderSimpleSection(title, items, stateArr, skippedArr, week, day, ds){
   return section;
 }
 
+function renderModeRow(){
+  const row = document.getElementById('modeRow');
+  if(!row) return;
+  row.innerHTML = '';
+  const label = document.createElement('span');
+  label.className = 'mode-label';
+  label.textContent = 'Training:';
+  row.appendChild(label);
+  [
+    { id: 'together', dot: 'both',  text: 'Together' },
+    { id: 'pene',     dot: 'pene',  text: 'Pene solo' },
+    { id: 'jenna',    dot: 'jenna', text: 'Jenna solo' }
+  ].forEach(opt=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'mode-pill' + (trainingMode === opt.id ? ' active' : '');
+    b.setAttribute('aria-pressed', trainingMode === opt.id ? 'true' : 'false');
+    b.innerHTML = '<span class="mode-dot ' + opt.dot + '"></span>' + opt.text;
+    b.onclick = ()=> setTrainingMode(opt.id);
+    row.appendChild(b);
+  });
+}
+
+// Switching who's training keeps the current week and day, and swaps in that
+// mode's own saved progress (freshest cloud copy if we have one, otherwise
+// what's saved on this phone). Nothing is deleted when you switch.
+function setTrainingMode(m){
+  if(m === trainingMode) return;
+  try{
+    localStorage.setItem(modeStorageKey(), JSON.stringify({ weekIdx: state.weekIdx, dayIdx: state.dayIdx, progress: state.progress }));
+  }catch(e){}
+  trainingMode = m;
+  try{ localStorage.setItem(MODE_KEY, m); }catch(e){}
+  PKEYS = peopleForMode();
+  const s = loadSavedState();
+  let prog = s && s.progress ? s.progress : {};
+  if(lastCloudData){
+    const f = isSolo() ? lastCloudData['progressJson_' + m] : lastCloudData.progressJson;
+    if(f != null){ try{ prog = JSON.parse(f) || {}; }catch(e){} }
+  }
+  state.progress = prog;
+  // Each mode remembers its own place, so Pene finishing Monday on her phone
+  // never jumps Jenna's view ahead.
+  if(s && s.weekIdx != null && DATA.weeks[s.weekIdx]){ state.weekIdx = s.weekIdx; state.dayIdx = s.dayIdx || 0; }
+  const wk = DATA.weeks[state.weekIdx];
+  if(wk && wk.days[state.dayIdx] && isDayCompleted(wk, wk.days[state.dayIdx])){
+    const next = findNextIncompleteDay(state.weekIdx);
+    if(next){ state.weekIdx = next.weekIdx; state.dayIdx = next.dayIdx; }
+  }
+  renderAll();
+}
+
 function renderAll(){
   renderTabs();
+  renderModeRow();
   renderMain();
 }
 
@@ -2395,7 +2534,7 @@ document.getElementById('copyEquipmentForClaude').onclick = ()=>{
       const d = new Date(entry.completedAt);
       const when = isNaN(d) ? '' : d.toLocaleDateString();
       const felt = entry.difficultyBy
-        ? 'Pene ' + (diffWord[entry.difficultyBy.pene] || '?') + ', Jenna ' + (diffWord[entry.difficultyBy.jenna] || '?')
+        ? PKEYS.concat(['pene','jenna']).filter((p, i, a)=> a.indexOf(p) === i && entry.difficultyBy[p]).map(p => PNAME[p] + ' ' + (diffWord[entry.difficultyBy[p]] || '?')).join(', ') + (entry.who && entry.who !== 'both' ? ' (' + PNAME[entry.who] + ' solo)' : '')
         : (diffWord[entry.difficulty] || entry.difficulty || '');
       lines.push('  - ' + entry.week + ', ' + entry.day + ' (' + entry.title + '), ' + when + ', ' + (entry.totalMinutes ? entry.totalMinutes + ' min, ' : '') + felt + (entry.note ? ', note: "' + entry.note + '"' : ''));
     });
@@ -2630,7 +2769,7 @@ document.getElementById('confirmFinish').onclick = ()=>{
         const vIdx = ds.blocks[bi].variant[p][ei];
         versionBy[p] = (variants && vIdx != null) ? variants[vIdx] : null;
       });
-      const roundsSkippedFinish = skippedBy.pene + skippedBy.jenna;
+      const roundsSkippedFinish = PKEYS.reduce((t, p)=> t + (skippedBy[p] || 0), 0);
       exercises.push({
         block: block.name,
         name: exObj.name,
@@ -2641,10 +2780,10 @@ document.getElementById('confirmFinish').onclick = ()=>{
         weightBy: weightBy,
         versionBy: versionBy,
         // Legacy fields kept so the Fun Stats history keeps working unchanged.
-        roundsDone: doneBy.pene,
+        roundsDone: doneBy[PKEYS[0]],
         roundsPlanned: block.rounds,
         roundsSkipped: roundsSkippedFinish,
-        weight: weightBy.pene,
+        weight: weightBy[PKEYS[0]],
         skipped: roundsSkippedFinish > 0
       });
     });
@@ -2659,12 +2798,15 @@ document.getElementById('confirmFinish').onclick = ()=>{
     title: day.title,
     completedAt: new Date().toISOString(),
     totalMinutes: minutes,
-    difficultyBy: { pene: finishDifficultyChoice.pene, jenna: finishDifficultyChoice.jenna },
+    difficultyBy: PKEYS.reduce((o, p)=>{ o[p] = finishDifficultyChoice[p]; return o; }, {}),
+    // Who this record belongs to: 'both' for a session done together, or
+    // 'pene' / 'jenna' for a solo session done apart.
+    who: isSolo() ? trainingMode : 'both',
     // Legacy single value for the Fun Stats page: the tougher of the two, so
     // a session that was hard for one of you never reads as easy.
-    difficulty: [finishDifficultyChoice.pene, finishDifficultyChoice.jenna].indexOf('tougher') > -1
+    difficulty: PKEYS.map(p => finishDifficultyChoice[p]).indexOf('tougher') > -1
       ? 'tougher'
-      : ([finishDifficultyChoice.pene, finishDifficultyChoice.jenna].indexOf('right') > -1 ? 'right' : 'easier'),
+      : (PKEYS.map(p => finishDifficultyChoice[p]).indexOf('right') > -1 ? 'right' : 'easier'),
     note,
     exercises,
     warmupSkipped: warmupSkippedNames,

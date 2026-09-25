@@ -2,6 +2,29 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 20: train apart, record separately (26 Sep)
+Pene: "I want us to be able to record separately." Needed for Week 18, with Pene in hotels and Jenna at home.
+
+**Built**: a "Training:" switch under the day tabs on the Tracker, with three options, remembered per phone.
+- **Together**: exactly how it has always worked, one shared session, both of you on screen.
+- **Pene solo / Jenna solo**: that phone shows only your own rows, keeps your own ticks, warm up, cool down and timer, and has its own Finish Workout. Each solo record is saved to its own cloud field (progressJson_pene / progressJson_jenna) so two phones training at the same time never overwrite each other, and the other phone changing days never moves your screen.
+- A day finished solo drops off the tabs only for that person. A day finished together still counts for both.
+- Solo sessions are archived with who: 'pene' or 'jenna' (together sessions are who: 'both'). Progress counts each person's own sessions (together plus their own solo ones), Fun Stats history tags solo sessions ("Pene solo"), and both export-to-Claude features name them.
+
+**Testing**: headless browser (Playwright): Together shows both people's rows, Pene solo shows only Pene's with a solo banner, a tick in Pene solo saves only to Pene's record (the together record stays untouched), Jenna solo shows none of Pene's ticks, finishing Monday as Pene solo archives who: 'pene' with only Pene's numbers and moves Pene on to Tuesday while Jenna and Together both stay on Monday, Fun Stats and Progress load with the new entry, zero page errors.
+
+## Batch 19: Week 18 travel week, all bodyweight Pilates, yoga and running (26 Sep)
+Pene: travelling for work in hotels that may or may not have a gym, Jenna at home with no gym. Wanted Pilates core (reverse plank leg lifts, plank hip twists, foam roller plank pike, plank to downward dog), yoga that runs on the phone, and a jog or run. No weights. Goal: lean, toned summer bodies.
+
+**Week 18 (Mon 28, Tue 29 Sep, Thu 1 Oct)**, every block runs on the guided round timer:
+- **Monday, Pilates Sculpt: Glutes & Core**: Pilates Lower Burn (squat pulses, reverse lunge to knee drive, single leg glute bridge left and right, side lying leg lifts left and right) plus Pilates Flat Tummy Core (reverse plank leg lifts, plank hip twists, plank pike with foam roller or towel slide, plank to downward dog, Pilates hundred). Quiet, no jumping, hotel friendly.
+- **Tuesday, Bodyweight Upper + Yoga Flow**: push ups (full to knees), chair or bed edge tricep dips, superman Y-T-W, pike push ups, plank up downs, bear plank shoulder taps, then a 2 round timed yoga flow (downward dog, low lunge both sides, warrior 2 both sides, chair, boat, cobra).
+- **Thursday, Run Intervals + Pilates Core**: 6 rounds of 1 min run plus 1 min recovery walk, then a Pilates core finisher (criss cross, toe taps, side plank hip lifts both sides, swimming, reverse plank leg lifts).
+- Left and right sides are separate cards so the timer gives each side its own turn (same lesson as Batch 18).
+- 25 new Exercise Library entries (PL001 to PL012, BW001 to BW006, YG001 to YG005, RN001, RN002).
+
+**Testing**: headless browser (Playwright) against the real cloned repo: Week 18 tab renders with Monday, Tuesday, Thursday; all six round timer buttons render with the right exercise counts and timings; zero page errors (only the known optional audio file 404s).
+
 ## Batch 18 — Week 17 Tuesday: Single Arm Row timer fixed, EZ bar clash removed, two big circuits instead of four (22 Sep)
 Pene, on the actual workout day: "There needs to be separation in the arm finisher, we can't both use the ez bar. Also the first section... no even split for us to rotate the exercises with the limited equipment... over the arm band pull... High knees and star jumps are fine but it feels like rather than one or two circuits we have multiple mini circuits." Followed up: the "no even split" complaint was actually about Single Arm Row — "the timer won't work if there are two exercises planned for that, as in left arm then right arm."
 

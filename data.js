@@ -4173,6 +4173,507 @@ window.SITE_DATA = {
             "note": "Conditioning Circuit is trimmed from 8 exercises down to 5, the biggest cut in the program this week, since this was the day most likely to run over. Renegade Row, the extra Goblet Squat and Plank Jacks are resting this week (they'll rotate back in later), keeping Jump Squats, Kettlebell Swing, Farmer Carry, Push Up to Shoulder Tap and Barbell Deadlift. Core Finisher swaps Mountain Climber Twist for Flutter Kicks so it doesn't repeat Monday's new Mountain Climbers. And there's a brand new optional finisher at the end: 5 minutes of easy jogging or skipping rope, whatever feels good, completely optional, no pressure, just there because you mentioned that little jog after Week 15 Monday felt genuinely nice. All weights held at Week 16's numbers, same reasoning as Monday and Tuesday, this week is about a shorter, fresher session actually getting finished in full. Made the cardio finisher a real, non-optional part of the session now (not just an option to skip past) — Pene asked directly for more aerobic work across the program, so this is no longer a bonus, it's the plan."
           }
         ]
+      },
+      {
+        "id": "week18",
+        "label": "Week 18",
+        "dates": "Mon 28, Tue 29 Sep, Thu 1 Oct",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Pilates Sculpt: Glutes & Core",
+            "estTime": "40 to 45 min",
+            "warmup": [
+              {
+                "name": "March on Spot",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=March%20on%20Spot%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20pilates%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "4 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=World's%20Greatest%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Glute Bridge",
+                "qty": "12 reps, squeeze at the top",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bird Dog",
+                "qty": "8 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Bird%20Dog%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Pilates Lower Burn",
+                "rounds": 3,
+                "tempo": "40 sec active / 20 sec rest, 60 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Pilates Squat Pulses",
+                    "qty": "3 rounds, small pulses at the bottom",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20squat%20pulses",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Reverse Lunge to Knee Drive (Alternating)",
+                    "qty": "3 rounds, slow and controlled",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20lunge%20knee%20drive",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Left Leg)",
+                    "qty": "3 rounds, 2 sec squeeze at top",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=single%20leg%20glute%20bridge",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Right Leg)",
+                    "qty": "3 rounds, 2 sec squeeze at top",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=single%20leg%20glute%20bridge",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Lying Leg Lifts (Left Side)",
+                    "qty": "3 rounds, toes pointed forward",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20side%20lying%20leg%20lift",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Lying Leg Lifts (Right Side)",
+                    "qty": "3 rounds, toes pointed forward",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20side%20lying%20leg%20lift",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Pilates Flat Tummy Core",
+                "rounds": 3,
+                "tempo": "40 sec active / 20 sec rest, 60 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Reverse Plank Leg Lifts (Alternating)",
+                    "qty": "3 rounds, hips high, slow lifts",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20plank%20leg%20lift%20pilates",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Hip Twists",
+                    "qty": "3 rounds, tap each hip toward the floor",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=plank%20hip%20dips%20twists",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Pike (Foam Roller or Towel Slide)",
+                    "qty": "3 rounds, hips to the sky, pull feet in",
+                    "weight": "Foam roller (Jenna) or towel on hard floor (Pene)",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20plank",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank to Downward Dog",
+                    "qty": "3 rounds, press heels toward the floor",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=plank%20to%20downward%20dog",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Pilates Hundred",
+                    "qty": "3 rounds, pump the arms, breathe in 5 out 5",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20hundred",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Child's%20Pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Pigeon Pose (each side)",
+                "qty": "45 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20yoga",
+                "videoKnown": false
+              },
+              {
+                "name": "Supine Spinal Twist",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Supine%20Spinal%20Twist%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Hamstring Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hamstring%20Stretch%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "note": "Travel week: no gym, no weights, all bodyweight, hotel room friendly and quiet (no jumping). Reverse Plank Leg Lifts: back of body, glutes, deep core. Plank Hip Twists: obliques, waist. Plank Pike: lower abs, shoulders (foam roller for Jenna, a towel on tiles or a hard floor for Pene). Plank to Downward Dog: whole core plus a hamstring stretch. Pilates Hundred: deep abs and stamina."
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Bodyweight Upper + Yoga Flow",
+            "estTime": "40 min",
+            "warmup": [
+              {
+                "name": "Arm Circles",
+                "qty": "10 forward, 10 backwards",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Shoulder Rolls",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Shoulder%20Rolls%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20pilates%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Downward Dog to Cobra Flow",
+                "qty": "6 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=downward%20dog%20to%20cobra%20flow",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Bodyweight Upper",
+                "rounds": 3,
+                "tempo": "45 sec active / 15 sec rest, 60 sec rest between rounds",
+                "exercises": [
+                  {
+                    "name": "Push Ups (Full to Knees)",
+                    "qty": "3 rounds, full reps first, drop to knees when form breaks",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=push%20up%20proper%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Tricep Dips (Chair or Bed Edge)",
+                    "qty": "3 rounds, elbows point back",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=chair%20tricep%20dips",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Superman Y-T-W Raises",
+                    "qty": "3 rounds, slow, squeeze shoulder blades",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=prone%20Y%20T%20W%20raises",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Pike Push Ups",
+                    "qty": "3 rounds, hips high, head toward floor",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pike%20push%20up%20beginner",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Up Downs",
+                    "qty": "3 rounds, keep hips still",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=plank%20up%20downs",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Bear Plank Shoulder Taps",
+                    "qty": "3 rounds, knees hover just off floor",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=bear%20plank%20shoulder%20taps",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Yoga Flow",
+                "rounds": 2,
+                "tempo": "40 sec work / 10 sec rest",
+                "exercises": [
+                  {
+                    "name": "Downward Dog",
+                    "qty": "2 rounds, pedal the feet",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=downward%20dog%20yoga",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Low Lunge (Left Leg Forward)",
+                    "qty": "2 rounds, arms overhead",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=low%20lunge%20yoga%20pose",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Low Lunge (Right Leg Forward)",
+                    "qty": "2 rounds, arms overhead",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=low%20lunge%20yoga%20pose",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Warrior 2 (Left Side)",
+                    "qty": "2 rounds, front knee over ankle",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=warrior%202%20yoga%20pose",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Warrior 2 (Right Side)",
+                    "qty": "2 rounds, front knee over ankle",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=warrior%202%20yoga%20pose",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Chair Pose",
+                    "qty": "2 rounds, sit back, arms up",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=chair%20pose%20yoga",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Boat Pose",
+                    "qty": "2 rounds, bent knees is fine",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=boat%20pose%20yoga%20beginner",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Cobra",
+                    "qty": "2 rounds, gentle, shoulders down",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=cobra%20pose%20yoga",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Chest Stretch (Doorway)",
+                "qty": "30 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=doorway%20chest%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Cross Body Shoulder Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Cross%20Body%20Shoulder%20Stretch%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Thread The Needle",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=thread%20the%20needle%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "60 sec, slow breathing",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Child's%20Pose%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "note": "Push Ups: chest, arms, core. Tricep Dips: back of the arms (any sturdy chair or the bed edge). Superman Y-T-W: upper back and posture. Pike Push Ups: shoulders. Plank Up Downs: arms and core. Bear Plank Shoulder Taps: deep core and shoulders. Yoga Flow: strength and length, runs on the round timer so your phone guides every pose."
+          },
+          {
+            "id": "thu",
+            "label": "Thursday",
+            "title": "Run Intervals + Pilates Core",
+            "estTime": "40 to 45 min",
+            "warmup": [
+              {
+                "name": "Brisk Walk",
+                "qty": "5 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=brisk%20walking%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Leg Swings",
+                "qty": "10 each leg, front and side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Leg%20Swings%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 total",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "High Knees",
+                "qty": "30 sec",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Run Walk Intervals",
+                "rounds": 6,
+                "tempo": "60 sec active, run then walk",
+                "exercises": [
+                  {
+                    "name": "Run (Comfortably Hard Pace)",
+                    "qty": "6 rounds, 60 sec each",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=run%20walk%20intervals%20beginner",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Recovery Walk",
+                    "qty": "6 rounds, 60 sec each, brisk not strolling",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=brisk%20walking%20technique",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Pilates Core Finisher",
+                "rounds": 2,
+                "tempo": "40 sec active / 20 sec rest",
+                "exercises": [
+                  {
+                    "name": "Pilates Criss Cross",
+                    "qty": "2 rounds, slow, elbow toward opposite knee",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20criss%20cross",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Pilates Toe Taps",
+                    "qty": "2 rounds, lower back pressed down",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20toe%20taps",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank Hip Lifts (Left Side)",
+                    "qty": "2 rounds, knees down is fine",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20hip%20lifts",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank Hip Lifts (Right Side)",
+                    "qty": "2 rounds, knees down is fine",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20hip%20lifts",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Pilates Swimming",
+                    "qty": "2 rounds, flutter arms and legs",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pilates%20swimming%20exercise",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Reverse Plank Leg Lifts (Alternating)",
+                    "qty": "2 rounds, hips high",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20plank%20leg%20lift%20pilates",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Quad Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Quad%20Stretch%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Calf Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=calf%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Hip%20Flexor%20Stretch%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Butterfly Stretch",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Butterfly%20Stretch%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "note": "Run Walk Intervals: heart, fat burn, legs, 6 rounds of 1 min run plus 1 min walk (outdoors or a hotel treadmill if there is one). Go by feel: comfortably hard means you can speak but not chat. Feeling great? Swap the walks for an easy jog. Pilates Core Finisher: can be done straight after the run on grass, a towel, or back in the room."
+          }
+        ]
       }
     ]
   },
@@ -5285,6 +5786,231 @@ window.SITE_DATA = {
       "Primary Muscle": "Lats, Chest, Triceps",
       "Intensity": "Moderate",
       "Equipment": "Dumbbell"
+    },
+    {
+      "ID": "PL001",
+      "Exercise": "Pilates Squat Pulses",
+      "Category": "Pilates",
+      "Movement Pattern": "Squat",
+      "Primary Muscle": "Glutes, Quads",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL002",
+      "Exercise": "Reverse Lunge to Knee Drive (Alternating)",
+      "Category": "Pilates",
+      "Movement Pattern": "Lunge",
+      "Primary Muscle": "Glutes, Quads, Balance",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL003",
+      "Exercise": "Side Lying Leg Lifts",
+      "Category": "Pilates",
+      "Movement Pattern": "Hip Abduction",
+      "Primary Muscle": "Outer Glutes, Hips",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL004",
+      "Exercise": "Reverse Plank Leg Lifts (Alternating)",
+      "Category": "Pilates",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Glutes, Hamstrings, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL005",
+      "Exercise": "Plank Hip Twists",
+      "Category": "Pilates",
+      "Movement Pattern": "Rotation",
+      "Primary Muscle": "Obliques, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL006",
+      "Exercise": "Plank Pike (Foam Roller or Towel Slide)",
+      "Category": "Pilates",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Lower Abs, Shoulders",
+      "Intensity": "High",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL007",
+      "Exercise": "Plank to Downward Dog",
+      "Category": "Pilates",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Core, Shoulders, Hamstrings",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL008",
+      "Exercise": "Pilates Hundred",
+      "Category": "Pilates",
+      "Movement Pattern": "Flexion",
+      "Primary Muscle": "Deep Abs",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL009",
+      "Exercise": "Pilates Criss Cross",
+      "Category": "Pilates",
+      "Movement Pattern": "Rotation",
+      "Primary Muscle": "Obliques, Abs",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL010",
+      "Exercise": "Pilates Toe Taps",
+      "Category": "Pilates",
+      "Movement Pattern": "Anti-Extension",
+      "Primary Muscle": "Lower Abs",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL011",
+      "Exercise": "Side Plank Hip Lifts",
+      "Category": "Pilates",
+      "Movement Pattern": "Lateral Flexion",
+      "Primary Muscle": "Obliques, Waist",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "PL012",
+      "Exercise": "Pilates Swimming",
+      "Category": "Pilates",
+      "Movement Pattern": "Extension",
+      "Primary Muscle": "Back, Glutes, Posture",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW001",
+      "Exercise": "Tricep Dips (Chair or Bed Edge)",
+      "Category": "Strength",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Triceps",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW002",
+      "Exercise": "Superman Y-T-W Raises",
+      "Category": "Strength",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Upper Back, Posture",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW003",
+      "Exercise": "Pike Push Ups",
+      "Category": "Strength",
+      "Movement Pattern": "Push (Vertical)",
+      "Primary Muscle": "Shoulders, Triceps",
+      "Intensity": "High",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW004",
+      "Exercise": "Plank Up Downs",
+      "Category": "Strength",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Arms, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW005",
+      "Exercise": "Bear Plank Shoulder Taps",
+      "Category": "Core",
+      "Movement Pattern": "Anti-Rotation",
+      "Primary Muscle": "Deep Core, Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "BW006",
+      "Exercise": "Push Ups (Full to Knees)",
+      "Category": "Strength",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Chest, Arms, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "YG001",
+      "Exercise": "Low Lunge",
+      "Category": "Yoga",
+      "Movement Pattern": "Mobility",
+      "Primary Muscle": "Hip Flexors, Quads",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "YG002",
+      "Exercise": "Warrior 2",
+      "Category": "Yoga",
+      "Movement Pattern": "Strength Hold",
+      "Primary Muscle": "Legs, Shoulders",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "YG003",
+      "Exercise": "Chair Pose",
+      "Category": "Yoga",
+      "Movement Pattern": "Strength Hold",
+      "Primary Muscle": "Quads, Glutes",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "YG004",
+      "Exercise": "Boat Pose",
+      "Category": "Yoga",
+      "Movement Pattern": "Core Hold",
+      "Primary Muscle": "Abs, Hip Flexors",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "YG005",
+      "Exercise": "Downward Dog",
+      "Category": "Yoga",
+      "Movement Pattern": "Mobility",
+      "Primary Muscle": "Shoulders, Hamstrings, Calves",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "RN001",
+      "Exercise": "Run (Comfortably Hard Pace)",
+      "Category": "Cardio",
+      "Movement Pattern": "Run",
+      "Primary Muscle": "Heart, Legs",
+      "Intensity": "High",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "RN002",
+      "Exercise": "Recovery Walk",
+      "Category": "Cardio",
+      "Movement Pattern": "Walk",
+      "Primary Muscle": "Heart, Legs",
+      "Intensity": "Low",
+      "Equipment": "Bodyweight"
     }
   ],
   "programStats": {

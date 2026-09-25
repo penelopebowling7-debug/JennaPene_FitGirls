@@ -48,6 +48,7 @@
     console.warn('Firebase SDK did not load, tracker will stay local-only on this device.');
     CloudSync.status = 'offline';
     CloudSync.saveState = function () {};
+    CloudSync.saveSoloState = function () {};
     CloudSync.markDayCompleted = function () {};
     CloudSync.setCompletedDays = function () {};
     CloudSync.appendArchive = function () {};
@@ -73,6 +74,7 @@
     console.warn('Could not set up cloud sync, staying local-only:', e);
     CloudSync.status = 'offline';
     CloudSync.saveState = function () {};
+    CloudSync.saveSoloState = function () {};
     CloudSync.markDayCompleted = function () {};
     CloudSync.setCompletedDays = function () {};
     CloudSync.appendArchive = function () {};
@@ -89,6 +91,22 @@
     cloudWriteTimer = setTimeout(function () {
       if (!ready) return;
       houseRef.set({ weekIdx: weekIdx, dayIdx: dayIdx, progressJson: JSON.stringify(progress) }, { merge: true })
+        .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
+    }, 500);
+  };
+
+  // Solo sessions (Batch 20): each person's progress lives in its own field,
+  // progressJson_pene / progressJson_jenna, so two phones training apart never
+  // overwrite each other. Separate debounce timers per person for the same reason.
+  const soloWriteTimers = {};
+  CloudSync.saveSoloState = function (who, progress) {
+    localChangedSinceLoad = true;
+    clearTimeout(soloWriteTimers[who]);
+    soloWriteTimers[who] = setTimeout(function () {
+      if (!ready) return;
+      const patch = {};
+      patch['progressJson_' + who] = JSON.stringify(progress);
+      houseRef.set(patch, { merge: true })
         .catch(function (err) { console.warn('Cloud save failed, still saved on this device:', err); });
     }, 500);
   };
