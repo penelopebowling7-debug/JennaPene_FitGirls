@@ -2,6 +2,39 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 21b: Monday becomes Test + Discover the Trainer (11 Oct)
+Pene: not ready to squat with weight on the Smith machine yet, wants to test where they're at and learn the trainer, its attachments and the landmine together with Jenna first.
+
+**Week 19 Monday rebuilt** (Tuesday and Thursday unchanged):
+- Restart Fitness Test first, while fresh (same 5 tests).
+- **Discover 1: Smith Machine**: safety walkthrough (hook and unhook, set the safety stops), bodyweight squat to the stops (no bar), then find your bar height for inverted rows and incline push ups.
+- **Discover 2: Cables and Attachments**: lay out the attachments, learn the pop pin and the weight pin, then cable row, face pull, tricep pushdown, half kneeling pulldown, Pallof press and an optional ankle strap kickback. Lightest pin first, go up until 10 reps feel steady with about 4 left in the tank.
+- **Discover 3: Landmine and Olympic Bar**: what a landmine is, setup, half kneeling landmine press, optional landmine squat, empty bar RDL practice. No plates.
+- Short partner Core Finisher (Dead Bug, Side Plank) on the partner timer.
+- Discovery blocks have no timer on purpose. The weight boxes are for logging the setting that felt right (pin, notch), which sets Week 20's starting loads.
+- 6 more Exercise Library entries.
+- Trainer confirmed as the Arrow Beast Ultimate Multi Gym (dual 120 kg stacks, side pulleys 2:1, lat pulldown 1:1, J-cups, spotter arms, landmine, dip bar, lat seat with row foot plate, leg press attachment). Cable note now explains the 2:1 ratio, and the pulldown uses the seat.
+
+**Testing**: Playwright: Monday renders all 7 sections, the Core Finisher partner timer ticks both people, no unexpected page errors.
+
+## Batch 21: Restart week, new partner and Tabata workouts (11 Oct)
+Pene: two weeks off, restarting this week with the new functional trainer (Smith machine, cables, pull up bar, Olympic bar and plates, no bench yet). Wanted core and calisthenics style strength, Tabata, partner formats where one works while the other spots, and a restart fitness test, all in the app.
+
+**New block styles in the tracker**
+- **Tabata timer**: 8 intervals of 20 sec on and 10 sec off, alternating the block's moves, with "Interval 3 of 8" on screen. The whole Tabata counts as one round.
+- **Partner timer (I Go, You Go / Hold and Work)**: each exercise gives Pene a timed turn, a short swap, then Jenna's turn. The screen and voice say whose turn it is and what the other person does (spot and coach, or the "buddy move" printed on the card). In solo mode it becomes your turn, then the buddy move or a rest.
+- Blocks can show a short coloured "how this block works" note, and cards show "Partner meanwhile: ..." when there is a buddy move.
+
+**Week 19 (Mon 12, Tue 13, Thu 15 Oct), re-entry week**
+- **Monday, Restart Test + Lower Body**: the four usual fitness tests plus a new Dead Hang test, then Smith Squat, Olympic Bar RDL and Cable Pull Through as I Go, You Go, then a bodyweight core circuit.
+- **Tuesday, Upper Body Calisthenics**: Pull Up Journey (dead hang, scapular pulls, negatives, hanging knee raises), machine strength I Go, You Go (Smith inverted row, cable pulldown, standing Smith press, Pallof press), the Push Up Block back as Smith bar incline push ups, and an Arms Tabata.
+- **Thursday, Tabata Conditioning + Core**: two Tabatas (the skipping rope's debut), a Hold and Work power finisher, and the ab roller's first outing.
+- Machine and bar weights say "start light, type in what you used" until the plate list is confirmed.
+
+**Also**: Fitness Tests now has a 5th test (Dead Hang Max Hold) and the next test date is 12/10/2026. Weeks 13 to 18 are parked as closed once so the tracker opens on Week 19 (Reopen week brings any back, nothing deleted). 17 new Exercise Library entries (FT001 to FT017). Offline cache bumped to pj-fitness-v4.
+
+**Testing**: headless browser (Playwright) on the cloned repo: tracker opens on Week 19 Monday with Mon/Tue/Thu tabs; partner timer builds the right turn by turn sequence and ticks round 1 for both people when finished; Tabata builds 8 intervals; solo mode swaps in buddy moves; Fitness Tests shows 5 charts and 5 entry rows; zero unexpected errors across all pages.
+
 ## Batch 20: train apart, record separately (26 Sep)
 Pene: "I want us to be able to record separately." Needed for Week 18, with Pene in hotels and Jenna at home.
 

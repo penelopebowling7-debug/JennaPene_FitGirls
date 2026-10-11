@@ -4674,6 +4674,719 @@ window.SITE_DATA = {
             "note": "Run Walk Intervals: heart, fat burn, legs, 6 rounds of 1 min run plus 1 min walk (outdoors or a hotel treadmill if there is one). Go by feel: comfortably hard means you can speak but not chat. Feeling great? Swap the walks for an easy jog. Pilates Core Finisher: can be done straight after the run on grass, a towel, or back in the room."
           }
         ]
+      },
+      {
+        "id": "week19",
+        "label": "Week 19",
+        "dates": "Mon 12, Tue 13, Thu 15 Oct",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Test + Discover the Trainer",
+            "estTime": "60 min",
+            "note": "Today is about finding your starting line and getting to know the machine, not about working hard. Test first while you're fresh, then explore the trainer together. No timers on the discovery blocks: take your time, read the cues out to each other, and try every setting. In each weight box, type the setting that felt right (for example \"pin 2\", \"bar notch 6\", \"empty bar\"). Those notes set the starting weights for Week 20.",
+            "warmup": [
+              {
+                "name": "March on Spot",
+                "qty": "2 mins",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=March%20on%20Spot%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "World's Greatest Stretch",
+                "qty": "4 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=World's%20Greatest%20Stretch%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Bodyweight Squats",
+                "qty": "12 reps, slow",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Bodyweight%20Squats%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Glute Bridge",
+                "qty": "12 reps, squeeze at the top",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Restart Fitness Test",
+                "rounds": 1,
+                "tempo": "One max effort each, 2 min rest between tests",
+                "formatNote": "<strong>Same four tests as always</strong>, so your charts stay comparable, plus one new one: the <strong>Dead Hang</strong>, your starting line for the Pull Up Journey. One of you goes while the other counts and times, then swap.",
+                "exercises": [
+                  {
+                    "name": "Max Full Push Ups",
+                    "qty": "1 max set, stop when your form breaks",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=push%20up%20form",
+                    "videoKnown": false,
+                    "buddy": "count every full rep"
+                  },
+                  {
+                    "name": "Forearm Plank Max Hold",
+                    "qty": "1 max hold, stop when your hips drop",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=forearm%20plank%20form",
+                    "videoKnown": false,
+                    "buddy": "time it and watch the hips"
+                  },
+                  {
+                    "name": "Wall Sit Max Hold",
+                    "qty": "1 max hold, thighs parallel",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=wall%20sit%20form",
+                    "videoKnown": false,
+                    "buddy": "time it"
+                  },
+                  {
+                    "name": "Max Sit Ups (Straight Arm, Wrist to Knee)",
+                    "qty": "1 max set, same style as every test",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=sit%20up%20form",
+                    "videoKnown": false,
+                    "buddy": "hold the feet and count"
+                  },
+                  {
+                    "name": "Dead Hang Max Hold",
+                    "qty": "1 max hold on the pull up bar, NEW test",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20form",
+                    "videoKnown": false,
+                    "buddy": "time it, spot the landing"
+                  }
+                ]
+              },
+              {
+                "name": "Discover 1: Smith Machine",
+                "rounds": 1,
+                "tempo": "No timer, take your time, swap after each move",
+                "formatNote": "<strong>Learn the rails before you load them.</strong> The Smith bar runs on fixed rails. Twist your wrists to hook it on or off any notch. The <strong>safety stops</strong> are your spotter: set them just below the lowest point of every move. One of you tries each move while the other reads the cues. Then swap. Spot the <strong>J-cups</strong> and <strong>spotter arms</strong> too. They are for the free Olympic bar later on, not today. Nothing goes on the bar today.",
+                "exercises": [
+                  {
+                    "name": "Smith Safety Walkthrough",
+                    "qty": "Together: twist to unhook and rehook the empty bar 3 times, then set the safety stops at hip height",
+                    "weight": "Empty bar, no plates",
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20how%20to%20use%20safety%20stoppers%20beginner",
+                    "videoKnown": false,
+                    "buddy": "read the cues and check the stops"
+                  },
+                  {
+                    "name": "Bodyweight Squat to the Safety Stops",
+                    "qty": "8 slow reps, no bar, just learn your depth",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=bodyweight%20squat%20form",
+                    "videoKnown": false,
+                    "buddy": "watch knees track over toes"
+                  },
+                  {
+                    "name": "Smith Machine Inverted Row (Find Your Height)",
+                    "qty": "Try 3 bar heights, 5 reps each. Pick the one where rep 5 is hard but clean",
+                    "weight": "Bar notch ?",
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20inverted%20row%20beginner",
+                    "videoKnown": false,
+                    "buddy": "watch for sagging hips"
+                  },
+                  {
+                    "name": "Incline Push Ups on the Smith Bar (Find Your Height)",
+                    "qty": "Try 2 or 3 bar heights, 5 reps each. Pick the one where rep 8 would be hard",
+                    "weight": "Bar notch ?",
+                    "video": "https://www.youtube.com/results?search_query=incline%20push%20up%20smith%20machine",
+                    "videoKnown": false,
+                    "buddy": "check for a straight body line"
+                  }
+                ]
+              },
+              {
+                "name": "Discover 2: Cables and Attachments",
+                "rounds": 1,
+                "tempo": "No timer, lightest pin first, 10 easy reps each",
+                "formatNote": "<strong>Meet the attachments.</strong> Lay them all out on the floor first and match each one to a move below. To change a pulley's height, pull the pop pin and slide it. To change the weight, move the pin in the stack. <strong>Handy to know:</strong> the side pulleys are 2:1, so the number on the stack feels about half as heavy. The overhead lat pulldown is 1:1, so it feels exactly as marked. Start every move on the <strong>lightest pin</strong>. Go up one at a time until 10 reps feel steady with about 4 more left in the tank. That's your starting weight.",
+                "exercises": [
+                  {
+                    "name": "Cable Row (Straight Bar or Single Handles, Middle Height)",
+                    "qty": "10 easy reps, then find your pin",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=standing%20cable%20row%20form",
+                    "videoKnown": false,
+                    "buddy": "read the cue: squeeze shoulder blades"
+                  },
+                  {
+                    "name": "Cable Face Pull (Rope, Head Height)",
+                    "qty": "10 easy reps, pull the rope apart at your face",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20face%20pull%20rope%20form",
+                    "videoKnown": false,
+                    "buddy": "watch elbows stay high"
+                  },
+                  {
+                    "name": "Cable Tricep Pushdown (Rope or Straight Bar, Top)",
+                    "qty": "10 easy reps, elbows pinned to your sides",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20tricep%20pushdown%20form",
+                    "videoKnown": false,
+                    "buddy": "check elbows stay still"
+                  },
+                  {
+                    "name": "Lat Pulldown on the Seat (Lat Bar, Overhead Pulley)",
+                    "qty": "10 easy reps, bar to your collarbone. Set the knee pad so your thighs are snug",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=seated%20lat%20pulldown%20form%20beginner",
+                    "videoKnown": false,
+                    "buddy": "watch for leaning back"
+                  },
+                  {
+                    "name": "Cable Pallof Press (Single Handle, Chest Height)",
+                    "qty": "6 each side, resist the twist",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20pallof%20press",
+                    "videoKnown": false,
+                    "buddy": "gently push the hips to test"
+                  },
+                  {
+                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
+                    "qty": "8 each leg, if you have an ankle strap. Skip if not",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
+                    "videoKnown": false,
+                    "buddy": "steady the frame for balance"
+                  }
+                ]
+              },
+              {
+                "name": "Discover 3: Landmine and Olympic Bar",
+                "rounds": 1,
+                "tempo": "No timer, empty bar only, 6 to 8 reps each",
+                "formatNote": "<strong>What's a landmine?</strong> It's the little swivel sleeve near the bottom of the trainer. Slide one end of the Olympic bar into it and hold the other end. The bar moves in an arc, which is very joint friendly. You only lift part of the bar's weight, so it's a gentle way to learn. The empty Olympic bar weighs 20 kg, so the landmine end feels much lighter. No plates today.",
+                "exercises": [
+                  {
+                    "name": "Landmine Setup",
+                    "qty": "Together: slide the bar into the sleeve and check it swivels freely",
+                    "weight": "Olympic bar, no plates",
+                    "video": "https://www.youtube.com/results?search_query=landmine%20attachment%20how%20to%20set%20up",
+                    "videoKnown": false,
+                    "buddy": "hold the bar end steady"
+                  },
+                  {
+                    "name": "Half Kneeling Landmine Press",
+                    "qty": "6 to 8 each arm, press up and slightly forward",
+                    "weight": "Empty bar (landmine)",
+                    "video": "https://www.youtube.com/results?search_query=half%20kneeling%20landmine%20press",
+                    "videoKnown": false,
+                    "buddy": "watch ribs stay down"
+                  },
+                  {
+                    "name": "Landmine Squat (Optional)",
+                    "qty": "6 to 8 slow reps holding the bar end at your chest, only if it feels easy",
+                    "weight": "Empty bar (landmine)",
+                    "video": "https://www.youtube.com/results?search_query=landmine%20goblet%20squat%20beginner",
+                    "videoKnown": false,
+                    "buddy": "spot from the side"
+                  },
+                  {
+                    "name": "Olympic Bar Romanian Deadlift Practice",
+                    "qty": "6 slow reps, hips back, bar close to your legs. Stop if your back rounds",
+                    "weight": "Empty Olympic bar (20 kg)",
+                    "video": "https://www.youtube.com/results?search_query=barbell%20romanian%20deadlift%20form",
+                    "videoKnown": false,
+                    "buddy": "watch from the side for a flat back"
+                  }
+                ]
+              },
+              {
+                "name": "Core Finisher: Hold and Work",
+                "rounds": 2,
+                "tempo": "30 sec turns, 10 sec swap, 30 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 10,
+                  "betweenRounds": 30
+                },
+                "formatNote": "A short, friendly finish. One of you does the move while the other holds the buddy move. Then swap.",
+                "exercises": [
+                  {
+                    "name": "Dead Bug",
+                    "qty": "2 rounds, slow, low back pressed down",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dead%20bug%20exercise",
+                    "videoKnown": false,
+                    "buddy": "Forearm plank"
+                  },
+                  {
+                    "name": "Side Plank (Swap Sides Halfway)",
+                    "qty": "2 rounds, hips high",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20form",
+                    "videoKnown": false,
+                    "buddy": "Glute bridge hold"
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Pigeon Pose (each side)",
+                "qty": "45 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Standing Hamstring Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=standing%20hamstring%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Foam Roll Quads and Glutes",
+                "qty": "1 min",
+                "weight": "Foam roller",
+                "video": "https://www.youtube.com/results?search_query=foam%20roll%20quads%20glutes",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Upper Body Calisthenics",
+            "estTime": "50 to 55 min",
+            "note": "Pull ups are the big goal. Every turn on the bar counts, even a hang. Incline push ups use the Smith bar: drop it a notch each week until you are on the floor. Note the notch you used in the weight box.",
+            "warmup": [
+              {
+                "name": "Jumping Jacks",
+                "qty": "1 min",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Jumping%20Jacks%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps, arms straight",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Thread the Needle",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=thread%20the%20needle%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Pull Up Journey",
+                "rounds": 3,
+                "tempo": "30 sec turns, 15 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 15,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>I Go, You Go on the bar.</strong> The resting partner spots: a hand at the waist to help the jump up on negatives, and ready to steady the landing. Use the stepping block to reach the bar.",
+                "exercises": [
+                  {
+                    "name": "Dead Hang",
+                    "qty": "3 rounds, up to 30 sec, shoulders away from ears",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20form",
+                    "videoKnown": false,
+                    "buddy": "time it, spot the landing"
+                  },
+                  {
+                    "name": "Scapular Pull Ups",
+                    "qty": "3 rounds, 6 to 8 reps, arms straight, pull shoulder blades down",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=scapular%20pull%20up%20form",
+                    "videoKnown": false,
+                    "buddy": "Hollow hold"
+                  },
+                  {
+                    "name": "Negative Pull Ups",
+                    "qty": "3 rounds, 3 to 4 reps, jump up, lower over 3 to 5 sec",
+                    "weight": "Bodyweight (step off the stepping block)",
+                    "video": "https://www.youtube.com/results?search_query=negative%20pull%20up%20form",
+                    "videoKnown": false,
+                    "buddy": "spot at the waist"
+                  },
+                  {
+                    "name": "Hanging Knee Raises",
+                    "qty": "3 rounds, 6 to 10 reps, no swinging",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=hanging%20knee%20raise%20form",
+                    "videoKnown": false,
+                    "buddy": "Dead bug"
+                  }
+                ]
+              },
+              {
+                "name": "Machine Strength: I Go, You Go",
+                "rounds": 3,
+                "tempo": "45 sec turns, 15 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 45,
+                  "swap": 15,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>I Go, You Go.</strong> One machine, two of you: take turns, coach each other, swap. Inverted rows get easier with the bar higher, harder with it lower.",
+                "exercises": [
+                  {
+                    "name": "Smith Machine Inverted Row",
+                    "qty": "3 rounds, 8 to 10 reps, body straight like a plank",
+                    "weight": "Bodyweight (Smith bar at hip height)",
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20inverted%20row",
+                    "videoKnown": false,
+                    "buddy": "watch for sagging hips"
+                  },
+                  {
+                    "name": "Half Kneeling Cable Lat Pulldown",
+                    "qty": "3 rounds, 10 reps, elbows to back pockets",
+                    "weight": "Cable, start light, type in what you used",
+                    "video": "https://www.youtube.com/results?search_query=half%20kneeling%20cable%20lat%20pulldown",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Standing Smith Machine Overhead Press",
+                    "qty": "3 rounds, 8 reps, ribs down, glutes tight",
+                    "weight": "Smith bar, start light, type in what you used",
+                    "video": "https://www.youtube.com/results?search_query=standing%20smith%20machine%20overhead%20press",
+                    "videoKnown": false,
+                    "buddy": "spot and call \"ribs down\""
+                  },
+                  {
+                    "name": "Cable Pallof Press",
+                    "qty": "3 rounds, 6 each side, resist the twist",
+                    "weight": "Cable, start light, type in what you used",
+                    "video": "https://www.youtube.com/results?search_query=cable%20pallof%20press",
+                    "videoKnown": false,
+                    "buddy": "Side plank, swap sides halfway"
+                  }
+                ]
+              },
+              {
+                "name": "Push Up Block: Smith Bar Incline",
+                "rounds": 3,
+                "tempo": "30 sec turns, 10 sec swap, 30 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 10,
+                  "betweenRounds": 30
+                },
+                "formatNote": "<strong>Hold and Work.</strong> The Push Up Block is back! One of you does incline push ups on the Smith bar while the other holds a plank, then swap.",
+                "exercises": [
+                  {
+                    "name": "Incline Push Ups (Smith Bar)",
+                    "qty": "3 rounds, as many good reps as you can in 30 sec",
+                    "weight": "Bodyweight (note your bar notch)",
+                    "video": "https://www.youtube.com/results?search_query=incline%20push%20up%20smith%20machine",
+                    "videoKnown": false,
+                    "buddy": "Forearm plank hold"
+                  }
+                ]
+              },
+              {
+                "name": "Arms Tabata",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>Tabata:</strong> 20 seconds hard, 10 seconds rest, 8 times, 4 minutes flat. You each grab one 5 kg pair. The two moves alternate.",
+                "exercises": [
+                  {
+                    "name": "Dumbbell Bicep Curl",
+                    "qty": "4 intervals, as many clean reps as you can",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20bicep%20curl%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Close Grip Push Ups (Knees OK)",
+                    "qty": "4 intervals, elbows tight to your ribs",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=close%20grip%20push%20up%20knees",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Doorway Chest Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=doorway%20chest%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Lat Stretch on the Smith Bar",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=lat%20stretch%20holding%20bar",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Neck Rolls",
+                "qty": "5 each way",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=neck%20rolls%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "thu",
+            "label": "Thursday",
+            "title": "Tabata Conditioning + Core",
+            "estTime": "40 to 45 min",
+            "note": "True Tabata is all out. This week, go hard but controlled, about 8 out of 10. Walk around for a minute between Tabatas, then press start on the next one.",
+            "warmup": [
+              {
+                "name": "Easy Skipping",
+                "qty": "1 min, one rope: swap halfway",
+                "weight": "Skipping rope",
+                "video": "https://www.youtube.com/results?search_query=easy%20skipping%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Bodyweight Squats",
+                "qty": "10 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Bodyweight%20Squats%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "6 each leg",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Inchworms",
+                "qty": "5 reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=inchworm%20exercise",
+                "videoKnown": false
+              },
+              {
+                "name": "High Knees",
+                "qty": "30 sec",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Tabata 1: Legs and Lungs",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>Tabata:</strong> 20 seconds on, 10 seconds off, 8 times. The two moves alternate. Both of you go at the same time.",
+                "exercises": [
+                  {
+                    "name": "Bodyweight Squats",
+                    "qty": "4 intervals, fast but full depth",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bodyweight%20Squats%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Mountain Climbers",
+                    "qty": "4 intervals, hips level",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Tabata 2: Jump and Hold",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "The skipping rope finally makes its debut! One rope, so one of you skips and the other does rope-less skips. Swap who gets the rope next week.",
+                "exercises": [
+                  {
+                    "name": "Skipping Rope (or Rope-less Skips)",
+                    "qty": "4 intervals, light and quick",
+                    "weight": "Skipping rope (one of you)",
+                    "video": "https://www.youtube.com/results?search_query=skipping%20rope%20beginner",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Plank Shoulder Taps",
+                    "qty": "4 intervals, hips still",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false
+                  }
+                ]
+              },
+              {
+                "name": "Partner Power Finisher",
+                "rounds": 2,
+                "tempo": "40 sec turns, 10 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 10,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>Hold and Work.</strong> You are both working: one on the main move, one on the buddy move, then swap. One kettlebell, one cable, no waiting.",
+                "exercises": [
+                  {
+                    "name": "Kettlebell Swings",
+                    "qty": "2 rounds, snap the hips, arms just guide",
+                    "weight": "4 kg kettlebell",
+                    "video": "https://www.youtube.com/results?search_query=kettlebell%20swing%20form",
+                    "videoKnown": false,
+                    "buddy": "Cable woodchop, swap sides halfway"
+                  },
+                  {
+                    "name": "Farmer Carry",
+                    "qty": "2 rounds, walk tall, short quick steps",
+                    "weight": "12.5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=farmer%20carry%20form",
+                    "videoKnown": false,
+                    "buddy": "Med ball slams (2 kg ball)"
+                  }
+                ]
+              },
+              {
+                "name": "Core Finisher: Hold and Work",
+                "rounds": 2,
+                "tempo": "30 sec turns, 10 sec swap, 30 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 10,
+                  "betweenRounds": 30
+                },
+                "formatNote": "The ab roller's first outing! Kneeling rollouts only go as far as you can keep your back flat. Hold and Work again: one rolls, one holds.",
+                "exercises": [
+                  {
+                    "name": "Ab Roller Rollouts (Kneeling)",
+                    "qty": "2 rounds, 6 to 8 slow reps, stop before your back arches",
+                    "weight": "Ab roller",
+                    "video": "https://www.youtube.com/results?search_query=kneeling%20ab%20wheel%20rollout%20beginner",
+                    "videoKnown": false,
+                    "buddy": "Hollow hold"
+                  },
+                  {
+                    "name": "Hanging Knee Raises",
+                    "qty": "2 rounds, 6 to 10 reps, no swinging",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=hanging%20knee%20raise%20form",
+                    "videoKnown": false,
+                    "buddy": "Bicycle crunch"
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Easy Walk",
+                "qty": "1 min",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=cool%20down%20walk",
+                "videoKnown": false
+              },
+              {
+                "name": "Standing Quad Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Figure Four Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Foam Roll Upper Back",
+                "qty": "1 min",
+                "weight": "Foam roller",
+                "video": "https://www.youtube.com/results?search_query=foam%20roll%20upper%20back",
+                "videoKnown": false
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4683,7 +5396,7 @@ window.SITE_DATA = {
       "08/07/2026",
       "01/08/2026"
     ],
-    "nextTestDate": "30/08/2026",
+    "nextTestDate": "12/10/2026",
     "tests": [
       {
         "name": "Max Full Push Ups",
@@ -4746,6 +5459,22 @@ window.SITE_DATA = {
             22,
             28,
             35
+          ]
+        }
+      },
+      {
+        "name": "Dead Hang Max Hold",
+        "unit": "seconds",
+        "series": {
+          "Jenna": [
+            null,
+            null,
+            null
+          ],
+          "Pene": [
+            null,
+            null,
+            null
           ]
         }
       }
@@ -6011,6 +6740,213 @@ window.SITE_DATA = {
       "Primary Muscle": "Heart, Legs",
       "Intensity": "Low",
       "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "FT001",
+      "Exercise": "Smith Machine Squat",
+      "Category": "Lower",
+      "Movement Pattern": "Squat",
+      "Primary Muscle": "Quads, Glutes",
+      "Intensity": "Moderate",
+      "Equipment": "Smith machine"
+    },
+    {
+      "ID": "FT002",
+      "Exercise": "Olympic Bar Romanian Deadlift",
+      "Category": "Lower",
+      "Movement Pattern": "Hinge",
+      "Primary Muscle": "Hamstrings, Glutes",
+      "Intensity": "Moderate",
+      "Equipment": "Olympic bar"
+    },
+    {
+      "ID": "FT003",
+      "Exercise": "Cable Pull Through",
+      "Category": "Lower",
+      "Movement Pattern": "Hinge",
+      "Primary Muscle": "Glutes, Hamstrings",
+      "Intensity": "Moderate",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT004",
+      "Exercise": "Dead Hang",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Grip, Lats, Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Pull up bar"
+    },
+    {
+      "ID": "FT005",
+      "Exercise": "Dead Hang Max Hold",
+      "Category": "Test",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Grip, Lats, Shoulders",
+      "Intensity": "High",
+      "Equipment": "Pull up bar"
+    },
+    {
+      "ID": "FT006",
+      "Exercise": "Scapular Pull Ups",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Lats, Lower Traps",
+      "Intensity": "Moderate",
+      "Equipment": "Pull up bar"
+    },
+    {
+      "ID": "FT007",
+      "Exercise": "Negative Pull Ups",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Lats, Biceps",
+      "Intensity": "High",
+      "Equipment": "Pull up bar"
+    },
+    {
+      "ID": "FT008",
+      "Exercise": "Hanging Knee Raises",
+      "Category": "Core",
+      "Movement Pattern": "Flexion",
+      "Primary Muscle": "Abs, Hip Flexors",
+      "Intensity": "Moderate",
+      "Equipment": "Pull up bar"
+    },
+    {
+      "ID": "FT009",
+      "Exercise": "Smith Machine Inverted Row",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Upper Back, Biceps",
+      "Intensity": "Moderate",
+      "Equipment": "Smith machine"
+    },
+    {
+      "ID": "FT010",
+      "Exercise": "Half Kneeling Cable Lat Pulldown",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Lats",
+      "Intensity": "Moderate",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT011",
+      "Exercise": "Standing Smith Machine Overhead Press",
+      "Category": "Upper",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Shoulders, Triceps",
+      "Intensity": "Moderate",
+      "Equipment": "Smith machine"
+    },
+    {
+      "ID": "FT012",
+      "Exercise": "Cable Pallof Press",
+      "Category": "Core",
+      "Movement Pattern": "Anti-rotation",
+      "Primary Muscle": "Obliques, Deep Core",
+      "Intensity": "Moderate",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT013",
+      "Exercise": "Incline Push Ups (Smith Bar)",
+      "Category": "Upper",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Chest, Triceps",
+      "Intensity": "Moderate",
+      "Equipment": "Smith machine"
+    },
+    {
+      "ID": "FT014",
+      "Exercise": "Close Grip Push Ups (Knees OK)",
+      "Category": "Upper",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Triceps, Chest",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "FT015",
+      "Exercise": "Skipping Rope (or Rope-less Skips)",
+      "Category": "Cardio",
+      "Movement Pattern": "Jump",
+      "Primary Muscle": "Calves, Heart",
+      "Intensity": "High",
+      "Equipment": "Skipping rope"
+    },
+    {
+      "ID": "FT016",
+      "Exercise": "Ab Roller Rollouts (Kneeling)",
+      "Category": "Core",
+      "Movement Pattern": "Anti-extension",
+      "Primary Muscle": "Abs, Lats",
+      "Intensity": "High",
+      "Equipment": "Ab roller"
+    },
+    {
+      "ID": "FT017",
+      "Exercise": "Cable Woodchop",
+      "Category": "Core",
+      "Movement Pattern": "Rotation",
+      "Primary Muscle": "Obliques",
+      "Intensity": "Moderate",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT018",
+      "Exercise": "Half Kneeling Landmine Press",
+      "Category": "Upper",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Shoulders, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Landmine"
+    },
+    {
+      "ID": "FT019",
+      "Exercise": "Landmine Squat",
+      "Category": "Lower",
+      "Movement Pattern": "Squat",
+      "Primary Muscle": "Quads, Glutes",
+      "Intensity": "Moderate",
+      "Equipment": "Landmine"
+    },
+    {
+      "ID": "FT020",
+      "Exercise": "Cable Row",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Upper Back, Biceps",
+      "Intensity": "Moderate",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT021",
+      "Exercise": "Cable Face Pull",
+      "Category": "Upper",
+      "Movement Pattern": "Pull",
+      "Primary Muscle": "Rear Shoulders, Upper Back",
+      "Intensity": "Low",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT022",
+      "Exercise": "Cable Tricep Pushdown",
+      "Category": "Arms",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Triceps",
+      "Intensity": "Low",
+      "Equipment": "Cable"
+    },
+    {
+      "ID": "FT023",
+      "Exercise": "Cable Glute Kickback",
+      "Category": "Lower",
+      "Movement Pattern": "Hinge",
+      "Primary Muscle": "Glutes",
+      "Intensity": "Low",
+      "Equipment": "Cable"
     }
   ],
   "programStats": {

@@ -484,6 +484,21 @@
     margin-bottom:2px;
     min-height:18px;
   }
+  .format-note{
+    background:linear-gradient(135deg, rgba(106,17,203,0.08), rgba(247,37,133,0.08));
+    border-left:4px solid var(--coral-500);
+    border-radius:10px;
+    padding:9px 12px;
+    margin:0 0 10px;
+    font-size:0.8rem;
+    line-height:1.45;
+  }
+  .ex-buddy{
+    margin-top:4px;
+    font-size:0.76rem;
+    font-weight:700;
+    color:#6A11CB;
+  }
   .round-timer-btn{
     display:block;
     width:100%;
@@ -729,7 +744,7 @@
     <p style="font-size:0.9rem;line-height:1.6;">
       Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
-      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
+      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. <strong>New in Week 19:</strong> two new block styles. A <strong>Tabata</strong> block runs 8 intervals of 20 seconds on and 10 off, flipping between its two moves, 4 minutes and done. A <strong>Partner</strong> block (I Go, You Go, or Hold and Work) gives each of you a timed turn: the timer calls out whose turn it is, what the other one is doing (spotting, or the buddy move shown on the card), and when to swap. In solo mode it becomes your turn, then the buddy move or a rest. Either way, when the timer finishes a round it ticks the chips for you, same as always.<br><br>Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
       <strong>The voice cues</strong> are the phone's own voice, read with a different pace and brightness per moment (hype on "go", calmer on rest), plus a 3-2-1 tick before every change and a chord when a round lands. If you'd rather hear yourselves: record short MP3s and drop them in an <code>audio</code> folder in the repo (<code>start-1.mp3</code>, <code>warn-1.mp3</code>, <code>rest-1.mp3</code>, <code>complete-1.mp3</code>, up to <code>-3</code> of each) and the app uses them instead, falling back to the phone voice for any that aren't there.<br><br>
       The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
       The Push Up Block works differently to everything else: do full push ups until your form breaks down (technical fail), then finish out the reps as modified (knee) push ups. Instead of round chips, you'll see a number box for Pene and one for Jenna each round, enter how many FULL reps each of you got before switching, the rest is assumed to be modified automatically. That number becoming your record over time is the whole point, it's a much better strength indicator than just ticking a box.<br><br>
@@ -1169,6 +1184,26 @@ try{
       if(w) setWeekCompleted(w, true);
     });
     localStorage.setItem(LEGACY_CLOSED_KEY, '1');
+  }
+}catch(e){}
+
+// Batch 21 restart (Oct 2026): after two weeks off, Week 19 is a fresh start.
+// Park Weeks 13 to 18 as closed once, so the tracker opens on Week 19 instead
+// of an old half-done day. Nothing is deleted: Reopen week brings any back.
+const RESTART_CLOSED_KEY = 'pj-restart-weeks-closed-v1';
+try{
+  if(!localStorage.getItem(RESTART_CLOSED_KEY)){
+    ['week13','week14','week15','week16','week17','week18'].forEach(id=>{
+      const w = DATA.weeks.find(x => x.id === id);
+      if(!w) return;
+      const k = weekDoneKey(w);
+      if(!completedDaysCache.includes(k)){
+        completedDaysCache = completedDaysCache.concat([k]);
+        if(window.CloudSync) CloudSync.markDayCompleted(k);
+      }
+    });
+    localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache));
+    localStorage.setItem(RESTART_CLOSED_KEY, '1');
   }
 }catch(e){}
 
@@ -1615,7 +1650,7 @@ function renderMain(){
 
   // Current day already archived, or nothing left incomplete in this week/anywhere:
   // show a friendly empty state instead of a stale or missing checklist.
-  if(!day || (isDayCompleted(week, day) && !showCompletedDays)){
+  if(!day || (isDayCompleted(week, day) && !showCompletedDays) || (isWeekCompleted(week) && !showCompletedWeeks)){
     const next = findNextIncompleteDay(state.weekIdx);
     if(next){
       state.weekIdx = next.weekIdx;
@@ -1679,7 +1714,22 @@ function renderMain(){
     section.appendChild(title);
 
     const timing = parseTempo(block.tempo);
-    if(timing.active || timing.rest){
+    if(block.formatNote){
+      const fn = document.createElement('div');
+      fn.className = 'format-note';
+      fn.innerHTML = block.formatNote;
+      section.appendChild(fn);
+    }
+    if(block.timer){
+      const roundBtn = document.createElement('button');
+      roundBtn.className = 'round-timer-btn';
+      const t = block.timer, n = block.exercises.length;
+      roundBtn.textContent = t.type === 'tabata'
+        ? '▶ Start Tabata: ' + (t.intervals || 8) + ' x ' + t.work + 's on, ' + t.rest + 's off'
+        : '▶ Start Partner Timer: ' + n + ' exercise' + (n === 1 ? '' : 's') + ', ' + t.turn + 's turns' + (isSolo() ? ' (solo version)' : '');
+      roundBtn.onclick = ()=> openGuidedTimer(block, bi, timing, week, day, ds);
+      section.appendChild(roundBtn);
+    } else if(timing.active || timing.rest){
       const roundBtn = document.createElement('button');
       roundBtn.className = 'round-timer-btn';
       const parts = [];
@@ -1766,7 +1816,7 @@ function renderMain(){
       const top = document.createElement('div');
       top.className = 'card-top';
       const left = document.createElement('div');
-      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>`;
+      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>${exObj.buddy ? `<div class="ex-buddy">⇄ Partner meanwhile: ${exObj.buddy}</div>` : ''}`;
       top.appendChild(left);
 
       const howBtn = document.createElement('button');
@@ -1925,6 +1975,7 @@ function parseTempo(tempo){
 // (e.g. "40 sec active / 20 sec rest, 90 sec rest between rounds"), otherwise
 // there's no trailing rest, the round just ends after the last exercise's work.
 function buildRoundSteps(block, timing){
+  if(block.timer) return buildSpecialSteps(block);
   const steps = [];
   const exs = block.exercises;
   const hasWorkStep = !!timing.active;
@@ -1959,6 +2010,74 @@ function buildRoundSteps(block, timing){
     }
   });
   return steps;
+}
+
+
+// ---------------- Special block formats (Batch 21, Week 19 restart) ----------------
+// block.timer = { type:'tabata', work:20, rest:10, intervals:8 }
+//   Classic Tabata: 8 intervals of 20s on / 10s off, cycling through the
+//   block's exercises in order. The whole Tabata is ONE round.
+// block.timer = { type:'partner', turn:45, swap:15, betweenRounds:60 }
+//   "I Go, You Go": for each exercise, Pene takes a timed turn while Jenna
+//   spots and coaches (or does the exercise's `buddy` move), then they swap.
+//   One round = every exercise, both people. In solo mode it becomes your
+//   turn, then the buddy move (or a rest the length of a turn).
+function buildSpecialSteps(block){
+  const t = block.timer, exs = block.exercises, steps = [];
+  if(t.type === 'tabata'){
+    const n = t.intervals || 8;
+    for(let i = 0; i < n; i++){
+      const ex = exs[i % exs.length], next = exs[(i + 1) % exs.length];
+      steps.push({ kind:'work', seconds:t.work, exName:ex.name, exIndex:i % exs.length, isFirst:i === 0, noWarn:true,
+        phaseLabel:'Interval ' + (i + 1) + ' of ' + n,
+        label: ex.name,
+        say: i === 0 ? 'Tabata time! ' + ex.name + '. Go!' : (i === n - 1 ? 'Last one! ' + ex.name + '. Everything you have!' : ex.name + '. Go!') });
+      if(i < n - 1) steps.push({ kind:'rest', seconds:t.rest, exIndex:i % exs.length, finishedExName:ex.name, nextExName:next.name,
+        phaseLabel:'Rest', label:'Next: ' + next.name, say:'Rest.' });
+    }
+    return steps;
+  }
+  if(t.type === 'partner'){
+    const people = isSolo() ? [trainingMode] : ['pene', 'jenna'];
+    exs.forEach((ex, i)=>{
+      const isLastEx = i === exs.length - 1;
+      const buddy = ex.buddy || 'spot and coach';
+      people.forEach((p, k)=>{
+        const me = PNAME[p], other = PNAME[p === 'pene' ? 'jenna' : 'pene'];
+        if(isSolo()){
+          steps.push({ kind:'work', seconds:t.turn, exName:ex.name, exIndex:i, isFirst:i === 0,
+            phaseLabel:'Your turn', label:ex.name, say:(i === 0 ? "Let's go! " : '') + ex.name + '. Go!' });
+          if(ex.buddy){
+            steps.push({ kind:'work', seconds:t.turn, exName:ex.buddy, exIndex:i,
+              phaseLabel:'Buddy move', label:ex.buddy, say:'Switch! ' + ex.buddy + '. Go!' });
+          } else {
+            steps.push({ kind:'rest', seconds:t.turn, exIndex:i, finishedExName:ex.name,
+              phaseLabel:'Rest', label:'Rest, this is your partner turn', say:'Rest. Breathe.' });
+          }
+          return;
+        }
+        steps.push({ kind:'work', seconds:t.turn, exName:ex.name, exIndex:i, isFirst:i === 0 && k === 0,
+          phaseLabel: me + "'s turn",
+          label: me + ': ' + ex.name + '  |  ' + other + ': ' + buddy,
+          say: k === 0
+            ? (i === 0 ? "Let's go! " : '') + me + "'s turn. " + ex.name + '. ' + other + ', ' + (ex.buddy ? ex.buddy : "you're on spotting duty") + '. Go!'
+            : 'Swap! ' + me + "'s turn. Go!" });
+        if(k === 0 && t.swap){
+          steps.push({ kind:'rest', seconds:t.swap, exIndex:i, finishedExName:ex.name,
+            phaseLabel:'Swap', label:'Swap over: ' + other + ' gets set', say:'And swap! ' + other + ', get set.' });
+        }
+      });
+      if(!isLastEx && t.swap){
+        steps.push({ kind:'rest', seconds:t.swap, exIndex:i, finishedExName:ex.name, nextExName:exs[i + 1].name,
+          phaseLabel:'Change over', label:'Next: ' + exs[i + 1].name, say:'Nice! Next up, ' + exs[i + 1].name + '.' });
+      } else if(isLastEx && t.betweenRounds){
+        steps.push({ kind:'rest', seconds:t.betweenRounds, exIndex:i, finishedExName:ex.name, isBetweenRounds:true,
+          phaseLabel:'Round rest', label:'Big rest before the next round', say:'Round done! Big rest. ' + t.betweenRounds + ' seconds.' });
+      }
+    });
+    return steps;
+  }
+  return [];
 }
 
 // Personal-trainer style cues: a few hype variants per moment so it doesn't feel
@@ -2164,6 +2283,8 @@ function updateTimerDisplay(){
 function updatePhaseLabel(){
   const el = document.getElementById('timerPhase');
   if(timerMode !== 'guided'){ el.textContent = ''; return; }
+  const st = roundSteps[stepIdx];
+  if(phase !== 'done' && st && st.phaseLabel){ el.textContent = st.phaseLabel; return; }
   if(phase === 'active') el.textContent = 'Work';
   else if(phase === 'rest') el.textContent = 'Rest';
   else if(phase === 'done') el.textContent = 'Round complete!';
@@ -2175,6 +2296,7 @@ function updateExerciseLabel(){
   if(timerMode !== 'guided' || phase === 'done'){ el.textContent = ''; return; }
   const step = roundSteps[stepIdx];
   if(!step){ el.textContent = ''; return; }
+  if(step.label){ el.textContent = step.label; return; }
   const total = roundSteps.filter(s => s.kind === 'work' || s.exIndex != null).reduce((max, s) => Math.max(max, s.exIndex), -1) + 1;
   if(step.kind === 'work'){
     el.textContent = `Exercise ${step.exIndex + 1} of ${total}: ${step.exName}`;
@@ -2270,6 +2392,11 @@ function announceStep(idx){
   lastAnnouncedStep = idx;
   const step = roundSteps[idx];
   if(!step) return;
+  if(step.say){
+    if(step.kind === 'work') tone(880, 0, 0.16, 0.24); else tone(523.25, 0, 0.22, 0.18);
+    speak(step.say, step.kind === 'work' ? 'hype' : 'calm');
+    return;
+  }
   if(step.kind === 'work'){
     tone(880, 0, 0.16, 0.24);   // short "go" ping under the voice
     if(step.isFirst){
@@ -2351,7 +2478,7 @@ function tick(){
     if(timerEndsAt == null) return;
     const rem = Math.max(0, Math.ceil((timerEndsAt - Date.now()) / 1000));
     const step = roundSteps[stepIdx];
-    if(step && step.kind === 'work' && !warnedThisPhase && step.seconds > WARN_SECONDS && rem <= WARN_SECONDS && rem > 0){
+    if(step && step.kind === 'work' && !step.noWarn && !warnedThisPhase && step.seconds > WARN_SECONDS && rem <= WARN_SECONDS && rem > 0){
       cue('warn', null, 'push');
       warnedThisPhase = true;
     }
