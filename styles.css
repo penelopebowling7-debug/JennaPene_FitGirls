@@ -161,7 +161,7 @@ main{
   gap:14px;
 }
 @media (min-width:640px){
-  .tile-grid{grid-template-columns:1fr 1fr 1fr;}
+  .tile-grid{grid-template-columns:1fr 1fr;}
 }
 .nav-tile{
   display:block;

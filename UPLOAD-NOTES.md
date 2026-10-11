@@ -2,6 +2,23 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 23: learn while we train, plus the Beast Guide (12 Oct)
+Pene: Monday got through the tests, the Smith machine and some cables, but there wasn't time for a real workout and they still don't feel confident on the machine. Picked "learn while we train".
+
+**Week 19 Tuesday rebuilt: Upper Body, Learn While We Train** (two stations only):
+- Station 1a, Pull Up Bar: dead hang, scapular pull ups, negative pull ups, 2 rounds, partner timer.
+- Station 1b, Smith Machine: inverted row and incline push ups at ONE bar height (no adjusting mid block), 3 rounds.
+- Station 2, Rope on One Side Pulley: rope row, face pull, tricep pushdown, hammer curl. One attachment all session, only the pulley height changes, with a 20 sec change over built into the timer.
+**Thursday**: same workout, now with setup notes for the cable woodchop station and steps for hanging knee raises and the ab roller.
+
+**New in the tracker**:
+- Machine moves show a station tag on the card ("🔧 Side pulley · chest height · rope").
+- How to opens with "Set up the machine" steps first, then the exercise steps. Exercises can carry their own steps, watch out note and easier/harder options, so cable moves no longer borrow dumbbell row advice.
+
+**New page: Beast Guide** (beast.html, in the nav and on Home): the machine's key numbers (2 x 120 kg stacks, side pulleys 2:1, lat 1:1), a numbered map of the parts, "How do I" steps (pulley height, weight pin, the 2:1 thing, Smith hooks, safety stops, lat seat, landmine, loading plates), an attachment checklist with Copy for Claude, a menu of exercises per station, and five safety rules. Offline cache pj-fitness-v6.
+
+**Testing**: Playwright: Tuesday renders 3 partner timer blocks and 9 station tags; the rope block builds 16 timer steps; How to shows 3 setup steps on Rope Cable Row and hides setup on non machine moves; cable variants replace the dumbbell ones; Beast Guide fits a 390 px phone with no sideways scroll and saves attachment ticks; no page errors on any page.
+
 ## Batch 22: hold times now record properly, and results can be fixed (12 Oct)
 Pene: the restart test recorded Forearm Plank and Wall Sit wrong for both of them, both held over a minute.
 

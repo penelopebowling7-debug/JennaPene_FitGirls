@@ -493,6 +493,25 @@
     font-size:0.8rem;
     line-height:1.45;
   }
+  .ex-station{
+    margin-top:5px;
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:700;
+    color:var(--teal-700);
+    background:var(--teal-100);
+    border-radius:8px;
+    padding:3px 8px;
+  }
+  .howto-setup-head{
+    margin-top:14px;
+    font-size:0.72rem;
+    font-weight:800;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--teal-700);
+  }
+  .howto-setup li{background:var(--teal-100);}
   .ex-buddy{
     margin-top:4px;
     font-size:0.76rem;
@@ -671,6 +690,7 @@
   <nav class="site-nav">
     <a href="index.html">Home</a>
     <a href="tracker.html" class="active">Tracker</a>
+    <a href="beast.html">Beast Guide</a>
     <a href="tests.html">Fitness Tests</a>
     <a href="progress.html">Progress</a>
     <a href="stats.html">Fun Stats</a>
@@ -763,6 +783,10 @@
     <button class="modal-close" id="closeHowto">&times;</button>
     <h3 id="howtoTitle">How to do it</h3>
     <p class="disclaimer" id="howtoVideoLine"></p>
+    <div id="howtoSetupWrap" style="display:none;">
+      <div class="howto-setup-head">🔧 Set up the machine</div>
+      <ul class="howto-steps howto-setup" id="howtoSetup"></ul>
+    </div>
     <div style="font-size:0.72rem;font-weight:800;color:var(--ink-soft);letter-spacing:0.05em;text-transform:uppercase;margin-top:14px;">Do it like this</div>
     <ul class="howto-steps" id="howtoSteps"></ul>
     <div class="howto-watch" id="howtoWatch"></div>
@@ -1512,7 +1536,7 @@ function buildPushupCard(block, bi, pair, ds){
 // their best), their own round chips, and their own skip.
 function variantsFor(exObj){
   const lib = window.HOWTO ? (HOWTO.lookup(exObj.name) || HOWTO.generic) : null;
-  return lib ? lib.variants : null;
+  return exObj.variants || (lib ? lib.variants : null);
 }
 
 function buildPersonRow(block, bi, ei, exObj, ds, p, counts){
@@ -1608,19 +1632,31 @@ function openHowto(exObj, bi, ei, person, ds){
   } else {
     videoLine.textContent = '';
   }
+  // Batch 22: machine moves carry their own setup and steps in data.js
+  // (exObj.setup / exObj.steps / exObj.watch), which beat the general library.
+  const setupWrap = document.getElementById('howtoSetupWrap');
+  const setupEl = document.getElementById('howtoSetup');
+  setupEl.innerHTML = '';
+  (exObj.setup || []).forEach((s, i)=>{
+    const li = document.createElement('li');
+    li.innerHTML = '<span class="n">' + (i+1) + '</span><span>' + s + '</span>';
+    setupEl.appendChild(li);
+  });
+  setupWrap.style.display = exObj.setup && exObj.setup.length ? 'block' : 'none';
   const stepsEl = document.getElementById('howtoSteps');
   stepsEl.innerHTML = '';
-  (lib ? lib.steps : []).forEach((s, i)=>{
+  (exObj.steps || (lib ? lib.steps : [])).forEach((s, i)=>{
     const li = document.createElement('li');
     li.innerHTML = '<span class="n">' + (i+1) + '</span><span>' + s + '</span>';
     stepsEl.appendChild(li);
   });
-  document.getElementById('howtoWatch').innerHTML = lib ? '<strong>Watch for:</strong> ' + lib.watch : '';
+  const watchText = exObj.watch || (lib ? lib.watch : '');
+  document.getElementById('howtoWatch').innerHTML = watchText ? '<strong>Watch for:</strong> ' + watchText : '';
 
   document.getElementById('howtoVariantLabel').textContent = 'Version for ' + PNAME[person];
   const wrap = document.getElementById('howtoVariants');
   wrap.innerHTML = '';
-  const variants = lib ? lib.variants : null;
+  const variants = exObj.variants || (lib ? lib.variants : null);
   const tiers = ['Easier', 'Standard', 'Harder'];
   if(variants && ds){
     const current = ds.blocks[bi].variant[person][ei];
@@ -1816,7 +1852,7 @@ function renderMain(){
       const top = document.createElement('div');
       top.className = 'card-top';
       const left = document.createElement('div');
-      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>${exObj.buddy ? `<div class="ex-buddy">⇄ Partner meanwhile: ${exObj.buddy}</div>` : ''}`;
+      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>${exObj.station ? `<div class="ex-station">🔧 ${exObj.station}</div>` : ''}${exObj.buddy ? `<div class="ex-buddy">⇄ Partner meanwhile: ${exObj.buddy}</div>` : ''}`;
       top.appendChild(left);
 
       const howBtn = document.createElement('button');

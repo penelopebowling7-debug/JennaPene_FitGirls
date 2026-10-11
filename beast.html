@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6A11CB">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fitness Hub">
+<title>Beast Guide</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px 10px;text-align:center;}
+  .fact .big{font-size:1.35rem;font-weight:800;color:var(--teal-700);line-height:1.1;}
+  .fact .small{font-size:0.72rem;color:var(--ink-soft);margin-top:4px;line-height:1.35;}
+  .fact.pink .big{color:var(--coral-500);}
+
+  .section-h{font-size:1.1rem;font-weight:800;color:var(--teal-900);margin:26px 0 4px;}
+  .section-sub{font-size:0.86rem;color:var(--ink-soft);margin:0 0 12px;line-height:1.5;}
+
+  .diagram-card{padding:10px 10px 4px;}
+  .diagram-card svg{width:100%;height:auto;display:block;}
+  .diagram-caption{font-size:0.72rem;color:var(--ink-soft);text-align:center;margin:4px 0 8px;}
+
+  .legend{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+  @media (min-width:640px){.legend{grid-template-columns:1fr 1fr;}}
+  .legend li{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:0.85rem;line-height:1.45;}
+  .legend .num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--coral-500);color:#fff;font-weight:800;font-size:0.8rem;display:flex;align-items:center;justify-content:center;}
+  .legend b{color:var(--teal-900);}
+
+  details.howto{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden;}
+  details.howto summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:800;color:var(--teal-900);display:flex;align-items:center;gap:10px;font-size:0.95rem;}
+  details.howto summary::-webkit-details-marker{display:none;}
+  details.howto summary .ic{font-size:1.2rem;}
+  details.howto summary .chev{margin-left:auto;color:var(--coral-500);transition:transform 0.2s ease;}
+  details.howto[open] summary .chev{transform:rotate(90deg);}
+  details.howto ol{margin:0;padding:0 16px 14px 36px;font-size:0.87rem;line-height:1.55;}
+  details.howto ol li{margin-bottom:6px;}
+  details.howto .tip{margin:0 16px 14px;background:var(--teal-100);border-radius:10px;padding:9px 12px;font-size:0.8rem;color:var(--teal-900);line-height:1.45;}
+
+  .att-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  @media (min-width:640px){.att-grid{grid-template-columns:1fr 1fr;}}
+  .att{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:var(--shadow);cursor:pointer;}
+  .att.have{border-color:var(--teal-700);background:linear-gradient(135deg,#fff,var(--teal-100));}
+  .att svg{flex:0 0 52px;width:52px;height:52px;}
+  .att h4{margin:0 0 3px;font-size:0.93rem;color:var(--teal-900);}
+  .att p{margin:0;font-size:0.8rem;color:var(--ink-soft);line-height:1.45;}
+  .att .uses{margin-top:5px;font-size:0.75rem;font-weight:700;color:var(--coral-500);}
+  .att .check{margin-left:auto;flex:0 0 26px;height:26px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;}
+  .att.have .check{background:var(--teal-700);border-color:var(--teal-700);}
+  .copy-row{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap;}
+  .copy-row .flag{font-size:0.8rem;font-weight:700;color:var(--teal-700);}
+
+  .menu-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  @media (min-width:640px){.menu-grid{grid-template-columns:1fr 1fr;}}
+  .menu{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);}
+  .menu h4{margin:0 0 8px;font-size:0.93rem;color:var(--teal-900);}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{font-size:0.75rem;font-weight:700;padding:5px 9px;border-radius:999px;background:var(--teal-100);color:var(--teal-700);}
+  .chip.new{background:var(--coral-100);color:#B5179E;}
+
+  .rules{background:linear-gradient(160deg,var(--teal-700) 0%, #9D2FD1 55%, var(--coral-500) 100%);color:#fff;border-radius:18px;padding:18px;box-shadow:var(--shadow);}
+  .rules h3{margin:0 0 10px;font-size:1.05rem;}
+  .rules ol{margin:0;padding-left:20px;font-size:0.88rem;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-top">
+    <div>
+      <h1>Pene &amp; Jenna</h1>
+      <p class="tagline">Fitness Hub</p>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="tracker.html">Tracker</a>
+    <a href="beast.html" class="active">Beast Guide</a>
+    <a href="tests.html">Fitness Tests</a>
+    <a href="progress.html">Progress</a>
+    <a href="stats.html">Fun Stats</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Meet the Beast 🦾</h2>
+    <p>Your Arrow Beast Ultimate Multi Gym, explained in plain English. What each part is, how it adjusts, which attachment does what, and what you can do at every station. Learn one station at a time. Nobody masters a whole gym in a day.</p>
+  </section>
+
+  <div class="fact-grid">
+    <div class="fact"><div class="big">2 x 120</div><div class="small">kg weight stacks, one each side</div></div>
+    <div class="fact pink"><div class="big">2 : 1</div><div class="small">side pulleys: the stack number feels about <b>half</b></div></div>
+    <div class="fact"><div class="big">1 : 1</div><div class="small">overhead lat pulley: feels <b>exactly</b> as marked</div></div>
+  </div>
+
+  <div class="section-h">The machine at a glance</div>
+  <p class="section-sub">A simple map of the main parts. Yours might be laid out a little differently, so match each number to the real thing next time you're standing in front of it.</p>
+
+  <div class="card diagram-card">
+    <svg viewBox="0 0 640 470" role="img" aria-label="Simple front view of the multi gym with numbered parts">
+      <defs>
+        <linearGradient id="frame" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3A0CA3"/><stop offset="1" stop-color="#2B0A4D"/></linearGradient>
+      </defs>
+      <!-- floor -->
+      <rect x="20" y="440" width="600" height="8" rx="4" fill="#EADCF7"/>
+      <!-- outer uprights -->
+      <rect x="40" y="40" width="16" height="400" rx="3" fill="url(#frame)"/>
+      <rect x="584" y="40" width="16" height="400" rx="3" fill="url(#frame)"/>
+      <!-- stack towers -->
+      <rect x="70" y="80" width="80" height="360" rx="6" fill="#F3E8FF" stroke="#C9A8F0"/>
+      <rect x="490" y="80" width="80" height="360" rx="6" fill="#F3E8FF" stroke="#C9A8F0"/>
+      <g fill="#7B2FF7" opacity="0.85">
+        <rect x="82" y="320" width="56" height="14" rx="2"/><rect x="82" y="337" width="56" height="14" rx="2"/><rect x="82" y="354" width="56" height="14" rx="2"/><rect x="82" y="371" width="56" height="14" rx="2"/><rect x="82" y="388" width="56" height="14" rx="2"/><rect x="82" y="405" width="56" height="14" rx="2"/><rect x="82" y="422" width="56" height="14" rx="2"/>
+        <rect x="502" y="320" width="56" height="14" rx="2"/><rect x="502" y="337" width="56" height="14" rx="2"/><rect x="502" y="354" width="56" height="14" rx="2"/><rect x="502" y="371" width="56" height="14" rx="2"/><rect x="502" y="388" width="56" height="14" rx="2"/><rect x="502" y="405" width="56" height="14" rx="2"/><rect x="502" y="422" width="56" height="14" rx="2"/>
+      </g>
+      <circle cx="138" cy="344" r="5" fill="#F72585"/><circle cx="558" cy="344" r="5" fill="#F72585"/>
+      <!-- side pulley carriages -->
+      <rect x="34" y="200" width="28" height="44" rx="6" fill="#F72585"/>
+      <circle cx="48" cy="236" r="7" fill="#fff" stroke="#F72585" stroke-width="3"/>
+      <rect x="578" y="200" width="28" height="44" rx="6" fill="#F72585"/>
+      <circle cx="592" cy="236" r="7" fill="#fff" stroke="#F72585" stroke-width="3"/>
+      <!-- top frame -->
+      <rect x="40" y="40" width="560" height="16" rx="3" fill="url(#frame)"/>
+      <!-- pull up bar -->
+      <rect x="170" y="24" width="300" height="9" rx="4.5" fill="#2B0A4D"/>
+      <rect x="196" y="24" width="10" height="20" rx="2" fill="#2B0A4D"/><rect x="434" y="24" width="10" height="20" rx="2" fill="#2B0A4D"/>
+      <!-- lat pulley -->
+      <circle cx="320" cy="70" r="11" fill="#fff" stroke="#F72585" stroke-width="4"/>
+      <line x1="320" y1="81" x2="320" y2="120" stroke="#7A6A94" stroke-width="2"/>
+      <rect x="270" y="118" width="100" height="7" rx="3.5" fill="#7A6A94"/>
+      <!-- smith uprights / rails -->
+      <rect x="200" y="56" width="12" height="384" rx="2" fill="url(#frame)"/>
+      <rect x="428" y="56" width="12" height="384" rx="2" fill="url(#frame)"/>
+      <line x1="216" y1="60" x2="216" y2="436" stroke="#C9A8F0" stroke-width="3"/>
+      <line x1="424" y1="60" x2="424" y2="436" stroke="#C9A8F0" stroke-width="3"/>
+      <!-- smith bar -->
+      <rect x="168" y="200" width="304" height="10" rx="5" fill="#B0B4C0"/>
+      <rect x="208" y="194" width="16" height="22" rx="3" fill="#7B2FF7"/><rect x="416" y="194" width="16" height="22" rx="3" fill="#7B2FF7"/>
+      <!-- safety stops -->
+      <rect x="212" y="300" width="22" height="7" rx="2" fill="#FFD60A" stroke="#C9A200"/>
+      <rect x="406" y="300" width="22" height="7" rx="2" fill="#FFD60A" stroke="#C9A200"/>
+      <!-- J cups -->
+      <path d="M182 160 h18 v12 h-8 v-6 h-10z" fill="#2B0A4D"/>
+      <path d="M458 160 h-18 v12 h8 v-6 h10z" fill="#2B0A4D"/>
+      <!-- seat + foot plate -->
+      <rect x="290" y="370" width="60" height="12" rx="6" fill="#F72585"/>
+      <rect x="315" y="382" width="10" height="58" fill="#7A6A94"/>
+      <rect x="296" y="300" width="48" height="10" rx="5" fill="#F72585" opacity="0.65"/>
+      <rect x="350" y="420" width="34" height="20" rx="3" fill="#7A6A94"/>
+      <!-- dip bar -->
+      <rect x="150" y="250" width="40" height="8" rx="4" fill="#2B0A4D"/>
+      <!-- landmine -->
+      <circle cx="252" cy="430" r="9" fill="#FFD60A" stroke="#C9A200" stroke-width="2"/>
+      <line x1="252" y1="430" x2="180" y2="400" stroke="#B0B4C0" stroke-width="6" stroke-linecap="round"/>
+      <!-- plate storage -->
+      <rect x="10" y="380" width="22" height="10" rx="3" fill="#2B0A4D"/><rect x="608" y="380" width="22" height="10" rx="3" fill="#2B0A4D"/>
+      <circle cx="21" cy="385" r="16" fill="none" stroke="#7B2FF7" stroke-width="5" opacity="0.6"/>
+      <circle cx="619" cy="385" r="16" fill="none" stroke="#7B2FF7" stroke-width="5" opacity="0.6"/>
+
+      <!-- number markers -->
+      <g font-family="Aptos,Calibri,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="middle" fill="#fff">
+        <circle cx="110" cy="300" r="13" fill="#F72585"/><text x="110" y="305">1</text>
+        <circle cx="48" cy="180" r="13" fill="#F72585"/><text x="48" y="185">2</text>
+        <circle cx="350" cy="70" r="13" fill="#F72585"/><text x="350" y="75">3</text>
+        <circle cx="490" cy="28" r="13" fill="#F72585"/><text x="490" y="33">4</text>
+        <circle cx="320" cy="185" r="13" fill="#F72585"/><text x="320" y="190">5</text>
+        <circle cx="406" cy="285" r="13" fill="#F72585"/><text x="406" y="290">6</text>
+        <circle cx="191" cy="143" r="13" fill="#F72585"/><text x="191" y="148">7</text>
+        <circle cx="272" cy="365" r="13" fill="#F72585"/><text x="272" y="370">8</text>
+        <circle cx="170" cy="236" r="13" fill="#F72585"/><text x="170" y="241">9</text>
+        <circle cx="275" cy="420" r="13" fill="#F72585"/><text x="275" y="425">10</text>
+        <circle cx="21" cy="355" r="13" fill="#F72585"/><text x="21" y="360">11</text>
+      </g>
+    </svg>
+    <div class="diagram-caption">A simplified front view. Not to scale.</div>
+  </div>
+
+  <ul class="legend">
+    <li><span class="num">1</span><span><b>Weight stacks.</b> One each side, 120 kg each. The pin picks how many plates you lift.</span></li>
+    <li><span class="num">2</span><span><b>Side pulleys.</b> Slide up and down the upright with a pop pin. These are 2:1, so the stack number feels about half.</span></li>
+    <li><span class="num">3</span><span><b>Overhead lat pulley.</b> For lat pulldowns with the seat. 1:1, so it feels exactly as marked.</span></li>
+    <li><span class="num">4</span><span><b>Pull up bar.</b> Multi grip and sliding. Use the stepping block to reach it.</span></li>
+    <li><span class="num">5</span><span><b>Smith bar.</b> Runs on fixed rails. Twist your wrists to hook or unhook it on any notch.</span></li>
+    <li><span class="num">6</span><span><b>Safety stops and spotter arms.</b> Your built in spotter. Set them just below the lowest point of every move.</span></li>
+    <li><span class="num">7</span><span><b>J-cups.</b> Hold the free Olympic bar for squats and presses later on, outside the rails.</span></li>
+    <li><span class="num">8</span><span><b>Lat seat and foot plate.</b> Sit here for pulldowns. The foot plate lets you brace for seated rows.</span></li>
+    <li><span class="num">9</span><span><b>Dip bar.</b> For dips and knee raises. Start with your feet on the stepping block to help.</span></li>
+    <li><span class="num">10</span><span><b>Landmine.</b> A swivel sleeve at the base. One end of the Olympic bar goes in, you hold the other. Joint friendly arcs.</span></li>
+    <li><span class="num">11</span><span><b>Storage.</b> Pegs for plates and a peg board for attachments. Also: a <b>leg press attachment</b> for later.</span></li>
+  </ul>
+
+  <div class="section-h">How do I...</div>
+  <p class="section-sub">Tap a question to open the steps. Read them out to each other the first few times.</p>
+
+  <details class="howto"><summary><span class="ic">↕️</span>Change a side pulley's height<span class="chev">›</span></summary>
+    <ol><li>Hold the pulley carriage with one hand so it can't drop.</li><li>Pull out the pop pin (the round knob) and keep it pulled.</li><li>Slide the carriage to the height you want: bottom for curls, chest for rows, head for face pulls, top for pushdowns.</li><li>Let go of the pin and wiggle the carriage until you hear it click in. Tug it to check.</li></ol>
+    <div class="tip">Change heights between sets, never while you're holding a loaded cable.</div>
+  </details>
+
+  <details class="howto"><summary><span class="ic">🎚️</span>Change the weight on a stack<span class="chev">›</span></summary>
+    <ol><li>Make sure nobody is pulling on that cable and the stack is resting at the bottom.</li><li>Pull the selector pin out of the stack.</li><li>Push it all the way into the hole of the plate you want. Everything above that plate gets lifted.</li><li>Check it's pushed in fully before you start.</li></ol>
+    <div class="tip">Lightest pin first, always. Go up one plate at a time until 10 to 12 reps feel steady with about 4 more left in the tank.</div>
+  </details>
+
+  <details class="howto"><summary><span class="ic">⚖️</span>Read the weight (the 2:1 thing)<span class="chev">›</span></summary>
+    <ol><li><b>Side pulleys (2:1):</b> the cable runs through extra pulleys, which halves the load. Pin on 10 kg feels about 5 kg.</li><li><b>Overhead lat pulley (1:1):</b> no halving. Pin on 10 kg feels 10 kg.</li><li>In the tracker, just write the number on the stack ("pin 10 kg"). It's the same every time, which is what matters for progress.</li></ol>
+  </details>
+
+  <details class="howto"><summary><span class="ic">🔗</span>Hook and unhook the Smith bar<span class="chev">›</span></summary>
+    <ol><li>Hold the bar with both hands, palms facing away.</li><li>Rotate your wrists back (like revving a motorbike) to unhook it from the notch.</li><li>Move it up or down on the rails.</li><li>Rotate your wrists forward to hook it onto the nearest notch. Give it a tug to check it's locked.</li></ol>
+    <div class="tip">Practise this with the empty bar until it feels automatic. Being able to rack it in a hurry is your main safety skill.</div>
+  </details>
+
+  <details class="howto"><summary><span class="ic">🛑</span>Set the safety stops<span class="chev">›</span></summary>
+    <ol><li>Work out the lowest point of the move (for example, the bottom of your squat or your chest on a press).</li><li>Set both safety stops on the same notch, just below that point.</li><li>Do one slow rep with an empty bar to check the bar doesn't touch them before the bottom.</li></ol>
+    <div class="tip">If a rep goes wrong, just sit the bar down on the stops and step away. That's what they're for.</div>
+  </details>
+
+  <details class="howto"><summary><span class="ic">💺</span>Use the lat pulldown seat<span class="chev">›</span></summary>
+    <ol><li>Clip the long lat bar onto the overhead cable.</li><li>Set the knee pad so your thighs are snug underneath it when your feet are flat.</li><li>Stand, grab the bar wide, and sit down with it so the weight lifts.</li><li>Pull the bar to your collarbone, elbows down and back. Let it rise slowly.</li></ol>
+  </details>
+
+  <details class="howto"><summary><span class="ic">🎯</span>Set up the landmine<span class="chev">›</span></summary>
+    <ol><li>Check the landmine sleeve is fitted and swivels freely.</li><li>Slide one end of the empty Olympic bar all the way into the sleeve.</li><li>Lift the other end and move it side to side to check it pivots smoothly.</li><li>Only add a plate to the free end once the empty bar feels easy.</li></ol>
+  </details>
+
+  <details class="howto"><summary><span class="ic">🏋️</span>Load plates safely<span class="chev">›</span></summary>
+    <ol><li>Rack the bar first, on the J-cups or hooked on the Smith.</li><li>Load both sides evenly, one plate at a time, alternating sides.</li><li>Put a collar on each side before you lift.</li><li>Unload the same way: alternate sides so the bar never tips.</li></ol>
+    <div class="tip">The empty Olympic bar weighs 20 kg on its own. That's a real weight, so it counts as a workout.</div>
+  </details>
+
+  <div class="section-h">Attachments</div>
+  <p class="section-sub">These are the common clip-on attachments. Tap the ones you actually have, then copy the list and send it to Claude. Your ticks are saved on this phone.</p>
+
+  <div class="att-grid" id="attGrid"></div>
+  <div class="copy-row">
+    <button class="btn btn-primary" id="copyAtt" type="button">📋 Copy my attachment list</button>
+    <span class="flag" id="copyFlag"></span>
+  </div>
+
+  <div class="section-h">What you can do at each station</div>
+  <p class="section-sub">Your menu for variety. Pink chips are on this week's plan.</p>
+  <div class="menu-grid">
+    <div class="menu"><h4>🔗 Smith machine</h4><div class="chips"><span class="chip new">Inverted row</span><span class="chip new">Incline push up</span><span class="chip">Squat</span><span class="chip">Reverse lunge</span><span class="chip">Hip thrust</span><span class="chip">Standing press</span><span class="chip">Calf raise</span><span class="chip">Romanian deadlift</span></div></div>
+    <div class="menu"><h4>🧵 Side pulleys</h4><div class="chips"><span class="chip new">Rope row</span><span class="chip new">Face pull</span><span class="chip new">Tricep pushdown</span><span class="chip new">Hammer curl</span><span class="chip new">Woodchop</span><span class="chip">Pallof press</span><span class="chip">Pull through</span><span class="chip">Glute kickback</span><span class="chip">Chest fly</span><span class="chip">Lateral raise</span></div></div>
+    <div class="menu"><h4>⬇️ Lat pulley and seat</h4><div class="chips"><span class="chip">Lat pulldown</span><span class="chip">Close grip pulldown</span><span class="chip">Seated row</span><span class="chip">Kneeling crunch</span><span class="chip">Straight arm pulldown</span></div></div>
+    <div class="menu"><h4>🙌 Pull up and dip bars</h4><div class="chips"><span class="chip new">Dead hang</span><span class="chip new">Scapular pull up</span><span class="chip new">Negative pull up</span><span class="chip new">Hanging knee raise</span><span class="chip">Assisted dips</span><span class="chip">Band assisted pull up</span></div></div>
+    <div class="menu"><h4>🎯 Landmine</h4><div class="chips"><span class="chip">Half kneeling press</span><span class="chip">Landmine squat</span><span class="chip">Landmine row</span><span class="chip">Rainbows (core)</span><span class="chip">Reverse lunge</span></div></div>
+    <div class="menu"><h4>🦵 Leg press attachment</h4><div class="chips"><span class="chip">Leg press</span><span class="chip">Single leg press</span><span class="chip">Calf press</span></div></div>
+  </div>
+
+  <div class="section-h">Five safety rules</div>
+  <div class="rules">
+    <h3>Before every machine set</h3>
+    <ol>
+      <li>Lightest setting first. Earn every step up.</li>
+      <li>Safety stops set, every Smith set.</li>
+      <li>Pins pushed fully in, pop pins clicked.</li>
+      <li>Change settings only when the cable is slack.</li>
+      <li>Your partner watches your first reps of anything new.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="site-footer">Built for Pene &amp; Jenna's Beast era.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+<script src="firebase-sync.js"></script>
+<script src="data.js"></script>
+<script src="app-shell.js"></script>
+<script>
+const ATTS = [
+  { id:'handle', name:'Single handle (D handle)', desc:'One hand at a time. Comes in pairs.', uses:'Woodchop, Pallof press, single arm row, chest fly', svg:'<path d="M14 20 Q26 6 38 20 L38 40 Q26 48 14 40 Z" fill="none" stroke="#6A11CB" stroke-width="4"/><rect x="18" y="34" width="16" height="7" rx="3" fill="#F72585"/><circle cx="26" cy="9" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/>' },
+  { id:'rope', name:'Tricep rope', desc:'A thick rope with two knobbed ends. Lets your hands split apart.', uses:'Pushdown, face pull, rope row, hammer curl', svg:'<circle cx="26" cy="8" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/><path d="M26 12 L14 42 M26 12 L38 42" stroke="#6A11CB" stroke-width="6" stroke-linecap="round"/><circle cx="14" cy="44" r="5" fill="#F72585"/><circle cx="38" cy="44" r="5" fill="#F72585"/>' },
+  { id:'straight', name:'Short straight bar', desc:'A short bar for two hands.', uses:'Pushdown, curl, upright row', svg:'<circle cx="26" cy="12" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/><path d="M26 16 L26 28" stroke="#7A6A94" stroke-width="3"/><rect x="6" y="28" width="40" height="7" rx="3.5" fill="#6A11CB"/>' },
+  { id:'lat', name:'Long lat bar', desc:'The long, bent bar for the overhead pulley.', uses:'Lat pulldown, straight arm pulldown', svg:'<circle cx="26" cy="10" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/><path d="M26 14 L26 24" stroke="#7A6A94" stroke-width="3"/><path d="M2 34 L10 26 L42 26 L50 34" fill="none" stroke="#6A11CB" stroke-width="5" stroke-linecap="round"/>' },
+  { id:'vbar', name:'V bar or row handle', desc:'A close grip, palms facing handle.', uses:'Seated row, close grip pulldown', svg:'<circle cx="26" cy="8" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/><path d="M26 12 L14 38 L38 38 Z" fill="none" stroke="#6A11CB" stroke-width="5" stroke-linejoin="round"/><rect x="12" y="36" width="28" height="7" rx="3.5" fill="#F72585"/>' },
+  { id:'ankle', name:'Ankle strap', desc:'A padded cuff that wraps around your ankle.', uses:'Glute kickback, hip abduction', svg:'<circle cx="26" cy="8" r="4" fill="none" stroke="#7A6A94" stroke-width="3"/><path d="M26 12 L26 20" stroke="#7A6A94" stroke-width="3"/><rect x="12" y="20" width="28" height="24" rx="8" fill="#FDE1F5" stroke="#F72585" stroke-width="3"/><rect x="12" y="28" width="28" height="6" fill="#F72585"/>' },
+  { id:'carabiner', name:'Carabiner clips', desc:'The clip that joins an attachment to the cable.', uses:'Every cable move', svg:'<path d="M18 10 Q10 10 10 22 L10 32 Q10 44 22 44 L30 44 Q42 44 42 32 L42 22 Q42 10 30 10 Z" fill="none" stroke="#6A11CB" stroke-width="4"/><path d="M30 10 L30 24" stroke="#F72585" stroke-width="4"/>' },
+  { id:'collars', name:'Bar collars', desc:'Clamps that stop plates sliding off the Olympic bar.', uses:'Any time plates go on the bar', svg:'<rect x="4" y="22" width="44" height="8" rx="3" fill="#B0B4C0"/><rect x="18" y="12" width="10" height="28" rx="3" fill="#6A11CB"/><path d="M28 18 L40 10" stroke="#F72585" stroke-width="4" stroke-linecap="round"/>' }
+];
+const KEY = 'pj-beast-attachments-v1';
+let have = {};
+try{ have = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ have = {}; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(have)); }catch(e){} }
+function render(){
+  const g = document.getElementById('attGrid');
+  g.innerHTML = '';
+  ATTS.forEach(a => {
+    const el = document.createElement('div');
+    el.className = 'att' + (have[a.id] ? ' have' : '');
+    el.setAttribute('role', 'checkbox');
+    el.setAttribute('aria-checked', have[a.id] ? 'true' : 'false');
+    el.tabIndex = 0;
+    el.innerHTML = '<svg viewBox="0 0 52 52" aria-hidden="true">' + a.svg + '</svg><div><h4>' + a.name + '</h4><p>' + a.desc + '</p><div class="uses">' + a.uses + '</div></div><span class="check">' + (have[a.id] ? '✓' : '') + '</span>';
+    const toggle = () => { have[a.id] = !have[a.id]; save(); render(); };
+    el.onclick = toggle;
+    el.onkeydown = e => { if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); } };
+    g.appendChild(el);
+  });
+}
+render();
+document.getElementById('copyAtt').onclick = () => {
+  const yes = ATTS.filter(a => have[a.id]).map(a => a.name);
+  const no = ATTS.filter(a => !have[a.id]).map(a => a.name);
+  const text = 'Beast attachments we HAVE: ' + (yes.join(', ') || 'none ticked yet') + '\nNot ticked: ' + (no.join(', ') || 'none');
+  const flag = document.getElementById('copyFlag');
+  const done = () => { flag.textContent = 'Copied! Paste it into your chat with Claude.'; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, () => { window.prompt('Copy this:', text); });
+  } else {
+    window.prompt('Copy this:', text);
+  }
+};
+</script>
+</body>
+</html>
