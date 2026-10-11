@@ -1,6 +1,14 @@
 # Upload to penelopebowling7-debug/JennaPene_FitGirls (branch: main)
 
-Drop these files into the repo root, replacing the existing ones.
+Drop these files into the repo root, replacing the existing ones (20 files as of Batch 24, including the icon PNGs).
+
+## Batch 24: new FitGirls app icon (12 Oct)
+Pene wanted a more exciting icon for the phone home screen. Picked the P&J monogram combined with a little dumbbell, named FitGirls.
+
+- New icon files: apple-touch-icon.png (180, iPhone), icon-192.png, icon-512.png (Android, also maskable), favicon-32.png, icon.svg (source).
+- Every page links the apple touch icon and favicon. The home screen name is now FitGirls (manifest short_name and the iPhone title).
+- Offline cache pj-fitness-v7.
+- **Existing home screen icons don't update by themselves**: delete the old icon and add the app to the home screen again.
 
 ## Batch 23: learn while we train, plus the Beast Guide (12 Oct)
 Pene: Monday got through the tests, the Smith machine and some cables, but there wasn't time for a real workout and they still don't feel confident on the machine. Picked "learn while we train".
