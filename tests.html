@@ -68,6 +68,9 @@
     border-bottom:1px solid var(--line);
   }
   .test-field-row:last-child{border-bottom:none;}
+  .tf-cell{display:flex;flex-direction:column;min-width:0;}
+  .tf-preview{font-size:0.68rem;font-weight:700;color:var(--teal-700);text-align:center;min-height:0.9rem;margin-top:2px;}
+  .tf-preview.bad{color:var(--coral-500);}
   .test-field-row .tf-name{font-size:0.82rem;font-weight:700;color:var(--ink);}
   .test-field-row .tf-unit{font-size:0.72rem;color:var(--ink-soft);font-weight:400;display:block;}
   .test-field-row input{
@@ -111,7 +114,7 @@
 <main>
   <div class="page-header">
     <h2>Fitness test progress 📈</h2>
-    <p>Push ups, plank hold, wall sit and sit ups, side by side across every test date so far. Pene is shown in purple, Jenna in gold.</p>
+    <p>Push ups, plank hold, wall sit, sit ups and dead hang, side by side across every test date so far. Pene is shown in purple, Jenna in pink.</p>
   </div>
 
   <div class="note-box" id="methodologyNote"></div>
@@ -178,17 +181,20 @@ function buildMergedFT(liveEntries){
     recordMap.set(d, { date: d, values });
   });
 
+  // Batch 22: a live entry on a date that already has results only overrides
+  // the boxes actually filled in. So re-logging just the plank and wall sit
+  // for a date fixes those two and leaves push ups, sit ups and dead hang alone.
   (liveEntries || []).forEach(entry => {
+    const existing = recordMap.get(entry.date);
     const values = {};
     testDefs.forEach(td => {
       const match = (entry.tests || []).find(t => t.name === td.name);
+      const prev = existing ? existing.values[td.name] : { Pene: null, Jenna: null };
       values[td.name] = {
-        Pene: match && match.Pene != null ? match.Pene : null,
-        Jenna: match && match.Jenna != null ? match.Jenna : null
+        Pene: match && match.Pene != null ? match.Pene : prev.Pene,
+        Jenna: match && match.Jenna != null ? match.Jenna : prev.Jenna
       };
     });
-    // A live entry on the same date as an existing record replaces it, so
-    // re-logging a date doesn't create a duplicate point on the chart.
     recordMap.set(entry.date, { date: entry.date, values });
   });
 
@@ -379,8 +385,9 @@ function renderAll(){
   methodologyNote.innerHTML =
     `<strong>How to read this:</strong> Push ups and sit ups are straight rep counts. The first three plank and wall sit hold ` +
     `times came from the original tracking sheet in a slightly ambiguous format, so they've been read as ` +
-    `minutes.seconds (for example "1.39" = 1 minute 39 seconds). Anything you log here from now on uses plain seconds, ` +
-    `no ambiguity. ` +
+    `minutes.seconds (for example "1.39" = 1 minute 39 seconds). When you log a hold time here, type it as minutes and seconds, ` +
+    `like 1:20, and the box shows what it read before you save. <strong>Fixing a result:</strong> log it again with the same date and ` +
+    `fill in only the boxes you're fixing. Everything else on that date stays as it was. ` +
     (nextAlreadyLogged ? '' : `Your next retest is scheduled for ${STATIC_FT.nextTestDate}, tap "＋ Log new test results" above once it happens.`);
   chartsWrap.innerHTML = '';
   merged.tests.forEach(test => chartsWrap.appendChild(buildChart(test, merged)));
@@ -406,18 +413,55 @@ function buildTestFields(){
     const row = document.createElement('div');
     row.className = 'test-field-row';
     row.innerHTML = `
-      <div class="tf-name">${test.name}<span class="tf-unit">${test.unit === 'seconds' ? 'in seconds' : 'reps'}</span></div>
-      <input type="number" min="0" data-test="${test.name}" data-person="Pene" placeholder="Pene">
-      <input type="number" min="0" data-test="${test.name}" data-person="Jenna" placeholder="Jenna">
+      <div class="tf-name">${test.name}<span class="tf-unit">${test.unit === 'seconds' ? 'time, e.g. 1:20' : 'reps'}</span></div>
+      ${['Pene','Jenna'].map(person => test.unit === 'seconds'
+        ? `<div class="tf-cell"><input type="text" inputmode="decimal" autocomplete="off" data-test="${test.name}" data-person="${person}" data-unit="seconds" placeholder="m:ss"><span class="tf-preview"></span></div>`
+        : `<div class="tf-cell"><input type="number" min="0" inputmode="numeric" data-test="${test.name}" data-person="${person}" placeholder="${person}"></div>`).join('')}
     `;
     testFieldsWrap.appendChild(row);
   });
 }
 buildTestFields();
 
+// Batch 22: hold times used to be a plain number box "in seconds", so a time
+// typed as minutes ("1.20") was cut to 1 second by parseInt. Now any of these
+// work: "1:20", "1.20", "1m 20", "1 20" (all = 80 sec) or "80" (80 sec).
+// A bare number is seconds. A separator always means minutes then seconds.
+function parseHoldTime(raw){
+  const v = String(raw || '').trim().toLowerCase();
+  if(!v) return null;
+  let m = v.match(/^(\d+)\s*(?::|\.|m|min|mins|\s)\s*(\d{1,2})\s*(?:s|sec|secs)?$/);
+  if(m){
+    const sec = parseInt(m[2], 10);
+    const secs = m[2].length === 1 && /\./.test(v) ? sec * 10 : sec; // "1.5" = 1 min 50
+    if(secs > 59) return NaN;
+    return parseInt(m[1], 10) * 60 + secs;
+  }
+  m = v.match(/^(\d+)\s*(?:m|min|mins)$/);
+  if(m) return parseInt(m[1], 10) * 60;
+  m = v.match(/^(\d+)\s*(?:s|sec|secs)?$/);
+  if(m) return parseInt(m[1], 10);
+  return NaN;
+}
+function fieldValue(input){
+  if(input.dataset.unit === 'seconds') return parseHoldTime(input.value);
+  return input.value === '' ? null : parseInt(input.value, 10);
+}
+testFieldsWrap.addEventListener('input', e => {
+  const input = e.target;
+  if(input.dataset.unit !== 'seconds') return;
+  const prev = input.parentElement.querySelector('.tf-preview');
+  const val = parseHoldTime(input.value);
+  if(val == null){ prev.textContent = ''; prev.classList.remove('bad'); return; }
+  if(isNaN(val)){ prev.textContent = 'Try 1:20'; prev.classList.add('bad'); return; }
+  prev.classList.remove('bad');
+  prev.textContent = '= ' + Math.floor(val / 60) + ' min ' + (val % 60) + ' sec';
+});
+
 document.getElementById('openLogTest').onclick = ()=>{
   document.getElementById('testDate').value = new Date().toISOString().slice(0,10);
   testFieldsWrap.querySelectorAll('input').forEach(i => i.value = '');
+  testFieldsWrap.querySelectorAll('.tf-preview').forEach(p => { p.textContent = ''; p.classList.remove('bad'); });
   document.getElementById('logTestSavedFlag').textContent = '';
   openModal('logTestOverlay');
 };
@@ -434,17 +478,26 @@ document.getElementById('saveLogTest').onclick = ()=>{
   const dateStr = `${dd}/${mm}/${yyyy}`;
 
   const tests = [];
+  let badField = null;
   STATIC_FT.tests.forEach(test => {
-    const peneVal = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Pene"]`).value;
-    const jennaVal = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Jenna"]`).value;
-    if(peneVal === '' && jennaVal === '') return; // skip tests neither of you entered
+    const pIn = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Pene"]`);
+    const jIn = testFieldsWrap.querySelector(`input[data-test="${CSS.escape(test.name)}"][data-person="Jenna"]`);
+    const pv = fieldValue(pIn), jv = fieldValue(jIn);
+    if(Number.isNaN(pv)) badField = badField || test.name + ' (Pene)';
+    if(Number.isNaN(jv)) badField = badField || test.name + ' (Jenna)';
+    if(pv == null && jv == null) return; // skip tests neither of you entered
     tests.push({
       name: test.name,
       unit: test.unit,
-      Pene: peneVal === '' ? null : parseInt(peneVal, 10),
-      Jenna: jennaVal === '' ? null : parseInt(jennaVal, 10)
+      Pene: Number.isNaN(pv) ? null : pv,
+      Jenna: Number.isNaN(jv) ? null : jv
     });
   });
+  if(badField){
+    document.getElementById('logTestSavedFlag').textContent = "Couldn't read the time for " + badField + '. Type it like 1:20.';
+    document.getElementById('logTestSavedFlag').style.color = 'var(--coral-500)';
+    return;
+  }
 
   if(!tests.length){
     document.getElementById('logTestSavedFlag').textContent = 'Enter at least one result before saving.';

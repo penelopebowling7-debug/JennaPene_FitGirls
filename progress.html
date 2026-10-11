@@ -109,6 +109,8 @@ let equipmentCache = (function(){
   }catch(e){ return { equipment: '', notes: '' }; }
 })();
 let liveFitnessEntries = [];
+// Same device copy tests.html keeps, so results show even before the cloud connects.
+try{ const rawFt = localStorage.getItem('pj-fitness-test-entries-v1'); if(rawFt) liveFitnessEntries = JSON.parse(rawFt) || []; }catch(e){}
 
 function parseLoad(v){
   if(v == null) return null;
@@ -233,10 +235,12 @@ function mergedFitnessTests(){
     recordMap.set(d, { date: d, values: values });
   });
   (liveFitnessEntries || []).forEach(entry=>{
+    const existing = recordMap.get(entry.date);
     const values = {};
     testDefs.forEach(td=>{
       const match = (entry.tests || []).find(t=> t.name === td.name);
-      values[td.name] = { Pene: match && match.Pene != null ? match.Pene : null, Jenna: match && match.Jenna != null ? match.Jenna : null };
+      const prev = existing ? existing.values[td.name] : { Pene: null, Jenna: null };
+      values[td.name] = { Pene: match && match.Pene != null ? match.Pene : prev.Pene, Jenna: match && match.Jenna != null ? match.Jenna : prev.Jenna };
     });
     recordMap.set(entry.date, { date: entry.date, values: values });
   });

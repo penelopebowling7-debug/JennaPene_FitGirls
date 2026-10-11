@@ -2,6 +2,19 @@
 
 Drop these files into the repo root, replacing the existing ones.
 
+## Batch 22: hold times now record properly, and results can be fixed (12 Oct)
+Pene: the restart test recorded Forearm Plank and Wall Sit wrong for both of them, both held over a minute.
+
+**Cause**: the Fitness Tests form used a plain number box labelled "in seconds" and read it with parseInt, so a time typed as minutes (like "1.20") was cut to 1 second.
+
+**Fixed**:
+- Hold time boxes (Plank, Wall Sit, Dead Hang) take a time: "1:20", "1.20", "1m 20", "1 20" all mean 1 min 20 sec. A plain number like "80" means seconds. A live preview under the box shows what it read ("= 1 min 20 sec"), and Save refuses anything it can't read.
+- **Fixing a result**: log again with the same date and fill in only the boxes being fixed. Those override the earlier values, and everything else on that date stays as it was (it used to wipe the whole date). Same merge on the Progress page.
+- Progress page now also reads test results saved on the phone, not only from the cloud.
+- Page intro mentions Dead Hang, and Jenna is pink not gold. Offline cache bumped to pj-fitness-v5.
+
+**Testing**: Playwright: 12 time formats parse correctly (bad ones rejected); seeded a 12/10 entry with plank and wall sit at 1 second, re-logged only those two as 1:20, 1.45, 1:10 and 95, and the date shows 80, 105, 70, 95 with push ups and dead hang unchanged on both the Fitness Tests and Progress pages; no page errors.
+
 ## Batch 21b: Monday becomes Test + Discover the Trainer (11 Oct)
 Pene: not ready to squat with weight on the Smith machine yet, wants to test where they're at and learn the trainer, its attachments and the landmine together with Jenna first.
 
