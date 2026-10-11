@@ -171,6 +171,38 @@ function toDMY(dateObj){
   return `${dd}/${mm}/${dateObj.getFullYear()}`;
 }
 
+// Batch 25: one-off repairs for hold times the old form saved wrongly (a time
+// typed as "2.10" was cut to 2 seconds). A repair only replaces a value under
+// 10 seconds in its date window, so anything logged properly later still wins.
+// Batch 26: entries saved under the wrong date by the old UTC date bug.
+function movedDate(d, moves){
+  const m = (moves || []).find(x => x.from === d);
+  return m ? m.to : d;
+}
+function applyFtCorrections(recordMap, testDefs, corrections){
+  const inWindow = (d, c) => { const t = parseDMY(d); return t >= parseDMY(c.from) && t <= parseDMY(c.to); };
+  (corrections || []).forEach(c => {
+    if(!testDefs.some(td => td.name === c.test)) return;
+    let hit = false;
+    recordMap.forEach(rec => {
+      if(!inWindow(rec.date, c)) return;
+      const v = rec.values[c.test] && rec.values[c.test][c.person];
+      if(v != null && v < 10){ rec.values[c.test][c.person] = c.value; hit = true; }
+      else if(v != null) hit = true; // a proper value is already there, leave it
+    });
+    if(!hit){
+      let rec = recordMap.get(c.fallbackDate);
+      if(!rec){
+        const values = {};
+        testDefs.forEach(td => { values[td.name] = { Pene: null, Jenna: null }; });
+        rec = { date: c.fallbackDate, values };
+        recordMap.set(c.fallbackDate, rec);
+      }
+      if(rec.values[c.test][c.person] == null) rec.values[c.test][c.person] = c.value;
+    }
+  });
+}
+
 function buildMergedFT(liveEntries){
   const testDefs = STATIC_FT.tests.map(t => ({ name: t.name, unit: t.unit }));
   const recordMap = new Map();
@@ -187,7 +219,8 @@ function buildMergedFT(liveEntries){
   // Batch 22: a live entry on a date that already has results only overrides
   // the boxes actually filled in. So re-logging just the plank and wall sit
   // for a date fixes those two and leaves push ups, sit ups and dead hang alone.
-  (liveEntries || []).forEach(entry => {
+  (liveEntries || []).forEach(entry0 => {
+    const entry = Object.assign({}, entry0, { date: movedDate(entry0.date, STATIC_FT.dateMoves) });
     const existing = recordMap.get(entry.date);
     const values = {};
     testDefs.forEach(td => {
@@ -201,6 +234,7 @@ function buildMergedFT(liveEntries){
     recordMap.set(entry.date, { date: entry.date, values });
   });
 
+  applyFtCorrections(recordMap, testDefs, STATIC_FT.corrections);
   const finalRecords = Array.from(recordMap.values()).sort((a, b) => parseDMY(a.date) - parseDMY(b.date));
 
   return {
@@ -462,7 +496,8 @@ testFieldsWrap.addEventListener('input', e => {
 });
 
 document.getElementById('openLogTest').onclick = ()=>{
-  document.getElementById('testDate').value = new Date().toISOString().slice(0,10);
+  // Batch 26: local date, not UK (UTC) date. Before 11am in Newcastle the UTC date is still yesterday.
+  document.getElementById('testDate').value = (d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'))(new Date());
   testFieldsWrap.querySelectorAll('input').forEach(i => i.value = '');
   testFieldsWrap.querySelectorAll('.tf-preview').forEach(p => { p.textContent = ''; p.classList.remove('bad'); });
   document.getElementById('logTestSavedFlag').textContent = '';

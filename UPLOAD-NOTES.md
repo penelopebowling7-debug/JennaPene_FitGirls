@@ -2,6 +2,21 @@
 
 Drop these files into the repo root, replacing the existing ones (20 files as of Batch 24, including the icon PNGs).
 
+## Batch 26: test date fix, restart test moved to 12 Oct (12 Oct)
+Pene: the repaired times weren't showing, and the test was dated 11 October although it was done on Monday 12th. The 07:38 upload was the Batch 24 files again (no changes), so Batch 25 never went live. This batch includes everything from Batch 25.
+
+**Date bug**: the Log Test form filled in the date with toISOString(), which is the UK (UTC) date. Before 11am in Newcastle that's still yesterday, so the restart test was saved as 11/10/2026. Now it uses the phone's local date. The Progress export file name had the same issue and is fixed too.
+**Moved**: data.js fitnessTests.dateMoves shows the saved 11/10/2026 entry as 12/10/2026 on Tests and Progress. The Batch 25 repair (plank 1:50 / 1:15, wall sit 2:10 / 2:18) then applies. Offline cache pj-fitness-v9.
+
+**Testing**: Playwright set to Sydney time at 7:45am Mon 12 Oct, with an entry saved as 11/10 (plank 1/1, wall sit 2/2): Tests and Progress both show it on 12/10 with 1:50, 1:15, 2:10 and 2:18, and push ups and dead hang intact. The form now defaults to 2026-10-12 where the old code gave 2026-10-11. No page errors.
+
+## Batch 25: restart test plank and wall sit repaired (12 Oct)
+Pene: after Batch 22 went live, the 12 Oct Wall Sit still showed 0:02 and the Forearm Plank 0:01 for both. Batch 22 stopped new entries breaking, but couldn't repair results already saved (the old form had already thrown the real time away when it saved). Dead Hang was right.
+
+**Fixed**: data.js fitnessTests.corrections holds the real times Pene gave: Forearm Plank Pene 1:50 (110 sec), Jenna 1:15 (75); Wall Sit Pene 2:10 (130), Jenna 2:18 (138). Tests and Progress apply them to any result from 10 to 14 Oct that's under 10 seconds (the bug's fingerprint), so a time logged properly later always wins. Fun Stats only reads the original spreadsheet data, so it's unaffected. Offline cache pj-fitness-v8.
+
+**Testing**: Playwright with data shaped like the real entry (plank 1 and 1, wall sit 2 and 2, dead hang fine): both pages show 1:50, 1:15, 2:10 and 2:18, with push ups and dead hang untouched. A later proper entry of 1:55 for Pene's plank beats the repair. No page errors.
+
 ## Batch 24: new FitGirls app icon (12 Oct)
 Pene wanted a more exciting icon for the phone home screen. Picked the P&J monogram combined with a little dumbbell, named FitGirls.
 

@@ -5602,6 +5602,51 @@ window.SITE_DATA = {
           ]
         }
       }
+    ],
+    "corrections": [
+      {
+        "from": "10/10/2026",
+        "to": "14/10/2026",
+        "fallbackDate": "12/10/2026",
+        "test": "Forearm Plank Max Hold",
+        "person": "Pene",
+        "value": 110,
+        "note": "Restart test, old form saved 1 sec (Batch 22 bug). Pene: about 1 min 50."
+      },
+      {
+        "from": "10/10/2026",
+        "to": "14/10/2026",
+        "fallbackDate": "12/10/2026",
+        "test": "Forearm Plank Max Hold",
+        "person": "Jenna",
+        "value": 75,
+        "note": "Restart test, old form saved 1 sec. Jenna: about 1 min 15."
+      },
+      {
+        "from": "10/10/2026",
+        "to": "14/10/2026",
+        "fallbackDate": "12/10/2026",
+        "test": "Wall Sit Max Hold",
+        "person": "Pene",
+        "value": 130,
+        "note": "Restart test, old form saved 2 sec. Pene: 2 min 10."
+      },
+      {
+        "from": "10/10/2026",
+        "to": "14/10/2026",
+        "fallbackDate": "12/10/2026",
+        "test": "Wall Sit Max Hold",
+        "person": "Jenna",
+        "value": 138,
+        "note": "Restart test, old form saved 2 sec. Jenna: 2 min 18."
+      }
+    ],
+    "dateMoves": [
+      {
+        "from": "11/10/2026",
+        "to": "12/10/2026",
+        "note": "Restart test was done Mon 12 Oct; the old form saved it as 11 Oct (UTC date bug)."
+      }
     ]
   },
   "exerciseLibrary": [

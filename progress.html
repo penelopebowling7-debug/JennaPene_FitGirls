@@ -225,6 +225,38 @@ function parseDMY(d){
 // Same merge as tests.html: the original spreadsheet-era dates baked into
 // data.js, plus anything logged live since, a live entry on the same date
 // replaces the static one rather than duplicating it.
+// Batch 25: one-off repairs for hold times the old form saved wrongly (a time
+// typed as "2.10" was cut to 2 seconds). A repair only replaces a value under
+// 10 seconds in its date window, so anything logged properly later still wins.
+// Batch 26: entries saved under the wrong date by the old UTC date bug.
+function movedDate(d, moves){
+  const m = (moves || []).find(x => x.from === d);
+  return m ? m.to : d;
+}
+function applyFtCorrections(recordMap, testDefs, corrections){
+  const inWindow = (d, c) => { const t = parseDMY(d); return t >= parseDMY(c.from) && t <= parseDMY(c.to); };
+  (corrections || []).forEach(c => {
+    if(!testDefs.some(td => td.name === c.test)) return;
+    let hit = false;
+    recordMap.forEach(rec => {
+      if(!inWindow(rec.date, c)) return;
+      const v = rec.values[c.test] && rec.values[c.test][c.person];
+      if(v != null && v < 10){ rec.values[c.test][c.person] = c.value; hit = true; }
+      else if(v != null) hit = true; // a proper value is already there, leave it
+    });
+    if(!hit){
+      let rec = recordMap.get(c.fallbackDate);
+      if(!rec){
+        const values = {};
+        testDefs.forEach(td => { values[td.name] = { Pene: null, Jenna: null }; });
+        rec = { date: c.fallbackDate, values };
+        recordMap.set(c.fallbackDate, rec);
+      }
+      if(rec.values[c.test][c.person] == null) rec.values[c.test][c.person] = c.value;
+    }
+  });
+}
+
 function mergedFitnessTests(){
   const staticFt = window.SITE_DATA.fitnessTests;
   const testDefs = staticFt.tests.map(t=> ({ name: t.name, unit: t.unit }));
@@ -237,7 +269,8 @@ function mergedFitnessTests(){
     });
     recordMap.set(d, { date: d, values: values });
   });
-  (liveFitnessEntries || []).forEach(entry=>{
+  (liveFitnessEntries || []).forEach(entry0=>{
+    const entry = Object.assign({}, entry0, { date: movedDate(entry0.date, staticFt.dateMoves) });
     const existing = recordMap.get(entry.date);
     const values = {};
     testDefs.forEach(td=>{
@@ -247,6 +280,7 @@ function mergedFitnessTests(){
     });
     recordMap.set(entry.date, { date: entry.date, values: values });
   });
+  applyFtCorrections(recordMap, testDefs, staticFt.corrections);
   const finalRecords = Array.from(recordMap.values()).sort((a, b)=> parseDMY(a.date) - parseDMY(b.date));
   return {
     dates: finalRecords.map(r=> r.date),
@@ -461,7 +495,7 @@ document.getElementById('downloadExportBtn').onclick = ()=>{
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'PeneJenna-Fitness-Export-' + new Date().toISOString().slice(0, 10) + '.txt';
+  a.download = 'PeneJenna-Fitness-Export-' + (d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'))(new Date()) + '.txt';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

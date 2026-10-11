@@ -5,7 +5,7 @@
 // 2026-08-23). Everything else (CSS, manifest, icons) stays cache-first for
 // speed; Firebase and anything cross-origin always goes straight to the
 // network so live sync is never served from a stale cache.
-const CACHE = 'pj-fitness-v7';
+const CACHE = 'pj-fitness-v9';
 const SHELL = [
   'index.html', 'tracker.html', 'beast.html', 'tests.html', 'stats.html', 'progress.html',
   'styles.css', 'data.js', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'firebase-sync.js', 'app-shell.js', 'manifest.webmanifest'
