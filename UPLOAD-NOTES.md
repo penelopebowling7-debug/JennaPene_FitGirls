@@ -2,6 +2,21 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 29: Tabata silent in My music mode, fixed, plus a Sound check (13 Oct)
+Pene: with Spotify playing in My music mode, the Tabata was completely silent: no coach and no beeps. The silent switch was off.
+
+**Likely cause**: switching to My music closed the app's sound engine and rebuilt it, so the new phone audio setting would apply. On iPhone a rebuilt engine can stay muted. Any coach lines still being prepared at that moment also failed, and were then wrongly remembered as "missing" for good.
+
+**Fixed**:
+- The sound engine is never closed now. The phone audio setting is applied when the page loads (before any sound), and a mode change does a quick pause and resume of the engine instead.
+- Every tap on Start also "unlocks" iPhone audio (resumes the engine and plays a silent blip inside the tap).
+- The first Start waits up to 2.5 sec ("Loading coach…") for the coach lines to be ready.
+- A coach line that fails to prepare is retried, not written off. If the engine still isn't running, lines play through a plain audio element as a backup.
+- **New 🔊 Sound check button** on the Tabata screen. It plays a beep and then "Go! Go! Go!", and shows: Engine state · Coach lines ready (for example 19 of 19) · Mode · Phone audio setting. If anything is still silent, those words say why.
+- Offline cache pj-fitness-v12.
+
+**Testing**: Playwright. Picking My music while the clips were still loading: the sound check showed the engine running with 19 of 19 coach lines, and played the beep and clip. One tap on Start ran get ready, then work, with the ready clip and no built-in voice calls. The same in Beat. No page errors. The real iPhone and Spotify behaviour still needs confirming on the phone.
+
 ## Batch 28: real coach voice, and it talks over Spotify (13 Oct)
 Pene: Spotify stopped whenever the timer's voice spoke, and the voice was too fast, short and computer-like.
 

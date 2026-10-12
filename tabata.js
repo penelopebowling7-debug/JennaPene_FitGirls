@@ -159,11 +159,11 @@
     try{
       if(navigator.audioSession && navigator.audioSession.type !== want){
         navigator.audioSession.type = want;
-        // Rebuild the sound engine so the new mixing rule applies to it.
+        // Batch 29: never close the engine (a rebuilt one could stay muted on
+        // iPhone). A quick suspend and resume re-applies the mixing rule.
         if(audioCtx && sessionTypeInUse && sessionTypeInUse !== want){
-          stopMusic();
-          try{ audioCtx.close(); }catch(e){}
-          audioCtx = null;
+          const a0 = audioCtx;
+          try{ a0.suspend().then(() => a0.resume()).catch(() => {}); }catch(e){}
         }
       }
     }catch(e){}
@@ -178,7 +178,8 @@
   // voice always pauses other apps' audio on iPhone, so it's never used in
   // My music mode, and only as a fallback in Beat and Off modes for an
   // exercise that doesn't have a clip yet.
-  const clips = {};          // key -> AudioBuffer | false (missing)
+  const clips = {};          // key -> AudioBuffer (decoded)
+  const raw = {};            // key -> base64 MP3, for the HTML audio fallback
   function spokenName(n){ return String(n || '').replace(/\s*\(.*?\)/g, '').trim(); }
   function slug(n){ return spokenName(n).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
   // All clips live in one file (coach-voice.json, base64 MP3s) so the whole
@@ -196,8 +197,9 @@
       if(!p[key]) throw new Error('missing');
       const bin = atob(p[key]), buf = new Uint8Array(bin.length);
       for(let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+      raw[key] = p[key];
       return new Promise((res, rej) => ac().decodeAudioData(buf.buffer, res, rej));
-    }).then(b => (clips[key] = b)).catch(() => (clips[key] = false));
+    }).then(b => (clips[key] = b)).catch(() => { delete clips[key]; return false; });
   }
   function preloadFor(list){
     const keys = ['count_3', 'count_2', 'count_1', 'tenmore_1', 'tenmore_2', 'tenmore_3', 'rest', 'complete', 'go_generic'];
@@ -206,10 +208,16 @@
       const sl = slug(st.exName || st.nextExName);
       ['ready_', 'go_', 'half_', 'last_', 'next_'].forEach(pfx => keys.push(pfx + sl));
     });
-    return Promise.all([...new Set(keys)].map(loadClip));
+    lastKeys = [...new Set(keys)];
+    return Promise.all(lastKeys.map(loadClip));
   }
+  let lastKeys = [];
+  function clipsReady(){ return lastKeys.filter(k => clips[k]).length; }
   function playClip(key){
     const b = clips[key];
+    if(audioCtx && audioCtx.state !== 'running' && raw[key]){
+      try{ const el2 = new Audio('data:audio/mpeg;base64,' + raw[key]); el2.play().catch(() => {}); return true; }catch(e){}
+    }
     if(!b) return false;
     try{
       const a = ac();
@@ -267,13 +275,16 @@
         <button class="tb-btn tb-ghost" id="tbRestart">↺</button>
       </div>
       <div class="tb-hint" id="tbHint">Turn your volume up. Beat mode plays even on silent.</div>
+      <button class="tb-check" id="tbCheck">🔊 Sound check</button>
+      <div class="tb-check-out" id="tbCheckOut"></div>
       <div class="tb-confetti" id="tbConfetti"></div>`;
     document.body.appendChild(wrap);
-    ['tbTitle','tbClose','tbPhase','tbRing','tbCount','tbEx','tbNext','tbDots','tbLeft','tbMain','tbRestart','tbHint','tbConfetti'].forEach(id => el[id] = document.getElementById(id));
+    ['tbTitle','tbClose','tbPhase','tbRing','tbCount','tbEx','tbNext','tbDots','tbLeft','tbMain','tbRestart','tbHint','tbConfetti','tbCheck','tbCheckOut'].forEach(id => el[id] = document.getElementById(id));
     el.overlay = wrap;
     el.tbClose.onclick = close;
     el.tbMain.onclick = () => running ? pause() : start();
     el.tbRestart.onclick = restart;
+    el.tbCheck.onclick = soundCheck;
     wrap.querySelectorAll('.tb-music button').forEach(b => b.onclick = () => setMusicMode(b.dataset.m));
     paintMusic();
   }
@@ -382,8 +393,26 @@
     }
     paint();
   }
+  function unlock(){
+    const a = ac();
+    try{ if(a.state !== 'running') a.resume(); }catch(e){}
+    // The classic iPhone unlock: a silent sound played inside the tap.
+    try{
+      const b = a.createBuffer(1, 1, 22050), src = a.createBufferSource();
+      src.buffer = b; src.connect(a.destination); src.start(0);
+    }catch(e){}
+  }
   function start(){
-    ac(); setAudioSession();
+    if(running) return;
+    setAudioSession(); unlock();
+    if(clipsReady() < lastKeys.length && !start.waited){
+      // First Start: give the coach's lines a moment to finish loading.
+      start.waited = true;
+      el.tbPhase.textContent = 'Loading coach…';
+      const timeout = new Promise(res => setTimeout(res, 2500));
+      Promise.race([preloadFor(steps), timeout]).then(() => start());
+      return;
+    }
     if(idx >= steps.length) restart();
     running = true;
     if(window.KeepAwake) KeepAwake.request();
@@ -441,6 +470,19 @@
     }
     el.tbConfetti.innerHTML = html;
   }
+  function soundCheck(){
+    setAudioSession(); unlock();
+    tone(880, 0, 0.18, 0.3);
+    preloadFor(steps).then(() => {
+      setTimeout(() => { if(!playClip('go_generic')) playClip(lastKeys.find(k => clips[k]) || ''); }, 350);
+      const a = audioCtx;
+      const modeName = { beat: 'Beat', mine: 'My music', off: 'Off' }[musicMode];
+      const sess = navigator.audioSession ? navigator.audioSession.type : 'not supported';
+      el.tbCheckOut.textContent = 'You should hear a beep, then "Go! Go! Go!". ' +
+        'Engine: ' + (a ? a.state : 'none') + ' · Coach lines: ' + clipsReady() + ' of ' + lastKeys.length +
+        ' · Mode: ' + modeName + ' · Phone audio setting: ' + sess;
+    });
+  }
   function close(){
     if(running) pause();
     stopMusic();
@@ -452,6 +494,8 @@
     mount();
     ctx = { block, bi, week, day, ds };
     steps = buildSteps(block);
+    start.waited = false;
+    el.tbCheckOut.textContent = '';
     setAudioSession();
     preloadFor(steps);
     el.tbTitle.textContent = block.name;
@@ -462,4 +506,5 @@
   };
 
   document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible') tick(); });
+  setAudioSession(); // before anything makes a sound, so the first engine is born with the right rule
 })();
