@@ -1,6 +1,20 @@
 # Upload to penelopebowling7-debug/JennaPene_FitGirls (branch: main)
 
-Drop these files into the repo root, replacing the existing ones (21 files as of Batch 27, including the icon PNGs and tabata.js).
+Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
+
+## Batch 28: real coach voice, and it talks over Spotify (13 Oct)
+Pene: Spotify stopped whenever the timer's voice spoke, and the voice was too fast, short and computer-like.
+
+**Why**: the app used the phone's built-in speech voice. On iPhone, that always pauses other apps' audio, and no setting changes it. Batch 4 had also set it fast and high pitched.
+
+**Fixed**:
+- **Recorded coach voice**: 144 clips in Pene's chosen voice ("Coach 2: Heart with extra edge", made with the open Kokoro neural voice: 65% af_heart blended with 35% af_bella, speed 1.12, compressed for punch). Every Tabata line is covered for the 4 current Tabata moves plus 23 common ones (Burpees, Jumping Jacks, High Knees and so on): "Get ready! First up...", "<move>! Go! Go! Go!", "Halfway there!", "Last one! Everything you've got!", "And rest. Next up...", three-two-one, three "Ten more" variations, and "Tabata complete! You absolutely smashed it!".
+- All clips are in ONE file, **coach-voice.json** (2.2 MB, base64 MP3s), so it uploads like any other file. Only the clips a Tabata needs are decoded when it opens.
+- Clips play through Web Audio as sound effects. **My music** mode sets the phone to mix with other apps and NEVER uses the built-in voice, so Spotify keeps playing underneath. In Beat and Off modes, a move with no clip yet falls back to the built-in voice at calmer settings.
+- The built-in voice settings everywhere else (partner and round timers) are toned down to near-natural speed and pitch.
+- Offline cache pj-fitness-v11. 22 files in total now (coach-voice.json is new).
+
+**Testing**: Playwright, choosing the mode with the on-screen buttons. My music: the right clips play in order (get ready, 3, 2, 1, go, ten more), with no beat and zero built-in voice calls. Beat: the same clips plus the beat. A move with no clip falls back to the built-in voice in Beat mode. Tabata 2 loads from the bundled file. No page errors. Whether Spotify keeps playing can only be confirmed on a real iPhone.
 
 ## Batch 27: Tabata gets music, a big countdown and announcements (13 Oct)
 Pene: "the tabata needs some music and a count down timer and announcing the exercises", like the Tabata timers on socials.

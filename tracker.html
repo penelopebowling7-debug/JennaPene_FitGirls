@@ -2279,11 +2279,13 @@ function pickTrainerVoice(){
 // Delivery profiles. One flat rate/pitch for everything is what made the old
 // cues sound like a station announcement: a hype line should be fast and bright,
 // a rest line slower and lower, a countdown clipped. Same voice, different read.
+// Batch 28: toned down. The old fast, high settings were what made it sound
+// rushed and robotic. Close to natural speed and pitch reads as a person.
 const VOICE_STYLES = {
-  hype:  { rate: 1.22, pitch: 1.4 },
-  push:  { rate: 1.15, pitch: 1.3 },
+  hype:  { rate: 1.05, pitch: 1.1 },
+  push:  { rate: 1.02, pitch: 1.05 },
   calm:  { rate: 0.95, pitch: 1.0 },
-  count: { rate: 1.35, pitch: 1.5 }
+  count: { rate: 1.05, pitch: 1.05 }
 };
 function speak(text, style){
   try{

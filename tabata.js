@@ -153,15 +153,80 @@
 
   // Let the phone play our sound alongside other apps (My music) or as main
   // playback even with the silent switch on (Beat). Safari 16.4+ only.
+  let sessionTypeInUse = null;
   function setAudioSession(){
+    const want = musicMode === 'mine' ? 'ambient' : 'playback';
     try{
-      if(navigator.audioSession) navigator.audioSession.type = musicMode === 'mine' ? 'ambient' : 'playback';
+      if(navigator.audioSession && navigator.audioSession.type !== want){
+        navigator.audioSession.type = want;
+        // Rebuild the sound engine so the new mixing rule applies to it.
+        if(audioCtx && sessionTypeInUse && sessionTypeInUse !== want){
+          stopMusic();
+          try{ audioCtx.close(); }catch(e){}
+          audioCtx = null;
+        }
+      }
     }catch(e){}
+    sessionTypeInUse = want;
+    if(musicMode === 'mine'){ try{ window.speechSynthesis.cancel(); }catch(e){} }
   }
 
-  function say(text, style){
-    duck(Math.min(4000, 700 + text.length * 70));
-    speak(text, style || 'hype');
+  // ---------------- Coach voice (Batch 28) ----------------
+  // Recorded clips in voice/ (natural coach voice, made with an open neural
+  // voice), played through Web Audio like any sound effect. That's what lets
+  // them sit on top of Spotify in My music mode: the phone's built-in speech
+  // voice always pauses other apps' audio on iPhone, so it's never used in
+  // My music mode, and only as a fallback in Beat and Off modes for an
+  // exercise that doesn't have a clip yet.
+  const clips = {};          // key -> AudioBuffer | false (missing)
+  function spokenName(n){ return String(n || '').replace(/\s*\(.*?\)/g, '').trim(); }
+  function slug(n){ return spokenName(n).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+  // All clips live in one file (coach-voice.json, base64 MP3s) so the whole
+  // voice uploads to GitHub as a single file. Fetched once, then each clip is
+  // decoded only when a Tabata that needs it is opened.
+  let packPromise = null;
+  function pack(){
+    if(!packPromise) packPromise = fetch('coach-voice.json').then(r => r.ok ? r.json() : { clips: {} }).then(j => j.clips || {}).catch(() => ({}));
+    return packPromise;
+  }
+  function loadClip(key){
+    if(key in clips) return Promise.resolve(clips[key]);
+    clips[key] = null;
+    return pack().then(p => {
+      if(!p[key]) throw new Error('missing');
+      const bin = atob(p[key]), buf = new Uint8Array(bin.length);
+      for(let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+      return new Promise((res, rej) => ac().decodeAudioData(buf.buffer, res, rej));
+    }).then(b => (clips[key] = b)).catch(() => (clips[key] = false));
+  }
+  function preloadFor(list){
+    const keys = ['count_3', 'count_2', 'count_1', 'tenmore_1', 'tenmore_2', 'tenmore_3', 'rest', 'complete', 'go_generic'];
+    list.forEach(st => {
+      if(!st.exName && !st.nextExName) return;
+      const sl = slug(st.exName || st.nextExName);
+      ['ready_', 'go_', 'half_', 'last_', 'next_'].forEach(pfx => keys.push(pfx + sl));
+    });
+    return Promise.all([...new Set(keys)].map(loadClip));
+  }
+  function playClip(key){
+    const b = clips[key];
+    if(!b) return false;
+    try{
+      const a = ac();
+      const src = a.createBufferSource(), g = a.createGain();
+      src.buffer = b; g.gain.value = 1.0;
+      src.connect(g); g.connect(a.destination);
+      src.start();
+      duck(b.duration * 1000 + 250);
+      return true;
+    }catch(e){ return false; }
+  }
+  // key: clip to play. text: what to say if there's no clip (never in My music).
+  function say(key, text, style){
+    if(playClip(key)) return;
+    if(musicMode === 'mine' || !text) return;
+    duck(Math.min(4000, 800 + text.length * 75));
+    speak(text, style || 'push');
   }
   function beep(sec){ playTick(sec); }
   function goTone(){ tone(1046, 0, 0.18, 0.28); tone(1318, 0.09, 0.22, 0.24); }
@@ -215,7 +280,7 @@
   function paintMusic(){
     el.overlay.querySelectorAll('.tb-music button').forEach(b => b.classList.toggle('on', b.dataset.m === musicMode));
     el.tbHint.textContent = musicMode === 'beat' ? 'Turn your volume up. Beat mode plays even on silent.'
-      : musicMode === 'mine' ? 'Start your playlist first, then press Start. Beeps and voice play over it.'
+      : musicMode === 'mine' ? 'Start your playlist first, then press Start. Your coach talks over it. Turn the silent switch off.'
       : 'Voice and beeps only.';
   }
   function setMusicMode(m){
@@ -272,21 +337,20 @@
   function announce(s){
     if(!s) return;
     if(s.kind === 'ready'){
-      say('Get ready! First up, ' + s.exName + '.', 'hype');
+      say('ready_' + slug(s.exName), 'Get ready! First up, ' + spokenName(s.exName) + '.', 'push');
       if(mus) setMusicLevel('build');
     } else if(s.kind === 'work'){
       goTone();
-      const n = totalIntervals();
-      const line = s.interval === 1 ? 'Go! ' + s.exName + '!'
-        : s.interval === n ? 'Last one! ' + s.exName + '! Give it everything!'
-        : s.interval === Math.ceil(n / 2) + 1 ? 'Halfway there! ' + s.exName + '! Go!'
-        : s.exName + '! Go!';
-      say(line, 'hype');
+      const n = totalIntervals(), sl = slug(s.exName), nm = spokenName(s.exName);
+      if(s.interval === n) say('last_' + sl, 'Last one! ' + nm + '! Everything you have got!', 'push');
+      else if(s.interval === Math.ceil(n / 2) + 1) say('half_' + sl, 'Halfway there! ' + nm + '! Go!', 'push');
+      else say('go_' + sl, nm + '! Go!', 'push');
       if(mus) setMusicLevel('full');
       if(navigator.vibrate) navigator.vibrate(150);
     } else {
       restTone();
-      say('Rest. ' + (s.nextExName ? 'Next up, ' + s.nextExName + '.' : ''), 'calm');
+      if(s.nextExName) say('next_' + slug(s.nextExName), 'And rest. Next up, ' + spokenName(s.nextExName) + '.', 'calm');
+      else say('rest', 'And rest.', 'calm');
       if(mus) setMusicLevel('soft');
     }
     spokeHalf = false;
@@ -312,9 +376,9 @@
       if(whole <= 3 && whole >= 1){
         beep(whole);
         // Spoken count into the work, beeps only into rest.
-        if(s.kind !== 'work' && steps[idx + 1] && steps[idx + 1].kind === 'work') say(String(whole), 'count');
+        if(s.kind !== 'work' && steps[idx + 1] && steps[idx + 1].kind === 'work') say('count_' + whole, ['', 'One', 'Two', 'Three'][whole], 'count');
       }
-      if(s.kind === 'work' && !spokeHalf && s.seconds >= 20 && whole === 10){ say('Ten more!', 'push'); spokeHalf = true; }
+      if(s.kind === 'work' && !spokeHalf && s.seconds >= 20 && whole === 10){ say('tenmore_' + (1 + Math.floor(Math.random() * 3)), 'Ten more! Keep pushing!', 'push'); spokeHalf = true; }
     }
     paint();
   }
@@ -354,7 +418,7 @@
     idx = steps.length;
     if(window.KeepAwake) KeepAwake.release();
     fanfare();
-    say('Tabata complete! You absolutely smashed it!', 'hype');
+    say('complete', 'Tabata complete! You absolutely smashed it!', 'push');
     setTimeout(stopMusic, 2500);
     paint();
     confetti();
@@ -388,6 +452,8 @@
     mount();
     ctx = { block, bi, week, day, ds };
     steps = buildSteps(block);
+    setAudioSession();
+    preloadFor(steps);
     el.tbTitle.textContent = block.name;
     restart();
     paintMusic();
