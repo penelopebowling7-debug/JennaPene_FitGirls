@@ -1,6 +1,20 @@
 # Upload to penelopebowling7-debug/JennaPene_FitGirls (branch: main)
 
-Drop these files into the repo root, replacing the existing ones (20 files as of Batch 24, including the icon PNGs).
+Drop these files into the repo root, replacing the existing ones (21 files as of Batch 27, including the icon PNGs and tabata.js).
+
+## Batch 27: Tabata gets music, a big countdown and announcements (13 Oct)
+Pene: "the tabata needs some music and a count down timer and announcing the exercises", like the Tabata timers on socials.
+
+**New full screen Tabata player** (tabata.js, opened by every Tabata block's new pink "🔥 Start Tabata ... with music" button):
+- 10 second GET READY with "Get ready! First up, ..." and a spoken 3, 2, 1.
+- Big ring countdown with huge seconds. Screen colour changes by phase: orange get ready, pulsing pink and purple WORK, deep blue REST, gold DONE with confetti.
+- Voice announces every exercise ("Mountain Climbers! Go!"), "Ten more!" halfway, "Rest. Next up, ...", spoken 3, 2, 1 into each work interval, "Halfway there!", "Last one! Give it everything!", and "Tabata complete!". Beeps on the last 3 seconds of every phase.
+- 8 interval dots, "Interval 3 of 8 · 2:40 left", the next exercise always shown.
+- **Music**: three modes, remembered per phone. **Beat**: a 128 BPM workout beat made live in the app (kick, clap, hats, bass, synth stabs). Full on during work, filtered down during rest, building during get ready, and ducking under the voice. No music files, no copyright. Plays even with the iPhone silent switch on (Safari 16.4+). **My music**: beeps and voice only, set to mix over Spotify or Apple Music where the phone allows. **Off**: voice and beeps only.
+- Pause, resume and restart. Wall clock timing, so locking the phone doesn't drift it. Keeps the screen awake. Finishing ticks the block's round for both of you, like the round timer.
+- Offline cache pj-fitness-v10. The new file is tabata.js (21 files in total now).
+
+**Testing**: Playwright with a fast forwarded clock ran a full Thursday Tabata 1. Phases went ready, work, rest through to done. Every announcement fired in order (68 voice lines). Pause held the count. Finishing ticked the round for both people. The close button works. No page errors. The beat can't be heard in a headless browser, but its code ran without errors. Check it by ear on the phone.
 
 ## Batch 26: test date fix, restart test moved to 12 Oct (12 Oct)
 Pene: the repaired times weren't showing, and the test was dated 11 October although it was done on Monday 12th. The 07:38 upload was the Batch 24 files again (no changes), so Batch 25 never went live. This batch includes everything from Batch 25.

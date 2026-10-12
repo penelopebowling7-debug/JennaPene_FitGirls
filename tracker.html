@@ -486,6 +486,48 @@
     margin-bottom:2px;
     min-height:18px;
   }
+
+  /* ---------------- Tabata player (Batch 27) ---------------- */
+  .tb-overlay{position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;
+    padding:max(14px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));color:#fff;
+    background:linear-gradient(160deg,#2B0A4D,#5B1BB0);transition:background 0.4s ease;overflow:hidden;font-family:inherit;}
+  .tb-overlay.open{display:flex;}
+  .tb-overlay[data-phase="ready"]{background:linear-gradient(160deg,#FF9F1C,#F72585);}
+  .tb-overlay[data-phase="work"]{background:linear-gradient(160deg,#F72585,#7B2FF7);animation:tbPulse 0.469s ease-in-out infinite alternate;}
+  .tb-overlay[data-phase="rest"]{background:linear-gradient(160deg,#0B3C5D,#3A0CA3);}
+  .tb-overlay[data-phase="done"]{background:linear-gradient(160deg,#FFD60A,#F72585 60%,#7B2FF7);}
+  @keyframes tbPulse{from{filter:brightness(1);}to{filter:brightness(1.12);}}
+  .tb-top{width:100%;max-width:520px;display:flex;align-items:center;gap:10px;}
+  .tb-title{flex:1;font-weight:800;font-size:0.95rem;opacity:0.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tb-close{background:rgba(255,255,255,0.18);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:1.5rem;line-height:1;cursor:pointer;}
+  .tb-music{display:flex;gap:6px;margin:10px 0 4px;background:rgba(0,0,0,0.18);padding:4px;border-radius:999px;}
+  .tb-music button{border:none;background:transparent;color:#fff;font-weight:800;font-size:0.78rem;padding:7px 11px;border-radius:999px;cursor:pointer;opacity:0.75;font-family:inherit;}
+  .tb-music button.on{background:#fff;color:#7B2FF7;opacity:1;}
+  .tb-phase{margin-top:10px;font-size:clamp(2.2rem,11vw,3.4rem);font-weight:900;letter-spacing:0.02em;text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,0.25);}
+  .tb-ring-wrap{position:relative;width:min(68vw,300px);aspect-ratio:1;margin:6px 0 4px;}
+  .tb-ring{width:100%;height:100%;transform:rotate(-90deg);}
+  .tb-ring-bg{fill:none;stroke:rgba(255,255,255,0.18);stroke-width:14;}
+  .tb-ring-fg{fill:none;stroke:#fff;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 0.1s linear;}
+  .tb-overlay[data-phase="work"] .tb-ring-fg{stroke:#FFD60A;}
+  .tb-count{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(4.5rem,24vw,7.5rem);font-weight:900;font-variant-numeric:tabular-nums;text-shadow:0 6px 24px rgba(0,0,0,0.25);}
+  .tb-ex{font-size:clamp(1.4rem,7vw,2rem);font-weight:900;text-align:center;line-height:1.15;max-width:520px;}
+  .tb-next{margin-top:4px;font-size:0.95rem;font-weight:700;opacity:0.85;text-align:center;min-height:1.2em;}
+  .tb-dots{display:flex;gap:8px;margin:14px 0 6px;}
+  .tb-dots span{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.25);}
+  .tb-dots span.done{background:#FFD60A;}
+  .tb-dots span.now{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,0.35);animation:tbDot 0.469s ease-in-out infinite alternate;}
+  @keyframes tbDot{to{transform:scale(1.25);}}
+  .tb-left{font-size:0.8rem;font-weight:700;opacity:0.8;min-height:1em;}
+  .tb-controls{display:flex;gap:12px;margin-top:auto;width:100%;max-width:420px;}
+  .tb-btn{border:none;border-radius:18px;font-weight:900;font-size:1.15rem;padding:18px;cursor:pointer;font-family:inherit;}
+  .tb-main{flex:1;background:#fff;color:#F72585;box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+  .tb-ghost{width:64px;background:rgba(255,255,255,0.2);color:#fff;}
+  .tb-hint{margin-top:10px;font-size:0.75rem;opacity:0.8;text-align:center;}
+  .tb-confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .tb-confetti i{position:absolute;top:-20px;border-radius:2px;animation-name:tbFall;animation-timing-function:linear;animation-fill-mode:forwards;}
+  @keyframes tbFall{to{top:110%;transform:rotate(720deg) translateX(40px);}}
+  @media (prefers-reduced-motion: reduce){.tb-overlay[data-phase="work"],.tb-dots span.now{animation:none;}}
+  .round-timer-btn.tabata-btn{background:linear-gradient(135deg,#F72585,#7B2FF7);color:#fff;font-size:0.9rem;padding:13px 12px;box-shadow:0 4px 14px rgba(247,37,133,0.3);}
   .format-note{
     background:linear-gradient(135deg, rgba(106,17,203,0.08), rgba(247,37,133,0.08));
     border-left:4px solid var(--coral-500);
@@ -1763,9 +1805,14 @@ function renderMain(){
       roundBtn.className = 'round-timer-btn';
       const t = block.timer, n = block.exercises.length;
       roundBtn.textContent = t.type === 'tabata'
-        ? '▶ Start Tabata: ' + (t.intervals || 8) + ' x ' + t.work + 's on, ' + t.rest + 's off'
+        ? '🔥 Start Tabata: ' + (t.intervals || 8) + ' x ' + t.work + 's on, ' + t.rest + 's off, with music'
         : '▶ Start Partner Timer: ' + n + ' exercise' + (n === 1 ? '' : 's') + ', ' + t.turn + 's turns' + (isSolo() ? ' (solo version)' : '');
-      roundBtn.onclick = ()=> openGuidedTimer(block, bi, timing, week, day, ds);
+      if(t.type === 'tabata'){
+        roundBtn.classList.add('tabata-btn');
+        roundBtn.onclick = ()=> window.openTabataPlayer ? openTabataPlayer(block, bi, week, day, ds) : openGuidedTimer(block, bi, timing, week, day, ds);
+      } else {
+        roundBtn.onclick = ()=> openGuidedTimer(block, bi, timing, week, day, ds);
+      }
       section.appendChild(roundBtn);
     } else if(timing.active || timing.rest){
       const roundBtn = document.createElement('button');
@@ -3008,5 +3055,6 @@ document.getElementById('confirmFinish').onclick = ()=>{
 
 renderAll();
 </script>
+<script src="tabata.js"></script>
 </body>
 </html>
