@@ -2,6 +2,23 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 30: Pilates foam roller moves, Thursday rebuilt, solo fix (14 Oct)
+Pene: Thursday doesn't work for her. She doesn't like Tabatas that only alternate 2 moves (she wants more moves, fewer rounds) or the skipping rope with one person rope-less. She loved the Pilates foam roller pike and hip swivel and wants Pilates blended in. She ran 3 km on Tuesday plus her own core, so missed Tuesday. Jenna is out today (Wednesday), and Pene wants to train solo.
+
+**Today (Wed, Pene solo)**: Tuesday's Upper Body Learn While We Train, in Pene solo mode, now finishing with a new **Pilates Core Finisher**: Foam Roller Plank Pike and Foam Roller Hip Swivel, each with step by step setup and easier/harder versions. Together, one works on the roller while the other does the mat move (Pilates Hundred, single leg stretch). Solo, the timer gives you both.
+
+**Thursday rebuilt: Tabata Blast + Pilates Sculpt**:
+- Tabata 1, Full Body Blast: 8 different moves, one per interval (squat jumps, mountain climbers, reverse lunges, plank jacks, high knees, push ups, skater jumps, star jumps).
+- Pilates Sculpt, Foam Roller: pike, hip swivel and reverse plank leg lifts, with partner mat moves (hundred, side lying leg lifts, single leg glute bridge). Partner timer, 2 rounds.
+- Tabata 2, Core Burner: 8 different core moves (bicycle crunch, plank shoulder taps, flutter kicks, Russian twist, glute bridge, sit ups, bear crawl, mountain climbers).
+- The skipping rope, kettlebell, cable woodchop, ab roller and hanging knee raises are gone from Thursday. The coach voice already has lines for all 15 Tabata moves.
+
+**Solo mode fix**: training solo, a partner "buddy" entry that's a coaching job (watch, spot, time it, check, read the cue...) now becomes a rest instead of a fake 40 sec "Buddy move: watch for sagging hips". Real mat moves stay as buddy moves.
+
+Offline cache pj-fitness-v13. Exercise Library PL013 to PL015.
+
+**Testing**: Playwright: Pene solo Tuesday shows 4 partner timer blocks; the Pilates finisher runs pike, Hundred, hip swivel, scissors; coaching jobs are rests. Thursday's Tabata 1 called all 8 moves in order with 49 of 49 coach lines ready and no built-in voice. No page errors.
+
 ## Batch 29: Tabata silent in My music mode, fixed, plus a Sound check (13 Oct)
 Pene: with Spotify playing in My music mode, the Tabata was completely silent: no coach and no beeps. The silent switch was off.
 

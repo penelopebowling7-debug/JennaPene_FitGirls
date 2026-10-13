@@ -4974,8 +4974,8 @@ window.SITE_DATA = {
             "id": "tue",
             "label": "Tuesday",
             "title": "Upper Body: Learn While We Train",
-            "estTime": "50 min",
-            "note": "Only two stations today, so there's less to set up and more practice on each one. <strong>Station 1</strong> is the Smith machine and pull up bar (you met these on Monday). <strong>Station 2</strong> is one side pulley with the rope (no attachment changes all session, just the pulley height). Tap <strong>How to</strong> on any card for step by step setup. New to the machine? The <a href='beast.html'>Beast Guide</a> shows every part and how it adjusts.",
+            "estTime": "55 min",
+            "note": "Only two stations today, so there's less to set up and more practice on each one. <strong>Station 1</strong> is the Smith machine and pull up bar (you met these on Monday). <strong>Station 2</strong> is one side pulley with the rope (no attachment changes all session, just the pulley height). Tap <strong>How to</strong> on any card for step by step setup. New to the machine? The <a href='beast.html'>Beast Guide</a> shows every part and how it adjusts. Finish with the new <strong>Pilates Core Finisher</strong>: the foam roller pike and hip swivel.",
             "warmup": [
               {
                 "name": "Jumping Jacks",
@@ -5254,6 +5254,67 @@ window.SITE_DATA = {
                     ]
                   }
                 ]
+              },
+              {
+                "name": "Pilates Core Finisher",
+                "rounds": 2,
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>Pilates time.</strong> One foam roller, so take turns: one of you works on the roller while the other does the mat move shown on the card. Training solo? The timer gives you the roller move, then the mat move. Slow, controlled, breathe out on the hard part.",
+                "exercises": [
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Plank Pike",
+                    "qty": "2 rounds, slow and controlled",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Kneel on a mat and place the foam roller behind you.",
+                      "Walk your hands forward into a high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "Hands under shoulders, body in a straight line, roller under your shins.",
+                      "Squeeze your abs and lift your hips high into an upside down V. The roller rolls down to your ankles.",
+                      "Lower slowly back to a straight plank. Move with your breath: breathe out as you lift."
+                    ],
+                    "watch": "sagging in the plank. Smaller pikes are fine, keep the plank strong.",
+                    "variants": [
+                      "Knee tucks instead of pikes",
+                      "Half height pikes",
+                      "Full pike, 2 sec hold at the top"
+                    ],
+                    "buddy": "Pilates Hundred (pump the arms, breathe in 5, out 5)"
+                  },
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20plank%20hip%20twist%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Hip Swivel",
+                    "qty": "2 rounds, alternate sides",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Same set up as the pike: high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "From the plank, draw your knees in and rotate both knees towards your right elbow. The roller turns under you.",
+                      "Push back to a straight plank.",
+                      "Tuck and twist the other way, towards your left elbow. Keep your shoulders right over your hands."
+                    ],
+                    "watch": "shoulders drifting back behind your hands. Stay over your wrists.",
+                    "variants": [
+                      "Straight knee tucks, no twist",
+                      "Small twists",
+                      "Big twists, 1 sec hold each side"
+                    ],
+                    "buddy": "Single leg stretch (Pilates scissors)"
+                  }
+                ]
               }
             ],
             "cooldown": [
@@ -5290,49 +5351,49 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Tabata Conditioning + Core",
+            "title": "Tabata Blast + Pilates Sculpt",
             "estTime": "40 to 45 min",
-            "note": "Mostly moves you already know, with two small machine pieces: a cable woodchop (set it up before you start) and hanging knee raises on the pull up bar. True Tabata is all out. This week, go hard but controlled, about 8 out of 10. Walk around for a minute between Tabatas. New to the machine? See the <a href='beast.html'>Beast Guide</a>.",
+            "note": "Two Tabatas with <strong>8 different moves each</strong>, one move per interval, so it never gets boring. Between them, a Pilates foam roller block. Go hard but controlled in the Tabatas, about 8 out of 10, then slow everything right down for the Pilates.",
             "warmup": [
               {
-                "name": "Easy Skipping",
-                "qty": "1 min, one rope: swap halfway",
-                "weight": "Skipping rope",
-                "video": "https://www.youtube.com/results?search_query=easy%20skipping%20warm%20up",
-                "videoKnown": false
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=march%20on%20spot%20warm%20up",
+                "videoKnown": false,
+                "name": "March on Spot",
+                "qty": "1 min, swing the arms"
               },
               {
-                "name": "Bodyweight Squats",
-                "qty": "10 reps",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=Bodyweight%20Squats%20exercise%20form",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Bodyweight Squats",
+                "qty": "10 slow reps"
               },
               {
-                "name": "Walking Lunges",
-                "qty": "6 each leg",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=Walking%20Lunges%20exercise%20form",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Walking Lunges",
+                "qty": "6 each leg"
               },
               {
-                "name": "Inchworms",
-                "qty": "5 reps",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=inchworm%20exercise",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Inchworms",
+                "qty": "5 reps"
               },
               {
-                "name": "High Knees",
-                "qty": "30 sec",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
-                "videoKnown": false
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false,
+                "name": "Cat Cow Stretch",
+                "qty": "6 slow reps"
               }
             ],
             "blocks": [
               {
-                "name": "Tabata 1: Legs and Lungs",
+                "name": "Tabata 1: Full Body Blast",
                 "rounds": 1,
                 "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
                 "timer": {
@@ -5341,172 +5402,272 @@ window.SITE_DATA = {
                   "rest": 10,
                   "intervals": 8
                 },
-                "formatNote": "<strong>Tabata:</strong> 20 seconds on, 10 seconds off, 8 times. The two moves alternate. Both of you go at the same time.",
+                "formatNote": "<strong>8 moves, one each.</strong> 20 seconds on, 10 seconds off, a new move every interval. Do them side by side. The coach calls each one and what's next.",
                 "exercises": [
                   {
-                    "name": "Bodyweight Squats",
-                    "qty": "4 intervals, fast but full depth",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Bodyweight%20Squats%20exercise%20form",
-                    "videoKnown": false
+                    "video": "https://www.youtube.com/results?search_query=Squat%20Jumps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Squat Jumps",
+                    "qty": "1 interval, land soft",
+                    "variants": [
+                      "Fast bodyweight squats",
+                      "Small jumps",
+                      "Full squat jumps"
+                    ]
                   },
                   {
-                    "name": "Mountain Climbers",
-                    "qty": "4 intervals, hips level",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
-                    "videoKnown": false
-                  }
-                ]
-              },
-              {
-                "name": "Tabata 2: Jump and Hold",
-                "rounds": 1,
-                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
-                "timer": {
-                  "type": "tabata",
-                  "work": 20,
-                  "rest": 10,
-                  "intervals": 8
-                },
-                "formatNote": "The skipping rope finally makes its debut! One rope, so one of you skips and the other does rope-less skips. Swap who gets the rope next week.",
-                "exercises": [
-                  {
-                    "name": "Skipping Rope (or Rope-less Skips)",
-                    "qty": "4 intervals, light and quick",
-                    "weight": "Skipping rope (one of you)",
-                    "video": "https://www.youtube.com/results?search_query=skipping%20rope%20beginner",
-                    "videoKnown": false
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, hips low"
                   },
                   {
-                    "name": "Plank Shoulder Taps",
-                    "qty": "4 intervals, hips still",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
-                    "videoKnown": false
+                    "video": "https://www.youtube.com/results?search_query=Reverse%20Lunges%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Reverse Lunges",
+                    "qty": "1 interval, alternate legs"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Jacks",
+                    "qty": "1 interval, hips level"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=High%20Knees%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "High Knees",
+                    "qty": "1 interval, quick feet",
+                    "variants": [
+                      "Marching knees",
+                      "Jogging knees",
+                      "Sprint knees"
+                    ]
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Push Ups",
+                    "qty": "1 interval, knees are fine"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Skater%20Jumps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Skater Jumps",
+                    "qty": "1 interval, stick each landing"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Star%20Jumps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Star Jumps",
+                    "qty": "1 interval, big and explosive",
+                    "variants": [
+                      "Step jacks",
+                      "Jumping jacks",
+                      "Star jumps"
+                    ]
                   }
                 ]
               },
               {
-                "name": "Partner Power Finisher",
+                "name": "Pilates Sculpt: Foam Roller",
                 "rounds": 2,
-                "tempo": "40 sec turns, 10 sec swap, 60 sec rest between rounds",
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
                 "timer": {
                   "type": "partner",
                   "turn": 40,
-                  "swap": 10,
-                  "betweenRounds": 60
+                  "swap": 15,
+                  "betweenRounds": 45
                 },
-                "formatNote": "<strong>Set up before you press start:</strong> on one side pulley, slide the carriage to chest height, clip on a single handle, lightest pin. That's the woodchop station. <strong>Hold and Work:</strong> one of you swings the kettlebell while the other does woodchops, then swap. One kettlebell, one cable, no waiting.",
+                "formatNote": "<strong>Breathe and slow down.</strong> One foam roller, so take turns: one of you on the roller, the other on the mat move shown on the card. Swap when the timer says.",
                 "exercises": [
                   {
-                    "name": "Kettlebell Swings",
-                    "qty": "2 rounds, snap the hips, arms just guide",
-                    "weight": "4 kg kettlebell",
-                    "video": "https://www.youtube.com/results?search_query=kettlebell%20swing%20form",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20pilates",
                     "videoKnown": false,
-                    "buddy": "Cable woodchop: stand side on, pull the handle across and down to your opposite hip, turning from your hips. Swap sides halfway",
-                    "station": "Buddy station: side pulley · chest height · single handle"
+                    "name": "Foam Roller Plank Pike",
+                    "qty": "2 rounds, slow and controlled",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Kneel on a mat and place the foam roller behind you.",
+                      "Walk your hands forward into a high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "Hands under shoulders, body in a straight line, roller under your shins.",
+                      "Squeeze your abs and lift your hips high into an upside down V. The roller rolls down to your ankles.",
+                      "Lower slowly back to a straight plank. Move with your breath: breathe out as you lift."
+                    ],
+                    "watch": "sagging in the plank. Smaller pikes are fine, keep the plank strong.",
+                    "variants": [
+                      "Knee tucks instead of pikes",
+                      "Half height pikes",
+                      "Full pike, 2 sec hold at the top"
+                    ],
+                    "buddy": "Pilates Hundred (pump the arms, breathe in 5, out 5)"
                   },
                   {
-                    "name": "Farmer Carry",
-                    "qty": "2 rounds, walk tall, short quick steps",
-                    "weight": "12.5 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=farmer%20carry%20form",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20plank%20hip%20twist%20pilates",
                     "videoKnown": false,
-                    "buddy": "Med ball slams (2 kg ball)"
+                    "name": "Foam Roller Hip Swivel",
+                    "qty": "2 rounds, alternate sides",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Same set up as the pike: high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "From the plank, draw your knees in and rotate both knees towards your right elbow. The roller turns under you.",
+                      "Push back to a straight plank.",
+                      "Tuck and twist the other way, towards your left elbow. Keep your shoulders right over your hands."
+                    ],
+                    "watch": "shoulders drifting back behind your hands. Stay over your wrists.",
+                    "variants": [
+                      "Straight knee tucks, no twist",
+                      "Small twists",
+                      "Big twists, 1 sec hold each side"
+                    ],
+                    "buddy": "Side lying leg lifts, swap sides halfway"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20plank%20leg%20lift%20pilates",
+                    "videoKnown": false,
+                    "name": "Reverse Plank Leg Lifts (Alternating)",
+                    "qty": "2 rounds, hips high, slow lifts",
+                    "buddy": "Single leg glute bridge, swap legs halfway",
+                    "steps": [
+                      "Sit with legs long, hands behind your hips, fingers pointing to your feet.",
+                      "Press up so your body is a straight line from shoulders to heels.",
+                      "Lift one leg slowly, lower it, then the other. Keep your hips high."
+                    ],
+                    "watch": "hips dropping. Bend your knees for an easier version.",
+                    "variants": [
+                      "Hold the reverse plank, no lifts",
+                      "Alternating lifts",
+                      "Lifts with a 2 sec hold"
+                    ]
                   }
                 ]
               },
               {
-                "name": "Core Finisher: Hold and Work",
-                "rounds": 2,
-                "tempo": "30 sec turns, 10 sec swap, 30 sec rest between rounds",
+                "name": "Tabata 2: Core Burner",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
                 "timer": {
-                  "type": "partner",
-                  "turn": 30,
-                  "swap": 10,
-                  "betweenRounds": 30
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
                 },
-                "formatNote": "The ab roller's first outing! Kneeling rollouts only go as far as you can keep your back flat. Hold and Work again: one rolls, one holds.",
+                "formatNote": "<strong>8 core moves, one each.</strong> Stay on the mat for the whole Tabata. Low back down and breathe.",
                 "exercises": [
                   {
-                    "name": "Ab Roller Rollouts (Kneeling)",
-                    "qty": "2 rounds, 6 to 8 slow reps, stop before your back arches",
-                    "weight": "Ab roller",
-                    "video": "https://www.youtube.com/results?search_query=kneeling%20ab%20wheel%20rollout%20beginner",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
                     "videoKnown": false,
-                    "buddy": "Hollow hold",
-                    "steps": [
-                      "Kneel on something soft, hands on the roller under your shoulders.",
-                      "Squeeze your bum and tummy, then roll forward slowly only as far as you can keep your back flat.",
-                      "Pull the roller back to your knees using your abs."
-                    ],
-                    "watch": "your lower back sagging. Shorter rolls are fine, they still count.",
+                    "name": "Bicycle Crunch",
+                    "qty": "1 interval, slow and twisting"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "1 interval, hips still"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Flutter Kicks",
+                    "qty": "1 interval, low back pressed down",
                     "variants": [
-                      "Short rolls",
-                      "Roll until your back wants to sag",
-                      "Roll out further"
+                      "Knees bent",
+                      "Legs higher",
+                      "Legs low"
                     ]
                   },
                   {
-                    "name": "Hanging Knee Raises",
-                    "qty": "2 rounds, 6 to 10 reps, no swinging",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=hanging%20knee%20raise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
                     "videoKnown": false,
-                    "buddy": "Bicycle crunch",
-                    "station": "Pull up bar · stepping block underneath",
-                    "steps": [
-                      "Step up on the block, grab the bar shoulder width, and hang with straight arms.",
-                      "Pull your shoulders down a little, then lift your knees up towards your chest.",
-                      "Lower your legs slowly without swinging. Tap your feet on the block to stop the swing if you need to."
-                    ],
-                    "watch": "swinging. Slow and controlled beats high.",
-                    "variants": [
-                      "Knees halfway up",
-                      "Knees to hip height",
-                      "Knees to chest, 2 sec lower"
-                    ]
+                    "name": "Russian Twist",
+                    "qty": "1 interval, rotate the ribs"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Glute Bridge",
+                    "qty": "1 interval, squeeze at the top"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Sit%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Sit Ups",
+                    "qty": "1 interval, straight arm reach"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bear Crawl",
+                    "qty": "1 interval, knees hovering"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, last push, everything!"
                   }
                 ]
               }
             ],
             "cooldown": [
               {
-                "name": "Easy Walk",
-                "qty": "1 min",
                 "weight": "",
                 "video": "https://www.youtube.com/results?search_query=cool%20down%20walk",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Easy Walk",
+                "qty": "1 min"
               },
               {
-                "name": "Standing Quad Stretch",
-                "qty": "30 sec each side",
-                "weight": "",
-                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Figure Four Stretch",
-                "qty": "30 sec each side",
-                "weight": "",
-                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Child's Pose",
-                "qty": "45 sec",
                 "weight": "",
                 "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Child's Pose",
+                "qty": "45 sec"
               },
               {
-                "name": "Foam Roll Upper Back",
-                "qty": "1 min",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=cobra%20stretch",
+                "videoKnown": false,
+                "name": "Cobra Stretch",
+                "qty": "30 sec"
+              },
+              {
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
+                "videoKnown": false,
+                "name": "Figure Four Stretch",
+                "qty": "30 sec each side"
+              },
+              {
                 "weight": "Foam roller",
                 "video": "https://www.youtube.com/results?search_query=foam%20roll%20upper%20back",
-                "videoKnown": false
+                "videoKnown": false,
+                "name": "Foam Roll Upper Back",
+                "qty": "1 min"
               }
             ]
           }
@@ -7152,6 +7313,33 @@ window.SITE_DATA = {
       "Primary Muscle": "Biceps, Forearms",
       "Intensity": "Low",
       "Equipment": "Cable"
+    },
+    {
+      "ID": "PL013",
+      "Exercise": "Foam Roller Plank Pike",
+      "Category": "Pilates",
+      "Movement Pattern": "Core",
+      "Primary Muscle": "Abs, Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Foam roller"
+    },
+    {
+      "ID": "PL014",
+      "Exercise": "Foam Roller Hip Swivel",
+      "Category": "Pilates",
+      "Movement Pattern": "Rotation",
+      "Primary Muscle": "Obliques, Abs, Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Foam roller"
+    },
+    {
+      "ID": "PL015",
+      "Exercise": "Squat Jumps",
+      "Category": "Cardio",
+      "Movement Pattern": "Jump",
+      "Primary Muscle": "Quads, Glutes",
+      "Intensity": "High",
+      "Equipment": "Bodyweight"
     }
   ],
   "programStats": {

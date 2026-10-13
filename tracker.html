@@ -2134,12 +2134,15 @@ function buildSpecialSteps(block){
         if(isSolo()){
           steps.push({ kind:'work', seconds:t.turn, exName:ex.name, exIndex:i, isFirst:i === 0,
             phaseLabel:'Your turn', label:ex.name, say:(i === 0 ? "Let's go! " : '') + ex.name + '. Go!' });
-          if(ex.buddy){
+          // Batch 30: a buddy entry that's a coaching job ("watch for sagging
+          // hips", "spot the landing") isn't a move, so training solo it's a rest.
+          const coachingJob = /^(watch|spot|time it|read|check|steady|hold the bar|hold the feet|gently|count|call)/i.test(ex.buddy || '');
+          if(ex.buddy && !coachingJob){
             steps.push({ kind:'work', seconds:t.turn, exName:ex.buddy, exIndex:i,
               phaseLabel:'Buddy move', label:ex.buddy, say:'Switch! ' + ex.buddy + '. Go!' });
           } else {
             steps.push({ kind:'rest', seconds:t.turn, exIndex:i, finishedExName:ex.name,
-              phaseLabel:'Rest', label:'Rest, this is your partner turn', say:'Rest. Breathe.' });
+              phaseLabel:'Rest', label:'Rest and breathe', say:'Rest. Breathe.' });
           }
           return;
         }
