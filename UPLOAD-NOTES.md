@@ -2,6 +2,21 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 32: BLANK DAY BUG FIXED (14 Oct)
+Pene: in Pene solo mode, Tuesday showed nothing at all except the solo banner.
+
+**Cause**: each day's saved progress is laid out to match the workout as it was when the day was first opened. Pene's phone saved Tuesday back when it had 3 blocks. Batches 23 and 30 changed Tuesday (new stations, then a 4th Pilates block), so the app went looking for progress for block 4 that didn't exist, crashed ("Cannot read properties of undefined (reading 'roundSkipped')"), and drew nothing after the banner. Fresh test phones never hit it, because they had no old record. This affects ANY day that changes after someone has opened it.
+
+**Fixed**:
+- Saved progress now records the workout's shape. If the workout has changed, the record is rebuilt automatically, keeping every warm up, cool down and block whose shape still matches (ticks there survive) and starting changed blocks fresh.
+- Safety net: if a day ever fails to draw, you get a "🔧 Reset and load this day" button instead of a blank screen. History and finished workouts are never touched.
+- Includes Batch 31's Wednesday tab. Offline cache pj-fitness-v15.
+
+**Testing**: Playwright with a Pene solo saved record in Tuesday's old 3 block shape. Current live code: blank, only the solo banner, with the exact error above. Fixed code: all 6 sections render (warm up, 4 blocks, cool down), the ticks in the unchanged block are kept, and there are no errors.
+
+## Batch 31: a Wednesday tab for today (14 Oct)
+Pene couldn't find today's workout: Batch 30 put it under the Tuesday tab (the session she missed), and there was no Wednesday tab. Week 19 now has a **Wednesday** tab, "Upper Body + Pilates (Pene)". It's a copy of Tuesday (pull up bar, Smith machine, rope pulley, Pilates Core Finisher) with a note to switch to Pene solo first. The Tuesday tab stays for Jenna to catch up. Offline cache pj-fitness-v14.
+
 ## Batch 30: Pilates foam roller moves, Thursday rebuilt, solo fix (14 Oct)
 Pene: Thursday doesn't work for her. She doesn't like Tabatas that only alternate 2 moves (she wants more moves, fewer rounds) or the skipping rope with one person rope-less. She loved the Pilates foam roller pike and hip swivel and wants Pilates blended in. She ran 3 km on Tuesday plus her own core, so missed Tuesday. Jenna is out today (Wednesday), and Pene wants to train solo.
 

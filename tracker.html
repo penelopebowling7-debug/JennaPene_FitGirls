@@ -969,10 +969,72 @@ function detectFullModifiedPair(block){
   };
 }
 
+// Batch 32: a day's saved progress records the shape of the workout it was
+// made for. If the workout has changed since (blocks added, exercises or
+// rounds changed), the old record no longer fits and used to crash the page
+// to a blank screen. Now it's rebuilt, keeping every block, warm up and cool
+// down whose shape still matches, so ticks that still make sense survive.
+function dayShape(day){
+  return day.blocks.map(b => b.exercises.length + 'x' + b.rounds).join('|') + '/' + day.warmup.length + '/' + day.cooldown.length;
+}
+function freshDayState(day){
+  return {
+    startedAt: null,
+    shape: dayShape(day),
+    warmup: day.warmup.map(()=>false),
+    warmupSkipped: day.warmup.map(()=>false),
+    blocks: day.blocks.map(b => {
+      const pair = detectFullModifiedPair(b);
+      return {
+        rounds: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
+        roundSkipped: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
+        weights: byPerson(()=> b.exercises.map(e => e.weight)),
+        variant: byPerson(()=> b.exercises.map(()=> null)),
+        skipped: b.exercises.map(()=>false),
+        pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
+      };
+    }),
+    cooldown: day.cooldown.map(()=>false),
+    cooldownSkipped: day.cooldown.map(()=>false)
+  };
+}
+function blockFits(old, block){
+  try{
+    migrateBlockToPerPerson(old, block);
+    return PKEYS.every(p => old.rounds[p].length === block.exercises.length &&
+      old.rounds[p].every(a => Array.isArray(a) && a.length === block.rounds) &&
+      old.roundSkipped[p].length === block.exercises.length &&
+      old.weights[p].length === block.exercises.length) &&
+      (!old.skipped || old.skipped.length === block.exercises.length);
+  }catch(e){ return false; }
+}
+function reconcileDayState(old, day){
+  const fresh = freshDayState(day);
+  if(!old || typeof old !== 'object') return fresh;
+  fresh.startedAt = old.startedAt || null;
+  if(Array.isArray(old.warmup) && old.warmup.length === day.warmup.length){
+    fresh.warmup = old.warmup;
+    if(Array.isArray(old.warmupSkipped) && old.warmupSkipped.length === day.warmup.length) fresh.warmupSkipped = old.warmupSkipped;
+  }
+  if(Array.isArray(old.cooldown) && old.cooldown.length === day.cooldown.length){
+    fresh.cooldown = old.cooldown;
+    if(Array.isArray(old.cooldownSkipped) && old.cooldownSkipped.length === day.cooldown.length) fresh.cooldownSkipped = old.cooldownSkipped;
+  }
+  day.blocks.forEach((block, bi) => {
+    const ob = Array.isArray(old.blocks) ? old.blocks[bi] : null;
+    if(ob && blockFits(ob, block)) fresh.blocks[bi] = ob;
+  });
+  return fresh;
+}
+
 function ensureDayState(week, day){
   const k = keyFor(week.id, day.id);
+  if(state.progress[k] && state.progress[k].shape !== dayShape(day)){
+    state.progress[k] = reconcileDayState(state.progress[k], day);
+  }
   if(!state.progress[k]){
     state.progress[k] = {
+      shape: dayShape(day),
       startedAt: null,
       warmup: day.warmup.map(()=>false),
       warmupSkipped: day.warmup.map(()=>false),
@@ -2033,7 +2095,20 @@ function setTrainingMode(m){
 function renderAll(){
   renderTabs();
   renderModeRow();
-  renderMain();
+  try{
+    renderMain();
+  }catch(err){
+    // Batch 32 safety net: never a blank screen. Offer a one-tap fix instead.
+    console.error(err);
+    const week = DATA.weeks[state.weekIdx], day = week && week.days[state.dayIdx];
+    const main = document.getElementById('main');
+    main.innerHTML = '<div class="day-banner"><h2>Something went wrong showing this day</h2><div class="meta">Tap below to reset this day\'s ticks and load it fresh. Finished workouts and history are not touched.</div><button id="fixDayBtn" style="margin-top:12px;width:100%;padding:13px;border-radius:12px;border:none;background:#fff;color:var(--coral-500);font-weight:800;font-size:0.95rem;cursor:pointer;">🔧 Reset and load this day</button></div>';
+    document.getElementById('fixDayBtn').onclick = ()=>{
+      if(week && day) delete state.progress[keyFor(week.id, day.id)];
+      persistState();
+      renderAll();
+    };
+  }
 }
 
 // ---------------- Timer ----------------

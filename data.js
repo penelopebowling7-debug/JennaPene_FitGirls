@@ -4678,7 +4678,7 @@ window.SITE_DATA = {
       {
         "id": "week19",
         "label": "Week 19",
-        "dates": "Mon 12, Tue 13, Thu 15 Oct",
+        "dates": "Mon 12, Tue 13, Wed 14, Thu 15 Oct",
         "days": [
           {
             "id": "mon",
@@ -4976,6 +4976,384 @@ window.SITE_DATA = {
             "title": "Upper Body: Learn While We Train",
             "estTime": "55 min",
             "note": "Only two stations today, so there's less to set up and more practice on each one. <strong>Station 1</strong> is the Smith machine and pull up bar (you met these on Monday). <strong>Station 2</strong> is one side pulley with the rope (no attachment changes all session, just the pulley height). Tap <strong>How to</strong> on any card for step by step setup. New to the machine? The <a href='beast.html'>Beast Guide</a> shows every part and how it adjusts. Finish with the new <strong>Pilates Core Finisher</strong>: the foam roller pike and hip swivel.",
+            "warmup": [
+              {
+                "name": "Jumping Jacks",
+                "qty": "1 min",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Jumping%20Jacks%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Arm%20Circles%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps, arms straight",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Thread the Needle",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=thread%20the%20needle%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Station 1a: Pull Up Bar",
+                "rounds": 2,
+                "tempo": "30 sec turns, 15 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 15,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>I Go, You Go on the bar.</strong> Pull the stepping block under the bar first. The resting partner spots: steady the landing, and give a hand at the waist on the negatives.",
+                "exercises": [
+                  {
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20beginner",
+                    "videoKnown": false,
+                    "name": "Dead Hang",
+                    "qty": "2 rounds, up to 30 sec",
+                    "weight": "Bodyweight",
+                    "buddy": "time it, spot the landing",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Step up on the block and grab the bar a little wider than your shoulders, palms facing away.",
+                      "Step off and hang with straight arms. Gently pull your shoulders down away from your ears.",
+                      "Breathe and hold. Step back onto the block before your grip gives out."
+                    ],
+                    "watch": "shrugging up to your ears. Shoulders down, neck long.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang",
+                      "Full hang, 5 sec longer"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=scapular%20pull%20up%20beginner",
+                    "videoKnown": false,
+                    "name": "Scapular Pull Ups",
+                    "qty": "2 rounds, 6 to 8 reps",
+                    "weight": "Bodyweight",
+                    "buddy": "Hollow hold",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Hang from the bar with straight arms.",
+                      "Keeping your arms straight, pull your shoulder blades down and together. Your body rises an inch or two.",
+                      "Lower slowly back to a full hang. That is one rep."
+                    ],
+                    "watch": "bending the elbows. This move is all shoulder blades.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang, 6 to 8 reps",
+                      "2 sec hold at the top"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=negative%20pull%20up%20beginner",
+                    "videoKnown": false,
+                    "name": "Negative Pull Ups",
+                    "qty": "2 rounds, 3 reps, lower over 3 to 5 sec",
+                    "weight": "Bodyweight",
+                    "buddy": "spot at the waist",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Stand on the block and jump or step up so your chin is over the bar.",
+                      "Lower yourself as slowly as you can, counting 3 to 5 seconds, until your arms are straight.",
+                      "Step back onto the block and reset. Quality beats quantity."
+                    ],
+                    "watch": "dropping fast at the bottom. Stop the set when you can't control the lowering.",
+                    "variants": [
+                      "2 reps, 3 sec lower",
+                      "3 reps, 3 to 5 sec lower",
+                      "5 sec lower"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Station 1b: Smith Machine",
+                "rounds": 3,
+                "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>One bar height for both moves</strong>, so there's no adjusting mid block. Hook the Smith bar at about hip height (use Monday's notch if you wrote one down). Lower the safety stops just under it. Rows are easier with the bar higher, push ups are easier with it higher too.",
+                "exercises": [
+                  {
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20inverted%20row%20beginner",
+                    "videoKnown": false,
+                    "name": "Smith Machine Inverted Row",
+                    "qty": "3 rounds, 6 to 10 slow reps",
+                    "weight": "Bar notch ?",
+                    "buddy": "watch for sagging hips",
+                    "station": "Smith bar at hip height · safety stops just below",
+                    "setup": [
+                      "Twist your wrists to unhook the bar and slide it to about hip height. Twist to hook it on.",
+                      "Set both safety stops one notch below the bar.",
+                      "Give the bar a firm tug down to check it is locked."
+                    ],
+                    "steps": [
+                      "Lie under the bar, grab it just wider than your shoulders. Heels on the floor, body straight like a plank.",
+                      "Pull your chest up to the bar, squeezing your shoulder blades together.",
+                      "Lower slowly until your arms are straight. Bend your knees to make it easier."
+                    ],
+                    "watch": "hips sagging. Squeeze your bum and keep one straight line.",
+                    "variants": [
+                      "Bar higher, knees bent",
+                      "Bar at hip height",
+                      "Bar lower, feet straight"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=incline%20push%20up%20smith%20machine",
+                    "videoKnown": false,
+                    "name": "Incline Push Ups (Smith Bar)",
+                    "qty": "3 rounds, 6 to 10 good reps",
+                    "weight": "Bar notch ?",
+                    "buddy": "Forearm plank hold",
+                    "station": "Same bar, same height · no changes",
+                    "steps": [
+                      "Hands on the bar just wider than your shoulders, walk your feet back into a straight plank.",
+                      "Lower your chest to the bar, elbows angled back at about 45 degrees.",
+                      "Push the bar away until your arms are straight."
+                    ],
+                    "watch": "hips dropping first. If that happens, take a smaller step back.",
+                    "variants": [
+                      "Bar one notch higher",
+                      "Same notch, 3 sec lower",
+                      "Bar one notch lower"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Station 2: Rope on One Side Pulley",
+                "rounds": 2,
+                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>One pulley, one rope, four moves.</strong> Clip the rope on once. Between moves you only change the pulley height, and the 20 second change over is your time to do it. Side pulleys are 2:1, so the stack number feels about half. Start on the lightest pin. Once 12 reps feel easy, go up one pin and write it in the weight box.",
+                "exercises": [
+                  {
+                    "video": "https://www.youtube.com/results?search_query=standing%20rope%20cable%20row",
+                    "videoKnown": false,
+                    "name": "Rope Cable Row",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "Lightest pin",
+                    "buddy": "read the cue: squeeze shoulder blades",
+                    "station": "Side pulley · chest height · rope",
+                    "setup": [
+                      "Pick one side pulley. Pull the pop pin on its carriage and slide it to chest height. Let the pin click in.",
+                      "Clip the rope onto the cable with the carabiner.",
+                      "Put the weight stack pin in the lightest plate."
+                    ],
+                    "steps": [
+                      "Hold the rope ends, palms facing each other, and step back until the weight lifts off the stack.",
+                      "Stand tall with soft knees. Pull the rope to your lower ribs, elbows going back past your sides.",
+                      "Let your arms straighten slowly. Keep the weight from touching down between reps."
+                    ],
+                    "watch": "leaning back to move the weight. If you have to lean, it is too heavy.",
+                    "variants": [
+                      "One pin lighter",
+                      "Same pin, 3 sec return",
+                      "One pin heavier, 2 sec squeeze"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=cable%20face%20pull%20rope%20form",
+                    "videoKnown": false,
+                    "name": "Rope Face Pull",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "Lightest pin",
+                    "buddy": "watch the elbows stay high",
+                    "station": "Same rope · move pulley up to head height",
+                    "setup": [
+                      "Pull the pop pin and slide the pulley up to forehead height."
+                    ],
+                    "steps": [
+                      "Hold the rope with thumbs pointing back at you, arms out straight.",
+                      "Pull the rope towards your face, splitting the ends apart beside your ears. Elbows stay high.",
+                      "Squeeze between your shoulder blades for a second, then return slowly."
+                    ],
+                    "watch": "shrugging. Shoulders down, neck long.",
+                    "variants": [
+                      "One pin lighter",
+                      "Same pin, 3 sec return",
+                      "One pin heavier, 2 sec squeeze"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=cable%20rope%20tricep%20pushdown%20form",
+                    "videoKnown": false,
+                    "name": "Rope Tricep Pushdown",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "Lightest pin",
+                    "buddy": "check the elbows stay still",
+                    "station": "Same rope · move pulley to the very top",
+                    "setup": [
+                      "Pull the pop pin and slide the pulley all the way to the top."
+                    ],
+                    "steps": [
+                      "Face the pulley, hold the rope, and pin your elbows to your sides.",
+                      "Push the rope down until your arms are straight, splitting the ends apart at the bottom.",
+                      "Let it rise slowly until your forearms are just above parallel. Only your forearms move."
+                    ],
+                    "watch": "elbows drifting forward. Pin them to your ribs.",
+                    "variants": [
+                      "One pin lighter",
+                      "Same pin, 3 sec return",
+                      "One pin heavier, 2 sec squeeze"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=cable%20rope%20hammer%20curl%20form",
+                    "videoKnown": false,
+                    "name": "Rope Hammer Curl",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "Lightest pin",
+                    "buddy": "check for swinging",
+                    "station": "Same rope · move pulley to the very bottom",
+                    "setup": [
+                      "Pull the pop pin and slide the pulley all the way to the bottom."
+                    ],
+                    "steps": [
+                      "Face the pulley, hold the rope with palms facing each other, and take a small step back.",
+                      "Curl the rope up towards your shoulders, elbows tucked at your sides.",
+                      "Lower slowly all the way down."
+                    ],
+                    "watch": "rocking your body to lift it. Stand tall and go lighter.",
+                    "variants": [
+                      "One pin lighter",
+                      "Same pin, 3 sec return",
+                      "One pin heavier, 2 sec squeeze"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Pilates Core Finisher",
+                "rounds": 2,
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>Pilates time.</strong> One foam roller, so take turns: one of you works on the roller while the other does the mat move shown on the card. Training solo? The timer gives you the roller move, then the mat move. Slow, controlled, breathe out on the hard part.",
+                "exercises": [
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Plank Pike",
+                    "qty": "2 rounds, slow and controlled",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Kneel on a mat and place the foam roller behind you.",
+                      "Walk your hands forward into a high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "Hands under shoulders, body in a straight line, roller under your shins.",
+                      "Squeeze your abs and lift your hips high into an upside down V. The roller rolls down to your ankles.",
+                      "Lower slowly back to a straight plank. Move with your breath: breathe out as you lift."
+                    ],
+                    "watch": "sagging in the plank. Smaller pikes are fine, keep the plank strong.",
+                    "variants": [
+                      "Knee tucks instead of pikes",
+                      "Half height pikes",
+                      "Full pike, 2 sec hold at the top"
+                    ],
+                    "buddy": "Pilates Hundred (pump the arms, breathe in 5, out 5)"
+                  },
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20plank%20hip%20twist%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Hip Swivel",
+                    "qty": "2 rounds, alternate sides",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Same set up as the pike: high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "From the plank, draw your knees in and rotate both knees towards your right elbow. The roller turns under you.",
+                      "Push back to a straight plank.",
+                      "Tuck and twist the other way, towards your left elbow. Keep your shoulders right over your hands."
+                    ],
+                    "watch": "shoulders drifting back behind your hands. Stay over your wrists.",
+                    "variants": [
+                      "Straight knee tucks, no twist",
+                      "Small twists",
+                      "Big twists, 1 sec hold each side"
+                    ],
+                    "buddy": "Single leg stretch (Pilates scissors)"
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Doorway Chest Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=doorway%20chest%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Lat Stretch on the Smith Bar",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=lat%20stretch%20holding%20bar",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Neck Rolls",
+                "qty": "5 each way",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=neck%20rolls%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "wed",
+            "label": "Wednesday",
+            "title": "Upper Body + Pilates (Pene)",
+            "estTime": "55 min",
+            "note": "<strong>Today's workout, Wed 14 Oct.</strong> Legs rest after yesterday's run, so this is the Beast upper body session plus the new Pilates foam roller finisher. Tap <strong>Pene solo</strong> under the day tabs first, so the timer gives you every turn and turns Jenna's spotting jobs into rests. Tap <strong>How to</strong> on any card for machine setup. New to the machine? See the <a href='beast.html'>Beast Guide</a>.",
             "warmup": [
               {
                 "name": "Jumping Jacks",
