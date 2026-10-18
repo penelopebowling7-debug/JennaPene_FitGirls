@@ -2,6 +2,16 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 33: Week 20 (19 Oct)
+Tue to Thu plus an optional Friday, about 45 min each, loads held steady (Week 19 mostly done, felt right).
+- **Tue: Lower Body + Glutes.** Smith squat and reverse lunge (empty bar), landmine squat and Olympic bar RDL (empty bars), NEW Beast station: leg press (lightest pin, learning round), Pilates Glute Finisher (foam roller bridge, plank pike).
+- **Wed: Upper Body + Pilates Core.** Week 19's stations at the same notches and pins (Smith 2 rounds, rope station without the hammer curl to fit 45 min), NEW Beast station: lat pulldown, then the Pilates Core Finisher.
+- **Thu: Yoga (NTC) + Pilates Sculpt.** Nike Training Club yoga class on the TV as the warm up tick, then the foam roller Pilates Sculpt block.
+- **Fri: Walk (optional).** Mark it skipped if it doesn't happen.
+- Week 19 is parked as closed once so the tracker opens on Week 20 (Reopen week brings it back). Offline cache pj-fitness-v16.
+
+**Testing**: Playwright: fresh browser opens on Week 20 Tuesday, every exercise on all 4 days renders, Pene solo mode renders, stale saved progress in an old shape still renders fully, other pages load with no errors.
+
 ## Batch 32: BLANK DAY BUG FIXED (14 Oct)
 Pene: in Pene solo mode, Tuesday showed nothing at all except the solo banner.
 
