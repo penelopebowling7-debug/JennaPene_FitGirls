@@ -2,6 +2,13 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 34: leg press swap + clearer partner moves (19 Oct)
+- **Leg press attachment is delayed**, so Week 20 Tuesday's leg press station is now **Station 3: Rope Pull Through** (side pulley at the very bottom, rope, lightest pin). Waiting partner does glute bridges.
+- **"Partner meanwhile" was confusing.** The line under each move now says what it means: "⇄ While you wait your turn: Glute bridge hold" with a 🔍 how-to search, plus "Bonus move to keep warm, nothing to log. Solo? Do it after your turn." Coaching jobs read "👀 Waiting partner's job: watch from the side for a flat back".
+- Offline cache pj-fitness-v17.
+
+**Testing**: Playwright: all Week 20 days render, Pene solo, stale saved progress, other pages, no errors.
+
 ## Batch 33: Week 20 (19 Oct)
 Tue to Thu plus an optional Friday, about 45 min each, loads held steady (Week 19 mostly done, felt right).
 - **Tue: Lower Body + Glutes.** Smith squat and reverse lunge (empty bar), landmine squat and Olympic bar RDL (empty bars), NEW Beast station: leg press (lightest pin, learning round), Pilates Glute Finisher (foam roller bridge, plank pike).

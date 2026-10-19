@@ -564,6 +564,13 @@
     font-weight:700;
     color:#6A11CB;
   }
+  .ex-buddy-sub{
+    display:block;
+    font-weight:500;
+    font-size:0.72rem;
+    color:#7a6a8f;
+    margin-top:1px;
+  }
   .round-timer-btn{
     display:block;
     width:100%;
@@ -1552,6 +1559,21 @@ function roundChip(state, label){
   return d;
 }
 
+// Batch 34: explain the buddy move in plain words. A coaching job ("watch the
+// knees") is what the waiting partner keeps an eye on. A movement ("Glute
+// bridge hold") is a bonus move to do while you wait: it has a how-to search
+// link, and nothing to log.
+function buddyHtml(ex){
+  if(!ex || !ex.buddy) return '';
+  const job = /^(watch|spot|time it|read|check|steady|hold the bar|hold the feet|gently|count|call)/i.test(ex.buddy);
+  if(job){
+    return `<div class="ex-buddy">👀 Waiting partner's job: ${ex.buddy}</div>`;
+  }
+  const q = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(ex.buddy.replace(/,.*$/, '') + ' how to');
+  return `<div class="ex-buddy">⇄ While you wait your turn: ${ex.buddy}${videoLinkHtml({video:q, videoKnown:false})}`
+    + `<span class="ex-buddy-sub">Bonus move to keep warm, nothing to log. Solo? Do it after your turn.</span></div>`;
+}
+
 function videoLinkHtml(item){
   if(!item || !item.video) return '';
   const cls = item.videoKnown ? 'video-link known' : 'video-link';
@@ -1983,7 +2005,7 @@ function renderMain(){
       const top = document.createElement('div');
       top.className = 'card-top';
       const left = document.createElement('div');
-      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>${exObj.station ? `<div class="ex-station">🔧 ${exObj.station}</div>` : ''}${exObj.buddy ? `<div class="ex-buddy">⇄ Partner meanwhile: ${exObj.buddy}</div>` : ''}`;
+      left.innerHTML = `<div class="ex-name">${exObj.name}${videoLinkHtml(exObj)}</div><div class="ex-qty">${exObj.qty}</div>${exObj.station ? `<div class="ex-station">🔧 ${exObj.station}</div>` : ''}${buddyHtml(exObj)}`;
       top.appendChild(left);
 
       const howBtn = document.createElement('button');

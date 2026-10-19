@@ -6061,7 +6061,7 @@ window.SITE_DATA = {
             "label": "Tuesday",
             "title": "Lower Body + Glutes",
             "estTime": "45 min",
-            "note": "Welcome back to legs! Your legs haven't had a proper session since the restart, so today is about <strong>good form at easy weights</strong>, not big numbers. Every set should finish feeling like you had 3 or 4 reps left. Same empty bars as last week, nothing goes heavier. <strong>New Beast station today: the leg press.</strong> Take your time setting it up, the <a href='beast.html'>Beast Guide</a> has the parts. Training solo? Flip to solo mode and the timer turns the coaching jobs into rests.",
+            "note": "Welcome back to legs! Your legs haven't had a proper session since the restart, so today is about <strong>good form at easy weights</strong>, not big numbers. Every set should finish feeling like you had 3 or 4 reps left. Same empty bars as last week, nothing goes heavier. <strong>New cable move today: the rope pull through</strong>, a lovely glute builder (the leg press is still on its way). Training solo? Flip to solo mode and the timer turns the coaching jobs into rests.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -6217,7 +6217,7 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "New Beast Station: Leg Press",
+                "name": "Station 3: Rope Pull Through",
                 "rounds": 2,
                 "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
                 "timer": {
@@ -6226,31 +6226,31 @@ window.SITE_DATA = {
                   "swap": 20,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>First time on the leg press, so round 1 is a learning round.</strong> Set it up together before you start the timer, using the lightest pin. Write the seat notch and pin in the weight box so next week is quick. While one of you presses, the other does the mat move shown on the card.",
+                "formatNote": "<strong>Glutes and hamstrings on the cable.</strong> The leg press is still on its way, so this is the swap. One side pulley at the very bottom with the rope, lightest pin. Side pulleys are 2:1, so the stack number feels about half. Once 12 reps feel easy, go up one pin and write it in the weight box.",
                 "exercises": [
                   {
-                    "name": "Beast Leg Press",
-                    "qty": "2 rounds, 10 to 12 smooth reps",
+                    "name": "Rope Cable Pull Through",
+                    "qty": "2 rounds, 12 smooth reps",
                     "weight": "Lightest pin",
-                    "video": "https://www.youtube.com/results?search_query=functional%20trainer%20leg%20press%20attachment",
+                    "video": "https://www.youtube.com/results?search_query=cable%20pull%20through%20rope%20form",
                     "videoKnown": false,
-                    "buddy": "Pilates Clam Shells, swap sides halfway",
-                    "station": "Lat seat with the leg press attachment · lightest pin",
+                    "buddy": "Glute Bridge, 1 sec squeeze at the top",
+                    "station": "Side pulley · very bottom · rope",
                     "setup": [
-                      "Fit the leg press attachment to the lat seat following the Beast manual (it is new, so check every pin clicks in).",
-                      "Put the weight stack pin in the lightest plate.",
-                      "Sit back and set the seat so your knees are bent to about 90 degrees at the start."
+                      "Pull the pop pin on one side pulley and slide it all the way to the bottom.",
+                      "Clip the rope on with the carabiner.",
+                      "Put the weight stack pin in the lightest plate."
                     ],
                     "steps": [
-                      "Feet flat on the plate, hip width apart, back pressed into the pad.",
-                      "Push through your heels until your legs are almost straight. Never lock your knees.",
-                      "Bend your knees slowly to come back. Keep the weight from touching down between reps."
+                      "Stand with your back to the pulley, the cable running between your legs. Hold one rope end in each hand.",
+                      "Walk forward two big steps, feet a bit wider than your hips. Push your hips back so the rope travels back between your legs, back flat, soft knees.",
+                      "Squeeze your glutes to drive your hips forward and stand tall. Arms just hang, your hips do the work."
                     ],
-                    "watch": "your lower back peeling off the pad. Shorten the range if it does.",
+                    "watch": "pulling with your arms or leaning back at the top. Stand tall, squeeze, done.",
                     "variants": [
-                      "Lightest pin, smaller range",
-                      "Lightest pin, full range",
-                      "One pin heavier, 3 sec return"
+                      "Lightest pin, smaller hinge",
+                      "Lightest pin, 12 reps",
+                      "One pin heavier, 2 sec squeeze"
                     ]
                   }
                 ]
