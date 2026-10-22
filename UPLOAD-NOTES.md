@@ -2,6 +2,16 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 36: sore legs Friday (22 Oct)
+Pene: legs still stiff and sore from Tuesday's Smith squats and reverse lunges. Week 20 Friday is now **Recovery Core + Foam Roll** (30 min), replacing Batch 35's Rainy Day Tabata. It has a gentle warm up, one Tabata with zero leg work (Push Ups, Plank Shoulder Taps, Bicycle Crunch, Russian Twist, Mountain Climbers, Sit Ups, Plank Jacks, Flutter Kicks; all have coach clips), a Foam Roller Leg Release (quads, glutes, hamstrings, calves, adductors; untimed, take turns) and a long stretch. Walk instead if the rain clears. Offline cache pj-fitness-v19. Includes Batch 35, so upload this one even if 35 never went up.
+
+**Testing**: Playwright: Friday renders together and Pene solo, an old saved Friday record rebuilds cleanly, the Tabata player opens on Push Ups, Week 20 regression all pass, no errors.
+
+## Batch 35: rainy Friday (22 Oct)
+Rain forecast for Friday, so the Week 20 walk is now **Rainy Day Tabata + Stretch** (30 min): warm up, Tabata 1 Cardio Kick Off (Star Jumps, Reverse Lunges, Mountain Climbers, High Knees, Plank Jacks, Skater Jumps, Push Ups, Squat Jumps), Tabata 2 Core Burner (Bicycle Crunch, Plank Shoulder Taps, Glute Bridge, Flutter Kicks, Russian Twist, Sit Ups, Bear Crawl, Mountain Climbers), long stretch with box breathing. All 16 moves already have coach voice clips. If the rain clears, walk and tick the day done. Offline cache pj-fitness-v18.
+
+**Testing**: Playwright: Friday renders together and Pene solo, an old saved walk record rebuilds cleanly, the Tabata player opens on Star Jumps, Week 20 regression all pass, no errors.
+
 ## Batch 34: leg press swap + clearer partner moves (19 Oct)
 - **Leg press attachment is delayed**, so Week 20 Tuesday's leg press station is now **Station 3: Rope Pull Through** (side pulley at the very bottom, rope, lightest pin). Waiting partner does glute bridges.
 - **"Partner meanwhile" was confusing.** The line under each move now says what it means: "⇄ While you wait your turn: Glute bridge hold" with a 🔍 how-to search, plus "Bonus move to keep warm, nothing to log. Solo? Do it after your turn." Coaching jobs read "👀 Waiting partner's job: watch from the side for a flat back".

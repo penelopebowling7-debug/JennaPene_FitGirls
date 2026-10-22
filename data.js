@@ -6859,33 +6859,235 @@ window.SITE_DATA = {
           {
             "id": "fri",
             "label": "Friday",
-            "title": "Walk (Optional Morning Bonus)",
+            "title": "Recovery Core + Foam Roll",
             "estTime": "30 min",
-            "note": "Optional and lovely. A brisk walk together is perfect low intensity recovery after a big week. Chatting pace is the goal: you should be able to talk, but not sing. Can't make it? Mark it skipped, no guilt.",
-            "warmup": [],
+            "note": "Sore legs from Tuesday? Totally normal, and 2 to 3 days later is when it peaks. Today <strong>your legs get the day off from work</strong>: one Tabata of core and upper body moves (8 different moves, nothing for the legs), then a <strong>foam roller leg release</strong> and a long, slow stretch. Gentle movement and rolling help sore muscles feel better. Sharp pain or sore joints is different, so skip anything that hurts like that. <strong>Rain clears?</strong> An easy walk is great for sore legs too, so walk instead and tick this day as done.",
+            "warmup": [
+              {
+                "name": "Gentle Marching on the Spot",
+                "qty": "1 min, easy pace",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Gentle Leg Swings",
+                "qty": "8 each leg, small and easy",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              }
+            ],
             "blocks": [
               {
-                "name": "Walk",
+                "name": "Tabata: Core + Upper (Legs Rest)",
                 "rounds": 1,
-                "tempo": "No timer, about 30 min at chatting pace",
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>8 moves, zero leg work.</strong> All floor and plank moves, so your sore legs get the day off. 20 seconds on, 10 off. Mountain climbers and plank jacks feeling cranky? Go slow, or just hold the plank.",
                 "exercises": [
                   {
-                    "name": "Brisk Morning Walk",
-                    "qty": "About 30 min",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=brisk%20walking%20benefits",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
                     "videoKnown": false,
-                    "buddy": "walk together"
+                    "name": "Push Ups",
+                    "qty": "1 interval, knees are fine"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "1 interval, hips still"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bicycle Crunch",
+                    "qty": "1 interval, slow and twisting"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Russian Twist",
+                    "qty": "1 interval, rotate the ribs"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, last push, everything!"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Sit%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Sit Ups",
+                    "qty": "1 interval, straight arm reach"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Jacks",
+                    "qty": "1 interval, hips level"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Flutter Kicks",
+                    "qty": "1 interval, low back pressed down",
+                    "variants": [
+                      "Knees bent",
+                      "Legs higher",
+                      "Legs low"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Foam Roller Leg Release",
+                "rounds": 1,
+                "tempo": "No timer, about 1 min each spot, take turns on the roller",
+                "formatNote": "<strong>Slow rolling, lots of breathing.</strong> One roller, so take turns: one of you rolls while the other stretches. Roll slowly, and when you find a tender spot, pause there for 3 slow breaths. Tick each one off as you go.",
+                "exercises": [
+                  {
+                    "name": "Quad Roll",
+                    "qty": "1 min each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20quads",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie face down with the roller under the front of your thighs, forearms on the floor.",
+                      "Roll slowly from just above your knee to just below your hip.",
+                      "Turn slightly in and out to find the tender bits, and pause there for 3 breaths."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10.",
+                    "buddy": "Child's pose or a gentle stretch of your own"
+                  },
+                  {
+                    "name": "Glute Roll",
+                    "qty": "1 min each side",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20glutes%20figure%204",
+                    "videoKnown": false,
+                    "steps": [
+                      "Sit on the roller and cross one ankle over the opposite knee (a figure 4).",
+                      "Lean towards the crossed leg and roll small, slow circles on that bum cheek.",
+                      "Swap sides."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10.",
+                    "buddy": "Child's pose or a gentle stretch of your own"
+                  },
+                  {
+                    "name": "Hamstring Roll",
+                    "qty": "1 min each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20hamstrings",
+                    "videoKnown": false,
+                    "steps": [
+                      "Sit with the roller under the back of your thighs, hands behind you.",
+                      "Lift your hips and roll from just above the knee to just under your bum.",
+                      "Cross one leg over the other to add pressure if you want more."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10.",
+                    "buddy": "Child's pose or a gentle stretch of your own"
+                  },
+                  {
+                    "name": "Calf Roll",
+                    "qty": "45 sec each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20calves",
+                    "videoKnown": false,
+                    "steps": [
+                      "Sit with the roller under your calves, hands behind you.",
+                      "Lift your hips and roll from ankle to just below the knee.",
+                      "Point your toes in and out to cover the whole calf."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10.",
+                    "buddy": "Child's pose or a gentle stretch of your own"
+                  },
+                  {
+                    "name": "Adductor Roll (Inner Thigh)",
+                    "qty": "45 sec each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20adductors",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie face down and bend one knee out to the side like a frog, the roller under your inner thigh.",
+                      "Roll slowly from just above your knee towards your groin.",
+                      "Swap sides."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10.",
+                    "buddy": "Child's pose or a gentle stretch of your own"
                   }
                 ]
               }
             ],
             "cooldown": [
               {
-                "name": "Calf Stretch on a Step",
-                "qty": "30 sec each side",
+                "name": "Lying Quad Stretch",
+                "qty": "45 sec each side",
                 "weight": "",
-                "video": "https://www.youtube.com/results?search_query=calf%20stretch",
+                "video": "https://www.youtube.com/results?search_query=side%20lying%20quad%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Pigeon Pose",
+                "qty": "45 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Supine Spinal Twist",
+                "qty": "45 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=supine%20spinal%20twist",
+                "videoKnown": false
+              },
+              {
+                "name": "Happy Baby",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=happy%20baby%20pose",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "1 min",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Box Breathing",
+                "qty": "1 min: in 4, hold 4, out 4, hold 4",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=box%20breathing",
                 "videoKnown": false
               }
             ]
