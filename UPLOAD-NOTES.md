@@ -1,6 +1,18 @@
 # Upload to penelopebowling7-debug/JennaPene_FitGirls (branch: main)
 
-Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, including the icon PNGs, tabata.js and coach-voice.json).
+Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
+
+## Batch 37: Week 21, Pene solo week (27 Oct)
+Jenna is on gentle walks only this week, so Week 21 is built for **Pene solo** (switch to Pene solo on the tracker first). About 45 min a day, loads held at Week 20's pins and bars, and leg volume kept low after last week's soreness.
+- **Tue: Run + Core.** Easy run, 25 to 30 min at a chatty pace, then a choice: Option A Pilates Core Finisher (plank pike, hip swivel, dead bug, side planks, bicycle crunch, 40/20 timer) or Option B Light Arms (EZ bar alone curl, rope pushdown, 3 kg lateral raise). Skip the block you don't do.
+- **Wed: Upper Body + Core.** Lat pulldown, NEW seated cable row (lat seat foot plate, learning round), standing Smith press, half kneeling landmine press (3 rounds of 10, rep based with a tap to start each rest), then one rope on one side pulley: face pull, pushdown, hammer curl, then a quick core finisher.
+- **Thu: Lower Body (Light).** 2 rounds only: Smith squat, 7 kg dumbbell RDL, split squat with a hand on the frame (bodyweight), glute bridge, rope pull through, then a foam roller leg release.
+- **Fri: Yoga (NTC) + Pilates Sculpt.**
+- **Sat: Tabata or Walk (optional).** 8 core and upper moves, zero leg work (all have coach voice clips).
+- **Any day: Walk with Jenna.** The pivot tab: an easy flat walk together, plus optional bonus core for Pene.
+- Week 20 is parked as closed once so the tracker opens on Week 21 (Reopen week brings it back). Offline cache pj-fitness-v20.
+
+**Testing**: Playwright: opens on Week 21 in Pene solo and together mode, all 6 day tabs and every exercise render, every timed block builds its guided steps, stale saved progress (sitting on Week 20, an old shaped Week 21 record) still lands on Week 21 with no blank day, other pages load, no errors.
 
 ## Batch 36: sore legs Friday (22 Oct)
 Pene: legs still stiff and sore from Tuesday's Smith squats and reverse lunges. Week 20 Friday is now **Recovery Core + Foam Roll** (30 min), replacing Batch 35's Rainy Day Tabata. It has a gentle warm up, one Tabata with zero leg work (Push Ups, Plank Shoulder Taps, Bicycle Crunch, Russian Twist, Mountain Climbers, Sit Ups, Plank Jacks, Flutter Kicks; all have coach clips), a Foam Roller Leg Release (quads, glutes, hamstrings, calves, adductors; untimed, take turns) and a long stretch. Walk instead if the rain clears. Offline cache pj-fitness-v19. Includes Batch 35, so upload this one even if 35 never went up.

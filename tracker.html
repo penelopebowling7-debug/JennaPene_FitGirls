@@ -1364,6 +1364,24 @@ try{
   }
 }catch(e){}
 
+// Batch 37 (27 Oct 2026): Week 21, Pene's solo week. Park Week 20 as closed
+// once so the tracker opens on Week 21. Nothing is deleted: Reopen week brings it back.
+const WEEK20_CLOSED_KEY = 'pj-week20-closed-v1';
+try{
+  if(!localStorage.getItem(WEEK20_CLOSED_KEY)){
+    const w = DATA.weeks.find(x => x.id === 'week20');
+    if(w){
+      const k = weekDoneKey(w);
+      if(!completedDaysCache.includes(k)){
+        completedDaysCache = completedDaysCache.concat([k]);
+        if(window.CloudSync) CloudSync.markDayCompleted(k);
+      }
+      localStorage.setItem(COMPLETED_DAYS_KEY, JSON.stringify(completedDaysCache));
+    }
+    localStorage.setItem(WEEK20_CLOSED_KEY, '1');
+  }
+}catch(e){}
+
 // Show completed weeks in the tab row only when asked (per session).
 let showCompletedWeeks = false;
 let showCompletedDays = false;
