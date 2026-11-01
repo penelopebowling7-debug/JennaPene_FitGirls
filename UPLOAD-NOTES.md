@@ -2,6 +2,18 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 38: Week 22, Pene solo week (1 Nov)
+Pene is training alone all week, so every day is built solo (switch to Pene solo first). About 45 min a day, loads held at Week 21's pins and bars (Week 21 completion not yet checked), with fresh moves for variety. No partner or walk tab this week.
+- **Mon: Upper Body + Core.** Week 21's Beast stations at the same pins (seated row now on last week's pin), rope arms, then a NEW Core Trio: kneeling ab wheel rollout, dead bug, side plank.
+- **Tue: Run + Core.** Easy 25 to 30 min run, then Option A Pilates Core (plank pike, hip swivel, NEW bird dog, side plank hip lifts, hollow hold) or Option B Light Arms.
+- **Wed: Yoga (NTC) + Pilates Sculpt.** Foam roller bridge replaces reverse plank leg lifts.
+- **Thu: Lower Body (Steady).** 2 rounds: Smith squat, 7 kg DB RDL, NEW step ups on the block, NEW foam roller bridge, rope pull through, then a foam roll with hamstrings added.
+- **Fri: Tabata + Arms.** 8 no leg moves (Bear Crawl new in), all with coach clips, then Light Arms.
+- **Sat: Run or Walk (optional).** Tick one, skip the other.
+- Week 21 parked as closed once (`pj-week21-closed-v1`). Offline cache pj-fitness-v21.
+
+**Testing**: Playwright: opens on Week 22 in together and Pene solo, all 6 days render with their timers (round, partner and Tabata), a stale saved Week 22 record rebuilds with no blank day, other pages load, no errors.
+
 ## Batch 37: Week 21, Pene solo week (27 Oct)
 Jenna is on gentle walks only this week, so Week 21 is built for **Pene solo** (switch to Pene solo on the tracker first). About 45 min a day, loads held at Week 20's pins and bars, and leg volume kept low after last week's soreness.
 - **Tue: Run + Core.** Easy run, 25 to 30 min at a chatty pace, then a choice: Option A Pilates Core Finisher (plank pike, hip swivel, dead bug, side planks, bicycle crunch, 40/20 timer) or Option B Light Arms (EZ bar alone curl, rope pushdown, 3 kg lateral raise). Skip the block you don't do.
