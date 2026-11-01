@@ -2,6 +2,12 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 38c: Skills Lab for rings and handstands (1 Nov)
+Pene's bigger goal: gym rings, handstands and circus style tricks, built on a strong core and moving her body well. The dip attachment has arrived. Week 22 gets a short **Skills Lab** (2 rounds, 20 sec holds, 40 sec rest) on two days:
+- **Mon (first, while fresh):** Dip Support Hold (new dip attachment), Scapular Pull Ups, Dead Hang. Monday now about 50 min.
+- **Fri (after the Tabata):** Elevated Pike Hold (feet on the block, handstand shoulder prep), Hollow Hold, Dip Support Hold. Friday about 42 min.
+New library entries SK001 and SK002. Same cache (v21).
+
 ## Batch 38b: lighter shoulder press (1 Nov)
 Pene bailed on the standing Smith press: the Smith bar is 20 kg before plates. Week 22 Monday swaps it for a **Standing Dumbbell Shoulder Press on 5 kg dumbbells** (3 x 8 to 10), and Friday's arm block becomes **Arms + Shoulders** with a second round of the same press (2 x 10), so shoulders get two practice days. New library entry S007. Same cache (v21), Week 22 only.
 

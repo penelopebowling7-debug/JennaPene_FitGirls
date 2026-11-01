@@ -8263,8 +8263,8 @@ window.SITE_DATA = {
             "id": "mon",
             "label": "Monday",
             "title": "Upper Body + Core",
-            "estTime": "45 min",
-            "note": "<strong>Fresh week, strong start!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Same Beast stations as last Wednesday at the same pins, with one big swap: the Smith press is out (that bar is 20 kg before any plates!) and a <strong>standing dumbbell shoulder press on 5 kg dumbbells</strong> is in. Light dumbbells let you build real shoulder strength with good form, then we work back up to the Smith bar. The seated row is no longer a learning round, so use the pin you finished on. <strong>New core mix:</strong> ab wheel rollouts, dead bug and a side plank, a fresh trio that trains your middle to resist movement, which is exactly what keeps the lower back happy.",
+            "estTime": "50 min",
+            "note": "<strong>Fresh week, strong start!</strong> <strong>New:</strong> a short Skills Lab first, using your new dip attachment, building towards rings and handstands. Solo week, so switch to <strong>Pene solo</strong> at the top first. Same Beast stations as last Wednesday at the same pins, with one big swap: the Smith press is out (that bar is 20 kg before any plates!) and a <strong>standing dumbbell shoulder press on 5 kg dumbbells</strong> is in. Light dumbbells let you build real shoulder strength with good form, then we work back up to the Smith bar. The seated row is no longer a learning round, so use the pin you finished on. <strong>New core mix:</strong> ab wheel rollouts, dead bug and a side plank, a fresh trio that trains your middle to resist movement, which is exactly what keeps the lower back happy.",
             "warmup": [
               {
                 "name": "Jumping Jacks",
@@ -8303,6 +8303,75 @@ window.SITE_DATA = {
               }
             ],
             "blocks": [
+              {
+                "name": "Skills Lab: Rings + Handstand Prep",
+                "rounds": 2,
+                "tempo": "20 sec active / 40 sec rest, 60 sec rest between rounds",
+                "formatNote": "<strong>Circus goals start here!</strong> Rings, handstands and body control all come from three things: straight arm strength, strong shoulders and a rock solid core. Do this block first, while you are fresh, because skills need a fresh body. Quality holds only: step down the moment your form slips.",
+                "exercises": [
+                  {
+                    "name": "Dip Support Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dip%20support%20hold%20beginner",
+                    "videoKnown": false,
+                    "station": "Dip bar attachment · stepping block underneath",
+                    "setup": [
+                      "Clip the dip bar attachment on and check it is locked in.",
+                      "Put the stepping block underneath so you can step up into the top position."
+                    ],
+                    "steps": [
+                      "Step up and press yourself up so your arms are straight, hands on the bars beside your hips.",
+                      "Push the bars down hard so your shoulders sit low, far away from your ears. Chest proud.",
+                      "Squeeze your legs together and hold still. Step back down onto the block when time is up or your shoulders creep up."
+                    ],
+                    "watch": "shoulders shrugging up to your ears. That is the signal to step down, even if time is not up.",
+                    "variants": [
+                      "Toes resting on the block, 10 to 15 sec",
+                      "Feet off, 15 to 20 sec",
+                      "Feet off, 30 sec, slow 3 sec lower to finish"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=scapular%20pull%20up%20beginner",
+                    "videoKnown": false,
+                    "name": "Scapular Pull Ups",
+                    "qty": "2 rounds, slow shrugs for 20 sec",
+                    "weight": "Bodyweight",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Hang from the bar with straight arms.",
+                      "Keeping your arms straight, pull your shoulder blades down and together. Your body rises an inch or two.",
+                      "Lower slowly back to a full hang. That is one rep."
+                    ],
+                    "watch": "bending the elbows. This move is all shoulder blades.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang, 6 to 8 reps",
+                      "2 sec hold at the top"
+                    ]
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20beginner",
+                    "videoKnown": false,
+                    "name": "Dead Hang",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Step up on the block and grab the bar a little wider than your shoulders, palms facing away.",
+                      "Step off and hang with straight arms. Gently pull your shoulders down away from your ears.",
+                      "Breathe and hold. Step back onto the block before your grip gives out."
+                    ],
+                    "watch": "shrugging up to your ears. Shoulders down, neck long.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang",
+                      "Full hang, 5 sec longer"
+                    ]
+                  }
+                ]
+              },
               {
                 "name": "Block 1: Pull + Press",
                 "rounds": 3,
@@ -9129,8 +9198,8 @@ window.SITE_DATA = {
             "id": "fri",
             "label": "Friday",
             "title": "Tabata + Arms",
-            "estTime": "35 min",
-            "note": "<strong>Finish the week with a buzz!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Legs worked yesterday, so this Tabata is <strong>8 core and upper body moves, zero leg work</strong>, with Bear Crawl as the new one in the mix. Then Arms + Shoulders, with a second round of the dumbbell shoulder press so your shoulders get two practice days this week. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
+            "estTime": "42 min",
+            "note": "<strong>Finish the week with a buzz!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Legs worked yesterday, so this Tabata is <strong>8 core and upper body moves, zero leg work</strong>, with Bear Crawl as the new one in the mix. Then a short Skills Lab (handstand shoulder prep, hollow hold, dip support hold), then Arms + Shoulders, with a second round of the dumbbell shoulder press so your shoulders get two practice days this week. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
             "warmup": [
               {
                 "name": "Gentle Marching on the Spot",
@@ -9233,6 +9302,69 @@ window.SITE_DATA = {
                       "Knees bent",
                       "Legs higher",
                       "Legs low"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Skills Lab: Handstand + Core",
+                "rounds": 2,
+                "tempo": "20 sec active / 40 sec rest, 60 sec rest between rounds",
+                "formatNote": "<strong>Circus goals start here!</strong> Rings, handstands and body control all come from three things: straight arm strength, strong shoulders and a rock solid core. Do this block straight after the Tabata, before arms, because skills need a fresh body. Quality holds only: step down the moment your form slips.",
+                "exercises": [
+                  {
+                    "name": "Elevated Pike Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=elevated%20pike%20hold%20handstand%20progression",
+                    "videoKnown": false,
+                    "station": "Floor · feet on the stepping block",
+                    "steps": [
+                      "Start in a downward dog shape with your feet up on the stepping block and hands about a leg length away.",
+                      "Walk your hands in a little so your hips stack high over your shoulders, arms straight beside your ears.",
+                      "Push the floor away, spread your fingers wide, and hold. This is your handstand shoulder position."
+                    ],
+                    "watch": "your head poking through or elbows bending. Arms stay long and you look at your hands.",
+                    "variants": [
+                      "Feet on the floor (downward dog), 20 sec",
+                      "Feet on the block, 20 sec",
+                      "Feet on the block, walk hands closer, 30 sec"
+                    ]
+                  },
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, press your lower back into the floor.",
+                      "Lift your shoulders and legs off the floor, arms by your ears, like a banana.",
+                      "Hold the shape. Bend your knees or bring your arms forward if your back lifts."
+                    ],
+                    "watch": "your lower back peeling off the floor. That is the moment to make it easier."
+                  },
+                  {
+                    "name": "Dip Support Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dip%20support%20hold%20beginner",
+                    "videoKnown": false,
+                    "station": "Dip bar attachment · stepping block underneath",
+                    "setup": [
+                      "Clip the dip bar attachment on and check it is locked in.",
+                      "Put the stepping block underneath so you can step up into the top position."
+                    ],
+                    "steps": [
+                      "Step up and press yourself up so your arms are straight, hands on the bars beside your hips.",
+                      "Push the bars down hard so your shoulders sit low, far away from your ears. Chest proud.",
+                      "Squeeze your legs together and hold still. Step back down onto the block when time is up or your shoulders creep up."
+                    ],
+                    "watch": "shoulders shrugging up to your ears. That is the signal to step down, even if time is not up.",
+                    "variants": [
+                      "Toes resting on the block, 10 to 15 sec",
+                      "Feet off, 15 to 20 sec",
+                      "Feet off, 30 sec, slow 3 sec lower to finish"
                     ]
                   }
                 ]
@@ -11155,6 +11287,24 @@ window.SITE_DATA = {
       "Primary Muscle": "Shoulders",
       "Intensity": "Moderate",
       "Equipment": "Dumbbells"
+    },
+    {
+      "ID": "SK001",
+      "Exercise": "Dip Support Hold",
+      "Category": "Skill",
+      "Movement Pattern": "Hold",
+      "Primary Muscle": "Shoulders, Triceps, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "SK002",
+      "Exercise": "Elevated Pike Hold",
+      "Category": "Skill",
+      "Movement Pattern": "Hold",
+      "Primary Muscle": "Shoulders, Core",
+      "Intensity": "Moderate",
+      "Equipment": "Bodyweight"
     }
   ],
   "programStats": {
