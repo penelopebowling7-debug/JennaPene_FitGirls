@@ -2,6 +2,9 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 38b: lighter shoulder press (1 Nov)
+Pene bailed on the standing Smith press: the Smith bar is 20 kg before plates. Week 22 Monday swaps it for a **Standing Dumbbell Shoulder Press on 5 kg dumbbells** (3 x 8 to 10), and Friday's arm block becomes **Arms + Shoulders** with a second round of the same press (2 x 10), so shoulders get two practice days. New library entry S007. Same cache (v21), Week 22 only.
+
 ## Batch 38: Week 22, Pene solo week (1 Nov)
 Pene is training alone all week, so every day is built solo (switch to Pene solo first). About 45 min a day, loads held at Week 21's pins and bars (Week 21 completion not yet checked), with fresh moves for variety. No partner or walk tab this week.
 - **Mon: Upper Body + Core.** Week 21's Beast stations at the same pins (seated row now on last week's pin), rope arms, then a NEW Core Trio: kneeling ab wheel rollout, dead bug, side plank.

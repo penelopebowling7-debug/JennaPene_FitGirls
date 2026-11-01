@@ -8264,7 +8264,7 @@ window.SITE_DATA = {
             "label": "Monday",
             "title": "Upper Body + Core",
             "estTime": "45 min",
-            "note": "<strong>Fresh week, strong start!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Same Beast stations as last Wednesday at the <strong>same pins and bars</strong>, so this week is about owning those numbers. The seated row is no longer a learning round, so use the pin you finished on. <strong>New core mix:</strong> ab wheel rollouts, dead bug and a side plank, a fresh trio that trains your middle to resist movement, which is exactly what keeps the lower back happy.",
+            "note": "<strong>Fresh week, strong start!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Same Beast stations as last Wednesday at the same pins, with one big swap: the Smith press is out (that bar is 20 kg before any plates!) and a <strong>standing dumbbell shoulder press on 5 kg dumbbells</strong> is in. Light dumbbells let you build real shoulder strength with good form, then we work back up to the Smith bar. The seated row is no longer a learning round, so use the pin you finished on. <strong>New core mix:</strong> ab wheel rollouts, dead bug and a side plank, a fresh trio that trains your middle to resist movement, which is exactly what keeps the lower back happy.",
             "warmup": [
               {
                 "name": "Jumping Jacks",
@@ -8358,26 +8358,21 @@ window.SITE_DATA = {
                     ]
                   },
                   {
-                    "name": "Standing Smith Machine Overhead Press",
+                    "name": "Standing Dumbbell Shoulder Press",
                     "qty": "3 rounds, 8 to 10 reps",
-                    "weight": "Empty Smith bar",
-                    "video": "https://www.youtube.com/results?search_query=standing%20smith%20machine%20overhead%20press%20form",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=standing%20dumbbell%20shoulder%20press%20form",
                     "videoKnown": false,
-                    "station": "Smith bar at collarbone height · safety stops at chest height",
-                    "setup": [
-                      "Twist to unhook the bar and slide it to about collarbone height. Twist to hook it on.",
-                      "Set both safety stops at about chest height."
-                    ],
                     "steps": [
-                      "Stand tall under the bar, hands just wider than your shoulders, elbows slightly in front of the bar.",
-                      "Brace your tummy and squeeze your glutes. Press the bar straight up until your arms are straight.",
-                      "Lower slowly back to your collarbone."
+                      "Stand tall, feet hip width, a dumbbell in each hand at shoulder height, palms facing forward.",
+                      "Squeeze your glutes and brace your tummy, then press both dumbbells straight up until your arms are long.",
+                      "Lower slowly back to shoulder height, about 2 seconds down."
                     ],
-                    "watch": "leaning back and arching your lower back. Ribs down, glutes tight.",
+                    "watch": "leaning back to get the weight up. Ribs stay down and your body stays still, only the arms move.",
                     "variants": [
-                      "Half range, to forehead height",
-                      "Full press, 8 reps",
-                      "Full press, 3 sec lower"
+                      "4 kg dumbbells, 10 reps",
+                      "5 kg dumbbells, 10 reps",
+                      "7 kg dumbbells, 8 reps"
                     ]
                   },
                   {
@@ -9135,7 +9130,7 @@ window.SITE_DATA = {
             "label": "Friday",
             "title": "Tabata + Arms",
             "estTime": "35 min",
-            "note": "<strong>Finish the week with a buzz!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Legs worked yesterday, so this Tabata is <strong>8 core and upper body moves, zero leg work</strong>, with Bear Crawl as the new one in the mix. Then a short Light Arms block at last week's weights. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
+            "note": "<strong>Finish the week with a buzz!</strong> Solo week, so switch to <strong>Pene solo</strong> at the top first. Legs worked yesterday, so this Tabata is <strong>8 core and upper body moves, zero leg work</strong>, with Bear Crawl as the new one in the mix. Then Arms + Shoulders, with a second round of the dumbbell shoulder press so your shoulders get two practice days this week. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
             "warmup": [
               {
                 "name": "Gentle Marching on the Spot",
@@ -9243,7 +9238,7 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "Light Arms",
+                "name": "Arms + Shoulders",
                 "rounds": 2,
                 "tempo": "12 reps, 30 sec rest between exercises, 60 sec rest between rounds",
                 "formatNote": "<strong>Light and smooth, not a max effort.</strong> Do 12 reps, then tap to start the 30 sec rest. Doing core instead? Tap \"Didn't do this block\".",
@@ -9304,6 +9299,24 @@ window.SITE_DATA = {
                       "2 kg dumbbells",
                       "3 kg dumbbells",
                       "3 kg, 2 sec pause at the top"
+                    ]
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "qty": "2 rounds, 10 reps",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=standing%20dumbbell%20shoulder%20press%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall, feet hip width, a dumbbell in each hand at shoulder height, palms facing forward.",
+                      "Squeeze your glutes and brace your tummy, then press both dumbbells straight up until your arms are long.",
+                      "Lower slowly back to shoulder height, about 2 seconds down."
+                    ],
+                    "watch": "leaning back to get the weight up. Ribs stay down and your body stays still, only the arms move.",
+                    "variants": [
+                      "4 kg dumbbells, 10 reps",
+                      "5 kg dumbbells, 10 reps",
+                      "7 kg dumbbells, 8 reps"
                     ]
                   }
                 ]
@@ -11133,6 +11146,15 @@ window.SITE_DATA = {
       "Primary Muscle": "Legs, Heart",
       "Intensity": "Low",
       "Equipment": "Bodyweight"
+    },
+    {
+      "ID": "S007",
+      "Exercise": "Standing Dumbbell Shoulder Press",
+      "Category": "Strength",
+      "Movement Pattern": "Push",
+      "Primary Muscle": "Shoulders",
+      "Intensity": "Moderate",
+      "Equipment": "Dumbbells"
     }
   ],
   "programStats": {
