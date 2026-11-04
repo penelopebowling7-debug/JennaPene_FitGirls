@@ -35,6 +35,27 @@
   .export-actions{display:flex;gap:10px;flex-wrap:wrap;}
   .export-actions .btn{flex:1;min-width:150px;}
   .export-flag{font-size:0.82rem;color:var(--teal-700);font-weight:700;margin-top:10px;min-height:1.2em;}
+  .run-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px;}
+  .run-tile{background:linear-gradient(135deg,#6A11CB,#F72585);color:#fff;border-radius:14px;padding:11px 12px;}
+  .run-tile .v{font-size:1.35rem;font-weight:900;line-height:1.1;}
+  .run-tile .l{font-size:0.72rem;opacity:0.9;font-weight:700;}
+  .run-row{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:0.84rem;align-items:center;}
+  .run-row:last-child{border-bottom:none;}
+  .run-row .main{font-weight:800;color:var(--teal-900);}
+  .run-row .meta{color:var(--ink-soft);font-size:0.76rem;}
+  .run-row .pace{font-weight:800;color:var(--coral-500);white-space:nowrap;}
+  .buddy-chips{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px;}
+  .buddy-chip{background:#F3E8FF;color:#3A0CA3;border-radius:999px;padding:6px 11px;font-size:0.78rem;font-weight:800;}
+  .sec-h{font-size:0.8rem;font-weight:800;color:var(--teal-700);text-transform:uppercase;letter-spacing:0.04em;margin:10px 0 4px;}
+  .log-form{background:#FAF5FF;border-radius:14px;padding:12px;margin-top:10px;display:none;}
+  .log-form.open{display:block;}
+  .log-form .row{display:flex;gap:8px;margin-bottom:8px;}
+  .log-form label{flex:1;display:flex;flex-direction:column;font-size:0.72rem;font-weight:700;color:#3A0CA3;gap:3px;}
+  .log-form input,.log-form select,.week-pick select{width:100%;padding:10px;border-radius:10px;border:1px solid #d9c6f2;font-size:0.92rem;font-family:inherit;background:#fff;box-sizing:border-box;}
+  .seg{display:flex;gap:6px;margin-bottom:8px;}
+  .seg button{flex:1;padding:9px;border-radius:10px;border:1px solid #d9c6f2;background:#fff;color:#3A0CA3;font-weight:800;font-family:inherit;cursor:pointer;}
+  .seg button.on{background:#6A11CB;color:#fff;border-color:#6A11CB;}
+  .week-pick{margin-bottom:10px;}
 </style>
 </head>
 <body>
@@ -72,8 +93,38 @@
     <div class="export-flag" id="exportFlag"></div>
   </div>
 
+  <div class="card" id="weekCard">
+    <h3>Download a whole week</h3>
+    <p class="export-note">Every session from one week in one go: weights, versions, rounds done and skipped, runs and walks, how it felt and your notes. The report is a pretty page you can open, print or share. The copy version is plain text for a Claude chat.</p>
+    <div class="week-pick"><select id="weekSelect"></select></div>
+    <div class="export-actions">
+      <button class="btn btn-primary" id="downloadWeekBtn">⬇️ Download week report</button>
+      <button class="btn btn-ghost" id="copyWeekBtn">📋 Copy week for Claude</button>
+    </div>
+    <div class="export-flag" id="weekFlag"></div>
+  </div>
+
   <div class="who-toggle" id="whoToggle"></div>
   <div class="stat-grid" id="statGrid"></div>
+
+  <div class="card" id="runCard">
+    <h3>🏃‍♀️ Runs &amp; walks</h3>
+    <div id="runBody"></div>
+    <button class="btn btn-ghost" id="logRunToggle" style="width:100%;margin-top:6px;">➕ Log a run or walk</button>
+    <div class="log-form" id="logForm">
+      <div class="seg" id="logKind"><button data-k="run" class="on">🏃‍♀️ Run</button><button data-k="walk">🚶‍♀️ Walk</button></div>
+      <div class="row"><label>Date<input type="date" id="logDate"></label></div>
+      <div class="row">
+        <label>Distance (km)<input type="number" inputmode="decimal" step="0.01" min="0" id="logKm" placeholder="2.3"></label>
+        <label>Minutes<input type="number" inputmode="numeric" min="0" id="logMin" placeholder="19"></label>
+        <label>Seconds<input type="number" inputmode="numeric" min="0" max="59" id="logSec" placeholder="45"></label>
+      </div>
+      <div class="row"><label>Who with? (comma between names)<input type="text" id="logWith" placeholder="Ax"></label></div>
+      <button class="btn btn-primary" id="logSave" style="width:100%;">Save</button>
+      <div class="export-flag" id="logFlag"></div>
+    </div>
+  </div>
+
   <div id="cues"></div>
   <div id="charts"></div>
 
@@ -392,6 +443,13 @@ function buildFullExportText(){
     lines.push('');
   }
 
+  const cardioL = cardioExportLines();
+  if(cardioL.length){
+    lines.push('RUNS & WALKS (distance, time, pace, who with):');
+    cardioL.forEach(l=> lines.push(l));
+    lines.push('');
+  }
+
   lines.push('RECENT SESSIONS (most recent first):');
   const recent = recentSessionLines(8);
   if(recent.length) recent.forEach(l=> lines.push(l));
@@ -449,6 +507,9 @@ function render(){
     .map(t=> '<div class="stat-tile"><div class="value">' + t.value + '</div><div class="unit">' + t.unit + '</div><div class="label">' + t.label + '</div></div>')
     .join('');
 
+  renderRuns();
+  fillWeekSelect();
+
   const cues = buildCues(who, series);
   document.getElementById('cues').innerHTML = cues.length
     ? cues.map(c=> '<div class="cue">' + c + '</div>').join('')
@@ -476,6 +537,269 @@ function render(){
     ? prs.map(p=> '<div class="pr-row"><span>' + p.name + '</span><span class="val">' + p.best + ' ' + p.unit + ' <span style="color:var(--ink-soft);font-weight:600;">· ' + fmtDate(p.at) + '</span></span></div>').join('')
     : '<p class="empty">Your bests will show up here after your first finished workout.</p>';
 }
+
+
+// ---------------- Runs & walks tracker (Batch 39) ----------------
+function fmtDur(sec){
+  if(!sec) return '';
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), r = sec % 60;
+  return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(r).padStart(2, '0');
+}
+function paceSec(c){ return c.seconds && c.distanceKm ? c.seconds / c.distanceKm : null; }
+function fmtPace(p){
+  if(!p) return '';
+  let m = Math.floor(p / 60), r = Math.round(p - m * 60);
+  if(r === 60){ m++; r = 0; }
+  return m + ':' + String(r).padStart(2, '0');
+}
+function cardioLogs(person){
+  const out = [];
+  (person ? sessionsFor(person) : archive).forEach(e=> (e.cardio || []).forEach(c=> out.push(Object.assign({ at: e.completedAt, week: e.week, entryWho: e.who }, c))));
+  return out.sort((a, b)=> new Date(a.at) - new Date(b.at));
+}
+// Pace chart: lower (faster) pace is drawn higher, so up still means better.
+function paceChartSvg(runs){
+  const W = 320, H = 118, padL = 18, padR = 18, top = 18, bottom = 92;
+  const ps = runs.map(paceSec);
+  const max = Math.max.apply(null, ps), min = Math.min.apply(null, ps), span = (max - min) || 1;
+  const step = runs.length > 1 ? (W - padL - padR) / (runs.length - 1) : 0;
+  const xy = runs.map((r, i)=> ({ x: padL + i * step, y: top + ((ps[i] - min) / span) * (bottom - top), p: ps[i] }));
+  const area = 'M' + xy[0].x.toFixed(1) + ',' + bottom + ' ' + xy.map(p=> 'L' + p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ') + ' L' + xy[xy.length-1].x.toFixed(1) + ',' + bottom + ' Z';
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;">' +
+    '<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F72585" stop-opacity="0.35"/><stop offset="1" stop-color="#F72585" stop-opacity="0"/></linearGradient></defs>' +
+    '<path d="' + area + '" fill="url(#pg)"></path>' +
+    '<polyline points="' + xy.map(p=> p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ') + '" fill="none" stroke="#6A11CB" stroke-width="2.2" stroke-linejoin="round"></polyline>' +
+    xy.map(p=> '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3.8" fill="#F72585"></circle><text x="' + p.x.toFixed(1) + '" y="' + (p.y - 8).toFixed(1) + '" font-size="9" fill="#7A6A94" text-anchor="middle">' + fmtPace(p.p) + '</text>').join('') +
+    '<text x="' + padL + '" y="112" font-size="9" fill="#7A6A94">' + fmtDate(runs[0].at) + '</text>' +
+    '<text x="' + (W - padR) + '" y="112" font-size="9" fill="#7A6A94" text-anchor="end">' + fmtDate(runs[runs.length-1].at) + '</text>' +
+    '</svg>';
+}
+function renderRuns(){
+  const logs = cardioLogs(who);
+  const el = document.getElementById('runBody');
+  if(!logs.length){
+    el.innerHTML = '<p class="empty">No runs or walks logged yet for ' + PNAME[who] + '. When you finish a day with a run or walk in it, the Tracker asks for distance, time and who you went with, and it all lands here. Or log one below.</p>';
+    return;
+  }
+  const runs = logs.filter(l=> l.kind === 'run' && paceSec(l));
+  const walks = logs.filter(l=> l.kind === 'walk');
+  const km = logs.reduce((t, l)=> t + (l.distanceKm || 0), 0);
+  const best = runs.length ? Math.min.apply(null, runs.map(paceSec)) : null;
+  const longest = Math.max.apply(null, logs.map(l=> l.distanceKm || 0));
+  const tiles = [
+    { v: (Math.round(km * 10) / 10) + ' km', l: 'Total distance' },
+    { v: runs.length + ' / ' + walks.length, l: 'Runs / walks' },
+    { v: best ? fmtPace(best) : 'n/a', l: 'Best run pace (min/km)' },
+    { v: longest + ' km', l: 'Longest outing' }
+  ];
+  const buddies = {};
+  logs.forEach(l=> (l.with || ['Solo']).forEach(n=>{ if(!buddies[n]) buddies[n] = { n: 0, km: 0 }; buddies[n].n++; buddies[n].km += l.distanceKm || 0; }));
+  const buddyHtml = Object.keys(buddies).sort((a, b)=> buddies[b].n - buddies[a].n)
+    .map(n=> '<span class="buddy-chip">' + n + ' · ' + buddies[n].n + 'x · ' + (Math.round(buddies[n].km * 10) / 10) + ' km</span>').join('');
+  el.innerHTML =
+    '<div class="run-tiles">' + tiles.map(t=> '<div class="run-tile"><div class="v">' + t.v + '</div><div class="l">' + t.l + '</div></div>').join('') + '</div>' +
+    (runs.length > 1 ? '<div class="sec-h">Run pace over time (higher is faster)</div>' + paceChartSvg(runs.slice(-10)) : '') +
+    '<div class="sec-h">Who you move with</div><div class="buddy-chips">' + buddyHtml + '</div>' +
+    '<div class="sec-h">Latest</div>' +
+    logs.slice(-8).reverse().map(l=>
+      '<div class="run-row"><div><div class="main">' + (l.kind === 'walk' ? '🚶‍♀️ Walk' : '🏃‍♀️ Run') + ' · ' + l.distanceKm + ' km in ' + fmtDur(l.seconds) + '</div>' +
+      '<div class="meta">' + fmtDate(l.at) + ' · with ' + (l.with || ['Solo']).join(' & ') + '</div></div>' +
+      '<div class="pace">' + fmtPace(paceSec(l)) + ' /km</div></div>'
+    ).join('');
+}
+function cardioLine(c){
+  return c.kind + ' ' + c.distanceKm + ' km in ' + fmtDur(c.seconds) + ' (' + fmtPace(paceSec(c)) + ' min/km, with ' + (c.with || ['Solo']).join(' & ') + ')';
+}
+function cardioExportLines(){
+  return cardioLogs(null).map(l=> '  - ' + (l.week ? l.week + ', ' : '') + fmtDate(l.at) + ': ' + cardioLine(l) + (l.entryWho && l.entryWho !== 'both' ? ' [' + PNAME[l.entryWho] + ']' : ''));
+}
+
+// Week ranges from the plan's "dates" text, e.g. "Mon 28, Tue 29 Sep, Thu 1 Oct".
+const MONTHS = { jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11 };
+function weekRange(w){
+  const toks = []; const re = /(\d{1,2})(?:\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))?/gi; let m;
+  while((m = re.exec(w.dates || ''))) toks.push({ d: +m[1], mo: m[2] ? MONTHS[m[2].toLowerCase()] : null });
+  if(!toks.length) return null;
+  let cur = null;
+  for(let i = toks.length - 1; i >= 0; i--){ if(toks[i].mo != null) cur = toks[i].mo; else toks[i].mo = cur; }
+  if(toks[0].mo == null) return null;
+  const now = new Date(); let yr = now.getFullYear();
+  const mk = t=> new Date(yr, t.mo, t.d);
+  let start = mk(toks[0]), end = mk(toks[toks.length - 1]);
+  if(start - now > 60 * 864e5){ yr--; start = mk(toks[0]); end = mk(toks[toks.length - 1]); }
+  if(end < start) end.setFullYear(end.getFullYear() + 1);
+  const mon = new Date(start); mon.setDate(mon.getDate() - ((mon.getDay() + 6) % 7));
+  const sun = new Date(end); sun.setDate(sun.getDate() + (7 - ((sun.getDay() + 6) % 7)) - 1); sun.setHours(23, 59, 59);
+  return { start: mon, end: sun };
+}
+function planWeeks(){ return ((window.SITE_DATA && SITE_DATA.tracker && SITE_DATA.tracker.weeks) || []); }
+function weekLabelForDate(d){
+  const ws = planWeeks();
+  for(let i = ws.length - 1; i >= 0; i--){ const r = weekRange(ws[i]); if(r && d >= r.start && d <= r.end) return ws[i].label; }
+  return '';
+}
+
+// Manual log, for a run or walk done outside a planned day.
+let logKind = 'run';
+document.getElementById('logRunToggle').onclick = ()=>{
+  const f = document.getElementById('logForm');
+  f.classList.toggle('open');
+  const d = new Date();
+  document.getElementById('logDate').value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+};
+document.querySelectorAll('#logKind button').forEach(b=>{
+  b.onclick = ()=>{ logKind = b.getAttribute('data-k'); document.querySelectorAll('#logKind button').forEach(x=> x.classList.toggle('on', x === b)); };
+});
+document.getElementById('logSave').onclick = ()=>{
+  const flag = document.getElementById('logFlag');
+  const km = parseFloat(document.getElementById('logKm').value);
+  const sec = parseInt(document.getElementById('logMin').value || '0', 10) * 60 + parseInt(document.getElementById('logSec').value || '0', 10);
+  const dv = document.getElementById('logDate').value;
+  if(!(km > 0) || !(sec > 0) || !dv){ flag.textContent = 'Add the distance and time first.'; return; }
+  const when = new Date(dv + 'T12:00:00');
+  const withNames = document.getElementById('logWith').value.split(/\s*(?:,|&|\band\b)\s*/i).map(x=> x.trim()).filter(Boolean);
+  const entry = {
+    key: 'cardio-log', manual: true,
+    week: weekLabelForDate(when) || 'Extra',
+    day: when.toLocaleDateString(undefined, { weekday: 'long' }),
+    title: logKind === 'walk' ? 'Walk (logged)' : 'Run (logged)',
+    completedAt: when.toISOString(),
+    totalMinutes: Math.round(sec / 60),
+    who: who,
+    note: '',
+    exercises: [],
+    cardio: [{ name: logKind === 'walk' ? 'Walk' : 'Run', kind: logKind, distanceKm: Math.round(km * 100) / 100, seconds: sec, with: withNames.length ? withNames : ['Solo'] }]
+  };
+  archive = archive.concat([entry]).sort((a, b)=> new Date(a.completedAt) - new Date(b.completedAt));
+  try{ localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archive)); }catch(e){}
+  if(window.CloudSync && CloudSync.appendArchive) CloudSync.appendArchive(entry);
+  ['logKm', 'logMin', 'logSec', 'logWith'].forEach(id=> document.getElementById(id).value = '');
+  document.getElementById('logForm').classList.remove('open');
+  render();
+  flag.textContent = '';
+};
+
+// ---------------- Download a whole week (Batch 39) ----------------
+function esc(t){ return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+const DIFF_WORD = { easier: 'Easier than expected', right: 'Just right', tougher: 'Tougher than expected' };
+function weekEntries(label){ return archive.filter(e=> e.week === label).sort((a, b)=> new Date(a.completedAt) - new Date(b.completedAt)); }
+function entryPeople(e){ return e.who && e.who !== 'both' ? [e.who] : PKEYS; }
+function weekStats(entries){
+  let mins = 0, rounds = 0, km = 0;
+  entries.forEach(e=>{
+    mins += e.totalMinutes || 0;
+    (e.exercises || []).forEach(ex=> entryPeople(e).forEach(p=>{ rounds += (ex.roundsDoneBy ? ex.roundsDoneBy[p] : ex.roundsDone) || 0; }));
+    (e.cardio || []).forEach(c=> km += c.distanceKm || 0);
+  });
+  return { sessions: entries.length, mins: mins, rounds: rounds, km: Math.round(km * 10) / 10 };
+}
+function exPersonText(ex, p){
+  if(ex.type === 'technical-failure'){
+    const reps = (ex[p] || []).filter(v=> v != null);
+    return reps.length ? 'Full reps per round: ' + reps.join(', ') : (ex.skipped ? 'Skipped' : 'Not logged');
+  }
+  const done = ex.roundsDoneBy ? ex.roundsDoneBy[p] : ex.roundsDone;
+  const sk = ex.roundsSkippedBy ? ex.roundsSkippedBy[p] : 0;
+  const w = ex.weightBy ? ex.weightBy[p] : ex.weight;
+  const v = ex.versionBy ? ex.versionBy[p] : null;
+  return (done || 0) + '/' + (ex.roundsPlanned || '?') + ' rounds' + (sk ? ' (' + sk + ' skipped)' : '') + (w ? ' · ' + w : '') + (v ? ' · ' + v : '');
+}
+function buildWeekText(label){
+  const entries = weekEntries(label), st = weekStats(entries);
+  const L = ['=== ' + label + ' performance ==='];
+  L.push(st.sessions + ' sessions, ' + st.mins + ' min, ' + st.rounds + ' rounds done' + (st.km ? ', ' + st.km + ' km run/walked' : ''));
+  entries.forEach(e=>{
+    L.push('');
+    const ppl = entryPeople(e);
+    L.push(e.day + ': ' + e.title + ' (' + new Date(e.completedAt).toLocaleDateString() + (e.totalMinutes ? ', ' + e.totalMinutes + ' min' : '') + ')' + (e.who && e.who !== 'both' ? ' [' + PNAME[e.who] + ' solo]' : ''));
+    if(e.difficultyBy) L.push('  Felt: ' + ppl.filter(p=> e.difficultyBy[p]).map(p=> PNAME[p] + ' ' + (DIFF_WORD[e.difficultyBy[p]] || '?').toLowerCase()).join(', '));
+    (e.cardio || []).forEach(c=> L.push('  ' + c.name + ': ' + cardioLine(c)));
+    let lastBlock = null;
+    (e.exercises || []).forEach(ex=>{
+      if(ex.block !== lastBlock){ L.push('  [' + ex.block + ']'); lastBlock = ex.block; }
+      L.push('    - ' + ex.name + ': ' + ppl.map(p=> (ppl.length > 1 ? PNAME[p] + ' ' : '') + exPersonText(ex, p)).join(' | '));
+    });
+    if(e.warmupSkipped && e.warmupSkipped.length) L.push('  Warm up skipped: ' + e.warmupSkipped.join(', '));
+    if(e.cooldownSkipped && e.cooldownSkipped.length) L.push('  Cool down skipped: ' + e.cooldownSkipped.join(', '));
+    if(e.note) L.push('  Note: "' + e.note + '"');
+  });
+  if(!entries.length) L.push('Nothing finished in this week yet.');
+  return L.join('\n');
+}
+function buildWeekHtml(label){
+  const entries = weekEntries(label), st = weekStats(entries);
+  const w = planWeeks().find(x=> x.label === label);
+  const tile = (v, l)=> '<div class="tile"><div class="v">' + v + '</div><div class="l">' + l + '</div></div>';
+  const sessions = entries.map(e=>{
+    const ppl = entryPeople(e);
+    const felt = e.difficultyBy ? ppl.filter(p=> e.difficultyBy[p]).map(p=> '<span class="pill ' + e.difficultyBy[p] + '">' + (ppl.length > 1 ? PNAME[p] + ': ' : '') + (DIFF_WORD[e.difficultyBy[p]] || '') + '</span>').join(' ') : '';
+    const cardio = (e.cardio || []).map(c=> '<div class="cardio"><div class="big">' + (c.kind === 'walk' ? '🚶‍♀️' : '🏃‍♀️') + ' ' + c.distanceKm + ' km</div><div>' + fmtDur(c.seconds) + ' · ' + fmtPace(paceSec(c)) + ' min/km</div><div class="with">with ' + esc((c.with || ['Solo']).join(' & ')) + '</div></div>').join('');
+    let rows = '', lastBlock = null;
+    (e.exercises || []).forEach(ex=>{
+      if(ex.block !== lastBlock){ rows += '<tr class="blk"><td colspan="' + (ppl.length + 1) + '">' + esc(ex.block) + '</td></tr>'; lastBlock = ex.block; }
+      rows += '<tr' + (ex.skipped ? ' class="sk"' : '') + '><td class="nm">' + esc(ex.name) + '</td>' + ppl.map(p=> '<td>' + esc(exPersonText(ex, p)) + '</td>').join('') + '</tr>';
+    });
+    const table = rows ? '<table><thead><tr><th>Exercise</th>' + ppl.map(p=> '<th>' + PNAME[p] + '</th>').join('') + '</tr></thead><tbody>' + rows + '</tbody></table>' : '';
+    return '<section class="session"><div class="sh"><div><div class="day">' + esc(e.day) + '</div><h2>' + esc(e.title) + '</h2></div><div class="when">' + new Date(e.completedAt).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' }) + (e.totalMinutes ? '<br><b>' + e.totalMinutes + ' min</b>' : '') + '</div></div>' +
+      (felt ? '<div class="felt">' + felt + '</div>' : '') + cardio + table +
+      (e.note ? '<div class="note">💬 ' + esc(e.note) + '</div>' : '') + '</section>';
+  }).join('');
+  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + esc(label) + ' report</title><style>' +
+    'body{margin:0;background:#F7F2FC;font-family:Aptos,Calibri,"Segoe UI",system-ui,sans-serif;color:#24123F;}' +
+    '.hero{background:linear-gradient(135deg,#2B0A4D 0%,#6A11CB 55%,#F72585 100%);color:#fff;padding:34px 22px 64px;}' +
+    '.hero .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:700;}' +
+    '.hero h1{margin:6px 0 4px;font-size:34px;font-weight:900;}.hero p{margin:0;opacity:.9;}' +
+    '.wrap{max-width:820px;margin:-44px auto 40px;padding:0 16px;}' +
+    '.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}' +
+    '.tile{background:#fff;border-radius:16px;padding:14px;box-shadow:0 6px 20px rgba(58,12,163,.12);border-top:4px solid #FFD60A;}' +
+    '.tile .v{font-size:26px;font-weight:900;color:#6A11CB;}.tile .l{font-size:12px;color:#6b5a85;font-weight:700;}' +
+    '.session{background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 4px 14px rgba(58,12,163,.08);}' +
+    '.sh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}.day{color:#F72585;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em;}' +
+    '.sh h2{margin:2px 0 8px;font-size:20px;color:#3A0CA3;}.when{text-align:right;font-size:13px;color:#6b5a85;}' +
+    '.pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;margin:0 4px 8px 0;background:#F3E8FF;color:#3A0CA3;}.pill.tougher{background:#FFE3F1;color:#9b0f52;}.pill.easier{background:#FFF6D9;color:#5b4600;}' +
+    '.cardio{display:inline-block;background:linear-gradient(135deg,#6A11CB,#F72585);color:#fff;border-radius:14px;padding:10px 14px;margin:0 8px 10px 0;font-size:13px;}.cardio .big{font-size:20px;font-weight:900;}.cardio .with{opacity:.9;}' +
+    'table{width:100%;border-collapse:collapse;font-size:13px;}th{text-align:left;background:#F3E8FF;color:#3A0CA3;padding:7px 8px;}td{padding:7px 8px;border-bottom:1px solid #EEE4F8;vertical-align:top;}' +
+    'tr.blk td{font-weight:800;color:#F72585;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding-top:12px;border-bottom:none;}td.nm{font-weight:700;}tr.sk td{color:#8d7aa8;}' +
+    '.note{margin-top:10px;background:#FFF6D9;border-radius:10px;padding:9px 12px;font-size:13px;}' +
+    '.empty{background:#fff;border-radius:18px;padding:24px;text-align:center;color:#6b5a85;}.foot{text-align:center;font-size:12px;color:#8d7aa8;margin-top:18px;}' +
+    '@media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr);}.hero h1{font-size:28px;}}@media print{body{background:#fff;}.session{box-shadow:none;border:1px solid #eee;break-inside:avoid;}}' +
+    '</style></head><body><div class="hero"><div class="k">FitGirls · Week report</div><h1>' + esc(label) + '</h1><p>' + esc(w ? w.dates : '') + '</p></div><div class="wrap">' +
+    '<div class="tiles">' + tile(st.sessions, 'Sessions') + tile(st.mins, 'Minutes') + tile(st.rounds, 'Rounds done') + tile(st.km || 0, 'km run or walked') + '</div>' +
+    (sessions || '<div class="empty">Nothing finished in this week yet.</div>') +
+    '<div class="foot">Generated ' + new Date().toLocaleDateString() + ' from the Progress page</div></div></body></html>';
+}
+function fillWeekSelect(){
+  const sel = document.getElementById('weekSelect');
+  const keep = sel.value;
+  const labels = [];
+  planWeeks().forEach(w=> labels.push(w.label));
+  archive.forEach(e=>{ if(e.week && labels.indexOf(e.week) === -1) labels.push(e.week); });
+  const withData = labels.filter(l=> archive.some(e=> e.week === l));
+  const ordered = labels.slice().reverse();
+  sel.innerHTML = ordered.map(l=> '<option value="' + esc(l) + '">' + esc(l) + (withData.indexOf(l) > -1 ? ' · ' + weekEntries(l).length + ' sessions' : ' · nothing yet') + '</option>').join('');
+  if(keep && ordered.indexOf(keep) > -1) sel.value = keep;
+  else { const firstWithData = ordered.find(l=> withData.indexOf(l) > -1); if(firstWithData) sel.value = firstWithData; }
+}
+function downloadFile(name, text, type){
+  const blob = new Blob([text], { type: type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 1000);
+}
+document.getElementById('downloadWeekBtn').onclick = ()=>{
+  const label = document.getElementById('weekSelect').value;
+  downloadFile('FitGirls-' + label.replace(/\s+/g, '-') + '-report.html', buildWeekHtml(label), 'text/html');
+  const flag = document.getElementById('weekFlag');
+  flag.textContent = 'Downloaded! Open it to view, print or share.';
+  setTimeout(()=>{ flag.textContent = ''; }, 4000);
+};
+document.getElementById('copyWeekBtn').onclick = ()=>{
+  const flag = document.getElementById('weekFlag');
+  try{ navigator.clipboard.writeText(buildWeekText(document.getElementById('weekSelect').value)); flag.textContent = 'Copied! Paste it into your Claude chat.'; }
+  catch(e){ flag.textContent = 'Could not copy automatically, try the download instead.'; }
+  setTimeout(()=>{ flag.textContent = ''; }, 4000);
+};
 
 render();
 

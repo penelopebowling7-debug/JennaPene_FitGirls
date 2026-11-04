@@ -2,6 +2,14 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 39: Thursday with Ax, runs and walks tracker, week download (4 Nov)
+Pene is training with her son Ax (11) again. Tuesday they ran 2.3 km in under 20 min together.
+- **Week 22 Thu is now "Run + Strength Squad"** (about 50 to 55 min, log as Pene solo, Ax follows along): the 2.3 km loop with an optional lamp post sprint game, then **Block 1: Push + Pull Power** (3 x 8: proper push ups to form fail then knees, lat pulldown, pike push ups, chin ups for Ax or cable row for Pene), **Block 2: Fun Strength Circuit** (40/20 x 2: burpees, reverse lunges, bear crawl, squat jumps, shoulder taps, mountain climbers) and **Hang Time** (dead hang, dip support, hollow hold). Ax versions on every card: bodyweight, bar and lightest cable pin only, no Smith machine.
+- **Run and walk log**: finishing any day with a run, walk or jog in a block now asks for distance, time and who you went with (quick chips: Solo, Ax, Jenna, plus any name you type). It can't be archived without distance and time. Saved as `cardio` on the archive entry.
+- **Progress page: Runs & walks card**: total km, runs vs walks, best pace, longest outing, pace chart (higher is faster), who you move with, latest 8. Plus "Log a run or walk" for outings outside a planned day. Runs are also in the full Claude export.
+- **Progress page: Download a whole week**: pick a week, download a styled report page (tiles, every session, every exercise per person, runs, feel, notes, printable) or copy it as text for Claude.
+- Offline cache pj-fitness-v22.
+
 ## Batch 38c: Skills Lab for rings and handstands (1 Nov)
 Pene's bigger goal: gym rings, handstands and circus style tricks, built on a strong core and moving her body well. The dip attachment has arrived. Week 22 gets a short **Skills Lab** (2 rounds, 20 sec holds, 40 sec rest) on two days:
 - **Mon (first, while fresh):** Dip Support Hold (new dip attachment), Scapular Pull Ups, Dead Hang. Monday now about 50 min.
