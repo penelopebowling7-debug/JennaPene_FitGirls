@@ -1009,7 +1009,7 @@ function freshDayState(day){
       return {
         rounds: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
         roundSkipped: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
-        weights: byPerson(()=> b.exercises.map(e => e.weight)),
+        weights: byPerson(p=> b.exercises.map(e => plannedWeight(e, p))),
         variant: byPerson(()=> b.exercises.map(()=> null)),
         skipped: b.exercises.map(()=>false),
         pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
@@ -1064,7 +1064,7 @@ function ensureDayState(week, day){
         return {
           rounds: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
           roundSkipped: byPerson(()=> b.exercises.map(()=> Array(b.rounds).fill(false))),
-          weights: byPerson(()=> b.exercises.map(e => e.weight)),
+          weights: byPerson(p=> b.exercises.map(e => plannedWeight(e, p))),
           variant: byPerson(()=> b.exercises.map(()=> null)),
           skipped: b.exercises.map(()=>false),
           pushupLog: pair ? { pene: Array(b.rounds).fill(null), jenna: Array(b.rounds).fill(null) } : null
@@ -1105,7 +1105,9 @@ function ensureDayState(week, day){
   return ds;
 }
 
-function byPerson(make){ return { pene: make(), jenna: make() }; }
+function byPerson(make){ return { pene: make('pene'), jenna: make('jenna') }; }
+// Planned load for one person: exercise.weightFor = { pene: '7 kg dumbbells', jenna: '5 kg dumbbells' } overrides the shared weight.
+function plannedWeight(e, p){ return (e.weightFor && p && e.weightFor[p]) || e.weight; }
 
 function migrateBlockToPerPerson(b, block){
   if(Array.isArray(b.rounds)) b.rounds = byPerson(()=> b.rounds.map(a => a.slice()));
@@ -1115,7 +1117,7 @@ function migrateBlockToPerPerson(b, block){
   PKEYS.forEach(p=>{
     if(!b.rounds[p]) b.rounds[p] = block.exercises.map(()=> Array(block.rounds).fill(false));
     if(!b.roundSkipped[p]) b.roundSkipped[p] = block.exercises.map(()=> Array(block.rounds).fill(false));
-    if(!b.weights[p]) b.weights[p] = block.exercises.map(e => e.weight);
+    if(!b.weights[p]) b.weights[p] = block.exercises.map(e => plannedWeight(e, p));
     if(!b.variant[p]) b.variant[p] = block.exercises.map(()=> null);
   });
 }

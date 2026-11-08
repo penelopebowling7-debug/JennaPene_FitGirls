@@ -9659,6 +9659,1288 @@ window.SITE_DATA = {
             ]
           }
         ]
+      },
+      {
+        "id": "week23",
+        "label": "Week 23",
+        "dates": "Mon 9 to Sat 14 Nov",
+        "days": [
+          {
+            "id": "mon",
+            "label": "Monday",
+            "title": "Upper Body + Push Ups",
+            "estTime": "50 min",
+            "note": "<strong>Jenna's back, welcome home!</strong> Stay in <strong>together mode</strong> today. Pene, your 5 kg shoulder press was 10 clean reps every set, so you've earned the <strong>7 kg dumbbells</strong>. Jenna, your box starts on 5 kg, an easy way back in after a break. The Skills Lab holds stay exactly the same as last week: they felt hard, and owning them before adding seconds is how strength sticks. <strong>Push ups are back</strong> (you missed them last Thursday): full push ups until your form slips, then finish on your knees, and pop your full rep count into the Finish note. Everything else stays at last week's pins.",
+            "warmup": [
+              {
+                "name": "Jumping Jacks",
+                "qty": "1 min",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Jumping%20Jacks%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Scapular Push Ups",
+                "qty": "10 reps, arms straight",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Scapular%20Push%20Ups%20exercise%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "Thread the Needle",
+                "qty": "5 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=thread%20the%20needle%20stretch",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Skills Lab: Rings + Handstand Prep",
+                "rounds": 2,
+                "tempo": "20 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 20,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>Same holds as last week, on purpose.</strong> One dip bar and one pull up bar, so take turns: one holds, the other times it and watches the shoulders. Step down the moment shoulders creep up to your ears. Owning a 20 sec hold beats a wobbly 30.",
+                "exercises": [
+                  {
+                    "name": "Dip Support Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dip%20support%20hold%20beginner",
+                    "videoKnown": false,
+                    "station": "Dip bar attachment · stepping block underneath",
+                    "setup": [
+                      "Clip the dip bar attachment on and check it is locked in.",
+                      "Put the stepping block underneath so you can step up into the top position."
+                    ],
+                    "steps": [
+                      "Step up and press yourself up so your arms are straight, hands on the bars beside your hips.",
+                      "Push the bars down hard so your shoulders sit low, far away from your ears. Chest proud.",
+                      "Squeeze your legs together and hold still. Step back down onto the block when time is up or your shoulders creep up."
+                    ],
+                    "watch": "shoulders shrugging up to your ears. That is the signal to step down, even if time is not up.",
+                    "variants": [
+                      "Toes resting on the block, 10 to 15 sec",
+                      "Feet off, 15 to 20 sec",
+                      "Feet off, 30 sec, slow 3 sec lower to finish"
+                    ],
+                    "buddy": "time it, watch the shoulders stay low"
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=scapular%20pull%20up%20beginner",
+                    "videoKnown": false,
+                    "name": "Scapular Pull Ups",
+                    "qty": "2 rounds, slow shrugs for 20 sec",
+                    "weight": "Bodyweight",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Hang from the bar with straight arms.",
+                      "Keeping your arms straight, pull your shoulder blades down and together. Your body rises an inch or two.",
+                      "Lower slowly back to a full hang. That is one rep."
+                    ],
+                    "watch": "bending the elbows. This move is all shoulder blades.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang, 6 to 8 reps",
+                      "2 sec hold at the top"
+                    ],
+                    "buddy": "Hollow hold, low back pressed down"
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20beginner",
+                    "videoKnown": false,
+                    "name": "Dead Hang",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "station": "Pull up bar · stepping block underneath",
+                    "steps": [
+                      "Step up on the block and grab the bar a little wider than your shoulders, palms facing away.",
+                      "Step off and hang with straight arms. Gently pull your shoulders down away from your ears.",
+                      "Breathe and hold. Step back onto the block before your grip gives out."
+                    ],
+                    "watch": "shrugging up to your ears. Shoulders down, neck long.",
+                    "variants": [
+                      "Feet lightly on the block",
+                      "Full hang",
+                      "Full hang, 5 sec longer"
+                    ],
+                    "buddy": "time it, spot the landing"
+                  }
+                ]
+              },
+              {
+                "name": "Station 1: Lat Tower",
+                "rounds": 3,
+                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>One seat, two moves.</strong> Lat pulldown on the overhead pulley, then the seated row with your feet on the row plate. Same pins as last week. Jenna, go one pin lighter for your first round back if you like, then write your pin in your box.",
+                "exercises": [
+                  {
+                    "name": "Lat Pulldown",
+                    "qty": "3 rounds, 10 reps",
+                    "weight": "Same pin as last week",
+                    "video": "https://www.youtube.com/results?search_query=seated%20lat%20pulldown%20form%20beginner",
+                    "videoKnown": false,
+                    "station": "Lat seat · overhead pulley · lat bar",
+                    "setup": [
+                      "Clip the lat bar onto the overhead pulley cable.",
+                      "Put the weight stack pin in the lightest plate.",
+                      "Sit on the lat seat and set the knee pad so your thighs are snug underneath it."
+                    ],
+                    "steps": [
+                      "Grab the bar a little wider than your shoulders, palms facing away. Sit tall, chest up.",
+                      "Pull your shoulder blades down first, then pull the bar to your collarbone, elbows heading to your back pockets.",
+                      "Let the bar rise slowly until your arms are straight. Shoulders stay down."
+                    ],
+                    "watch": "leaning way back or pulling behind your head. Small lean only, bar to the front.",
+                    "variants": [
+                      "Ax: lightest pin, 10 reps",
+                      "Pene: same pin as Monday, 10 reps",
+                      "Pene: same pin, 2 sec squeeze"
+                    ],
+                    "buddy": "Dead Bug, slow and controlled"
+                  },
+                  {
+                    "name": "Seated Cable Row",
+                    "qty": "3 rounds, 10 reps",
+                    "weight": "Same pin as last week",
+                    "video": "https://www.youtube.com/results?search_query=seated%20cable%20row%20form%20beginner",
+                    "videoKnown": false,
+                    "station": "Lat seat · low row pulley · row foot plate",
+                    "setup": [
+                      "Swap the lat bar for the row handle (or the rope) on the low row cable.",
+                      "Put the weight stack pin in the lightest plate.",
+                      "Sit facing the stack with your feet flat on the row foot plate, knees soft."
+                    ],
+                    "steps": [
+                      "Sit tall, chest up, arms straight out holding the handle.",
+                      "Pull the handle to your belly button, squeezing your shoulder blades together, elbows close to your sides.",
+                      "Let your arms straighten slowly without rounding forward."
+                    ],
+                    "watch": "rocking back and forth to move the weight. Your body stays still, only the arms move.",
+                    "variants": [
+                      "Lightest pin, 8 reps",
+                      "Lightest pin, 10 reps",
+                      "One pin heavier, 2 sec squeeze"
+                    ],
+                    "buddy": "watch the shoulder blades squeeze and the back stays tall"
+                  }
+                ]
+              },
+              {
+                "name": "Station 2: Press + Push Ups",
+                "rounds": 3,
+                "tempo": "8 reps, 45 sec rest between exercises, 75 sec rest between rounds",
+                "formatNote": "<strong>Do these side by side, at the same time.</strong> You each have your own dumbbells, so no waiting. Do your reps, then tap for the rest. Shoulder press: Pene on 7 kg, Jenna on 5 kg. If the 7s get messy, finish the set on the 5s, no shame at all. Push ups: <strong>full until form slips, then knees</strong> to finish the 8.",
+                "exercises": [
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "qty": "3 rounds, 8 to 10 reps (Pene 7 kg, Jenna 5 kg)",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=standing%20dumbbell%20shoulder%20press%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall, feet hip width, a dumbbell in each hand at shoulder height, palms facing forward.",
+                      "Squeeze your glutes and brace your tummy, then press both dumbbells straight up until your arms are long.",
+                      "Lower slowly back to shoulder height, about 2 seconds down."
+                    ],
+                    "watch": "leaning back to get the weight up. Ribs stay down and your body stays still, only the arms move.",
+                    "variants": [
+                      "5 kg dumbbells, 10 reps",
+                      "7 kg dumbbells, 8 reps",
+                      "7 kg dumbbells, 10 reps"
+                    ],
+                    "weightFor": {
+                      "pene": "7 kg dumbbells",
+                      "jenna": "5 kg dumbbells"
+                    }
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Push Ups",
+                    "qty": "3 rounds, 8 reps (full until form slips, rest on knees)"
+                  }
+                ]
+              },
+              {
+                "name": "Core Trio: Plank Power",
+                "rounds": 2,
+                "tempo": "40 sec active / 20 sec rest, 30 sec rest between rounds",
+                "formatNote": "<strong>A fresh core mix, all on the mat, so you both go at once.</strong> Plank shoulder taps fight the twist, dead bug keeps the lower back glued down, and the side plank works the sides. Slow and steady wins.",
+                "exercises": [
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "2 rounds, hips still"
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "qty": "2 rounds, slow, opposite arm and leg",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dead%20bug%20exercise%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, arms reaching to the ceiling, knees bent at 90 degrees over your hips.",
+                      "Press your low back into the floor. Slowly lower your right arm and left leg towards the floor.",
+                      "Bring them back and switch sides. Breathe out as you lower."
+                    ],
+                    "watch": "your low back lifting off the floor. Make the reach smaller.",
+                    "variants": [
+                      "Heel taps only",
+                      "Full dead bug",
+                      "2 sec pause at the bottom"
+                    ]
+                  },
+                  {
+                    "name": "Side Plank (Swap Sides Halfway)",
+                    "qty": "2 rounds, swap at 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20form",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Doorway Chest Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=doorway%20chest%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Lat Stretch on the Smith Bar",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=lat%20stretch%20holding%20bar",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Neck Rolls",
+                "qty": "5 each way",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=neck%20rolls%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "tue",
+            "label": "Tuesday",
+            "title": "Run or Walk + Pilates Core",
+            "estTime": "45 min",
+            "note": "<strong>Get outside together!</strong> Pene, your 2.3 km loop is the benchmark (under 20 min last Tuesday). Jenna, after holidays, a brisk walk is a perfect restart, or run it with Pene if you feel good. Tick the one you each did, skip the other, and the Finish form will ask for your distance and time. Then back inside for Pilates core: the foam roller moves are taken in turns, then the mat moves you do together. Raining? Swap the run for Saturday and do the core on its own.",
+            "warmup": [
+              {
+                "name": "Brisk Walk",
+                "qty": "3 to 5 min",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=brisk%20walking%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Leg Swings",
+                "qty": "10 each leg, front and side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 total, easy depth",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "High Knees",
+                "qty": "30 sec, light and bouncy",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Run or Walk: 2.3 km Loop",
+                "rounds": 1,
+                "tempo": "No timer, about 15 to 30 min",
+                "formatNote": "<strong>Your choice, your pace.</strong> Run the loop, walk it briskly, or mix the two. The talk test still rules: you should be able to say a full sentence. Tick the one you did and tap \"Didn't do this one\" on the other.",
+                "exercises": [
+                  {
+                    "name": "Easy Run (2.3 km Loop)",
+                    "qty": "2.3 km, about 15 to 20 min",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=easy%20run%20beginner%20pace",
+                    "videoKnown": false,
+                    "steps": [
+                      "Start slower than you think for the first few minutes.",
+                      "Settle into a pace where you can both still chat. Short quick steps, relaxed shoulders.",
+                      "Lamp post game: 3 or 4 short sprints to a landmark Ax picks, then jog to recover."
+                    ],
+                    "watch": "any sharp pain in the knees, shins or feet. Slow to a walk and head home.",
+                    "variants": [
+                      "Run walk: 2 min run, 1 min walk",
+                      "Steady run, whole loop",
+                      "Steady run plus 4 lamp post sprints"
+                    ]
+                  },
+                  {
+                    "name": "Brisk Walk (2.3 km Loop)",
+                    "weight": "Bodyweight",
+                    "videoKnown": false,
+                    "video": "https://www.youtube.com/results?search_query=Brisk%20Walk%20(2.3%20km%20Loop)%20exercise%20form",
+                    "qty": "2.3 km, about 25 to 30 min, arms swinging"
+                  }
+                ]
+              },
+              {
+                "name": "Pilates Roller Duo",
+                "rounds": 2,
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>One foam roller, so take turns.</strong> One on the roller, the other does the mat move shown on the card. Swap when the timer says.",
+                "exercises": [
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Plank Pike",
+                    "qty": "2 rounds, slow and controlled",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Kneel on a mat and place the foam roller behind you.",
+                      "Walk your hands forward into a high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "Hands under shoulders, body in a straight line, roller under your shins.",
+                      "Squeeze your abs and lift your hips high into an upside down V. The roller rolls down to your ankles.",
+                      "Lower slowly back to a straight plank. Move with your breath: breathe out as you lift."
+                    ],
+                    "watch": "sagging in the plank. Smaller pikes are fine, keep the plank strong.",
+                    "variants": [
+                      "Knee tucks instead of pikes",
+                      "Half height pikes",
+                      "Full pike, 2 sec hold at the top"
+                    ],
+                    "buddy": "Pilates Hundred (pump the arms, breathe in 5, out 5)"
+                  },
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20plank%20hip%20twist%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Hip Swivel",
+                    "qty": "2 rounds, alternate sides",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Same set up as the pike: high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "From the plank, draw your knees in and rotate both knees towards your right elbow. The roller turns under you.",
+                      "Push back to a straight plank.",
+                      "Tuck and twist the other way, towards your left elbow. Keep your shoulders right over your hands."
+                    ],
+                    "watch": "shoulders drifting back behind your hands. Stay over your wrists.",
+                    "variants": [
+                      "Straight knee tucks, no twist",
+                      "Small twists",
+                      "Big twists, 1 sec hold each side"
+                    ],
+                    "buddy": "Single leg stretch (Pilates scissors)"
+                  }
+                ]
+              },
+              {
+                "name": "Pilates Mat Core",
+                "rounds": 2,
+                "tempo": "40 sec active / 20 sec rest, 45 sec rest between rounds",
+                "formatNote": "<strong>Side by side on the mats.</strong> The timer walks you both through. Slow, controlled, and breathe out on the hard part.",
+                "exercises": [
+                  {
+                    "name": "Bird Dog",
+                    "qty": "2 rounds, slow, opposite arm and leg",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bird%20Dog%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank Hip Lifts (Left Side)",
+                    "qty": "2 rounds, slow lifts",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20hip%20lifts",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Side Plank Hip Lifts (Right Side)",
+                    "qty": "2 rounds, slow lifts",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20hip%20lifts",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds, low back pressed down",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, press your lower back into the floor.",
+                      "Lift your shoulders and legs off the floor, arms by your ears, like a banana.",
+                      "Hold the shape. Bend your knees or bring your arms forward if your back lifts."
+                    ],
+                    "watch": "your lower back peeling off the floor. That is the moment to make it easier."
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Calf Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=calf%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Standing Quad Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=hip%20flexor%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "wed",
+            "label": "Wednesday",
+            "title": "Yoga (NTC) + Pilates Sculpt",
+            "estTime": "45 min",
+            "note": "<strong>Midweek reset, together.</strong> Two active days done, so today is all about recovery before Thursday's legs. <strong>Start with a Nike Training Club yoga class on the TV</strong> (about 30 minutes, pick a calm or recovery one), tick it off, then take turns on the foam roller for the short Pilates block. The timer tells you when to swap.",
+            "warmup": [
+              {
+                "name": "Nike Training Club Yoga Class",
+                "qty": "About 30 min, on the TV",
+                "weight": "Mat",
+                "video": "https://www.youtube.com/results?search_query=nike%20training%20club%20yoga",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Pilates Sculpt: Foam Roller",
+                "rounds": 2,
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>Breathe and slow down.</strong> One foam roller, so take turns: one of you on the roller, the other on the mat move shown on the card. Swap when the timer says.",
+                "exercises": [
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20pike%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Plank Pike",
+                    "qty": "2 rounds, slow and controlled",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Kneel on a mat and place the foam roller behind you.",
+                      "Walk your hands forward into a high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "Hands under shoulders, body in a straight line, roller under your shins.",
+                      "Squeeze your abs and lift your hips high into an upside down V. The roller rolls down to your ankles.",
+                      "Lower slowly back to a straight plank. Move with your breath: breathe out as you lift."
+                    ],
+                    "watch": "sagging in the plank. Smaller pikes are fine, keep the plank strong.",
+                    "variants": [
+                      "Knee tucks instead of pikes",
+                      "Half height pikes",
+                      "Full pike, 2 sec hold at the top"
+                    ],
+                    "buddy": "Pilates Hundred (pump the arms, breathe in 5, out 5)"
+                  },
+                  {
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20plank%20hip%20twist%20pilates",
+                    "videoKnown": false,
+                    "name": "Foam Roller Hip Swivel",
+                    "qty": "2 rounds, alternate sides",
+                    "station": "Floor · foam roller under your shins",
+                    "setup": [
+                      "Same set up as the pike: high plank with the roller under your shins."
+                    ],
+                    "steps": [
+                      "From the plank, draw your knees in and rotate both knees towards your right elbow. The roller turns under you.",
+                      "Push back to a straight plank.",
+                      "Tuck and twist the other way, towards your left elbow. Keep your shoulders right over your hands."
+                    ],
+                    "watch": "shoulders drifting back behind your hands. Stay over your wrists.",
+                    "variants": [
+                      "Straight knee tucks, no twist",
+                      "Small twists",
+                      "Big twists, 1 sec hold each side"
+                    ],
+                    "buddy": "Side lying leg lifts, swap sides halfway"
+                  },
+                  {
+                    "name": "Foam Roller Bridge",
+                    "qty": "2 rounds, slow and controlled",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roller%20bridge%20pilates%20hamstring",
+                    "videoKnown": false,
+                    "station": "Floor · foam roller under your heels",
+                    "steps": [
+                      "Lie on your back, knees bent, heels resting on the foam roller, arms long by your sides.",
+                      "Squeeze your glutes and peel your spine up one bone at a time into a bridge. Keep the roller still.",
+                      "Roll back down slowly. Breathe out as you lift."
+                    ],
+                    "watch": "the roller wobbling away. Press your heels down evenly.",
+                    "variants": [
+                      "Feet on the floor instead",
+                      "Roller bridge, slow lifts",
+                      "Roller bridge, 3 small pulses at the top"
+                    ],
+                    "buddy": "Pilates Clam Shells, swap sides halfway"
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Supine Spinal Twist",
+                "qty": "45 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=supine%20spinal%20twist",
+                "videoKnown": false
+              },
+              {
+                "name": "Happy Baby",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=happy%20baby%20pose",
+                "videoKnown": false
+              },
+              {
+                "name": "Box Breathing",
+                "qty": "1 min: in 4, hold 4, out 4, hold 4",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=box%20breathing",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "thu",
+            "label": "Thursday",
+            "title": "Legs + Push Up Power",
+            "estTime": "45 min",
+            "note": "<strong>Welcome back to legs, gently.</strong> Your legs haven't had a proper session in a few weeks, so today is <strong>2 rounds at easy weights</strong>, the same loads as your last leg day. Every set should end with 3 or 4 reps in the tank, which is how you avoid that \"can't sit on the toilet\" soreness from Week 20. Then a short push up block for the handstand dream, and a foam roll to finish. Landing 48 hours after Tuesday's run is perfect timing.",
+            "warmup": [
+              {
+                "name": "Marching on the Spot",
+                "qty": "1 min, swing the arms",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Leg Swings",
+                "qty": "10 each leg, front and side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 total, easy depth",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "High Knees",
+                "qty": "30 sec, light and bouncy",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Station 1: Smith Machine Legs",
+                "rounds": 2,
+                "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 15,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>Empty Smith bar only.</strong> One goes, the other spots and watches the knees track over the toes. Swap when the timer says.",
+                "exercises": [
+                  {
+                    "name": "Smith Machine Squat",
+                    "qty": "2 rounds, 8 slow reps",
+                    "weight": "Empty Smith bar",
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20squat%20beginner%20form",
+                    "videoKnown": false,
+                    "station": "Smith bar at shoulder height · safety stops just above knee height",
+                    "setup": [
+                      "Twist your wrists to unhook the bar and slide it to about shoulder height. Twist to hook it on.",
+                      "Set both safety stops just above knee height.",
+                      "Give the bar a firm tug down to check it is locked."
+                    ],
+                    "steps": [
+                      "Step under the bar so it rests across the top of your back, not your neck. Feet a little in front of the bar, shoulder width apart.",
+                      "Twist to unhook. Sit your hips back and down like sitting into a chair, chest proud.",
+                      "Push the floor away to stand tall. Twist to hook the bar back on after your last rep."
+                    ],
+                    "watch": "knees caving in. Push them out over your toes.",
+                    "variants": [
+                      "Squat to the safety stops only",
+                      "Full depth, 8 reps",
+                      "3 sec lower, 1 sec pause"
+                    ],
+                    "buddy": "spot from the side, watch the knees"
+                  },
+                  {
+                    "name": "Split Squat (Hand on the Frame)",
+                    "qty": "2 rounds, 6 each leg",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=split%20squat%20beginner%20form",
+                    "videoKnown": false,
+                    "station": "Beside the Beast · one hand on the upright",
+                    "steps": [
+                      "Stand side on to the Beast and hold the upright lightly. Take a big step back with one foot, heel lifted.",
+                      "Lower straight down until both knees are bent to about 90 degrees.",
+                      "Push through your front heel to come back up. Do all 6, then swap legs."
+                    ],
+                    "watch": "the front knee caving in. Keep it in line with your toes.",
+                    "variants": [
+                      "Half depth",
+                      "Full depth, 6 each leg",
+                      "Full depth, 3 sec lower"
+                    ],
+                    "buddy": "Glute bridge hold"
+                  }
+                ]
+              },
+              {
+                "name": "Station 2: Hinge + Glutes",
+                "rounds": 2,
+                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>Hips back, flat back.</strong> Pene on the 7 kg pair, Jenna on the 5 kg pair. The pull through is one rope on the low pulley, lightest pin.",
+                "exercises": [
+                  {
+                    "name": "Dumbbell Romanian Deadlift",
+                    "qty": "2 rounds, 10 slow reps (Pene 7 kg, Jenna 5 kg)",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20romanian%20deadlift%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall with a dumbbell in each hand in front of your thighs, soft knees.",
+                      "Push your hips back and slide the dumbbells down your legs until you feel a stretch in your hamstrings. Back stays flat.",
+                      "Squeeze your glutes to drive your hips forward and stand tall."
+                    ],
+                    "watch": "your back rounding. Stop the rep where your back is still flat.",
+                    "variants": [
+                      "5 kg dumbbells",
+                      "7 kg dumbbells",
+                      "7 kg, 3 sec lower"
+                    ],
+                    "weightFor": {
+                      "pene": "7 kg dumbbells",
+                      "jenna": "5 kg dumbbells"
+                    },
+                    "buddy": "watch from the side for a flat back"
+                  },
+                  {
+                    "name": "Rope Cable Pull Through",
+                    "qty": "2 rounds, 12 smooth reps",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20pull%20through%20rope%20form",
+                    "videoKnown": false,
+                    "station": "Side pulley · very bottom · rope",
+                    "setup": [
+                      "Pull the pop pin on one side pulley and slide it all the way to the bottom.",
+                      "Clip the rope on with the carabiner.",
+                      "Put the weight stack pin in the lightest plate."
+                    ],
+                    "steps": [
+                      "Stand with your back to the pulley, the cable running between your legs. Hold one rope end in each hand.",
+                      "Walk forward two big steps, feet a bit wider than your hips. Push your hips back so the rope travels back between your legs, back flat, soft knees.",
+                      "Squeeze your glutes to drive your hips forward and stand tall. Arms just hang, your hips do the work."
+                    ],
+                    "watch": "pulling with your arms or leaning back at the top. Stand tall, squeeze, done.",
+                    "variants": [
+                      "Lightest pin, smaller hinge",
+                      "Lightest pin, 12 reps",
+                      "One pin heavier, 2 sec squeeze"
+                    ],
+                    "buddy": "Glute Bridge, 1 sec squeeze at the top"
+                  }
+                ]
+              },
+              {
+                "name": "Push Up Power",
+                "rounds": 2,
+                "tempo": "8 reps, 30 sec rest between exercises, 60 sec rest between rounds",
+                "formatNote": "<strong>Side by side.</strong> Push ups full until your form slips, then knees. Pike push ups build the shoulders you need for handstands: hips high, head goes down between your hands.",
+                "exercises": [
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Push Ups",
+                    "qty": "2 rounds, 8 reps (full until form slips, rest on knees)"
+                  },
+                  {
+                    "name": "Pike Push Ups",
+                    "qty": "2 rounds, 6 reps, hips high",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=pike%20push%20up%20beginner",
+                    "videoKnown": false,
+                    "steps": [
+                      "Start in a downward dog shape, hips high, hands shoulder width apart.",
+                      "Bend your elbows and lower the top of your head towards the floor between your hands.",
+                      "Press back up to straight arms. This is the first step towards a handstand push up!"
+                    ],
+                    "watch": "your elbows flaring wide. Keep them pointing back towards your knees.",
+                    "variants": [
+                      "Pike hold, 15 sec, no lowering",
+                      "Small pike push ups, 6 reps",
+                      "Feet up on the block, 6 reps"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Foam Roller Leg Release",
+                "rounds": 1,
+                "tempo": "No timer, about 1 min each spot, take turns on the roller",
+                "formatNote": "<strong>Give your legs a thank you.</strong> Take turns on the roller. Slow rolls, and pause on any tight spots.",
+                "exercises": [
+                  {
+                    "name": "Quad Roll",
+                    "qty": "1 min each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20quads",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie face down with the roller under the front of your thighs, forearms on the floor.",
+                      "Roll slowly from just above your knee to just below your hip.",
+                      "Turn slightly in and out to find the tender bits, and pause there for 3 breaths."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                  },
+                  {
+                    "name": "Glute Roll",
+                    "qty": "1 min each side",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20glutes%20figure%204",
+                    "videoKnown": false,
+                    "steps": [
+                      "Sit on the roller and cross one ankle over the opposite knee (a figure 4).",
+                      "Lean towards the crossed leg and roll small, slow circles on that bum cheek.",
+                      "Swap sides."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                  },
+                  {
+                    "name": "Calf Roll",
+                    "qty": "45 sec each leg",
+                    "weight": "Foam roller",
+                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20calves",
+                    "videoKnown": false,
+                    "steps": [
+                      "Sit with the roller under your calves, hands behind you.",
+                      "Lift your hips and roll from ankle to just below the knee.",
+                      "Point your toes in and out to cover the whole calf."
+                    ],
+                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Standing Quad Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Seated Hamstring Stretch",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=Seated%20Hamstring%20Stretch%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=hip%20flexor%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "fri",
+            "label": "Friday",
+            "title": "Tabata + Skills + Arms",
+            "estTime": "45 min",
+            "note": "<strong>Finish the week with a buzz!</strong> Legs worked yesterday, so the Tabata is <strong>8 core and upper body moves</strong>, then a Skills Lab (same holds as Monday, taking turns), then arms and shoulders in turns. Pene, second outing for the 7 kg press this week. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
+            "warmup": [
+              {
+                "name": "Gentle Marching on the Spot",
+                "qty": "1 min, easy pace",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Gentle Leg Swings",
+                "qty": "8 each leg, small and easy",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Tabata: Core + Upper",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>8 moves, zero leg work, done side by side.</strong> 20 seconds on, 10 off. Plank Jacks are in this week for a change. Go at your own pace, a plank hold is always a fine swap.",
+                "exercises": [
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Push Ups",
+                    "qty": "1 interval, knees are fine"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "1 interval, hips still"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bicycle Crunch",
+                    "qty": "1 interval, slow and twisting"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Jacks",
+                    "qty": "1 interval, hips level"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bear Crawl",
+                    "qty": "1 interval, knees hovering, small steps"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Sit%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Sit Ups",
+                    "qty": "1 interval, straight arm reach"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, last push, everything!"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Flutter Kicks",
+                    "qty": "1 interval, low back pressed down",
+                    "variants": [
+                      "Knees bent",
+                      "Legs higher",
+                      "Legs low"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Skills Lab: Handstand + Core",
+                "rounds": 2,
+                "tempo": "20 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 20,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>Same holds as last week.</strong> One stepping block and one dip bar, so take turns. Quality holds only: step down the moment your form slips.",
+                "exercises": [
+                  {
+                    "name": "Elevated Pike Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=elevated%20pike%20hold%20handstand%20progression",
+                    "videoKnown": false,
+                    "station": "Floor · feet on the stepping block",
+                    "steps": [
+                      "Start in a downward dog shape with your feet up on the stepping block and hands about a leg length away.",
+                      "Walk your hands in a little so your hips stack high over your shoulders, arms straight beside your ears.",
+                      "Push the floor away, spread your fingers wide, and hold. This is your handstand shoulder position."
+                    ],
+                    "watch": "your head poking through or elbows bending. Arms stay long and you look at your hands.",
+                    "variants": [
+                      "Feet on the floor (downward dog), 20 sec",
+                      "Feet on the block, 20 sec",
+                      "Feet on the block, walk hands closer, 30 sec"
+                    ],
+                    "buddy": "time it, check the hips stay high"
+                  },
+                  {
+                    "name": "Hollow Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, press your lower back into the floor.",
+                      "Lift your shoulders and legs off the floor, arms by your ears, like a banana.",
+                      "Hold the shape. Bend your knees or bring your arms forward if your back lifts."
+                    ],
+                    "watch": "your lower back peeling off the floor. That is the moment to make it easier.",
+                    "buddy": "Bird dog, slow, opposite arm and leg"
+                  },
+                  {
+                    "name": "Dip Support Hold",
+                    "qty": "2 rounds, hold up to 20 sec",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dip%20support%20hold%20beginner",
+                    "videoKnown": false,
+                    "station": "Dip bar attachment · stepping block underneath",
+                    "setup": [
+                      "Clip the dip bar attachment on and check it is locked in.",
+                      "Put the stepping block underneath so you can step up into the top position."
+                    ],
+                    "steps": [
+                      "Step up and press yourself up so your arms are straight, hands on the bars beside your hips.",
+                      "Push the bars down hard so your shoulders sit low, far away from your ears. Chest proud.",
+                      "Squeeze your legs together and hold still. Step back down onto the block when time is up or your shoulders creep up."
+                    ],
+                    "watch": "shoulders shrugging up to your ears. That is the signal to step down, even if time is not up.",
+                    "variants": [
+                      "Toes resting on the block, 10 to 15 sec",
+                      "Feet off, 15 to 20 sec",
+                      "Feet off, 30 sec, slow 3 sec lower to finish"
+                    ],
+                    "buddy": "time it, watch the shoulders stay low"
+                  }
+                ]
+              },
+              {
+                "name": "Arms + Shoulders",
+                "rounds": 2,
+                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>One EZ bar, one rope, so take turns.</strong> Light and smooth, not a max effort. The shoulder press uses your own dumbbells: Pene 7 kg, Jenna 5 kg.",
+                "exercises": [
+                  {
+                    "name": "EZ Bar Bicep Curl",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "EZ bar alone (~13 kg), no plates",
+                    "video": "https://www.youtube.com/results?search_query=ez%20bar%20bicep%20curl%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall, hold the EZ bar on the angled grips, palms up, elbows by your sides.",
+                      "Curl the bar up to your shoulders without swinging.",
+                      "Lower slowly over 2 to 3 seconds."
+                    ],
+                    "watch": "swinging your hips to lift it. Elbows stay pinned.",
+                    "variants": [
+                      "8 reps",
+                      "12 reps",
+                      "12 reps, 3 sec lower"
+                    ],
+                    "buddy": "Lateral raise, 3 kg or no weight"
+                  },
+                  {
+                    "video": "https://www.youtube.com/results?search_query=cable%20rope%20tricep%20pushdown%20form",
+                    "videoKnown": false,
+                    "name": "Rope Tricep Pushdown",
+                    "qty": "2 rounds, 12 reps",
+                    "weight": "Lightest pin",
+                    "station": "Same rope · move pulley to the very top",
+                    "setup": [
+                      "Pull the pop pin and slide the pulley all the way to the top."
+                    ],
+                    "steps": [
+                      "Face the pulley, hold the rope, and pin your elbows to your sides.",
+                      "Push the rope down until your arms are straight, splitting the ends apart at the bottom.",
+                      "Let it rise slowly until your forearms are just above parallel. Only your forearms move."
+                    ],
+                    "watch": "elbows drifting forward. Pin them to your ribs.",
+                    "variants": [
+                      "One pin lighter",
+                      "Same pin, 3 sec return",
+                      "One pin heavier, 2 sec squeeze"
+                    ],
+                    "buddy": "check the elbows stay still"
+                  },
+                  {
+                    "name": "Standing Dumbbell Shoulder Press",
+                    "qty": "2 rounds, 10 reps (Pene 7 kg, Jenna 5 kg)",
+                    "weight": "7 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=standing%20dumbbell%20shoulder%20press%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall, feet hip width, a dumbbell in each hand at shoulder height, palms facing forward.",
+                      "Squeeze your glutes and brace your tummy, then press both dumbbells straight up until your arms are long.",
+                      "Lower slowly back to shoulder height, about 2 seconds down."
+                    ],
+                    "watch": "leaning back to get the weight up. Ribs stay down and your body stays still, only the arms move.",
+                    "variants": [
+                      "4 kg dumbbells, 10 reps",
+                      "5 kg dumbbells, 10 reps",
+                      "7 kg dumbbells, 8 reps"
+                    ],
+                    "weightFor": {
+                      "pene": "7 kg dumbbells",
+                      "jenna": "5 kg dumbbells"
+                    },
+                    "buddy": "Plank hold"
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Doorway Chest Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=doorway%20chest%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Lat Stretch on the Smith Bar",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=lat%20stretch%20holding%20bar",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Neck Rolls",
+                "qty": "5 each way",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=neck%20rolls%20stretch",
+                "videoKnown": false
+              }
+            ]
+          },
+          {
+            "id": "sat",
+            "label": "Saturday",
+            "title": "Run or Walk (Optional)",
+            "estTime": "30 min",
+            "note": "<strong>Totally optional, weather permitting.</strong> Pick one: an easy run or a walk, together or on your own, and tap \"Didn't do this one\" on the other. Raining? Have a rest day, you've earned it. Sunday is a rest day.",
+            "warmup": [
+              {
+                "name": "Brisk Walk",
+                "qty": "3 to 5 min",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=brisk%20walking%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Leg Swings",
+                "qty": "10 each leg, front and side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              }
+            ],
+            "blocks": [
+              {
+                "name": "Pick One",
+                "rounds": 1,
+                "tempo": "No timer, about 20 to 30 min",
+                "formatNote": "<strong>Your choice today.</strong> Tick the one you did and skip the other.",
+                "exercises": [
+                  {
+                    "name": "Easy Run",
+                    "qty": "20 to 25 min, chatty pace",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=easy%20run%20beginner%20pace",
+                    "videoKnown": false,
+                    "steps": [
+                      "Start slower than you think you need to for the first 5 minutes.",
+                      "Settle into a pace where you could talk in full sentences. Relaxed shoulders, short quick steps.",
+                      "Feeling great near the end? Pick it up for the last 3 to 5 minutes, then walk the last minute home."
+                    ],
+                    "watch": "any sharp pain in the knees, shins or feet. Slow to a walk and head home.",
+                    "variants": [
+                      "Run walk: 2 min run, 1 min walk",
+                      "Easy run, 25 min",
+                      "Easy 25 min, last 5 min a bit quicker"
+                    ]
+                  },
+                  {
+                    "name": "Easy Walk",
+                    "qty": "30 min, any pace you like",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=easy%20walking%20benefits",
+                    "videoKnown": false
+                  }
+                ]
+              }
+            ],
+            "cooldown": [
+              {
+                "name": "Calf Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=calf%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Standing Quad Stretch",
+                "qty": "30 sec each leg",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Hip Flexor Stretch",
+                "qty": "30 sec each side",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=hip%20flexor%20stretch",
+                "videoKnown": false
+              },
+              {
+                "name": "Child's Pose",
+                "qty": "45 sec",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "videoKnown": false
+              }
+            ]
+          }
+        ]
       }
     ]
   },
