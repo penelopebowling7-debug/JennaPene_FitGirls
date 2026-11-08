@@ -9963,15 +9963,22 @@ window.SITE_DATA = {
           {
             "id": "tue",
             "label": "Tuesday",
-            "title": "Run or Walk + Pilates Core",
-            "estTime": "45 min",
-            "note": "<strong>Get outside together!</strong> Pene, your 2.3 km loop is the benchmark (under 20 min last Tuesday). Jenna, after holidays, a brisk walk is a perfect restart, or run it with Pene if you feel good. Tick the one you each did, skip the other, and the Finish form will ask for your distance and time. Then back inside for Pilates core: the foam roller moves are taken in turns, then the mat moves you do together. Raining? Swap the run for Saturday and do the core on its own.",
+            "title": "Tabata + Pilates Core",
+            "estTime": "40 min",
+            "note": "<strong>Tabata Tuesday, together!</strong> Two short Tabatas with <strong>16 different moves</strong> between them (4 minutes each, with music), then your Pilates favourites: the foam roller moves taken in turns, then mat core side by side. Jenna, a great way to get the heart going without a single step of running. Short on time? Skip the Pilates Mat Core block.",
             "warmup": [
               {
-                "name": "Brisk Walk",
-                "qty": "3 to 5 min",
+                "name": "Marching on the Spot",
+                "qty": "1 min, swing the arms",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=brisk%20walking%20warm%20up",
+                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Arm Circles",
+                "qty": "15 each direction",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
                 "videoKnown": false
               },
               {
@@ -9982,51 +9989,171 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
-                "name": "Walking Lunges",
-                "qty": "10 total, easy depth",
+                "name": "Cat Cow Stretch",
+                "qty": "8 slow reps",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
-                "videoKnown": false
-              },
-              {
-                "name": "High Knees",
-                "qty": "30 sec, light and bouncy",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
+                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
                 "videoKnown": false
               }
             ],
             "blocks": [
               {
-                "name": "Run or Walk: 2.3 km Loop",
+                "name": "Tabata 1: Full Body",
                 "rounds": 1,
-                "tempo": "No timer, about 15 to 30 min",
-                "formatNote": "<strong>Your choice, your pace.</strong> Run the loop, walk it briskly, or mix the two. The talk test still rules: you should be able to say a full sentence. Tick the one you did and tap \"Didn't do this one\" on the other.",
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>8 different moves, done side by side.</strong> 20 seconds on, 10 off. Legs get a light touch today (Thursday is leg day), so keep the jumps soft and swap any jump for a step version whenever you like.",
                 "exercises": [
                   {
-                    "name": "Easy Run (2.3 km Loop)",
-                    "qty": "2.3 km, about 15 to 20 min",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=easy%20run%20beginner%20pace",
+                    "video": "https://www.youtube.com/results?search_query=Star%20Jumps%20exercise%20form",
                     "videoKnown": false,
-                    "steps": [
-                      "Start slower than you think for the first few minutes.",
-                      "Settle into a pace where you can both still chat. Short quick steps, relaxed shoulders.",
-                      "Lamp post game: 3 or 4 short sprints to a landmark Ax picks, then jog to recover."
-                    ],
-                    "watch": "any sharp pain in the knees, shins or feet. Slow to a walk and head home.",
+                    "name": "Star Jumps",
+                    "qty": "1 interval, step it out if you like",
                     "variants": [
-                      "Run walk: 2 min run, 1 min walk",
-                      "Steady run, whole loop",
-                      "Steady run plus 4 lamp post sprints"
+                      "Step jacks",
+                      "Jumping jacks",
+                      "Star jumps"
                     ]
                   },
                   {
-                    "name": "Brisk Walk (2.3 km Loop)",
                     "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
                     "videoKnown": false,
-                    "video": "https://www.youtube.com/results?search_query=Brisk%20Walk%20(2.3%20km%20Loop)%20exercise%20form",
-                    "qty": "2.3 km, about 25 to 30 min, arms swinging"
+                    "name": "Push Ups",
+                    "qty": "1 interval, knees are fine"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Reverse%20Lunges%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Reverse Lunges",
+                    "qty": "1 interval, alternate legs",
+                    "variants": [
+                      "Hold the frame for balance",
+                      "Bodyweight, alternating",
+                      "Ax: reverse lunge to knee drive"
+                    ]
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "1 interval, hips still"
+                  },
+                  {
+                    "name": "Glute Bridge",
+                    "qty": "1 interval, squeeze at the top",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                    "videoKnown": false,
+                    "variants": [
+                      "Small lifts",
+                      "12 reps, 1 sec squeeze",
+                      "Single leg, 6 each side"
+                    ]
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bicycle Crunch",
+                    "qty": "1 interval, slow and twisting"
+                  },
+                  {
+                    "name": "High Knees",
+                    "qty": "1 interval, march them if you need",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, last push, everything!"
+                  }
+                ]
+              },
+              {
+                "name": "Tabata 2: Core + Upper",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
+                "timer": {
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 8
+                },
+                "formatNote": "<strong>Round two, zero leg work.</strong> Catch your breath for a minute or two first, then 8 more moves, 20 on, 10 off. A plank hold is always a fine swap.",
+                "exercises": [
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Push Ups",
+                    "qty": "1 interval, knees are fine"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Shoulder Taps",
+                    "qty": "1 interval, hips still"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bicycle Crunch",
+                    "qty": "1 interval, slow and twisting"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Jacks",
+                    "qty": "1 interval, hips level"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bear Crawl",
+                    "qty": "1 interval, knees hovering, small steps"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Sit%20Ups%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Sit Ups",
+                    "qty": "1 interval, straight arm reach"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "qty": "1 interval, last push, everything!"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Flutter Kicks",
+                    "qty": "1 interval, low back pressed down",
+                    "variants": [
+                      "Knees bent",
+                      "Legs higher",
+                      "Legs low"
+                    ]
                   }
                 ]
               },
@@ -10560,112 +10687,70 @@ window.SITE_DATA = {
           {
             "id": "fri",
             "label": "Friday",
-            "title": "Tabata + Skills + Arms",
-            "estTime": "45 min",
-            "note": "<strong>Finish the week with a buzz!</strong> Legs worked yesterday, so the Tabata is <strong>8 core and upper body moves</strong>, then a Skills Lab (same holds as Monday, taking turns), then arms and shoulders in turns. Pene, second outing for the 7 kg press this week. Ending on a session that leaves you buzzing is the peak end rule at work: the ending is what you remember most.",
+            "title": "Run + Skills + Arms",
+            "estTime": "45 to 50 min",
+            "note": "<strong>Run day for Pene, strength day for both!</strong> Pene, start with your 2.3 km loop (an easy one, legs worked yesterday). Jenna, no running needed: walk the loop with Pene, or join at the Skills Lab. Then the Skills Lab (same holds as Monday, taking turns), then arms and shoulders in turns. Pene, second outing for the 7 kg press this week. A run then a strength finish is the combo you said works best.",
             "warmup": [
               {
-                "name": "Gentle Marching on the Spot",
-                "qty": "1 min, easy pace",
+                "name": "Brisk Walk",
+                "qty": "3 to 5 min",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
+                "video": "https://www.youtube.com/results?search_query=brisk%20walking%20warm%20up",
                 "videoKnown": false
               },
               {
-                "name": "Arm Circles",
-                "qty": "15 each direction",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
-                "videoKnown": false
-              },
-              {
-                "name": "Cat Cow Stretch",
-                "qty": "8 slow reps",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Gentle Leg Swings",
-                "qty": "8 each leg, small and easy",
+                "name": "Leg Swings",
+                "qty": "10 each leg, front and side",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
+                "videoKnown": false
+              },
+              {
+                "name": "Walking Lunges",
+                "qty": "10 total, easy depth",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
+                "videoKnown": false
+              },
+              {
+                "name": "High Knees",
+                "qty": "30 sec, light and bouncy",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
                 "videoKnown": false
               }
             ],
             "blocks": [
               {
-                "name": "Tabata: Core + Upper",
+                "name": "Run (Pene) or Walk (Jenna)",
                 "rounds": 1,
-                "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
-                "timer": {
-                  "type": "tabata",
-                  "work": 20,
-                  "rest": 10,
-                  "intervals": 8
-                },
-                "formatNote": "<strong>8 moves, zero leg work, done side by side.</strong> 20 seconds on, 10 off. Plank Jacks are in this week for a change. Go at your own pace, a plank hold is always a fine swap.",
+                "tempo": "No timer, about 15 to 30 min",
+                "formatNote": "<strong>Pene runs, Jenna walks, or Jenna skips straight to the warm up stretches.</strong> Pene: your 2.3 km loop at a chatty pace (legs worked yesterday, so easy does it, walk breaks are fine). Jenna: a brisk walk of the loop if you fancy it. Tick what you did, tap \"Didn't do this one\" on the other.",
                 "exercises": [
                   {
+                    "name": "Easy Run (2.3 km Loop)",
+                    "qty": "2.3 km, about 15 to 20 min",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=easy%20run%20beginner%20pace",
                     "videoKnown": false,
-                    "name": "Push Ups",
-                    "qty": "1 interval, knees are fine"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Plank Shoulder Taps",
-                    "qty": "1 interval, hips still"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Bicycle Crunch",
-                    "qty": "1 interval, slow and twisting"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Plank Jacks",
-                    "qty": "1 interval, hips level"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Bear Crawl",
-                    "qty": "1 interval, knees hovering, small steps"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Sit%20Ups%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Sit Ups",
-                    "qty": "1 interval, straight arm reach"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Mountain Climbers",
-                    "qty": "1 interval, last push, everything!"
-                  },
-                  {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
-                    "videoKnown": false,
-                    "name": "Flutter Kicks",
-                    "qty": "1 interval, low back pressed down",
+                    "steps": [
+                      "Start slower than you think for the first few minutes.",
+                      "Settle into a pace where you can both still chat. Short quick steps, relaxed shoulders.",
+                      "Lamp post game: 3 or 4 short sprints to a landmark Ax picks, then jog to recover."
+                    ],
+                    "watch": "any sharp pain in the knees, shins or feet. Slow to a walk and head home.",
                     "variants": [
-                      "Knees bent",
-                      "Legs higher",
-                      "Legs low"
+                      "Run walk: 2 min run, 1 min walk",
+                      "Steady run, whole loop",
+                      "Steady run plus 4 lamp post sprints"
                     ]
+                  },
+                  {
+                    "name": "Brisk Walk (2.3 km Loop)",
+                    "weight": "Bodyweight",
+                    "videoKnown": false,
+                    "video": "https://www.youtube.com/results?search_query=Brisk%20Walk%20(2.3%20km%20Loop)%20exercise%20form",
+                    "qty": "2.3 km, about 25 to 30 min, arms swinging"
                   }
                 ]
               },
