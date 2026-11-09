@@ -1962,6 +1962,9 @@ function renderMain(){
       const t = block.timer, n = block.exercises.length;
       roundBtn.textContent = t.type === 'tabata'
         ? '🔥 Start Tabata: ' + (t.intervals || 8) + ' x ' + t.work + 's on, ' + t.rest + 's off, with music'
+        : t.type === 'emom' ? '⏱ Start EMOM: ' + (t.minutes || n * 2) + ' minutes, a new move every minute'
+        : t.type === 'amrap' ? '♾ Start AMRAP: ' + (t.minutes || 8) + ' minutes, as many rounds as you can'
+        : t.type === 'race' ? '🏁 Start Race Clock'
         : '▶ Start Partner Timer: ' + n + ' exercise' + (n === 1 ? '' : 's') + ', ' + t.turn + 's turns' + (isSolo() ? ' (solo version)' : '');
       if(t.type === 'tabata'){
         roundBtn.classList.add('tabata-btn');
@@ -2334,6 +2337,44 @@ function buildSpecialSteps(block){
     });
     return steps;
   }
+  // Batch 43: EMOM, AMRAP and Race formats.
+  // block.timer = { type:'emom', minutes:8 }: every minute on the minute, cycling
+  //   through the exercises. Do the reps, rest whatever is left of the minute.
+  if(t.type === 'emom'){
+    const n = t.minutes || exs.length * 2;
+    for(let i = 0; i < n; i++){
+      const ex = exs[i % exs.length], next = exs[(i + 1) % exs.length];
+      const reps = ex.emom || ex.qty || '';
+      steps.push({ kind:'work', seconds:60, exName:ex.name, exIndex:i % exs.length, isFirst:i === 0, noWarn:true,
+        phaseLabel:'Minute ' + (i + 1) + ' of ' + n,
+        label: ex.name + (reps ? ': ' + reps : '') + (i < n - 1 ? '   (then rest, next: ' + next.name + ')' : ''),
+        say: (i === 0 ? 'E MOM time! ' : (i === n - 1 ? 'Last minute! ' : 'Minute ' + (i + 1) + '. ')) + ex.name + (ex.emomSay ? ', ' + ex.emomSay : '') + '. Go!' });
+    }
+    return steps;
+  }
+  // block.timer = { type:'amrap', minutes:8 }: as many rounds as possible of the
+  //   whole list. One long countdown with a halfway shout. Count your rounds.
+  if(t.type === 'amrap'){
+    const total = (t.minutes || 8) * 60, half = Math.floor(total / 2);
+    const list = exs.map(e => (e.amrap ? e.amrap + ' ' : '') + e.name).join(' → ');
+    steps.push({ kind:'work', seconds:half, exName:exs[0].name, exIndex:0, isFirst:true, noWarn:true,
+      phaseLabel:'AMRAP, ' + (t.minutes || 8) + ' min', label:list + '   Count your rounds!',
+      say:'A M RAP! ' + (t.minutes || 8) + ' minutes. As many rounds as you can. Go!' });
+    steps.push({ kind:'work', seconds:total - half, exName:exs[0].name, exIndex:0,
+      phaseLabel:'AMRAP, second half', label:list + '   Count your rounds!',
+      say:'Halfway! Keep moving, no stopping now!' });
+    return steps;
+  }
+  // block.timer = { type:'race', cap:30 }: one stopwatch counting UP. Work through
+  //   the course in order; tap Pause the moment you finish and the clock shows
+  //   your finish time. The cap is just a safety stop.
+  if(t.type === 'race'){
+    const list = exs.map((e, i) => (i + 1) + '. ' + (e.race || e.name)).join('   ');
+    steps.push({ kind:'work', seconds:(t.cap || 30) * 60, exName:exs[0].name, exIndex:0, isFirst:true, noWarn:true, countUp:true,
+      phaseLabel:'Race! Tap Pause when you finish', label:list,
+      say:'Race time! Three, two, one, go go go!' });
+    return steps;
+  }
   return [];
 }
 
@@ -2537,6 +2578,15 @@ function formatTime(s){
   return m + ':' + sec;
 }
 function updateTimerDisplay(){
+  const st = timerMode === 'guided' ? roundSteps[stepIdx] : null;
+  if(st && st.countUp && phase !== 'done'){
+    const elapsed = Math.max(0, st.seconds - timerRemaining);
+    document.getElementById('timerDisplay').textContent = formatTime(elapsed);
+    const ph = document.getElementById('timerPhase');
+    if(ph && !timerRunning && elapsed > 0) ph.textContent = '🏁 Your time: ' + formatTime(elapsed) + ' (write it in your Finish note)';
+    else if(ph && st.phaseLabel) ph.textContent = st.phaseLabel;
+    return;
+  }
   document.getElementById('timerDisplay').textContent = formatTime(timerRemaining);
 }
 function updatePhaseLabel(){
@@ -2805,6 +2855,7 @@ document.getElementById('startTimer').onclick = ()=>{
     timerEndsAt = null;
     if(window.KeepAwake) KeepAwake.release();
     document.getElementById('startTimer').textContent = startBtnIdleLabel;
+    updateTimerDisplay(); // a paused race clock shows the finish time
     return;
   }
   startTimerRun();
