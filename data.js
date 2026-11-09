@@ -9965,7 +9965,7 @@ window.SITE_DATA = {
             "label": "Tuesday",
             "title": "Tabata + Pilates Core",
             "estTime": "40 min",
-            "note": "<strong>Tabata Tuesday, together!</strong> Two short Tabatas with <strong>16 different moves</strong> between them (4 minutes each, with music), then your Pilates favourites: the foam roller moves taken in turns, then mat core side by side. Jenna, a great way to get the heart going without a single step of running. Short on time? Skip the Pilates Mat Core block.",
+            "note": "<strong>Tabata Tuesday, together!</strong> Two short Tabatas with <strong>16 different moves</strong>, no repeats (grab 3 kg dumbbells for the first one) (4 minutes each, with music), then your Pilates favourites: the foam roller moves taken in turns, then mat core side by side. Jenna, a great way to get the heart going without a single step of running. Short on time? Skip the Pilates Mat Core block.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -9998,7 +9998,7 @@ window.SITE_DATA = {
             ],
             "blocks": [
               {
-                "name": "Tabata 1: Full Body",
+                "name": "Tabata 1: Full Body + Light Dumbbells",
                 "rounds": 1,
                 "tempo": "20 sec on / 10 sec off, 8 intervals (4 min)",
                 "timer": {
@@ -10007,7 +10007,7 @@ window.SITE_DATA = {
                   "rest": 10,
                   "intervals": 8
                 },
-                "formatNote": "<strong>8 different moves, done side by side.</strong> 20 seconds on, 10 off. Legs get a light touch today (Thursday is leg day), so keep the jumps soft and swap any jump for a step version whenever you like.",
+                "formatNote": "<strong>8 brand new moves, none repeated in Tabata 2.</strong> 20 seconds on, 10 off. Grab a pair of <strong>3 kg dumbbells each</strong> before you start (one for the Russian twist). Light and quick, not heavy. Legs get a light touch today (Thursday is leg day), so step out the jumps whenever you like.",
                 "exercises": [
                   {
                     "weight": "Bodyweight",
@@ -10022,11 +10022,22 @@ window.SITE_DATA = {
                     ]
                   },
                   {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "name": "Dumbbell Squat to Press",
+                    "weight": "3 kg dumbbells",
+                    "qty": "1 interval, smooth squat then press overhead",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20squat%20to%20press%20thruster%20form",
                     "videoKnown": false,
-                    "name": "Push Ups",
-                    "qty": "1 interval, knees are fine"
+                    "steps": [
+                      "Stand feet shoulder width, a light dumbbell in each hand at your shoulders.",
+                      "Sit back into a squat, then drive up and press both dumbbells overhead in one smooth move.",
+                      "Lower the dumbbells to your shoulders as you sink into the next squat."
+                    ],
+                    "watch": "knees caving in. Push them out over your toes.",
+                    "variants": [
+                      "No weights, arms reach up",
+                      "3 kg dumbbells",
+                      "5 kg dumbbells"
+                    ]
                   },
                   {
                     "weight": "Bodyweight",
@@ -10041,11 +10052,22 @@ window.SITE_DATA = {
                     ]
                   },
                   {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Plank%20Shoulder%20Taps%20exercise%20form",
+                    "name": "Dumbbell Punches",
+                    "weight": "3 kg dumbbells",
+                    "qty": "1 interval, fast punches, tummy braced",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20punches%20standing%20workout",
                     "videoKnown": false,
-                    "name": "Plank Shoulder Taps",
-                    "qty": "1 interval, hips still"
+                    "steps": [
+                      "Stand with soft knees, one light dumbbell in each hand at your chin.",
+                      "Punch one arm straight forward, pull it back, then punch the other. Keep it quick.",
+                      "Brace your tummy so your body stays still and only the arms move."
+                    ],
+                    "watch": "locking the elbows hard at the end of a punch. Keep a tiny bend.",
+                    "variants": [
+                      "No weights",
+                      "2 kg dumbbells",
+                      "3 kg dumbbells"
+                    ]
                   },
                   {
                     "name": "Glute Bridge",
@@ -10060,11 +10082,11 @@ window.SITE_DATA = {
                     ]
                   },
                   {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
+                    "weight": "3 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
                     "videoKnown": false,
-                    "name": "Bicycle Crunch",
-                    "qty": "1 interval, slow and twisting"
+                    "name": "Russian Twist",
+                    "qty": "1 interval, one dumbbell held at your chest"
                   },
                   {
                     "name": "High Knees",
@@ -10074,11 +10096,22 @@ window.SITE_DATA = {
                     "videoKnown": false
                   },
                   {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "name": "Dumbbell High Pull",
+                    "weight": "3 kg dumbbells",
+                    "qty": "1 interval, elbows lead up and out",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20high%20pull%20form",
                     "videoKnown": false,
-                    "name": "Mountain Climbers",
-                    "qty": "1 interval, last push, everything!"
+                    "steps": [
+                      "Stand tall, a light dumbbell in each hand in front of your thighs.",
+                      "Pull the dumbbells up close to your body until your elbows are high and out to the sides, about chest height.",
+                      "Lower slowly and repeat."
+                    ],
+                    "watch": "shrugging up to your ears. Shoulders stay down, elbows do the work.",
+                    "variants": [
+                      "No weights",
+                      "2 kg dumbbells",
+                      "3 kg dumbbells"
+                    ]
                   }
                 ]
               },
