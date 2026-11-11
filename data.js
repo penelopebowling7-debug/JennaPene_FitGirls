@@ -10600,7 +10600,7 @@ window.SITE_DATA = {
                   {
                     "name": "Dumbbell Step Ups",
                     "videoKnown": false,
-                    "weight": "5 kg dumbbells",
+                    "weight": "5 kg dumbbells, one in each hand",
                     "video": "https://www.youtube.com/results?search_query=dumbbell%20step%20up%20form%20glutes",
                     "station": "Stepping block",
                     "steps": [
@@ -10614,11 +10614,7 @@ window.SITE_DATA = {
                       "5 kg dumbbells",
                       "7 kg dumbbells"
                     ],
-                    "weightFor": {
-                      "pene": "7 kg dumbbells",
-                      "jenna": "5 kg dumbbells"
-                    },
-                    "qty": "3 rounds · Base: 8 each leg · Level up: 10 each leg"
+                    "qty": "3 rounds · Base: 8 each leg · Level up: 10 each leg (both on 5 kg dumbbells)"
                   },
                   {
                     "name": "Dumbbell Glute Bridge",
