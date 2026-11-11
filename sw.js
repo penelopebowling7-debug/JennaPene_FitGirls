@@ -5,7 +5,7 @@
 // 2026-08-23). Everything else (CSS, manifest, icons) stays cache-first for
 // speed; Firebase and anything cross-origin always goes straight to the
 // network so live sync is never served from a stale cache.
-const CACHE = 'pj-fitness-v29';
+const CACHE = 'pj-fitness-v30';
 const SHELL = [
   'index.html', 'tracker.html', 'beast.html', 'tests.html', 'stats.html', 'progress.html',
   'styles.css', 'data.js', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'firebase-sync.js', 'app-shell.js', 'tabata.js', 'coach-voice.json', 'manifest.webmanifest'
@@ -23,22 +23,42 @@ self.addEventListener('activate', e => {
   );
 });
 
+// Batch 47 (11 Nov): every HTML/JS request now asks the server "has this
+// changed?" (cache: 'no-cache'). Before, fetch() let the phone's own browser
+// cache answer for up to 10 minutes (GitHub Pages sends max-age=600), so new
+// workouts took 10 to 20 minutes to appear. The check is tiny (a 304 when
+// nothing changed). If the network is slow (over 4 sec) the saved copy is
+// shown so the gym never waits on bad signal; the fresh copy is still saved
+// for next time.
+const FRESH_TIMEOUT_MS = 4000;
+function fetchFresh(url) {
+  return fetch(url, { cache: 'no-cache', credentials: 'same-origin' }).then(res => {
+    if (res && res.status === 200) {
+      const copy = res.clone();
+      caches.open(CACHE).then(c => c.put(url, copy));
+    }
+    return res;
+  });
+}
+
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
-  const fresh = e.request.mode === 'navigate' || /\.(html|js)$/.test(url.pathname) || url.pathname.endsWith('/');
+  const fresh = e.request.mode === 'navigate' || /\.(html|js|json)$/.test(url.pathname) || url.pathname.endsWith('/');
   if (fresh) {
-    e.respondWith(
-      fetch(e.request).then(res => {
-        if (res && res.status === 200) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
-        return res;
-      }).catch(() => caches.match(e.request))
-    );
+    const key = url.origin + url.pathname; // ignore ?fresh=... so the cache still matches
+    e.respondWith((async () => {
+      const net = fetchFresh(key);
+      const cached = await caches.match(key);
+      if (!cached) return net.catch(() => caches.match(e.request));
+      const slow = new Promise(r => setTimeout(() => r(cached), FRESH_TIMEOUT_MS));
+      return Promise.race([net.catch(() => cached), slow]);
+    })());
     return;
   }
   e.respondWith(
     caches.match(e.request).then(hit => {
-      const live = fetch(e.request).then(res => {
+      const live = fetch(e.request, { cache: 'no-cache' }).then(res => {
         if (res && res.status === 200) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
         return res;
       }).catch(() => hit);

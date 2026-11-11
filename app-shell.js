@@ -13,7 +13,7 @@
   // ---------------- Service worker / install ----------------
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function (err) {
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(function (reg) { try { reg.update(); } catch (e) {} }).catch(function (err) {
         console.warn('Offline support unavailable:', err);
       });
     });
@@ -73,7 +73,13 @@
           return Promise.all(rs.map(function (r) { return r.unregister(); }));
         }));
       }
+      // Also refresh the browser's own HTTP cache for every app file, not just
+      // the page: data.js (the workouts) used to stay up to 10 minutes stale.
+      var files = ['index.html', 'tracker.html', 'beast.html', 'tests.html', 'stats.html', 'progress.html',
+        'styles.css', 'data.js', 'firebase-sync.js', 'app-shell.js', 'tabata.js', 'sw.js'];
       Promise.all(jobs).catch(function () {}).then(function () {
+        return Promise.all(files.map(function (f) { return fetch(f, { cache: 'reload' }).catch(function () {}); }));
+      }).then(function () {
         location.replace(location.pathname + '?fresh=' + Date.now());
       });
     };
