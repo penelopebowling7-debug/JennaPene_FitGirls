@@ -10452,7 +10452,7 @@ window.SITE_DATA = {
             "label": "Thursday",
             "title": "Glutes + Legs",
             "estTime": "45 min",
-            "note": "<strong>Summer booty day! 🍑</strong> A proper weighted legs and glutes session, every move loaded. Smith squats and cable kickbacks taken in turns, then a <strong>dumbbell booty circuit</strong> side by side (sumo squats, Romanian deadlifts, step ups and weighted glute bridges), then a <strong>band burner</strong> to finish. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Legs haven't been loaded in a while, so stop each set with 1 or 2 reps left in the tank. That's how you train hard without being unable to sit down on Saturday. You have one small loop band, so take turns with it: whoever is waiting in the partner stations uses it, and in the burner you swap it each round.",
+            "note": "<strong>Summer booty day! 🍑</strong> A proper weighted legs and glutes session, every move loaded. Smith squats and cable kickbacks taken in turns, then a <strong>dumbbell booty circuit</strong> side by side (sumo squats, Romanian deadlifts, step ups and weighted glute bridges), then a <strong>band burner</strong> to finish. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Legs haven't been loaded in a while, so stop each set with 1 or 2 reps left in the tank. That's how you train hard without being unable to sit down on Saturday. Bands: Jenna has the small loop band, Pene the big band wrapped into an X, so you both burn at once.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -10484,7 +10484,7 @@ window.SITE_DATA = {
               {
                 "name": "Banded Crab Steps",
                 "videoKnown": false,
-                "weight": "Small loop band (take turns)",
+                "weight": "Loop band",
                 "video": "https://www.youtube.com/results?search_query=banded%20lateral%20band%20walk%20glutes",
                 "steps": [
                   "Loop band just above your knees. Quarter squat, chest tall.",
@@ -10497,7 +10497,11 @@ window.SITE_DATA = {
                   "Medium band",
                   "Heaviest band"
                 ],
-                "qty": "10 steps each way, take turns with the band"
+                "qty": "10 steps each way, both at once",
+                "weightFor": {
+                  "pene": "Big band, crossed X",
+                  "jenna": "Small loop band"
+                }
               },
               {
                 "name": "Walking Lunges",
@@ -10656,12 +10660,12 @@ window.SITE_DATA = {
                 "name": "Band Booty Burner",
                 "rounds": 2,
                 "tempo": "40 sec active / 20 sec rest, 45 sec rest between rounds",
-                "formatNote": "<strong>One small band, so share it:</strong> round 1 Pene wears the band and Jenna does the same moves without one, round 2 swap. The burn means it is working! All on the mat, side by side. No band? Squeeze harder and slow it down.",
+                "formatNote": "<strong>Both of you banded, side by side!</strong> Jenna wears the small loop band, Pene uses the big band wrapped into an X (two loops, kept flat). Donkey kicks are awkward in the big band, so do those without it and squeeze harder. The burn means it is working!",
                 "exercises": [
                   {
                     "name": "Banded Glute Bridge Pulses",
                     "videoKnown": false,
-                    "weight": "Small loop band (swap each round)",
+                    "weight": "Loop band",
                     "video": "https://www.youtube.com/results?search_query=banded%20glute%20bridge%20pulses",
                     "steps": [
                       "Loop band above your knees, lie on your back, knees bent.",
@@ -10674,12 +10678,16 @@ window.SITE_DATA = {
                       "Light band",
                       "Heavier band"
                     ],
-                    "qty": "2 rounds · knees pushing out"
+                    "qty": "2 rounds · knees pushing out",
+                    "weightFor": {
+                      "pene": "Big band, X wrapped",
+                      "jenna": "Small loop band"
+                    }
                   },
                   {
                     "name": "Banded Clamshells",
                     "videoKnown": false,
-                    "weight": "Small loop band (swap each round)",
+                    "weight": "Loop band",
                     "video": "https://www.youtube.com/results?search_query=banded%20clamshell%20exercise%20form",
                     "steps": [
                       "Lie on your side, loop band above your knees, knees bent and stacked.",
@@ -10692,12 +10700,16 @@ window.SITE_DATA = {
                       "Light band",
                       "Heavier band"
                     ],
-                    "qty": "2 rounds · swap sides at 20 sec"
+                    "qty": "2 rounds · swap sides at 20 sec",
+                    "weightFor": {
+                      "pene": "Big band, X wrapped",
+                      "jenna": "Small loop band"
+                    }
                   },
                   {
                     "name": "Banded Donkey Kicks",
                     "videoKnown": false,
-                    "weight": "Small loop band (swap each round)",
+                    "weight": "Loop band",
                     "video": "https://www.youtube.com/results?search_query=banded%20donkey%20kicks%20form",
                     "steps": [
                       "On hands and knees, loop band above your knees.",
@@ -10710,7 +10722,11 @@ window.SITE_DATA = {
                       "Light band",
                       "Heavier band"
                     ],
-                    "qty": "2 rounds · swap legs at 20 sec"
+                    "qty": "2 rounds · swap legs at 20 sec",
+                    "weightFor": {
+                      "pene": "Big band, X wrapped",
+                      "jenna": "Small loop band"
+                    }
                   },
                   {
                     "name": "Frog Pumps",
@@ -11899,7 +11915,7 @@ window.SITE_DATA = {
             "label": "Thursday",
             "title": "Glutes, Legs + AMRAP",
             "estTime": "45 min",
-            "note": "<strong>Booty day, round 2! 🍑</strong> Heavier than last week, all moves loaded, then the 8 minute AMRAP. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note: this exact AMRAP comes back in a few weeks so you can see how much fitter you are. Then a band burner to finish, swapping the small band each round.",
+            "note": "<strong>Booty day, round 2! 🍑</strong> Heavier than last week, all moves loaded, then the 8 minute AMRAP. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note: this exact AMRAP comes back in a few weeks so you can see how much fitter you are. Then a band burner to finish, both of you banded.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -11931,7 +11947,7 @@ window.SITE_DATA = {
               {
                 "name": "Banded Crab Steps",
                 "videoKnown": false,
-                "weight": "Small loop band (take turns)",
+                "weight": "Loop band",
                 "video": "https://www.youtube.com/results?search_query=banded%20lateral%20band%20walk%20glutes",
                 "steps": [
                   "Loop band just above your knees. Quarter squat, chest tall.",
@@ -11944,7 +11960,11 @@ window.SITE_DATA = {
                   "Medium band",
                   "Heaviest band"
                 ],
-                "qty": "10 steps each way, take turns with the band"
+                "qty": "10 steps each way, both at once",
+                "weightFor": {
+                  "pene": "Big band, crossed X",
+                  "jenna": "Small loop band"
+                }
               },
               {
                 "name": "Walking Lunges",
@@ -12127,12 +12147,12 @@ window.SITE_DATA = {
                 "name": "Band Booty Burner",
                 "rounds": 2,
                 "tempo": "40 sec active / 20 sec rest, 45 sec rest between rounds",
-                "formatNote": "<strong>One small band, so share it:</strong> round 1 Pene wears the band and Jenna does the same moves without one, round 2 swap. The burn means it is working! All on the mat, side by side. No band? Squeeze harder and slow it down.",
+                "formatNote": "<strong>Both of you banded, side by side!</strong> Jenna wears the small loop band, Pene uses the big band wrapped into an X (two loops, kept flat). Donkey kicks are awkward in the big band, so do those without it and squeeze harder. The burn means it is working!",
                 "exercises": [
                   {
                     "name": "Banded Fire Hydrants",
                     "videoKnown": false,
-                    "weight": "Small loop band (swap each round)",
+                    "weight": "Loop band",
                     "video": "https://www.youtube.com/results?search_query=banded%20fire%20hydrant%20exercise",
                     "steps": [
                       "On hands and knees, loop band above your knees.",
@@ -12145,12 +12165,16 @@ window.SITE_DATA = {
                       "Light band",
                       "Heavier band"
                     ],
-                    "qty": "2 rounds · swap legs at 20 sec"
+                    "qty": "2 rounds · swap legs at 20 sec",
+                    "weightFor": {
+                      "pene": "Big band, X wrapped",
+                      "jenna": "Small loop band"
+                    }
                   },
                   {
                     "name": "Banded Squat Pulses",
                     "videoKnown": false,
-                    "weight": "Small loop band (swap each round)",
+                    "weight": "Loop band",
                     "video": "https://www.youtube.com/results?search_query=banded%20squat%20pulses",
                     "steps": [
                       "Loop band above your knees, sink into a squat.",
@@ -12163,7 +12187,11 @@ window.SITE_DATA = {
                       "Light band",
                       "Hold a 5 kg dumbbell"
                     ],
-                    "qty": "2 rounds · stay low"
+                    "qty": "2 rounds · stay low",
+                    "weightFor": {
+                      "pene": "Big band, X wrapped",
+                      "jenna": "Small loop band"
+                    }
                   },
                   {
                     "name": "Single Leg Glute Bridge (Left)",
