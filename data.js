@@ -10450,9 +10450,9 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Legs + Push Up Power",
+            "title": "Glutes + Legs",
             "estTime": "45 min",
-            "note": "<strong>Welcome back to legs, gently.</strong> Your legs haven't had a proper session in a few weeks, so today is <strong>2 rounds at easy weights</strong>, the same loads as your last leg day. Every set should end with 3 or 4 reps in the tank, which is how you avoid that \"can't sit on the toilet\" soreness from Week 20. Then a short push up block for the handstand dream, and a foam roll to finish. Landing 48 hours after Tuesday's run is perfect timing.",
+            "note": "<strong>Summer booty day! 🍑</strong> A proper weighted legs and glutes session, every move loaded. Smith squats and cable kickbacks taken in turns, then a <strong>dumbbell booty circuit</strong> side by side (sumo squats, Romanian deadlifts, step ups and weighted glute bridges), then a <strong>band burner</strong> to finish. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Legs haven't been loaded in a while, so stop each set with 1 or 2 reps left in the tank. That's how you train hard without being unable to sit down on Saturday. Grab a loop band each (no band? do them without).",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -10469,24 +10469,48 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
+                "name": "Glute Bridge",
+                "qty": "10 slow reps, 2 sec squeeze",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                "videoKnown": false,
+                "variants": [
+                  "Small lifts",
+                  "12 reps, 1 sec squeeze",
+                  "Single leg, 6 each side"
+                ],
+                "amrap": "12"
+              },
+              {
+                "name": "Banded Crab Steps",
+                "videoKnown": false,
+                "weight": "Loop band",
+                "video": "https://www.youtube.com/results?search_query=banded%20lateral%20band%20walk%20glutes",
+                "steps": [
+                  "Loop band just above your knees. Quarter squat, chest tall.",
+                  "Step sideways, keeping tension on the band the whole time.",
+                  "10 steps one way, 10 steps back."
+                ],
+                "watch": "standing up tall or letting the feet come together. Stay low, keep the band tight.",
+                "variants": [
+                  "Light band",
+                  "Medium band",
+                  "Heaviest band"
+                ],
+                "qty": "10 steps each way"
+              },
+              {
                 "name": "Walking Lunges",
                 "qty": "10 total, easy depth",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
                 "videoKnown": false
-              },
-              {
-                "name": "High Knees",
-                "qty": "30 sec, light and bouncy",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
-                "videoKnown": false
               }
             ],
             "blocks": [
               {
-                "name": "Station 1: Smith Machine Legs",
-                "rounds": 2,
+                "name": "Station 1: Smith Squat + Cable Kickback",
+                "rounds": 3,
                 "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
                 "timer": {
                   "type": "partner",
@@ -10494,11 +10518,11 @@ window.SITE_DATA = {
                   "swap": 15,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Empty Smith bar only.</strong> One goes, the other spots and watches the knees track over the toes. Swap when the timer says.",
+                "formatNote": "<strong>Take turns.</strong> One squats on the Smith while the other does band crab steps, then the kickback on the low pulley with the ankle strap (do half the turn on each leg).",
                 "exercises": [
                   {
                     "name": "Smith Machine Squat",
-                    "qty": "2 rounds, 8 slow reps",
+                    "qty": "3 rounds · Base: 10 reps · Level up: 12, slow 3 sec lower",
                     "weight": "Empty Smith bar",
                     "video": "https://www.youtube.com/results?search_query=smith%20machine%20squat%20beginner%20form",
                     "videoKnown": false,
@@ -10519,45 +10543,49 @@ window.SITE_DATA = {
                       "Full depth, 8 reps",
                       "3 sec lower, 1 sec pause"
                     ],
-                    "buddy": "spot from the side, watch the knees"
+                    "buddy": "Banded crab steps, 10 each way"
                   },
                   {
-                    "name": "Split Squat (Hand on the Frame)",
-                    "qty": "2 rounds, 6 each leg",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=split%20squat%20beginner%20form",
+                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
+                    "qty": "3 rounds · Base: 10 each leg · Level up: 12 each leg or one pin up",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
                     "videoKnown": false,
-                    "station": "Beside the Beast · one hand on the upright",
-                    "steps": [
-                      "Stand side on to the Beast and hold the upright lightly. Take a big step back with one foot, heel lifted.",
-                      "Lower straight down until both knees are bent to about 90 degrees.",
-                      "Push through your front heel to come back up. Do all 6, then swap legs."
-                    ],
-                    "watch": "the front knee caving in. Keep it in line with your toes.",
-                    "variants": [
-                      "Half depth",
-                      "Full depth, 6 each leg",
-                      "Full depth, 3 sec lower"
-                    ],
-                    "buddy": "Glute bridge hold"
+                    "buddy": "Glute bridge hold, squeeze hard"
                   }
                 ]
               },
               {
-                "name": "Station 2: Hinge + Glutes",
-                "rounds": 2,
-                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
-                "timer": {
-                  "type": "partner",
-                  "turn": 40,
-                  "swap": 20,
-                  "betweenRounds": 60
-                },
-                "formatNote": "<strong>Hips back, flat back.</strong> Pene on the 7 kg pair, Jenna on the 5 kg pair. The pull through is one rope on the low pulley, lightest pin.",
+                "name": "Dumbbell Booty Circuit",
+                "rounds": 3,
+                "tempo": "10 reps, 30 sec rest between exercises, 75 sec rest between rounds",
+                "formatNote": "<strong>Side by side, your own dumbbells.</strong> Pene's boxes start heavier. Squeeze your glutes at the top of every single rep. That squeeze is where the shape comes from.",
                 "exercises": [
                   {
+                    "name": "Dumbbell Sumo Squat",
+                    "videoKnown": false,
+                    "weight": "10 kg dumbbell",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20sumo%20squat%20form%20glutes",
+                    "steps": [
+                      "Feet wide, toes turned out, hold one dumbbell by the top end, arms long between your legs.",
+                      "Sit straight down, knees pushing out over your toes, chest tall.",
+                      "Drive up and squeeze your glutes hard at the top."
+                    ],
+                    "watch": "knees caving in. Push them out the whole way.",
+                    "variants": [
+                      "7 kg dumbbell",
+                      "10 kg dumbbell",
+                      "12.5 kg dumbbell"
+                    ],
+                    "weightFor": {
+                      "pene": "12.5 kg dumbbell",
+                      "jenna": "10 kg dumbbell"
+                    },
+                    "qty": "3 rounds · Base: 10 · Level up: 12"
+                  },
+                  {
                     "name": "Dumbbell Romanian Deadlift",
-                    "qty": "2 rounds, 10 slow reps (Pene 7 kg, Jenna 5 kg)",
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower",
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=dumbbell%20romanian%20deadlift%20form",
                     "videoKnown": false,
@@ -10573,126 +10601,152 @@ window.SITE_DATA = {
                       "7 kg, 3 sec lower"
                     ],
                     "weightFor": {
+                      "pene": "10 kg dumbbells",
+                      "jenna": "7 kg dumbbells"
+                    }
+                  },
+                  {
+                    "name": "Dumbbell Step Ups",
+                    "videoKnown": false,
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20step%20up%20form%20glutes",
+                    "station": "Stepping block",
+                    "steps": [
+                      "Stand facing the stepping block, a dumbbell in each hand.",
+                      "Place one whole foot on the block and drive up through that heel until you stand tall on top.",
+                      "Step down slowly with the other foot. Do all reps on one leg, then swap."
+                    ],
+                    "watch": "pushing off the back foot. Let the top leg do all the work.",
+                    "variants": [
+                      "No weights",
+                      "5 kg dumbbells",
+                      "7 kg dumbbells"
+                    ],
+                    "weightFor": {
                       "pene": "7 kg dumbbells",
                       "jenna": "5 kg dumbbells"
                     },
-                    "buddy": "watch from the side for a flat back"
+                    "qty": "3 rounds · Base: 8 each leg · Level up: 10 each leg"
                   },
                   {
-                    "name": "Rope Cable Pull Through",
-                    "qty": "2 rounds, 12 smooth reps",
-                    "weight": "Lightest pin",
-                    "video": "https://www.youtube.com/results?search_query=cable%20pull%20through%20rope%20form",
+                    "name": "Dumbbell Glute Bridge",
                     "videoKnown": false,
-                    "station": "Side pulley · very bottom · rope",
-                    "setup": [
-                      "Pull the pop pin on one side pulley and slide it all the way to the bottom.",
-                      "Clip the rope on with the carabiner.",
-                      "Put the weight stack pin in the lightest plate."
-                    ],
+                    "weight": "10 kg dumbbell on hips",
+                    "video": "https://www.youtube.com/results?search_query=dumbbell%20glute%20bridge%20form",
                     "steps": [
-                      "Stand with your back to the pulley, the cable running between your legs. Hold one rope end in each hand.",
-                      "Walk forward two big steps, feet a bit wider than your hips. Push your hips back so the rope travels back between your legs, back flat, soft knees.",
-                      "Squeeze your glutes to drive your hips forward and stand tall. Arms just hang, your hips do the work."
+                      "Lie on your back, knees bent, feet flat and hip width. Rest a dumbbell across your hip bones (a folded towel underneath is comfier), holding it with both hands.",
+                      "Drive through your heels and lift your hips until your body is a straight line from knees to shoulders.",
+                      "Squeeze your glutes for 2 seconds at the top, then lower slowly."
                     ],
-                    "watch": "pulling with your arms or leaning back at the top. Stand tall, squeeze, done.",
+                    "watch": "arching the low back at the top. Ribs down, the squeeze comes from your bum.",
                     "variants": [
-                      "Lightest pin, smaller hinge",
-                      "Lightest pin, 12 reps",
-                      "One pin heavier, 2 sec squeeze"
+                      "7 kg dumbbell",
+                      "10 kg dumbbell",
+                      "12.5 kg dumbbell"
                     ],
-                    "buddy": "Glute Bridge, 1 sec squeeze at the top"
+                    "weightFor": {
+                      "pene": "12.5 kg dumbbell on hips",
+                      "jenna": "10 kg dumbbell on hips"
+                    },
+                    "qty": "3 rounds · Base: 12 · Level up: 15, 2 sec squeeze"
                   }
                 ]
               },
               {
-                "name": "Push Up Power",
+                "name": "Band Booty Burner",
                 "rounds": 2,
-                "tempo": "8 reps, 30 sec rest between exercises, 60 sec rest between rounds",
-                "formatNote": "<strong>Side by side.</strong> Push ups full until your form slips, then knees. Pike push ups build the shoulders you need for handstands: hips high, head goes down between your hands.",
+                "tempo": "40 sec active / 20 sec rest, 45 sec rest between rounds",
+                "formatNote": "<strong>The burn means it's working!</strong> All on the mat, side by side. Base: lighter band or none. Level up: heaviest band.",
                 "exercises": [
                   {
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "name": "Banded Glute Bridge Pulses",
                     "videoKnown": false,
-                    "name": "Push Ups",
-                    "qty": "2 rounds, 8 reps (full until form slips, rest on knees)"
-                  },
-                  {
-                    "name": "Pike Push Ups",
-                    "qty": "2 rounds, 6 reps, hips high",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=pike%20push%20up%20beginner",
-                    "videoKnown": false,
+                    "weight": "Loop band",
+                    "video": "https://www.youtube.com/results?search_query=banded%20glute%20bridge%20pulses",
                     "steps": [
-                      "Start in a downward dog shape, hips high, hands shoulder width apart.",
-                      "Bend your elbows and lower the top of your head towards the floor between your hands.",
-                      "Press back up to straight arms. This is the first step towards a handstand push up!"
+                      "Loop band above your knees, lie on your back, knees bent.",
+                      "Lift into a glute bridge and press your knees out against the band.",
+                      "Pulse up and down a few centimetres at the top."
                     ],
-                    "watch": "your elbows flaring wide. Keep them pointing back towards your knees.",
+                    "watch": "knees caving in. Keep pushing out into the band.",
                     "variants": [
-                      "Pike hold, 15 sec, no lowering",
-                      "Small pike push ups, 6 reps",
-                      "Feet up on the block, 6 reps"
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "Foam Roller Leg Release",
-                "rounds": 1,
-                "tempo": "No timer, about 1 min each spot, take turns on the roller",
-                "formatNote": "<strong>Give your legs a thank you.</strong> Take turns on the roller. Slow rolls, and pause on any tight spots.",
-                "exercises": [
-                  {
-                    "name": "Quad Roll",
-                    "qty": "1 min each leg",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20quads",
-                    "videoKnown": false,
-                    "steps": [
-                      "Lie face down with the roller under the front of your thighs, forearms on the floor.",
-                      "Roll slowly from just above your knee to just below your hip.",
-                      "Turn slightly in and out to find the tender bits, and pause there for 3 breaths."
+                      "No band",
+                      "Light band",
+                      "Heavier band"
                     ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "qty": "2 rounds · knees pushing out"
                   },
                   {
-                    "name": "Glute Roll",
-                    "qty": "1 min each side",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20glutes%20figure%204",
+                    "name": "Banded Clamshells",
                     "videoKnown": false,
+                    "weight": "Loop band",
+                    "video": "https://www.youtube.com/results?search_query=banded%20clamshell%20exercise%20form",
                     "steps": [
-                      "Sit on the roller and cross one ankle over the opposite knee (a figure 4).",
-                      "Lean towards the crossed leg and roll small, slow circles on that bum cheek.",
-                      "Swap sides."
+                      "Lie on your side, loop band above your knees, knees bent and stacked.",
+                      "Keeping your feet together, open your top knee like a clamshell.",
+                      "Lower slowly. Swap sides halfway."
                     ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "watch": "rolling your hips back. Keep them stacked and still.",
+                    "variants": [
+                      "No band",
+                      "Light band",
+                      "Heavier band"
+                    ],
+                    "qty": "2 rounds · swap sides at 20 sec"
                   },
                   {
-                    "name": "Calf Roll",
-                    "qty": "45 sec each leg",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20calves",
+                    "name": "Banded Donkey Kicks",
                     "videoKnown": false,
+                    "weight": "Loop band",
+                    "video": "https://www.youtube.com/results?search_query=banded%20donkey%20kicks%20form",
                     "steps": [
-                      "Sit with the roller under your calves, hands behind you.",
-                      "Lift your hips and roll from ankle to just below the knee.",
-                      "Point your toes in and out to cover the whole calf."
+                      "On hands and knees, loop band above your knees.",
+                      "Keeping the knee bent at 90 degrees, press one foot up towards the ceiling.",
+                      "Squeeze at the top, lower with control. Swap legs halfway."
                     ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "watch": "arching the low back. Tummy tight, only the leg moves.",
+                    "variants": [
+                      "No band",
+                      "Light band",
+                      "Heavier band"
+                    ],
+                    "qty": "2 rounds · swap legs at 20 sec"
+                  },
+                  {
+                    "name": "Frog Pumps",
+                    "videoKnown": false,
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=frog%20pumps%20glute%20exercise",
+                    "steps": [
+                      "Lie on your back, soles of your feet together, knees falling out wide.",
+                      "Drive your hips up by squeezing your glutes.",
+                      "Fast, punchy reps."
+                    ],
+                    "watch": "pushing with the low back. Small, sharp glute squeezes.",
+                    "variants": [
+                      "Bodyweight",
+                      "Light band",
+                      "Dumbbell on hips"
+                    ],
+                    "qty": "2 rounds · fast squeezes"
                   }
                 ]
               }
             ],
             "cooldown": [
               {
-                "name": "Child's Pose",
-                "qty": "45 sec",
+                "name": "Pigeon Pose",
+                "qty": "45 sec each side",
                 "weight": "",
-                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20stretch",
                 "videoKnown": false
+              },
+              {
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
+                "videoKnown": false,
+                "name": "Figure Four Stretch",
+                "qty": "30 sec each side"
               },
               {
                 "name": "Standing Quad Stretch",
@@ -11843,9 +11897,9 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Legs + AMRAP",
+            "title": "Glutes, Legs + AMRAP",
             "estTime": "45 min",
-            "note": "<strong>Legs, now 3 rounds!</strong> Last week was the gentle comeback, this week the volume goes up. <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Pick yours each set. Pene's boxes start on the heavier dumbbells. Then a brand new format: an <strong>8 minute AMRAP</strong> (as many rounds as possible). Count your rounds and pop the number in your Finish note, because this exact AMRAP comes back in a few weeks so you can see how much fitter you are. 🏆",
+            "note": "<strong>Booty day, round 2! 🍑</strong> Heavier than last week, all moves loaded, then the 8 minute AMRAP. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note: this exact AMRAP comes back in a few weeks so you can see how much fitter you are. Then a short band burner to finish.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -11862,23 +11916,47 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
+                "name": "Glute Bridge",
+                "qty": "10 slow reps, 2 sec squeeze",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=Glute%20Bridge%20exercise%20form",
+                "videoKnown": false,
+                "variants": [
+                  "Small lifts",
+                  "12 reps, 1 sec squeeze",
+                  "Single leg, 6 each side"
+                ],
+                "amrap": "12"
+              },
+              {
+                "name": "Banded Crab Steps",
+                "videoKnown": false,
+                "weight": "Loop band",
+                "video": "https://www.youtube.com/results?search_query=banded%20lateral%20band%20walk%20glutes",
+                "steps": [
+                  "Loop band just above your knees. Quarter squat, chest tall.",
+                  "Step sideways, keeping tension on the band the whole time.",
+                  "10 steps one way, 10 steps back."
+                ],
+                "watch": "standing up tall or letting the feet come together. Stay low, keep the band tight.",
+                "variants": [
+                  "Light band",
+                  "Medium band",
+                  "Heaviest band"
+                ],
+                "qty": "10 steps each way"
+              },
+              {
                 "name": "Walking Lunges",
                 "qty": "10 total, easy depth",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
                 "videoKnown": false
-              },
-              {
-                "name": "High Knees",
-                "qty": "30 sec, light and bouncy",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
-                "videoKnown": false
               }
             ],
             "blocks": [
               {
-                "name": "Station 1: Squat + Split Squat",
+                "name": "Station 1: Smith Squat + Smith Lunge",
                 "rounds": 3,
                 "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
                 "timer": {
@@ -11887,11 +11965,11 @@ window.SITE_DATA = {
                   "swap": 15,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Take turns on the Smith.</strong> Base: empty bar, 8 reps. Level up: 12 reps with a slow 3 sec lower. Split squats on the floor while you wait.",
+                "formatNote": "<strong>One Smith, take turns.</strong> Squat, then reverse lunges on the same bar (alternate legs). Base: empty bar. Level up: slow 3 sec lowers.",
                 "exercises": [
                   {
                     "name": "Smith Machine Squat",
-                    "qty": "3 rounds · Base: 8 reps · Level up: 12, 3 sec down",
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower",
                     "weight": "Empty Smith bar",
                     "video": "https://www.youtube.com/results?search_query=smith%20machine%20squat%20beginner%20form",
                     "videoKnown": false,
@@ -11912,32 +11990,32 @@ window.SITE_DATA = {
                       "Full depth, 8 reps",
                       "3 sec lower, 1 sec pause"
                     ],
-                    "buddy": "spot from the side, watch the knees"
+                    "buddy": "Banded crab steps, 10 each way"
                   },
                   {
-                    "name": "Split Squat (Hand on the Frame)",
-                    "qty": "3 rounds · Base: 6 each leg · Level up: 10 each, holding 5 kg dumbbells",
-                    "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=split%20squat%20beginner%20form",
+                    "name": "Smith Machine Reverse Lunge",
+                    "qty": "3 rounds · Base: 6 each leg · Level up: 8 each leg",
+                    "weight": "Empty Smith bar",
+                    "video": "https://www.youtube.com/results?search_query=smith%20machine%20reverse%20lunge",
                     "videoKnown": false,
-                    "station": "Beside the Beast · one hand on the upright",
+                    "station": "Same bar, same height · no changes",
                     "steps": [
-                      "Stand side on to the Beast and hold the upright lightly. Take a big step back with one foot, heel lifted.",
-                      "Lower straight down until both knees are bent to about 90 degrees.",
-                      "Push through your front heel to come back up. Do all 6, then swap legs."
+                      "Bar across your upper back, feet hip width, standing tall right under the bar.",
+                      "Step one foot back and lower until both knees are bent to about 90 degrees.",
+                      "Drive through your front heel to stand back up. Do all 5 on one leg, then swap."
                     ],
-                    "watch": "the front knee caving in. Keep it in line with your toes.",
+                    "watch": "the front knee shooting forward. Keep your weight in the front heel.",
                     "variants": [
-                      "Half depth",
-                      "Full depth, 6 each leg",
-                      "Full depth, 3 sec lower"
+                      "No bar, hands on the frame",
+                      "Empty bar, 5 each leg",
+                      "Empty bar, 3 sec lower"
                     ],
-                    "buddy": "Glute bridge hold"
+                    "buddy": "Banded glute bridge pulses"
                   }
                 ]
               },
               {
-                "name": "Station 2: Hinge + Glutes",
+                "name": "Station 2: Hinge + Kickback",
                 "rounds": 3,
                 "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
                 "timer": {
@@ -11946,11 +12024,11 @@ window.SITE_DATA = {
                   "swap": 20,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Hips back, flat back.</strong> Pene 10 kg, Jenna 7 kg on the RDL (step back down if your back rounds).",
+                "formatNote": "<strong>Romanian deadlifts with your own dumbbells, then cable kickbacks with the ankle strap</strong> (half the turn on each leg).",
                 "exercises": [
                   {
                     "name": "Dumbbell Romanian Deadlift",
-                    "qty": "3 rounds · Base: 10 reps · Level up: 12 reps",
+                    "qty": "3 rounds · Base: 10 · Level up: 12, or 12.5 kg",
                     "weight": "7 kg dumbbells",
                     "video": "https://www.youtube.com/results?search_query=dumbbell%20romanian%20deadlift%20form",
                     "videoKnown": false,
@@ -11972,29 +12050,12 @@ window.SITE_DATA = {
                     "buddy": "watch from the side for a flat back"
                   },
                   {
-                    "name": "Rope Cable Pull Through",
-                    "qty": "3 rounds · Base: 12 · Level up: 15 or one pin up",
+                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
+                    "qty": "3 rounds · Base: 10 each leg · Level up: one pin up",
                     "weight": "Lightest pin",
-                    "video": "https://www.youtube.com/results?search_query=cable%20pull%20through%20rope%20form",
+                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
                     "videoKnown": false,
-                    "station": "Side pulley · very bottom · rope",
-                    "setup": [
-                      "Pull the pop pin on one side pulley and slide it all the way to the bottom.",
-                      "Clip the rope on with the carabiner.",
-                      "Put the weight stack pin in the lightest plate."
-                    ],
-                    "steps": [
-                      "Stand with your back to the pulley, the cable running between your legs. Hold one rope end in each hand.",
-                      "Walk forward two big steps, feet a bit wider than your hips. Push your hips back so the rope travels back between your legs, back flat, soft knees.",
-                      "Squeeze your glutes to drive your hips forward and stand tall. Arms just hang, your hips do the work."
-                    ],
-                    "watch": "pulling with your arms or leaning back at the top. Stand tall, squeeze, done.",
-                    "variants": [
-                      "Lightest pin, smaller hinge",
-                      "Lightest pin, 12 reps",
-                      "One pin heavier, 2 sec squeeze"
-                    ],
-                    "buddy": "Glute Bridge, 1 sec squeeze at the top"
+                    "buddy": "Dumbbell glute bridge, 2 sec squeeze"
                   }
                 ]
               },
@@ -12063,60 +12124,78 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "Foam Roller Leg Release",
+                "name": "Band Booty Burner",
                 "rounds": 1,
-                "tempo": "No timer, about 1 min each spot, take turns on the roller",
-                "formatNote": "<strong>Thank your legs.</strong> Slow rolls, pause on tight spots.",
+                "tempo": "40 sec active / 20 sec rest",
+                "formatNote": "<strong>Short and spicy.</strong> One lap, side by side on the mats.",
                 "exercises": [
                   {
-                    "name": "Quad Roll",
-                    "qty": "1 min each leg",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20quads",
+                    "name": "Banded Fire Hydrants",
                     "videoKnown": false,
+                    "weight": "Loop band",
+                    "video": "https://www.youtube.com/results?search_query=banded%20fire%20hydrant%20exercise",
                     "steps": [
-                      "Lie face down with the roller under the front of your thighs, forearms on the floor.",
-                      "Roll slowly from just above your knee to just below your hip.",
-                      "Turn slightly in and out to find the tender bits, and pause there for 3 breaths."
+                      "On hands and knees, loop band above your knees.",
+                      "Keeping the knee bent, lift one leg out to the side.",
+                      "Lower slowly. Swap legs halfway."
                     ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "watch": "leaning away from the working leg. Keep your hips level.",
+                    "variants": [
+                      "No band",
+                      "Light band",
+                      "Heavier band"
+                    ],
+                    "qty": "swap legs at 20 sec"
                   },
                   {
-                    "name": "Glute Roll",
-                    "qty": "1 min each side",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20glutes%20figure%204",
+                    "name": "Banded Squat Pulses",
                     "videoKnown": false,
+                    "weight": "Loop band",
+                    "video": "https://www.youtube.com/results?search_query=banded%20squat%20pulses",
                     "steps": [
-                      "Sit on the roller and cross one ankle over the opposite knee (a figure 4).",
-                      "Lean towards the crossed leg and roll small, slow circles on that bum cheek.",
-                      "Swap sides."
+                      "Loop band above your knees, sink into a squat.",
+                      "Pulse up and down a few centimetres, pushing your knees out against the band.",
+                      "Stay low the whole time."
                     ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "watch": "knees caving. Push out into the band.",
+                    "variants": [
+                      "No band",
+                      "Light band",
+                      "Hold a 5 kg dumbbell"
+                    ],
+                    "qty": "stay low"
                   },
                   {
-                    "name": "Calf Roll",
-                    "qty": "45 sec each leg",
-                    "weight": "Foam roller",
-                    "video": "https://www.youtube.com/results?search_query=foam%20roll%20calves",
-                    "videoKnown": false,
-                    "steps": [
-                      "Sit with the roller under your calves, hands behind you.",
-                      "Lift your hips and roll from ankle to just below the knee.",
-                      "Point your toes in and out to cover the whole calf."
-                    ],
-                    "watch": "rolling fast or pressing through sharp pain. Slow, and it should feel like a good ache, a 5 or 6 out of 10."
+                    "name": "Single Leg Glute Bridge (Left)",
+                    "qty": "40 sec · Level up: 5 kg dumbbell on hips",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Left%29%20exercise%20form",
+                    "videoKnown": false
+                  },
+                  {
+                    "name": "Single Leg Glute Bridge (Right)",
+                    "qty": "40 sec · Level up: 5 kg dumbbell on hips",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Right%29%20exercise%20form",
+                    "videoKnown": false
                   }
                 ]
               }
             ],
             "cooldown": [
               {
-                "name": "Child's Pose",
-                "qty": "45 sec",
+                "name": "Pigeon Pose",
+                "qty": "45 sec each side",
                 "weight": "",
-                "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20stretch",
                 "videoKnown": false
+              },
+              {
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
+                "videoKnown": false,
+                "name": "Figure Four Stretch",
+                "qty": "30 sec each side"
               },
               {
                 "name": "Standing Quad Stretch",
