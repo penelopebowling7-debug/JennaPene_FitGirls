@@ -10452,7 +10452,7 @@ window.SITE_DATA = {
             "label": "Thursday",
             "title": "Glutes + Legs",
             "estTime": "45 min",
-            "note": "<strong>Summer booty day! 🍑</strong> A proper weighted legs and glutes session, every move loaded. Smith squats and cable kickbacks taken in turns, then a <strong>dumbbell booty circuit</strong> side by side (sumo squats, Romanian deadlifts, step ups and weighted glute bridges), then a <strong>band burner</strong> to finish. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Legs haven't been loaded in a while, so stop each set with 1 or 2 reps left in the tank. That's how you train hard without being unable to sit down on Saturday. Bands: Jenna has the small loop band, Pene the big band wrapped into an X, so you both burn at once.",
+            "note": "<strong>Summer booty day! 🍑</strong> A proper weighted legs and glutes session, every move loaded. One big <strong>6 station booty circuit</strong>: you both work at the same time and rotate (Smith squat, sumo squat, cable kickback, Romanian deadlift, step ups, weighted glute bridge), then a <strong>band burner</strong> to finish. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Legs haven't been loaded in a while, so stop each set with 1 or 2 reps left in the tank. That's how you train hard without being unable to sit down on Saturday. Bands: Jenna has the small loop band, Pene the big band wrapped into an X, so you both burn at once.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -10513,20 +10513,14 @@ window.SITE_DATA = {
             ],
             "blocks": [
               {
-                "name": "Station 1: Smith Squat + Cable Kickback",
+                "name": "Booty Circuit: Rotate the Stations",
                 "rounds": 3,
-                "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
-                "timer": {
-                  "type": "partner",
-                  "turn": 40,
-                  "swap": 15,
-                  "betweenRounds": 60
-                },
-                "formatNote": "<strong>Take turns.</strong> One squats on the Smith while the other does band crab steps, then the kickback on the low pulley with the ankle strap (do half the turn on each leg).",
+                "tempo": "50 sec active / 15 sec rest, 90 sec rest between rounds",
+                "formatNote": "<strong>6 stations, you both work at the same time and rotate.</strong> Pene starts on the Smith squat, Jenna starts on the sumo squat. When the timer says move, step to the next station in the list (Jenna goes from glute bridge back round to the Smith). Same reps as before, just no standing around waiting. Your own weights are in your boxes. Squeeze your glutes at the top of every rep!",
                 "exercises": [
                   {
                     "name": "Smith Machine Squat",
-                    "qty": "3 rounds · Base: 10 reps · Level up: 12, slow 3 sec lower",
+                    "qty": "3 rounds · Base: 10 · Level up: 12, slow 3 sec lower",
                     "weight": "Empty Smith bar",
                     "video": "https://www.youtube.com/results?search_query=smith%20machine%20squat%20beginner%20form",
                     "videoKnown": false,
@@ -10546,25 +10540,8 @@ window.SITE_DATA = {
                       "Squat to the safety stops only",
                       "Full depth, 8 reps",
                       "3 sec lower, 1 sec pause"
-                    ],
-                    "buddy": "Banded crab steps, 10 each way"
+                    ]
                   },
-                  {
-                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
-                    "qty": "3 rounds · Base: 10 each leg · Level up: 12 each leg or one pin up",
-                    "weight": "Lightest pin",
-                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
-                    "videoKnown": false,
-                    "buddy": "Glute bridge hold, squeeze hard"
-                  }
-                ]
-              },
-              {
-                "name": "Dumbbell Booty Circuit",
-                "rounds": 3,
-                "tempo": "10 reps, 30 sec rest between exercises, 75 sec rest between rounds",
-                "formatNote": "<strong>Side by side, your own dumbbells.</strong> Pene's boxes start heavier. Squeeze your glutes at the top of every single rep. That squeeze is where the shape comes from.",
-                "exercises": [
                   {
                     "name": "Dumbbell Sumo Squat",
                     "videoKnown": false,
@@ -10586,6 +10563,13 @@ window.SITE_DATA = {
                       "jenna": "10 kg dumbbell"
                     },
                     "qty": "3 rounds · Base: 10 · Level up: 12"
+                  },
+                  {
+                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
+                    "qty": "3 rounds · Base: 10 each leg · Level up: 12 each leg (swap legs at 25 sec)",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
+                    "videoKnown": false
                   },
                   {
                     "name": "Dumbbell Romanian Deadlift",
