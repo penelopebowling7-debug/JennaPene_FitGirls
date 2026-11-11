@@ -10516,7 +10516,7 @@ window.SITE_DATA = {
                 "name": "Booty Circuit: Rotate the Stations",
                 "rounds": 3,
                 "tempo": "50 sec active / 15 sec rest, 90 sec rest between rounds",
-                "formatNote": "<strong>6 stations, you both work at the same time and rotate.</strong> Pene starts on the Smith squat, Jenna starts on the sumo squat. When the timer says move, step to the next station in the list (Jenna goes from glute bridge back round to the Smith). Same reps as before, just no standing around waiting. Your own weights are in your boxes. Squeeze your glutes at the top of every rep!",
+                "formatNote": "<strong>6 stations, you both work at the same time and rotate.</strong> Pene starts on the Smith squat, Jenna starts on the sumo squat. When the timer says move, step to the next station in the list (Jenna goes from glute bridge back round to the Smith). Same reps as before, just no standing around waiting. Today: Pene drops to 10 kg dumbbells, kickbacks are bodyweight with no band, the Olympic bar is for the Romanian deadlifts, and Pene uses a plate for glute bridges. Squeeze your glutes at the top of every rep!",
                 "exercises": [
                   {
                     "name": "Smith Machine Squat",
@@ -10558,40 +10558,44 @@ window.SITE_DATA = {
                       "10 kg dumbbell",
                       "12.5 kg dumbbell"
                     ],
-                    "weightFor": {
-                      "pene": "12.5 kg dumbbell",
-                      "jenna": "10 kg dumbbell"
-                    },
-                    "qty": "3 rounds · Base: 10 · Level up: 12"
+                    "qty": "3 rounds · Base: 10 · Level up: 12 (both on 10 kg today)"
                   },
                   {
-                    "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
-                    "qty": "3 rounds · Base: 10 each leg · Level up: 12 each leg (swap legs at 25 sec)",
-                    "weight": "Lightest pin",
-                    "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
-                    "videoKnown": false
+                    "name": "Kneeling Glute Kickback",
+                    "qty": "3 rounds · Base: 12 each leg · Level up: 15 each leg (swap legs at 25 sec)",
+                    "weight": "Bodyweight, no band",
+                    "video": "https://www.youtube.com/results?search_query=kneeling%20glute%20kickback%20form",
+                    "videoKnown": false,
+                    "station": "Mat",
+                    "steps": [
+                      "On hands and knees on the mat, hands under shoulders, knees under hips.",
+                      "Keeping your tummy tight, kick one leg straight back and up until it is in line with your body, then squeeze your glute hard at the top.",
+                      "Lower with control. Swap legs at 25 sec."
+                    ],
+                    "watch": "arching the low back to get the leg higher. Only go as high as your back stays flat.",
+                    "variants": [
+                      "Bent knee (donkey kick)",
+                      "Straight leg",
+                      "Straight leg, 2 sec squeeze at the top"
+                    ]
                   },
                   {
-                    "name": "Dumbbell Romanian Deadlift",
-                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower",
-                    "weight": "7 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=dumbbell%20romanian%20deadlift%20form",
+                    "name": "Olympic Bar Romanian Deadlift",
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower (the bar is shared, it sits between the stations)",
+                    "weight": "Olympic bar (20 kg), no plates",
+                    "video": "https://www.youtube.com/results?search_query=barbell%20romanian%20deadlift%20form",
                     "videoKnown": false,
                     "steps": [
-                      "Stand tall with a dumbbell in each hand in front of your thighs, soft knees.",
-                      "Push your hips back and slide the dumbbells down your legs until you feel a stretch in your hamstrings. Back stays flat.",
-                      "Squeeze your glutes to drive your hips forward and stand tall."
+                      "Stand tall holding the Olympic bar at your thighs, hands just outside your hips, feet hip width.",
+                      "Soft knees, push your hips back and slide the bar down your thighs until you feel a stretch in your hamstrings (around mid shin).",
+                      "Squeeze your glutes and drive your hips forward to stand tall."
                     ],
-                    "watch": "your back rounding. Stop the rep where your back is still flat.",
+                    "watch": "the bar drifting away from your legs or a rounded back. Keep it close, chest proud.",
                     "variants": [
-                      "5 kg dumbbells",
-                      "7 kg dumbbells",
-                      "7 kg, 3 sec lower"
-                    ],
-                    "weightFor": {
-                      "pene": "10 kg dumbbells",
-                      "jenna": "7 kg dumbbells"
-                    }
+                      "Olympic bar, 8 reps",
+                      "Olympic bar, 10 reps",
+                      "Olympic bar, 12 reps"
+                    ]
                   },
                   {
                     "name": "Dumbbell Step Ups",
@@ -10633,10 +10637,10 @@ window.SITE_DATA = {
                       "12.5 kg dumbbell"
                     ],
                     "weightFor": {
-                      "pene": "12.5 kg dumbbell on hips",
+                      "pene": "Weight plate on hips",
                       "jenna": "10 kg dumbbell on hips"
                     },
-                    "qty": "3 rounds · Base: 12 · Level up: 15, 2 sec squeeze"
+                    "qty": "3 rounds · Base: 12 · Level up: 15, 2 sec squeeze (Pene: plate on hips, comfier)"
                   }
                 ]
               },
