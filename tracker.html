@@ -831,7 +831,7 @@
     <p style="font-size:0.9rem;line-height:1.6;">
       Pick the week and day at the top. Tap a round chip after you finish that round of an exercise, it fills in pink. Warm up and cool down items are single taps. The weight box is pre filled with the planned load, tap it to change what you actually used. The progress bar at the top of each day fills up as you check things off.<br><br>
       The small circle next to an exercise name opens a how-to video in a new tab. A filled pink circle (&#9654;) means it links straight to a specific video we found for that move. A light circle with a magnifying glass (&#128269;) means we didn't have a saved link for that one, so it opens a YouTube search for it instead, still useful, just not hand picked.<br><br>
-      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. <strong>New in Week 19:</strong> two new block styles. A <strong>Tabata</strong> block runs 8 intervals of 20 seconds on and 10 off, flipping between its two moves, 4 minutes and done. A <strong>Partner</strong> block (I Go, You Go, or Hold and Work) gives each of you a timed turn: the timer calls out whose turn it is, what the other one is doing (spotting, or the buddy move shown on the card), and when to swap. In solo mode it becomes your turn, then the buddy move or a rest. Either way, when the timer finishes a round it ticks the chips for you, same as always.<br><br>Make sure your phone isn't on silent so you can hear the cues, they use your phone's built in voice, not a saved audio file.<br><br>
+      Every timed block (the ones with a "sec active / sec rest" tempo) has its own <strong>Start Round Timer</strong> button right under the block name, showing how many exercises are in it. Tap it once at the start of a round and it walks you through every exercise in the circuit in order, work, then rest, then the next exercise, all the way to the end, calling out cues as it goes: "let's go" to start, a warning with 10 seconds of work left, "and rest" at each switch, and "Round complete" once the whole circuit's done, not just one move. When it finishes, it automatically ticks that round's chips for every exercise in the block for you. Tap the button again for the next round. A few blocks are rep based with a rest between them (like the Push Up Block), those pause and say "tap start when you're ready to rest" after each exercise since there's no fixed work time to count down, just do your reps at your own pace then tap. <strong>New in Week 19:</strong> two new block styles. A <strong>Tabata</strong> block runs 8 intervals of 20 seconds on and 10 off, flipping between its two moves, 4 minutes and done. A <strong>Partner</strong> block (I Go, You Go, or Hold and Work) gives each of you a timed turn: the timer calls out whose turn it is, what the other one is doing (spotting, or the buddy move shown on the card), and when to swap. In solo mode it becomes your turn, then the buddy move or a rest. Either way, when the timer finishes a round it ticks the chips for you, same as always.<br><br>Make sure your phone isn't on silent so you can hear the cues. Every timer now uses the recorded coach voice (same as Tabata), so your Spotify keeps playing underneath. Start your playlist first, then tap Start.<br><br>
       <strong>The voice cues</strong> are the phone's own voice, read with a different pace and brightness per moment (hype on "go", calmer on rest), plus a 3-2-1 tick before every change and a chord when a round lands. If you'd rather hear yourselves: record short MP3s and drop them in an <code>audio</code> folder in the repo (<code>start-1.mp3</code>, <code>warn-1.mp3</code>, <code>rest-1.mp3</code>, <code>complete-1.mp3</code>, up to <code>-3</code> of each) and the app uses them instead, falling back to the phone voice for any that aren't there.<br><br>
       The plain Rest Timer button at the bottom is a manual stopwatch for anything else, tap a preset to set how many seconds to count down, tap Start to begin, and it buzzes and beeps when time is up.<br><br>
       The Push Up Block works differently to everything else: do full push ups until your form breaks down (technical fail), then finish out the reps as modified (knee) push ups. Instead of round chips, you'll see a number box for Pene and one for Jenna each round, enter how many FULL reps each of you got before switching, the rest is assumed to be modified automatically. That number becoming your record over time is the whole point, it's a much better strength indicator than just ticking a box.<br><br>
@@ -2468,8 +2468,129 @@ function playClip(key){
 // energetic speech otherwise. Speech is the default, never the afterthought.
 function cue(key, textOverride, style){
   const text = textOverride || randomCue(key);
+  if(timerVoice.play(text)) return;
   if(playClip(key)) return;
   speak(text, style);
+}
+// One call for every line the Round Timer, EMOM, AMRAP, Partner and Race
+// timers say: the recorded coach if there's a clip, the phone voice if not.
+function coachLine(text, style){
+  if(timerVoice.play(text)) return;
+  speak(text, style);
+}
+
+// ---------------- Recorded coach for the timers (Batch 51) ----------------
+// Pene: Spotify stopped and the coach went quiet on the Round Timer and EMOM
+// (Monday upper body), while Tabata worked. Why: Tabata talks with recorded
+// clips played through Web Audio, which can mix over Spotify. These timers
+// used the phone's built in speech voice, and on iPhone that voice always
+// pauses other apps' audio. Now every timer line is a recorded clip in the
+// same coach voice (timer-voice.json, made by tools/make_timer_voice.py),
+// played through Web Audio, and the phone is told to mix with other apps
+// while a timer runs. The phone voice is only a fallback for a line with no
+// clip yet. tabata.js is untouched and sets its own audio rule when opened.
+const timerVoice = (function(){
+  const clips = {};   // key -> AudioBuffer
+  const raw = {};     // key -> base64 MP3, for the HTML audio fallback
+  let packPromise = null;
+  function key(t){ return String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+  function ctx(){
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+  function pack(){
+    if(!packPromise) packPromise = fetch('timer-voice.json').then(r => r.ok ? r.json() : { clips: {} })
+      .then(j => j.clips || {}).catch(() => { packPromise = null; return {}; });
+    return packPromise;
+  }
+  function load(text){
+    const k = key(text);
+    if(clips[k]) return Promise.resolve(true);
+    return pack().then(p => {
+      if(!p[k]) return false;
+      raw[k] = p[k];
+      const bin = atob(p[k]), buf = new Uint8Array(bin.length);
+      for(let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+      return new Promise(res => {
+        try{ ctx().decodeAudioData(buf.buffer, b => { clips[k] = b; res(true); }, () => res(false)); }
+        catch(e){ res(false); }
+      });
+    }).catch(() => false);
+  }
+  // Every line these steps can say, plus the shared cues.
+  function linesFor(steps){
+    const out = [];
+    Object.keys(CUES).forEach(c => CUES[c].forEach(t => out.push(t)));
+    out.push("Nice work! Tap start when you're ready to rest.");
+    (steps || []).forEach(s => {
+      if(s.say){ out.push(s.say); return; }
+      if(s.kind === 'work' && !s.isFirst) out.push('Next up! ' + s.exName + '. Go!');
+      if(s.kind === 'rest' && s.isBetweenRounds && !s.needsManualStart) out.push('Round done! Bigger rest. ' + s.seconds + ' seconds.');
+    });
+    return [...new Set(out)];
+  }
+  let wanted = [];
+  function preload(steps){
+    wanted = linesFor(steps);
+    return Promise.all(wanted.map(load));
+  }
+  function ready(){ return wanted.length > 0 && wanted.every(t => clips[key(t)]); }
+  let playing = null;
+  function play(text){
+    const k = key(text);
+    const a = audioCtx;
+    // Engine asleep (phone was locked): an HTML audio element still plays.
+    if(raw[k] && (!a || a.state !== 'running')){
+      try{ const el = new Audio('data:audio/mpeg;base64,' + raw[k]); el.play().catch(() => {}); return true; }catch(e){}
+    }
+    const b = clips[k];
+    if(!b) return false;
+    try{
+      if(playing){ try{ playing.stop(); }catch(e){} }   // never two lines on top of each other
+      const src = a.createBufferSource();
+      src.buffer = b; src.connect(a.destination); src.start();
+      playing = src;
+      src.onended = () => { if(playing === src) playing = null; };
+      return true;
+    }catch(e){ return false; }
+  }
+  return { preload, ready, play, linesFor };
+})();
+
+// Tell the phone our sounds mix with other apps (Spotify keeps playing) while
+// a timer is open, then put back whatever was set before (Tabata sets its own
+// rule when it opens). Safari 16.4+; elsewhere this does nothing.
+let audioSessionBeforeTimer = null;
+function timerAudioMix(on){
+  try{
+    if(!navigator.audioSession) return;
+    if(on){
+      if(audioSessionBeforeTimer === null) audioSessionBeforeTimer = navigator.audioSession.type;
+      if(navigator.audioSession.type !== 'ambient'){
+        navigator.audioSession.type = 'ambient';
+        // A quick suspend and resume re-applies the rule to a running engine
+        // (same trick as Tabata; never close it, a rebuilt one can stay muted).
+        if(audioCtx){ const a0 = audioCtx; a0.suspend().then(() => a0.resume()).catch(() => {}); }
+      }
+    } else if(audioSessionBeforeTimer !== null){
+      const prev = audioSessionBeforeTimer; audioSessionBeforeTimer = null;
+      if(navigator.audioSession.type !== prev){
+        navigator.audioSession.type = prev;
+        if(audioCtx){ const a0 = audioCtx; a0.suspend().then(() => a0.resume()).catch(() => {}); }
+      }
+    }
+  }catch(e){}
+  // The phone voice is what pauses Spotify, so make sure none is queued.
+  if(on){ try{ window.speechSynthesis.cancel(); }catch(e){} }
+}
+// Wake the sound engine inside the tap (iPhone only allows it there).
+function unlockTimerAudio(){
+  try{
+    const a = audioCtx || (audioCtx = new (window.AudioContext || window.webkitAudioContext)());
+    if(a.state !== 'running') a.resume();
+    const b = a.createBuffer(1, 1, 22050), src = a.createBufferSource();
+    src.buffer = b; src.connect(a.destination); src.start(0);
+  }catch(e){}
 }
 
 let availableVoices = [];
@@ -2703,7 +2824,7 @@ function announceStep(idx){
   if(!step) return;
   if(step.say){
     if(step.kind === 'work') tone(880, 0, 0.16, 0.24); else tone(523.25, 0, 0.22, 0.18);
-    speak(step.say, step.kind === 'work' ? 'hype' : 'calm');
+    coachLine(step.say, step.kind === 'work' ? 'hype' : 'calm');
     return;
   }
   if(step.kind === 'work'){
@@ -2711,14 +2832,14 @@ function announceStep(idx){
     if(step.isFirst){
       cue('start', null, 'hype');
     } else {
-      speak(`Next up! ${step.exName}. Go!`, 'hype');
+      coachLine(`Next up! ${step.exName}. Go!`, 'hype');
     }
   } else if(step.kind === 'rest'){
     tone(523.25, 0, 0.22, 0.18);
     if(step.needsManualStart){
-      speak("Nice work! Tap start when you're ready to rest.", 'calm');
+      coachLine("Nice work! Tap start when you're ready to rest.", 'calm');
     } else if(step.isBetweenRounds){
-      speak(`Round done! Bigger rest. ${step.seconds} seconds.`, 'calm');
+      coachLine(`Round done! Bigger rest. ${step.seconds} seconds.`, 'calm');
     } else {
       cue('rest', null, 'calm');
     }
@@ -2827,6 +2948,15 @@ document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState 
 // (rather than being inlined in the Start button's onclick) since the now-
 // removed hands-free "full session guide" chain used to call it directly too.
 function startTimerRun(){
+  timerAudioMix(true); unlockTimerAudio();
+  if(timerMode === 'guided' && !timerVoice.ready() && !startTimerRun.waited){
+    // First Start: give the coach's lines a moment to finish loading.
+    startTimerRun.waited = true;
+    document.getElementById('timerPhase').textContent = 'Loading coach…';
+    const timeout = new Promise(res => setTimeout(res, 2500));
+    Promise.race([timerVoice.preload(roundSteps), timeout]).then(() => startTimerRun());
+    return;
+  }
   if(timerMode === 'guided'){
     if(phase === 'done'){
       stepIdx = 0;
@@ -2904,6 +3034,9 @@ function openGuidedTimer(block, bi, timing, week, day, ds){
   guidedBlockIndex = bi;
   guidedDayCtx = { week, day, ds };
   roundSteps = buildRoundSteps(block, timing);
+  startTimerRun.waited = false;
+  timerAudioMix(true);   // before the engine is made, so it's born mixing with Spotify
+  timerVoice.preload(roundSteps);
   stepIdx = 0;
   lastAnnouncedStep = -1;
   clearInterval(timerInterval);
@@ -2912,7 +3045,7 @@ function openGuidedTimer(block, bi, timing, week, day, ds){
   loadStep(0);
   document.getElementById('timerTitle').textContent = block.name + ' — Round Timer';
   document.getElementById('timerPresets').style.display = 'none';
-  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll guide you through every exercise in this round in order. Turn silent mode off so you can hear it.";
+  document.getElementById('timerDisclaimer').textContent = "Tap Start, then keep your phone nearby, we'll guide you through every exercise in this round in order. Music from Spotify keeps playing under the coach. Turn silent mode off so you can hear it.";
   startBtnIdleLabel = 'Start';
   document.getElementById('startTimer').textContent = 'Start';
   openModal('timerOverlay');
@@ -2923,7 +3056,7 @@ function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
 document.getElementById('openTimer').onclick = ()=> openManualTimer();
-document.getElementById('closeTimer').onclick = ()=>{ stopTimerRunning(); closeModal('timerOverlay'); };
+document.getElementById('closeTimer').onclick = ()=>{ stopTimerRunning(); timerAudioMix(false); closeModal('timerOverlay'); };
 document.getElementById('howToUse').onclick = ()=> openModal('guideOverlay');
 document.getElementById('closeGuide').onclick = ()=> closeModal('guideOverlay');
 

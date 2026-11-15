@@ -2,6 +2,16 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 51: Round Timer and EMOM now talk over Spotify (16 Nov)
+Pene: on Monday upper body, starting the Round Timer or the EMOM stopped Spotify and there were no voice instructions. Tabata was fine.
+- **Why**: Tabata talks with recorded clips played as sound effects, which can mix over Spotify. The Round, EMOM, AMRAP, Partner and Race timers used the phone's built in speech voice, and on iPhone that voice always pauses other apps. The phone audio rule was also left on Tabata's setting, which doesn't mix.
+- **Fix**: every line those timers say (275 lines, every week, solo and together) is now recorded in the same coach voice as Tabata, in **timer-voice.json** (6 MB, loaded only when a timer opens). While a timer is open the phone is told to mix with other apps, then it's put back on close. The phone voice is only a fallback for a line with no clip.
+- **tabata.js is untouched.**
+- **New weeks**: when a batch adds timer blocks, rerun tools/list_timer_lines.py then tools/make_timer_voice.py (keeps existing clips, records only new lines).
+- Offline cache pj-fitness-v34 (timer-voice.json added).
+
+**Testing**: Playwright, Week 25 Monday: EMOM, Station 2 Round Timer and Lat Tower Partner timer each played recorded clips with zero phone voice calls, mix rule on while open and restored on close. Tabata Tuesday still runs on its own rule with its clips. No page errors. Spotify behaviour still to confirm on the iPhone.
+
 ## Batch 39: Thursday with Ax, runs and walks tracker, week download (4 Nov)
 Pene is training with her son Ax (11) again. Tuesday they ran 2.3 km in under 20 min together.
 - **Week 22 Thu is now "Run + Strength Squad"** (about 50 to 55 min, log as Pene solo, Ax follows along): the 2.3 km loop with an optional lamp post sprint game, then **Block 1: Push + Pull Power** (3 x 8: proper push ups to form fail then knees, lat pulldown, pike push ups, chin ups for Ax or cable row for Pene), **Block 2: Fun Strength Circuit** (40/20 x 2: burpees, reverse lunges, bear crawl, squat jumps, shoulder taps, mountain climbers) and **Hang Time** (dead hang, dip support, hollow hold). Ax versions on every card: bodyweight, bar and lightest cable pin only, no Smith machine.
