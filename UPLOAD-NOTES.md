@@ -2,6 +2,14 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 54: Week 24 Thursday rebuilt, Glutes, Legs + Abs (17 Nov)
+Pene: likes Smith squat and reverse lunges but wants a move in between so the partner isn't waiting on the Smith; doesn't like the banded section (only one small fabric band, big loop bands awkward); wants more abs alongside the summer legs and glutes focus.
+- Title Glutes, Legs + Abs, 45 to 50 min. No bands anywhere: warm up crab steps → bodyweight lateral lunge.
+- Station 1 buddy moves: squat ↔ dumbbell sumo squat, reverse lunge ↔ dead bug. Station 2: RDL buddy plank hold (kickback keeps dumbbell glute bridge).
+- AMRAP: push ups → reverse crunch (10 reps).
+- Band Booty Burner → Summer Abs + Booty Finisher: frog pumps, single leg glute bridge, side plank hip dips, dead bug, bicycle crunch, 40/20 x 2.
+- timer-voice.json regenerated (all Thursday lines voiced, together and solo). Offline cache pj-fitness-v37.
+
 ## Batch 53: Week 24 Tuesday Tabata B arm swaps (17 Nov)
 Pene: the stepping block is only a 20 cm aerobic step, too low for tricep dips, and she's sore from Monday's arms.
 - Tabata B: **Close Grip Push Ups → Glute Bridge** (Level up: single leg) and **Tricep Dips → Superman Hold** (Level up: lift and lower). Format note updated.

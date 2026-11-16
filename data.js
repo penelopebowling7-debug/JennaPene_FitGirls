@@ -11618,7 +11618,11 @@ window.SITE_DATA = {
                     "videoKnown": false,
                     "video": "https://www.youtube.com/results?search_query=glute%20bridge%20exercise%20form",
                     "qty": "2 intervals · Base: both feet · Level up: single leg, swap legs each interval",
-                    "steps": ["Lie on your back, knees bent, feet flat and hip width apart, arms relaxed by your sides.", "Push through your heels and squeeze your glutes to lift your hips into a straight line from knees to shoulders.", "Pause at the top, then lower slowly. Keep your ribs down so your lower back doesn't arch."]
+                    "steps": [
+                      "Lie on your back, knees bent, feet flat and hip width apart, arms relaxed by your sides.",
+                      "Push through your heels and squeeze your glutes to lift your hips into a straight line from knees to shoulders.",
+                      "Pause at the top, then lower slowly. Keep your ribs down so your lower back doesn't arch."
+                    ]
                   },
                   {
                     "weight": "3 kg dumbbell",
@@ -11651,7 +11655,11 @@ window.SITE_DATA = {
                     "videoKnown": false,
                     "video": "https://www.youtube.com/results?search_query=superman%20hold%20exercise%20form",
                     "qty": "2 intervals · Base: hold · Level up: lift and lower, pause 2 sec at the top",
-                    "steps": ["Lie face down, arms stretched out in front, legs long.", "Lift your chest, arms and legs a few centimetres off the floor by squeezing your glutes and upper back.", "Look at the floor to keep your neck long, breathe, and hold. Arms just float, no pushing."]
+                    "steps": [
+                      "Lie face down, arms stretched out in front, legs long.",
+                      "Lift your chest, arms and legs a few centimetres off the floor by squeezing your glutes and upper back.",
+                      "Look at the floor to keep your neck long, breathe, and hold. Arms just float, no pushing."
+                    ]
                   },
                   {
                     "weight": "Bodyweight",
@@ -11899,9 +11907,9 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Glutes, Legs + AMRAP",
-            "estTime": "45 min",
-            "note": "<strong>Booty day, round 2! 🍑</strong> Heavier than last week, all moves loaded, then the 8 minute AMRAP. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note: this exact AMRAP comes back in a few weeks so you can see how much fitter you are. Then a band burner to finish, both of you banded.",
+            "title": "Glutes, Legs + Abs",
+            "estTime": "45 to 50 min",
+            "note": "<strong>Summer bum, toned legs, strong abs! 🍑</strong> No bands today. <strong>New:</strong> every partner station has a buddy move, so while one of you is on the Smith or the cable, the other is working too (no standing around). The buddy moves are mostly abs, so your core gets hit all session, then an abs and booty finisher to end. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -11931,26 +11939,17 @@ window.SITE_DATA = {
                 "amrap": "12"
               },
               {
-                "name": "Banded Crab Steps",
+                "name": "Bodyweight Lateral Lunge",
+                "qty": "6 each side, easy depth",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=lateral%20lunge%20bodyweight%20form",
                 "videoKnown": false,
-                "weight": "Loop band",
-                "video": "https://www.youtube.com/results?search_query=banded%20lateral%20band%20walk%20glutes",
                 "steps": [
-                  "Loop band just above your knees. Quarter squat, chest tall.",
-                  "Step sideways, keeping tension on the band the whole time.",
-                  "10 steps one way, 10 steps back."
+                  "Feet wide, toes forward.",
+                  "Sit back into one hip, keeping the other leg straight. Chest tall.",
+                  "Push back to the middle and swap sides."
                 ],
-                "watch": "standing up tall or letting the feet come together. Stay low, keep the band tight.",
-                "variants": [
-                  "Light band",
-                  "Medium band",
-                  "Heaviest band"
-                ],
-                "qty": "10 steps each way, both at once",
-                "weightFor": {
-                  "pene": "Big band, crossed X",
-                  "jenna": "Small loop band"
-                }
+                "watch": "the bent knee caving in. Keep it over your toes."
               },
               {
                 "name": "Walking Lunges",
@@ -11971,7 +11970,7 @@ window.SITE_DATA = {
                   "swap": 15,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>One Smith, take turns.</strong> Squat, then reverse lunges on the same bar (alternate legs). Base: empty bar. Level up: slow 3 sec lowers.",
+                "formatNote": "<strong>One Smith, take turns, nobody waits.</strong> While one of you is on the Smith, the other does the buddy move on the mat, then swap. Squat buddy: <strong>dumbbell sumo squat</strong> (inner thighs). Lunge buddy: <strong>dead bug</strong> (deep abs). Base: empty bar. Level up: slow 3 sec lowers.",
                 "exercises": [
                   {
                     "name": "Smith Machine Squat",
@@ -11996,7 +11995,7 @@ window.SITE_DATA = {
                       "Full depth, 8 reps",
                       "3 sec lower, 1 sec pause"
                     ],
-                    "buddy": "Banded crab steps, 10 each way"
+                    "buddy": "Dumbbell Sumo Squat"
                   },
                   {
                     "name": "Smith Machine Reverse Lunge",
@@ -12016,7 +12015,7 @@ window.SITE_DATA = {
                       "Empty bar, 5 each leg",
                       "Empty bar, 3 sec lower"
                     ],
-                    "buddy": "Banded glute bridge pulses"
+                    "buddy": "Dead Bug"
                   }
                 ]
               },
@@ -12030,7 +12029,7 @@ window.SITE_DATA = {
                   "swap": 20,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Romanian deadlifts with your own dumbbells, then cable kickbacks with the ankle strap</strong> (half the turn on each leg).",
+                "formatNote": "<strong>Romanian deadlifts with your own dumbbells, then cable kickbacks with the ankle strap</strong> (half the turn on each leg). RDL buddy: <strong>plank hold</strong>. Kickback buddy: dumbbell glute bridge.",
                 "exercises": [
                   {
                     "name": "Dumbbell Romanian Deadlift",
@@ -12053,7 +12052,7 @@ window.SITE_DATA = {
                       "pene": "10 kg dumbbells",
                       "jenna": "7 kg dumbbells"
                     },
-                    "buddy": "watch from the side for a flat back"
+                    "buddy": "Plank Hold"
                   },
                   {
                     "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
@@ -12073,7 +12072,7 @@ window.SITE_DATA = {
                   "type": "amrap",
                   "minutes": 8
                 },
-                "formatNote": "<strong>Go through the list, then start again, until the clock stops.</strong> Same time, side by side, your own pace. Count your rounds (and extra reps) and write it in your Finish note, e.g. \"4 rounds + 6\".",
+                "formatNote": "<strong>Go through the list, then start again, until the clock stops.</strong> Same time, side by side, your own pace. Push ups are out today (arms had Monday), reverse crunches are in. Count your rounds (and extra reps) and write it in your Finish note, e.g. \"4 rounds + 6\".",
                 "exercises": [
                   {
                     "name": "Dumbbell Goblet Squat",
@@ -12099,12 +12098,23 @@ window.SITE_DATA = {
                     "amrap": "10"
                   },
                   {
+                    "name": "Reverse Crunch",
+                    "qty": "10 reps each round",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Push%20Ups%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20crunch%20exercise%20form",
                     "videoKnown": false,
-                    "name": "Push Ups",
-                    "qty": "8 reps each round, knees fine",
-                    "amrap": "8"
+                    "steps": [
+                      "Lie on your back, knees bent at 90 degrees, hands by your sides.",
+                      "Curl your knees towards your chest so your hips lift off the floor a little.",
+                      "Lower slowly until your feet nearly touch."
+                    ],
+                    "watch": "swinging. Small and slow beats big and floppy.",
+                    "variants": [
+                      "Feet tap the floor each rep",
+                      "Feet stay up",
+                      "Legs straighter"
+                    ],
+                    "amrap": "10"
                   },
                   {
                     "name": "Glute Bridge",
@@ -12130,68 +12140,75 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "Band Booty Burner",
+                "name": "Summer Abs + Booty Finisher",
                 "rounds": 2,
                 "tempo": "40 sec active / 20 sec rest, 45 sec rest between rounds",
-                "formatNote": "<strong>Both of you banded, side by side!</strong> Jenna wears the small loop band, Pene uses the big band wrapped into an X (two loops, kept flat). Donkey kicks are awkward in the big band, so do those without it and squeeze harder. The burn means it is working!",
+                "formatNote": "<strong>No bands, side by side.</strong> Two booty moves, then three ab moves, twice through. Base and Level up on every card. The burn means it is working!",
                 "exercises": [
                   {
-                    "name": "Banded Fire Hydrants",
-                    "videoKnown": false,
-                    "weight": "Loop band",
-                    "video": "https://www.youtube.com/results?search_query=banded%20fire%20hydrant%20exercise",
-                    "steps": [
-                      "On hands and knees, loop band above your knees.",
-                      "Keeping the knee bent, lift one leg out to the side.",
-                      "Lower slowly. Swap legs halfway."
-                    ],
-                    "watch": "leaning away from the working leg. Keep your hips level.",
-                    "variants": [
-                      "No band",
-                      "Light band",
-                      "Heavier band"
-                    ],
-                    "qty": "2 rounds · swap legs at 20 sec",
-                    "weightFor": {
-                      "pene": "Big band, X wrapped",
-                      "jenna": "Small loop band"
-                    }
-                  },
-                  {
-                    "name": "Banded Squat Pulses",
-                    "videoKnown": false,
-                    "weight": "Loop band",
-                    "video": "https://www.youtube.com/results?search_query=banded%20squat%20pulses",
-                    "steps": [
-                      "Loop band above your knees, sink into a squat.",
-                      "Pulse up and down a few centimetres, pushing your knees out against the band.",
-                      "Stay low the whole time."
-                    ],
-                    "watch": "knees caving. Push out into the band.",
-                    "variants": [
-                      "No band",
-                      "Light band",
-                      "Hold a 5 kg dumbbell"
-                    ],
-                    "qty": "2 rounds · stay low",
-                    "weightFor": {
-                      "pene": "Big band, X wrapped",
-                      "jenna": "Small loop band"
-                    }
-                  },
-                  {
-                    "name": "Single Leg Glute Bridge (Left)",
+                    "name": "Frog Pumps",
                     "qty": "2 rounds · 40 sec · Level up: 5 kg dumbbell on hips",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Left%29%20exercise%20form",
-                    "videoKnown": false
+                    "video": "https://www.youtube.com/results?search_query=frog%20pumps%20glute%20exercise",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, soles of your feet together, knees falling out wide.",
+                      "Squeeze your glutes to lift your hips, then lower.",
+                      "Quick, small reps. Feel the squeeze every time."
+                    ],
+                    "watch": "arching your lower back. Lift with your bum, not your back."
                   },
                   {
-                    "name": "Single Leg Glute Bridge (Right)",
-                    "qty": "2 rounds · 40 sec · Level up: 5 kg dumbbell on hips",
+                    "name": "Single Leg Glute Bridge",
+                    "qty": "2 rounds · 40 sec · 20 sec each leg · Level up: pause 2 sec at the top",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Single%20Leg%20Glute%20Bridge%20%28Right%29%20exercise%20form",
-                    "videoKnown": false
+                    "video": "https://www.youtube.com/results?search_query=single%20leg%20glute%20bridge%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Lie on your back, one foot flat, the other leg straight up or bent.",
+                      "Drive through the planted heel to lift your hips level.",
+                      "Swap legs at 20 seconds."
+                    ],
+                    "watch": "hips tilting to one side. Keep them level."
+                  },
+                  {
+                    "name": "Side Plank Hip Dips",
+                    "qty": "2 rounds · 40 sec · 20 sec each side · Base: knees down · Level up: feet stacked",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=side%20plank%20hip%20dips",
+                    "videoKnown": false,
+                    "steps": [
+                      "Side plank on your forearm, elbow under your shoulder.",
+                      "Dip your hip towards the floor, then lift it high.",
+                      "Swap sides at 20 seconds."
+                    ],
+                    "watch": "your hips rolling back. Stay stacked, side on."
+                  },
+                  {
+                    "name": "Dead Bug",
+                    "qty": "2 rounds · 40 sec · slow · Level up: hold a 3 kg dumbbell in your hands",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=dead%20bug%20exercise%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "On your back, arms up, knees bent over hips.",
+                      "Lower one arm and the opposite leg slowly towards the floor.",
+                      "Bring them back and swap. Lower back stays pressed down."
+                    ],
+                    "watch": "your back lifting off the floor. Go slower and smaller."
+                  },
+                  {
+                    "name": "Bicycle Crunch",
+                    "qty": "2 rounds · 40 sec · Base: slow · Level up: legs lower",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=bicycle%20crunch%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "On your back, hands light behind your head.",
+                      "Bring one knee in and turn the opposite shoulder towards it.",
+                      "Swap sides slowly. This is not a race."
+                    ],
+                    "watch": "pulling on your neck. Elbows wide, hands light."
                   }
                 ]
               }
