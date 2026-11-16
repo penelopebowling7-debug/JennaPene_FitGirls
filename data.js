@@ -11908,7 +11908,7 @@ window.SITE_DATA = {
             "id": "thu",
             "label": "Thursday",
             "title": "Glutes, Legs + Abs",
-            "estTime": "45 to 50 min",
+            "estTime": "50 to 55 min",
             "note": "<strong>Summer bum, toned legs, strong abs! 🍑</strong> No bands today. <strong>New:</strong> every partner station has a buddy move, so while one of you is on the Smith or the cable, the other is working too (no standing around). The buddy moves are mostly abs, so your core gets hit all session, then an abs and booty finisher to end. <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Count your AMRAP rounds and pop the number in your Finish note.",
             "warmup": [
               {
@@ -12020,16 +12020,16 @@ window.SITE_DATA = {
                 ]
               },
               {
-                "name": "Station 2: Hinge + Kickback",
+                "name": "Station 2: Romanian Deadlift",
                 "rounds": 3,
-                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "tempo": "40 sec turns, 15 sec swap, 45 sec rest between rounds",
                 "timer": {
                   "type": "partner",
                   "turn": 40,
-                  "swap": 20,
-                  "betweenRounds": 60
+                  "swap": 15,
+                  "betweenRounds": 45
                 },
-                "formatNote": "<strong>Romanian deadlifts with your own dumbbells, then cable kickbacks with the ankle strap</strong> (half the turn on each leg). RDL buddy: <strong>plank hold</strong>. Kickback buddy: dumbbell glute bridge.",
+                "formatNote": "<strong>Romanian deadlifts with your own dumbbells.</strong> One of you lifts, the other holds a <strong>plank</strong>, then swap.",
                 "exercises": [
                   {
                     "name": "Dumbbell Romanian Deadlift",
@@ -12053,14 +12053,34 @@ window.SITE_DATA = {
                       "jenna": "7 kg dumbbells"
                     },
                     "buddy": "Plank Hold"
-                  },
+                  }
+                ]
+              },
+              {
+                "name": "Station 3: Cable Kickback",
+                "rounds": 2,
+                "tempo": "90 sec turns, 30 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 90,
+                  "swap": 30,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>Kickbacks get their own station with a long turn.</strong> 90 seconds covers strapping on, getting set, 10 reps, swapping the strap and 10 reps on the other leg. The 30 second swap is for handing the strap over. Buddy move: <strong>dumbbell glute bridge</strong>, 2 sec squeeze at the top.",
+                "exercises": [
                   {
                     "name": "Cable Glute Kickback (Ankle Strap, Bottom)",
-                    "qty": "3 rounds · Base: 10 each leg · Level up: one pin up",
+                    "qty": "2 rounds · both legs in your turn · Base: 10 each leg · Level up: one pin up",
                     "weight": "Lightest pin",
                     "video": "https://www.youtube.com/results?search_query=cable%20glute%20kickback%20ankle%20strap",
                     "videoKnown": false,
-                    "buddy": "Dumbbell glute bridge, 2 sec squeeze"
+                    "buddy": "Dumbbell Glute Bridge",
+                    "steps": [
+                      "Strap on, crawl back to the stack and set up on all fours (or stand holding the frame).",
+                      "Kick the strapped leg back and up, squeezing your glute at the top. Slow on the way back.",
+                      "10 reps, then swap the strap to the other ankle (about halfway through your turn) and do 10 more."
+                    ],
+                    "watch": "arching your lower back to kick higher. Small range, big squeeze."
                   }
                 ]
               },

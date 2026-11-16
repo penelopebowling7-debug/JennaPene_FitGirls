@@ -2,6 +2,12 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 55: Week 24 Thursday, kickbacks get their own station (17 Nov)
+Pene: 20 sec per leg inside a 40 sec turn can't fit strapping the ankle on, crawling back to the stack and 10 reps. The exercise is fine, the structure wasn't.
+- Station 2 is now Romanian Deadlift only (40 sec turns, plank hold buddy, 45 sec between rounds).
+- New Station 3: Cable Kickback, 2 rounds, 90 sec turns (both legs, strap swap halfway), 30 sec swap to hand the strap over, dumbbell glute bridge buddy.
+- estTime 50 to 55 min. timer-voice.json regenerated, all lines voiced. Offline cache pj-fitness-v38.
+
 ## Batch 54: Week 24 Thursday rebuilt, Glutes, Legs + Abs (17 Nov)
 Pene: likes Smith squat and reverse lunges but wants a move in between so the partner isn't waiting on the Smith; doesn't like the banded section (only one small fabric band, big loop bands awkward); wants more abs alongside the summer legs and glutes focus.
 - Title Glutes, Legs + Abs, 45 to 50 min. No bands anywhere: warm up crab steps → bodyweight lateral lunge.
