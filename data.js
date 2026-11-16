@@ -11496,11 +11496,17 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
-                "name": "Cat Cow Stretch",
-                "qty": "8 slow reps",
+                "name": "World's Greatest Stretch",
+                "qty": "4 each side, slow",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=cat%20cow%20stretch",
-                "videoKnown": false
+                "video": "https://www.youtube.com/results?search_query=world%27s%20greatest%20stretch%20how%20to",
+                "videoKnown": false,
+                "steps": [
+                  "Step one foot forward into a long lunge and put both hands on the floor inside that foot.",
+                  "Drop your front elbow towards your instep, then twist and reach that arm up to the ceiling, eyes following your hand.",
+                  "Hand back down, straighten your front leg to stretch the hamstring, then step back and swap sides."
+                ],
+                "watch": "rushing it. Breathe out on every twist and let it open a little more."
               }
             ],
             "blocks": [
