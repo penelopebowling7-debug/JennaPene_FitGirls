@@ -13554,9 +13554,9 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Legs + Partner Burner",
-            "estTime": "45 min",
-            "note": "<strong>Heavier legs, then a partner burner!</strong> If last week's Level up felt good, the boxes go up a dumbbell today. <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Pick yours each set. New: a <strong>farmer carry</strong> (pick up heavy, walk tall, one of the best whole body strength moves there is) and a \"you go, I go\" burner where one works while the other holds a wall sit. No sneaky rests! Keep the legs fresh enough for Friday's race: stop each set with a rep or two left.",
+            "title": "Legs + Pistol Skills",
+            "estTime": "50 to 55 min",
+            "note": "<strong>New: the Pistol Squat Skills Lab! 🦵</strong> A pistol is a full squat on one leg, the other leg held out in front. It takes strength, balance, ankle mobility and core control all at once, so we build it in stages, starting while you're fresh. <strong>Every station now has a buddy move</strong> for strength and control: single leg balance, side to side strength, core control and slow crawls. <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Then heavier legs and the partner burner. Keep the legs fresh enough for Friday's race: stop each set with a rep or two left.",
             "warmup": [
               {
                 "name": "Marching on the Spot",
@@ -13580,6 +13580,31 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
+                "name": "Ankle Rocks",
+                "qty": "10 each side",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=knee%20over%20toe%20ankle%20mobility%20rocks",
+                "videoKnown": false,
+                "steps": [
+                  "Half kneel facing a wall, front foot a hand's length from it.",
+                  "Rock your front knee forward over your toes towards the wall, heel stays down.",
+                  "Rock back and repeat. Swap legs."
+                ],
+                "watch": "your heel lifting. Ankle bend is what lets a pistol go deep."
+              },
+              {
+                "name": "Deep Squat Hold",
+                "qty": "30 sec, hold the frame if you need",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=deep%20squat%20hold%20mobility",
+                "videoKnown": false,
+                "steps": [
+                  "Feet a bit wider than hips, toes slightly out.",
+                  "Sit all the way down, chest tall, elbows pushing your knees out.",
+                  "Breathe and relax into it."
+                ]
+              },
+              {
                 "name": "High Knees",
                 "qty": "30 sec, light and bouncy",
                 "weight": "Bodyweight",
@@ -13588,6 +13613,50 @@ window.SITE_DATA = {
               }
             ],
             "blocks": [
+              {
+                "name": "Skills Lab: Pistol Squat",
+                "rounds": 2,
+                "tempo": "30 sec turns, 20 sec swap, 45 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 30,
+                  "swap": 20,
+                  "betweenRounds": 45
+                },
+                "formatNote": "<strong>Quality over quantity.</strong> Stage 1 is the assisted pistol (hands on the Smith bar take some of your weight). Stage 2 is the box pistol (lower on one leg to sit on a chair). Over the coming weeks the help gets less and the chair gets lower, until it's a full pistol. Buddy moves: <strong>Cossack squat</strong> (side to side strength) and <strong>slow bear crawl</strong> (control).",
+                "exercises": [
+                  {
+                    "name": "Assisted Pistol Squat",
+                    "qty": "2 rounds · Base: 3 each leg · Level up: 5 each leg, lighter grip",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=assisted%20pistol%20squat%20holding%20support",
+                    "videoKnown": false,
+                    "station": "Smith bar at about hip height, locked in · hold with both hands",
+                    "steps": [
+                      "Stand on one leg facing the bar, other leg lifted a little in front.",
+                      "Sit back and down as low as you can control, using your hands only as much as you need.",
+                      "Drive up through your whole foot. Swap legs halfway."
+                    ],
+                    "watch": "your knee caving in. Keep it in line with your toes, even if you go less deep.",
+                    "buddy": "Cossack Squat"
+                  },
+                  {
+                    "name": "Box Pistol to Chair",
+                    "qty": "2 rounds · Base: 3 each leg, stand up on two legs · Level up: stand up on one leg",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=box%20pistol%20squat%20progression",
+                    "videoKnown": false,
+                    "station": "Sturdy chair, back against the wall",
+                    "steps": [
+                      "Stand in front of the chair on one leg, arms out in front for balance.",
+                      "Lower slowly on that leg until you sit, about 3 seconds down.",
+                      "Stand back up (both legs for Base, one leg for Level up). Swap legs halfway."
+                    ],
+                    "watch": "dropping into the chair. The slow lower is the bit that builds the pistol.",
+                    "buddy": "Slow Bear Crawl"
+                  }
+                ]
+              },
               {
                 "name": "Station 1: Squat + Carry",
                 "rounds": 3,
@@ -13598,7 +13667,7 @@ window.SITE_DATA = {
                   "swap": 15,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Goblet squats for both, then farmer carry laps of the shed or yard.</strong> Take turns.",
+                "formatNote": "<strong>Goblet squats, then farmer carry laps of the shed or yard.</strong> Take turns. Buddy moves: <strong>hollow hold</strong> and <strong>side plank</strong> (core control).",
                 "exercises": [
                   {
                     "name": "Dumbbell Goblet Squat",
@@ -13621,7 +13690,7 @@ window.SITE_DATA = {
                       "jenna": "10 kg dumbbell"
                     },
                     "qty": "3 rounds · Base: 10 · Level up: 12",
-                    "buddy": "watch the heels stay down"
+                    "buddy": "Hollow Hold"
                   },
                   {
                     "name": "Farmer Carry",
@@ -13644,7 +13713,7 @@ window.SITE_DATA = {
                       "jenna": "2 x 10 kg dumbbells"
                     },
                     "qty": "3 rounds · walk for 40 sec · Level up: heavier pair",
-                    "buddy": "Glute bridge hold"
+                    "buddy": "Side Plank, swap sides halfway"
                   }
                 ]
               },
@@ -13658,7 +13727,7 @@ window.SITE_DATA = {
                   "swap": 20,
                   "betweenRounds": 60
                 },
-                "formatNote": "<strong>Pene 10 kg, Jenna 7 kg on the RDL.</strong> Level up: go up a pair if 12 felt easy last week.",
+                "formatNote": "<strong>Pene 10 kg, Jenna 7 kg on the RDL.</strong> Level up: go up a pair if 12 felt easy last week. Buddy moves: <strong>single leg balance reach</strong> (stand on one leg, hinge and reach to the floor, swap legs halfway) and <strong>hollow to arch roll</strong> (roll from back to front keeping your body long, no hands).",
                 "exercises": [
                   {
                     "name": "Dumbbell Romanian Deadlift",
@@ -13681,7 +13750,7 @@ window.SITE_DATA = {
                       "pene": "10 kg dumbbells",
                       "jenna": "7 kg dumbbells"
                     },
-                    "buddy": "watch from the side for a flat back"
+                    "buddy": "Single Leg Balance Reach"
                   },
                   {
                     "weight": "Bodyweight",
@@ -13694,7 +13763,7 @@ window.SITE_DATA = {
                       "Bodyweight, alternating",
                       "Ax: reverse lunge to knee drive"
                     ],
-                    "buddy": "Side lying leg lifts, swap sides halfway"
+                    "buddy": "Hollow to Arch Roll"
                   }
                 ]
               },

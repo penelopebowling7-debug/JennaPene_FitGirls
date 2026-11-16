@@ -2,6 +2,13 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 58: Week 25 Thursday, Pistol Squat Skills Lab + control buddy moves (17 Nov)
+Pene wants movements with strength and control (pistol squats), plus single leg balance, side to side strength, core control and flow moves, with lots of variety.
+- Title Legs + Pistol Skills, 50 to 55 min. Warm up adds Ankle Rocks and Deep Squat Hold (pistol depth prep).
+- New opener: Skills Lab: Pistol Squat, 2 rounds, 30 sec turns, 20 sec swap. Assisted Pistol Squat (Smith bar) ↔ Cossack Squat; Box Pistol to Chair ↔ Slow Bear Crawl. Progress over coming weeks: less help, lower chair, then full pistol.
+- Buddy moves: Goblet Squat ↔ Hollow Hold, Farmer Carry ↔ Side Plank, RDL ↔ Single Leg Balance Reach, Reverse Lunges ↔ Hollow to Arch Roll.
+- timer-voice.json regenerated, all lines voiced. Offline cache pj-fitness-v41.
+
 ## Batch 57: Week 24 Tuesday warm up variety (17 Nov)
 - Arm Circles (done Monday) → Hip Circles, 8 each direction. Offline cache pj-fitness-v40.
 
