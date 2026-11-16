@@ -11482,11 +11482,16 @@ window.SITE_DATA = {
                 "videoKnown": false
               },
               {
-                "name": "Arm Circles",
-                "qty": "15 each direction",
+                "name": "Hip Circles",
+                "qty": "8 each direction, big and slow",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=arm%20circles%20warm%20up",
-                "videoKnown": false
+                "video": "https://www.youtube.com/results?search_query=standing%20hip%20circles%20warm%20up",
+                "videoKnown": false,
+                "steps": [
+                  "Stand tall, hands on hips, feet hip width.",
+                  "Draw big slow circles with your hips, like a hula hoop in slow motion.",
+                  "8 one way, then 8 the other."
+                ]
               },
               {
                 "name": "Leg Swings",

@@ -2,6 +2,9 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 57: Week 24 Tuesday warm up variety (17 Nov)
+- Arm Circles (done Monday) → Hip Circles, 8 each direction. Offline cache pj-fitness-v40.
+
 ## Batch 56: Week 24 Tuesday warm up (17 Nov)
 - Cat Cow Stretch (done Monday) → World's Greatest Stretch, 4 each side. Offline cache pj-fitness-v39.
 
