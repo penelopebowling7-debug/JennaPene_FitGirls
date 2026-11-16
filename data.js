@@ -11610,14 +11610,15 @@ window.SITE_DATA = {
                   "rest": 10,
                   "intervals": 16
                 },
-                "formatNote": "<strong>Rest 2 minutes first, then 8 brand new moves, twice through.</strong> Zero overlap with Tabata A. Tricep dips go on the stepping block. Base: knees down on the push ups and plank work. Level up: full versions, no pauses.",
+                "formatNote": "<strong>Rest 2 minutes first, then 8 brand new moves, twice through.</strong> Zero overlap with Tabata A. Arms got a day off after Monday: glute bridges and superman holds replace the push ups and dips. Base: knees down on the plank work. Level up: full versions, no pauses.",
                 "exercises": [
                   {
-                    "name": "Close Grip Push Ups",
+                    "name": "Glute Bridge",
                     "weight": "Bodyweight",
                     "videoKnown": false,
-                    "video": "https://www.youtube.com/results?search_query=Close%20Grip%20Push%20Ups%20exercise%20form",
-                    "qty": "2 intervals · Base: knees · Level up: full"
+                    "video": "https://www.youtube.com/results?search_query=glute%20bridge%20exercise%20form",
+                    "qty": "2 intervals · Base: both feet · Level up: single leg, swap legs each interval",
+                    "steps": ["Lie on your back, knees bent, feet flat and hip width apart, arms relaxed by your sides.", "Push through your heels and squeeze your glutes to lift your hips into a straight line from knees to shoulders.", "Pause at the top, then lower slowly. Keep your ribs down so your lower back doesn't arch."]
                   },
                   {
                     "weight": "3 kg dumbbell",
@@ -11645,11 +11646,12 @@ window.SITE_DATA = {
                     "qty": "2 intervals · straight arm reach"
                   },
                   {
-                    "name": "Tricep Dips",
+                    "name": "Superman Hold",
                     "weight": "Bodyweight",
                     "videoKnown": false,
-                    "video": "https://www.youtube.com/results?search_query=Tricep%20Dips%20exercise%20form",
-                    "qty": "2 intervals · hands on the stepping block · Level up: legs straight"
+                    "video": "https://www.youtube.com/results?search_query=superman%20hold%20exercise%20form",
+                    "qty": "2 intervals · Base: hold · Level up: lift and lower, pause 2 sec at the top",
+                    "steps": ["Lie face down, arms stretched out in front, legs long.", "Lift your chest, arms and legs a few centimetres off the floor by squeezing your glutes and upper back.", "Look at the floor to keep your neck long, breathe, and hold. Arms just float, no pushing."]
                   },
                   {
                     "weight": "Bodyweight",

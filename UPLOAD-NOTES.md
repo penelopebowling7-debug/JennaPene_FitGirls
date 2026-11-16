@@ -2,6 +2,12 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 53: Week 24 Tuesday Tabata B arm swaps (17 Nov)
+Pene: the stepping block is only a 20 cm aerobic step, too low for tricep dips, and she's sore from Monday's arms.
+- Tabata B: **Close Grip Push Ups → Glute Bridge** (Level up: single leg) and **Tricep Dips → Superman Hold** (Level up: lift and lower). Format note updated.
+- Coach voice: Superman Hold clips recorded (ready, go, halfway, last, next) in the Tabata voice; Glute Bridge already had them.
+- Offline cache pj-fitness-v36.
+
 ## Batch 52: New home dashboard (16 Nov)
 Pene: the home page still talked about Weeks 11 and 12 and needed something fun.
 - **index.html** is now a live dashboard that works itself out from data.js and the synced history, so it never goes stale: current week and dates (from each week's dates line), Up next session with a Let's go button, this week's progress ring and day chips (optional days don't count), sessions finished, hours trained, week streak, weeks in the program, each person's biggest fitness test win (logged retests included), last session card, a daily science bite, and quick links (Progress added).
