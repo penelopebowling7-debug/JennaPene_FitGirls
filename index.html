@@ -11,6 +11,90 @@
 <meta name="apple-mobile-web-app-title" content="FitGirls">
 <title>Pene &amp; Jenna Fitness Hub</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ---------------- Home dashboard (Batch 52) ---------------- */
+.dash{max-width:960px;margin:0 auto;}
+.dash-hero{
+  position:relative;overflow:hidden;border-radius:22px;padding:22px 20px 20px;color:#fff;
+  background:linear-gradient(135deg,#F72585 0%,#B5179E 38%,#7209B7 70%,#560BAD 100%);
+  box-shadow:0 10px 30px rgba(114,9,183,0.30);margin-bottom:16px;
+}
+.dash-hero::before,.dash-hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,0.12);pointer-events:none;}
+.dash-hero::before{width:220px;height:220px;right:-70px;top:-80px;}
+.dash-hero::after{width:140px;height:140px;left:-50px;bottom:-60px;background:rgba(255,214,10,0.18);}
+.hero-greet{font-size:0.9rem;font-weight:700;opacity:0.9;letter-spacing:0.02em;margin:0;}
+.hero-week{font-size:2.1rem;font-weight:900;line-height:1.05;margin:4px 0 2px;}
+.hero-dates{font-size:0.9rem;opacity:0.9;margin:0 0 16px;}
+.next-card{position:relative;z-index:1;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.28);
+  border-radius:16px;padding:14px;display:flex;gap:12px;align-items:center;backdrop-filter:blur(4px);}
+.next-emoji{font-size:2rem;flex:0 0 auto;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.22);
+  display:flex;align-items:center;justify-content:center;}
+.next-text{flex:1;min-width:0;}
+.next-kicker{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-500);}
+.next-title{font-size:1.1rem;font-weight:800;margin:2px 0;}
+.next-meta{font-size:0.82rem;opacity:0.9;}
+.go-btn{flex:0 0 auto;background:var(--gold-500);color:#2B0A4D;font-weight:900;text-decoration:none;
+  padding:12px 16px;border-radius:999px;font-size:0.95rem;box-shadow:0 4px 14px rgba(0,0,0,0.18);}
+.go-btn:active{transform:scale(0.97);}
+
+.week-card{display:flex;gap:16px;align-items:center;}
+.ring-wrap{position:relative;width:110px;height:110px;flex:0 0 auto;}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ring-label b{font-size:1.6rem;color:var(--teal-700);line-height:1;}
+.ring-label span{font-size:0.7rem;color:var(--ink-soft);font-weight:700;}
+.week-side{flex:1;min-width:0;}
+.week-side h3{margin:0 0 4px;font-size:1.05rem;}
+.week-side p{margin:0 0 10px;color:var(--ink-soft);font-size:0.85rem;}
+.day-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{min-width:40px;text-align:center;padding:7px 8px;border-radius:12px;font-size:0.75rem;font-weight:800;
+  background:var(--teal-100);color:var(--teal-700);border:2px solid transparent;}
+.chip.done{background:linear-gradient(135deg,var(--coral-500),var(--teal-500));color:#fff;}
+.chip.today{border-color:var(--gold-500);box-shadow:0 0 0 3px rgba(255,214,10,0.35);}
+.chip small{display:block;font-size:0.62rem;font-weight:700;opacity:0.85;}
+
+.section-title{font-size:0.78rem;font-weight:900;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin:22px 4px 10px;}
+.stats4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:700px){.stats4{grid-template-columns:repeat(4,1fr);}}
+.stat{border-radius:18px;padding:14px;color:#fff;position:relative;overflow:hidden;min-height:104px;}
+.stat .ico{font-size:1.4rem;}
+.stat .num{font-size:1.9rem;font-weight:900;line-height:1.1;margin-top:4px;}
+.stat .lbl{font-size:0.78rem;font-weight:700;opacity:0.92;}
+.s1{background:linear-gradient(135deg,#7B2FF7,#6A11CB);}
+.s2{background:linear-gradient(135deg,#F72585,#B5179E);}
+.s3{background:linear-gradient(135deg,#FF8A00,#F72585);}
+.s4{background:linear-gradient(135deg,#4361EE,#7B2FF7);}
+
+.duo{display:grid;grid-template-columns:1fr;gap:12px;}
+@media(min-width:700px){.duo{grid-template-columns:1fr 1fr;}}
+.glow-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);}
+.glow-item:first-of-type{border-top:none;}
+.who-dot{width:38px;height:38px;border-radius:50%;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.who-dot.pene{background:var(--series-pene);}
+.who-dot.jenna{background:var(--series-jenna);}
+.glow-item .what{flex:1;font-size:0.86rem;line-height:1.35;}
+.glow-item .what b{display:block;font-size:0.95rem;}
+.glow-item .up{font-weight:900;color:#0A9F6B;font-size:0.95rem;white-space:nowrap;}
+.card h3{margin-top:0;}
+.muted{color:var(--ink-soft);font-size:0.84rem;margin:0;}
+.last-row{display:flex;gap:12px;align-items:center;}
+.last-badge{font-size:1.8rem;width:52px;height:52px;border-radius:14px;background:var(--coral-100);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+
+.brain{background:linear-gradient(135deg,var(--gold-100),#FFE5F4);border:none;}
+.brain .tag{display:inline-block;font-size:0.7rem;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:#B5179E;margin-bottom:6px;}
+.brain p{margin:0;font-size:0.98rem;line-height:1.5;font-weight:600;}
+.brain .src{display:block;margin-top:6px;font-size:0.76rem;color:var(--ink-soft);font-weight:600;}
+
+.mini-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:700px){.mini-tiles{grid-template-columns:repeat(5,1fr);}}
+.mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 12px;text-decoration:none;color:var(--ink);
+  box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px;}
+.mini:last-child{grid-column:1 / -1;}
+@media(min-width:700px){.mini:last-child{grid-column:auto;}}
+.mini .i{font-size:1.5rem;}
+.mini b{font-size:0.95rem;}
+.mini span{font-size:0.75rem;color:var(--ink-soft);}
+</style>
 </head>
 <body>
 
@@ -31,58 +115,329 @@
   </nav>
 </header>
 
-<main>
-  <section class="hero">
-    <h2>Welcome to your workout hub ✨</h2>
-    <p>Everything for the two of you in one place: the live workout tracker for your sessions, your fitness test progress over time, and the fun stats from everything you've lifted and logged so far.</p>
+<main class="dash">
+
+  <section class="dash-hero">
+    <p class="hero-greet" id="greet">Hey girls ✨</p>
+    <div class="hero-week" id="heroWeek">Your week</div>
+    <p class="hero-dates" id="heroDates"></p>
+    <div class="next-card">
+      <div class="next-emoji" id="nextEmoji">💪</div>
+      <div class="next-text">
+        <div class="next-kicker" id="nextKicker">Up next</div>
+        <div class="next-title" id="nextTitle">Loading your plan…</div>
+        <div class="next-meta" id="nextMeta"></div>
+      </div>
+      <a class="go-btn" href="tracker.html" id="goBtn">Let's go</a>
+    </div>
   </section>
 
-  <div class="tile-grid">
-    <a class="nav-tile" href="tracker.html">
-      <span class="icon">💪</span>
-      <h3>Workout Tracker</h3>
-      <p>Your live 4-day plan for Weeks 11 and 12. Tick off rounds, log weights, and use the rest timer during your session.</p>
-      <span class="go">Open tracker &rarr;</span>
-    </a>
-    <a class="nav-tile" href="beast.html">
-      <span class="icon">🦾</span>
-      <h3>Beast Guide</h3>
-      <p>Your new multi gym explained: every part, how it adjusts, the attachments, and what you can do at each station.</p>
-      <span class="go">Meet the Beast &rarr;</span>
-    </a>
-    <a class="nav-tile" href="tests.html">
-      <span class="icon">📈</span>
-      <h3>Fitness Tests</h3>
-      <p>Push ups, plank hold, wall sit and sit ups, charted for both of you across every test date so far.</p>
-      <span class="go">See your progress &rarr;</span>
-    </a>
-    <a class="nav-tile" href="stats.html">
-      <span class="icon">🎉</span>
-      <h3>Fun Stats</h3>
-      <p>How many sessions you've programmed together, roughly how long you've trained, and an estimate of the total weight you've lifted.</p>
-      <span class="go">See the fun facts &rarr;</span>
-    </a>
+  <div class="card week-card">
+    <div class="ring-wrap">
+      <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+        <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F72585"/><stop offset="1" stop-color="#7B2FF7"/></linearGradient></defs>
+        <circle cx="55" cy="55" r="46" fill="none" stroke="#F3E8FF" stroke-width="12"/>
+        <circle id="ringArc" cx="55" cy="55" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="12" stroke-linecap="round"
+          stroke-dasharray="289" stroke-dashoffset="289" style="transition:stroke-dashoffset 1s ease;"/>
+      </svg>
+      <div class="ring-label"><b id="ringNum">0/0</b><span>sessions</span></div>
+    </div>
+    <div class="week-side">
+      <h3 id="weekHead">This week</h3>
+      <p id="weekSub">Tick off your days in the tracker and watch this fill up.</p>
+      <div class="day-chips" id="dayChips"></div>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>How this hub works</h3>
-    <p style="margin:0;color:var(--ink-soft);font-size:0.88rem;line-height:1.55;">
-      This site lives on the web so it opens properly on your phone (the old file version
-      needed a real browser to run its scripts, which is why it sometimes looked broken on
-      mobile). The tracker syncs live between your devices, so tick something on your phone
-      and it shows up on the laptop or TV within a second or two, no refresh needed. It also
-      saves to each device as a backup, so nothing's lost if you close the tab or lose signal
-      mid session.
-    </p>
+  <div class="section-title">Your training so far</div>
+  <div class="stats4">
+    <div class="stat s1"><div class="ico">🔥</div><div class="num" id="stSessions">0</div><div class="lbl">sessions finished</div></div>
+    <div class="stat s2"><div class="ico">⏱️</div><div class="num" id="stHours">0</div><div class="lbl">hours trained</div></div>
+    <div class="stat s3"><div class="ico">⚡</div><div class="num" id="stStreak">0</div><div class="lbl">week streak</div></div>
+    <div class="stat s4"><div class="ico">🗓️</div><div class="num" id="stWeeks">0</div><div class="lbl">weeks in the program</div></div>
+  </div>
+
+  <div class="section-title">Glow up board</div>
+  <div class="duo">
+    <div class="card">
+      <h3>🌟 Biggest wins since your first test</h3>
+      <div id="glowList"><p class="muted">Your fitness test wins will show here.</p></div>
+      <p class="muted" id="testNext" style="margin-top:10px;"></p>
+    </div>
+    <div class="card">
+      <h3>🏁 Last session</h3>
+      <div id="lastSession"><p class="muted">Finish a workout in the tracker and it shows up here.</p></div>
+    </div>
+  </div>
+
+  <div class="section-title">Brain fuel</div>
+  <div class="card brain">
+    <span class="tag">🧠 Today's science bite</span>
+    <p id="brainText"></p>
+    <span class="src" id="brainSrc"></span>
+  </div>
+
+  <div class="section-title">Jump to</div>
+  <div class="mini-tiles">
+    <a class="mini" href="tracker.html"><span class="i">💪</span><b>Tracker</b><span>Today's workout</span></a>
+    <a class="mini" href="progress.html"><span class="i">📊</span><b>Progress</b><span>Your lifts over time</span></a>
+    <a class="mini" href="tests.html"><span class="i">📈</span><b>Fitness Tests</b><span>Log a retest</span></a>
+    <a class="mini" href="stats.html"><span class="i">🎉</span><b>Fun Stats</b><span>All the fun facts</span></a>
+    <a class="mini" href="beast.html"><span class="i">🦾</span><b>Beast Guide</b><span>Your multi gym</span></a>
   </div>
 </main>
 
-<footer class="site-footer">Built for Pene &amp; Jenna's training block, Weeks 11&ndash;12.</footer>
+<footer class="site-footer" id="footer">Built for Pene &amp; Jenna.</footer>
 
+<script src="data.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
 <script>/* fresh copy every load (Batch 47) */document.write('<script src="firebase-sync.js?t='+Date.now()+'"><\/script>');</script>
 <script>/* fresh copy every load (Batch 47) */document.write('<script src="app-shell.js?t='+Date.now()+'"><\/script>');</script>
+<script>
+// Home dashboard (Batch 52). Everything here is worked out from data.js and the
+// synced history, so it moves on by itself every week: no hand edits needed.
+(function(){
+  const DATA = (window.SITE_DATA || {});
+  const WEEKS = (DATA.tracker && DATA.tracker.weeks) || [];
+  const FT = DATA.fitnessTests || { tests: [], dates: [] };
+  const MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  const DAYNAMES = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const $ = id => document.getElementById(id);
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  // Local copies first (instant, works offline), then the live shared record.
+  const readLS = (k, fb) => { try{ const r = localStorage.getItem(k); return r ? JSON.parse(r) : fb; }catch(e){ return fb; } };
+  let completed = readLS('pj-completed-days-v1', []);
+  let archive = readLS('pj-workout-archive-v1', []);
+  let testEntries = readLS('pj-fitness-test-entries-v1', []);
+
+  // "Mon 16 to Sat 21 Nov" → the first day number and the first month named.
+  // The program started in 2026, so Jan to Jul means the following year.
+  function weekStart(w){
+    const s = String(w.dates || '');
+    const d = s.match(/\b(\d{1,2})\b/);
+    const m = s.toLowerCase().match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/);
+    if(!d || !m) return null;
+    const mi = MONTHS.indexOf(m[1]);
+    return new Date(mi < 7 ? 2027 : 2026, mi, parseInt(d[1], 10));
+  }
+  function dayDate(w, day){
+    const start = weekStart(w); if(!start) return null;
+    const target = DAYNAMES.indexOf(String(day.label || '').toLowerCase());
+    if(target < 0) return null;
+    const dt = new Date(start);
+    dt.setDate(dt.getDate() + ((target - start.getDay() + 7) % 7));
+    return dt;
+  }
+  function currentWeekIdx(){
+    let idx = WEEKS.length - 1;
+    for(let i = 0; i < WEEKS.length; i++){
+      const s = weekStart(WEEKS[i]);
+      if(s && s <= today) idx = i;
+    }
+    // Before the newest week's start: use whichever started most recently.
+    return Math.max(0, idx);
+  }
+  const keyFor = (w, d) => w.id + '__' + d.id;
+  // A day counts as done if you did it together, or either of you did it solo.
+  const isDone = (w, d) => completed.some(k => k === keyFor(w, d) || k.indexOf(keyFor(w, d) + '@') === 0);
+
+  function emojiFor(title){
+    const t = String(title || '').toLowerCase();
+    if(/tabata/.test(t)) return '🔥';
+    if(/yoga|pilates|mobility|stretch/.test(t)) return '🧘‍♀️';
+    if(/run|walk|interval/.test(t)) return '🏃‍♀️';
+    if(/race/.test(t)) return '🏁';
+    if(/glute|leg/.test(t)) return '🍑';
+    if(/upper|push|arm/.test(t)) return '💪';
+    return '✨';
+  }
+
+  function greet(){
+    const h = new Date().getHours();
+    const part = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+    $('greet').textContent = part + ', Pene & Jenna ✨';
+  }
+
+  function renderWeek(){
+    if(!WEEKS.length) return;
+    const wi = currentWeekIdx(), w = WEEKS[wi];
+    $('heroWeek').textContent = w.label;
+    $('heroDates').textContent = w.dates;
+    $('footer').textContent = 'Built for Pene & Jenna · ' + w.label + ' of the program';
+
+    // Up next: first unfinished day this week, else the first one next week.
+    let next = null, nextWeek = w;
+    const todayIdx = w.days.findIndex(d => { const dt = dayDate(w, d); return dt && dt.getTime() === today.getTime(); });
+    const order = w.days.map((d, i) => i);
+    // Start from today's session if it isn't done, otherwise the next unfinished one.
+    if(todayIdx > -1 && !isDone(w, w.days[todayIdx])) next = w.days[todayIdx];
+    if(!next) next = order.map(i => w.days[i]).find(d => !isDone(w, d) && (!dayDate(w, d) || dayDate(w, d) >= today));
+    if(!next) next = w.days.find(d => !isDone(w, d));
+    if(!next && WEEKS[wi + 1]){ nextWeek = WEEKS[wi + 1]; next = nextWeek.days[0]; }
+
+    if(next){
+      const dt = dayDate(nextWeek, next);
+      const isToday = dt && dt.getTime() === today.getTime();
+      const late = dt && dt < today;
+      $('nextKicker').textContent = isToday ? "Today's session" : late ? 'Still to do' : 'Up next';
+      $('nextTitle').textContent = (nextWeek !== w ? nextWeek.label + ' ' : '') + next.label + ' · ' + next.title;
+      $('nextMeta').textContent = (next.estTime ? '⏱️ ' + next.estTime : '') + ((next.blocks || []).length ? '  ·  ' + next.blocks.length + ' blocks' : '');
+      $('nextEmoji').textContent = emojiFor(next.title);
+      $('goBtn').textContent = "Let's go";
+    } else {
+      $('nextKicker').textContent = 'All done';
+      $('nextTitle').textContent = 'Every session this week is ticked off 🎉';
+      $('nextMeta').textContent = 'Rest up, the next week lands soon.';
+      $('nextEmoji').textContent = '🏆';
+      $('goBtn').textContent = 'Tracker';
+    }
+
+    // Ring and day chips. Optional days don't count against you.
+    const counted = w.days.filter(d => !/optional/i.test(d.title || ''));
+    const doneCount = counted.filter(d => isDone(w, d)).length;
+    const total = counted.length || 1;
+    $('ringNum').textContent = doneCount + '/' + counted.length;
+    $('ringArc').setAttribute('stroke-dashoffset', String(289 * (1 - doneCount / total)));
+    $('weekHead').textContent = doneCount === 0 ? 'Fresh week, fresh start' :
+      doneCount >= total ? 'Week smashed! 🏆' :
+      doneCount / total >= 0.5 ? 'Over halfway, keep rolling 🔥' : 'Off and running 💫';
+    $('weekSub').textContent = doneCount >= total ? 'Every planned session done. Optional extras are a bonus.' :
+      (total - doneCount) + ' session' + (total - doneCount === 1 ? '' : 's') + ' to go this week.';
+    const chips = $('dayChips'); chips.innerHTML = '';
+    w.days.forEach(d => {
+      const c = document.createElement('a');
+      const dt = dayDate(w, d);
+      c.className = 'chip' + (isDone(w, d) ? ' done' : '') + (dt && dt.getTime() === today.getTime() ? ' today' : '');
+      c.href = 'tracker.html'; c.style.textDecoration = 'none';
+      c.title = d.label + ': ' + d.title;
+      c.innerHTML = d.label.slice(0, 3) + (isDone(w, d) ? ' ✓' : '') + (dt ? '<small>' + dt.getDate() + '</small>' : '');
+      chips.appendChild(c);
+    });
+
+    $('stWeeks').textContent = String(w.label).replace(/\D+/g, '') || String(wi + 1);
+  }
+
+  function renderStats(){
+    const list = Array.isArray(archive) ? archive : [];
+    $('stSessions').textContent = list.length;
+    const mins = list.reduce((s, e) => s + (Number(e.totalMinutes) || 0), 0);
+    $('stHours').textContent = mins >= 600 ? Math.round(mins / 60) : (Math.round(mins / 6) / 10);
+
+    // Streak: weeks in a row (back from the current one) with at least one
+    // finished session. The current week only breaks it once it's over.
+    const wi = currentWeekIdx();
+    const hasSession = w => w.days.some(d => isDone(w, d)) || list.some(e => e.week === w.label);
+    let streak = 0;
+    for(let i = wi; i >= 0; i--){
+      if(hasSession(WEEKS[i])) streak++;
+      else if(i === wi) continue;
+      else break;
+    }
+    $('stStreak').textContent = streak;
+
+    // Last session card
+    const last = list.slice().sort((a, b) => String(b.completedAt).localeCompare(String(a.completedAt)))[0];
+    if(last){
+      const when = new Date(last.completedAt);
+      const days = Math.round((today - new Date(when.getFullYear(), when.getMonth(), when.getDate())) / 86400000);
+      const ago = days <= 0 ? 'Today' : days === 1 ? 'Yesterday' : days + ' days ago';
+      const feel = { easier: 'Felt easy 😎', right: 'Felt just right 👌', tougher: 'Felt tough 😤' }[last.difficulty] || '';
+      const who = last.who === 'pene' ? 'Pene solo' : last.who === 'jenna' ? 'Jenna solo' : 'Together';
+      const rounds = (last.exercises || []).reduce((s, x) => {
+        const by = x.roundsDoneBy; if(by) return s + Object.values(by).reduce((a, b) => a + (Number(b) || 0), 0);
+        return s + (Number(x.roundsDone) || 0);
+      }, 0);
+      $('lastSession').innerHTML =
+        '<div class="last-row"><div class="last-badge">' + emojiFor(last.title) + '</div><div>' +
+        '<b style="font-size:1rem;">' + esc(last.week + ' ' + last.day) + '</b><br>' +
+        '<span class="muted">' + esc(last.title || '') + '</span></div></div>' +
+        '<p class="muted" style="margin-top:10px;">📅 ' + ago + ' · 👯 ' + who +
+        (last.totalMinutes ? ' · ⏱️ ' + last.totalMinutes + ' min' : '') +
+        (rounds ? ' · ✅ ' + rounds + ' rounds' : '') + (feel ? ' · ' + feel : '') + '</p>';
+    }
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c])); }
+  const fmt = (v, unit) => unit === 'seconds' ? Math.floor(v / 60) + ':' + String(v % 60).padStart(2, '0') : String(v);
+  const parseDMY = s => { const p = String(s || '').split('/'); return p.length === 3 ? new Date(+p[2], +p[1] - 1, +p[0]) : null; };
+
+  function renderGlow(){
+    // Each person's biggest % jump: first test vs latest (logged retests included).
+    const entries = (Array.isArray(testEntries) ? testEntries : []).slice()
+      .sort((a, b) => (parseDMY(a.date) || 0) - (parseDMY(b.date) || 0));
+    const rows = [];
+    ['Pene', 'Jenna'].forEach(p => {
+      let best = null;
+      (FT.tests || []).forEach(t => {
+        const series = (t.series && t.series[p] || []).filter(v => v != null);
+        entries.forEach(e => (e.tests || []).forEach(x => { if(x.name === t.name && x[p] != null && x[p] !== '') series.push(Number(x[p])); }));
+        if(series.length < 2 || !series[0]) return;
+        const first = series[0], lastV = series[series.length - 1];
+        const pct = Math.round((lastV - first) / first * 100);
+        if(pct > 0 && (!best || pct > best.pct)) best = { pct, name: t.name.replace(/\s*\(.*\)/, ''), first, last: lastV, unit: t.unit };
+      });
+      if(best) rows.push('<div class="glow-item"><div class="who-dot ' + p.toLowerCase() + '">' + p[0] + '</div>' +
+        '<div class="what"><b>' + p + ': ' + esc(best.name) + '</b>' + fmt(best.first, best.unit) + ' → ' + fmt(best.last, best.unit) +
+        (best.unit === 'reps' ? ' reps' : '') + '</div><div class="up">+' + best.pct + '%</div></div>');
+    });
+    if(rows.length) $('glowList').innerHTML = rows.join('');
+
+    const dates = (FT.dates || []).concat(entries.map(e => e.date)).map(parseDMY).filter(Boolean).sort((a, b) => a - b);
+    const lastTest = dates[dates.length - 1];
+    const planned = parseDMY(FT.nextTestDate);
+    if(planned && planned >= today){
+      const d = Math.round((planned - today) / 86400000);
+      $('testNext').textContent = '📆 Next retest in ' + d + ' day' + (d === 1 ? '' : 's') + '.';
+    } else if(lastTest){
+      const weeks = Math.floor((today - lastTest) / (7 * 86400000));
+      $('testNext').innerHTML = '📆 Last test was ' + weeks + ' weeks ago. ' + (weeks >= 6 ? '<a href="tests.html">Time for a retest?</a>' : '');
+    }
+  }
+
+  // Short, true, evidence based nudges. One per day, same for both phones.
+  const BITES = [
+    ['It takes a median of 66 days for a new habit to feel automatic, and missing one day does not reset the clock.', 'Lally et al., 2010, European Journal of Social Psychology'],
+    ['Training with a partner you see as slightly stronger can make you keep going noticeably longer. Hello, Köhler effect.', 'Feltz et al., 2011, Journal of Sport & Exercise Psychology'],
+    ['Deciding exactly when and where you will train ("Monday 6pm, the shed") makes you much more likely to follow through.', 'Gollwitzer & Sheeran, 2006, implementation intentions meta analysis'],
+    ['Music you love can make hard effort feel easier and lift your mood while you work.', 'Terry et al., 2020, Psychological Bulletin'],
+    ['Strength training is linked with lower symptoms of anxiety and low mood, even at modest doses.', 'Gordon et al., JAMA Psychiatry 2018 and Sports Medicine 2017'],
+    ['Feeling capable grows your motivation. Every ticked round is a small win your brain counts.', 'Self Determination Theory, Deci & Ryan'],
+    ['Lifting to near failure builds muscle with light or heavy weights, so a hard set of 15 counts too.', 'Schoenfeld et al., 2017, Journal of Strength & Conditioning Research'],
+    ['Tracking progress you can see is one of the most reliable ways to stick with a goal.', 'Harkin et al., 2016, Psychological Bulletin'],
+    ['Heavy, well coached lifting improved bone density in women in the LIFTMOR trial. Strong now, strong later.', 'Watson et al., 2018, LIFTMOR trial'],
+    ['Enjoyment predicts who keeps exercising better than willpower does. Choose the fun version.', 'Rhodes & Kates, 2015, Annals of Behavioral Medicine'],
+    ['Sleep is when a lot of muscle repair happens, so a good night is part of the program.', 'Dattilo et al., 2011, Medical Hypotheses'],
+    ['New gym members who trained at least four times a week built an exercise habit in about six weeks.', 'Kaushal & Rhodes, 2015, Journal of Behavioral Medicine']
+  ];
+  function renderBrain(){
+    const dayNum = Math.floor(today.getTime() / 86400000);
+    const b = BITES[dayNum % BITES.length];
+    $('brainText').textContent = b[0];
+    $('brainSrc').textContent = b[1];
+  }
+
+  function renderAll(){ try{ renderWeek(); }catch(e){} try{ renderStats(); }catch(e){} try{ renderGlow(); }catch(e){} }
+  greet(); renderBrain(); renderAll();
+
+  if(window.CloudSync){
+    const prevState = CloudSync.onStateChange, prevArch = CloudSync.onArchiveChange, prevFt = CloudSync.onFitnessTestsChange;
+    CloudSync.onStateChange = function(data){
+      if(prevState) try{ prevState(data); }catch(e){}
+      if(data && Array.isArray(data.completedDays)){ completed = data.completedDays; renderAll(); }
+    };
+    CloudSync.onArchiveChange = function(entries){
+      if(prevArch) try{ prevArch(entries); }catch(e){}
+      archive = entries || []; renderAll();
+    };
+    CloudSync.onFitnessTestsChange = function(entries){
+      if(prevFt) try{ prevFt(entries); }catch(e){}
+      testEntries = entries || []; renderAll();
+    };
+  }
+})();
+</script>
 </body>
 </html>

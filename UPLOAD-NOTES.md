@@ -2,6 +2,11 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 52: New home dashboard (16 Nov)
+Pene: the home page still talked about Weeks 11 and 12 and needed something fun.
+- **index.html** is now a live dashboard that works itself out from data.js and the synced history, so it never goes stale: current week and dates (from each week's dates line), Up next session with a Let's go button, this week's progress ring and day chips (optional days don't count), sessions finished, hours trained, week streak, weeks in the program, each person's biggest fitness test win (logged retests included), last session card, a daily science bite, and quick links (Progress added).
+- Offline cache pj-fitness-v35.
+
 ## Batch 51: Round Timer and EMOM now talk over Spotify (16 Nov)
 Pene: on Monday upper body, starting the Round Timer or the EMOM stopped Spotify and there were no voice instructions. Tabata was fine.
 - **Why**: Tabata talks with recorded clips played as sound effects, which can mix over Spotify. The Round, EMOM, AMRAP, Partner and Race timers used the phone's built in speech voice, and on iPhone that voice always pauses other apps. The phone audio rule was also left on Tabata's setting, which doesn't mix.
