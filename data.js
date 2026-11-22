@@ -12649,8 +12649,8 @@ window.SITE_DATA = {
             "id": "mon",
             "label": "Monday",
             "title": "Upper Strength + EMOM",
-            "estTime": "45 min",
-            "note": "<strong>Summer Build, week 2: heavier and faster.</strong> If you hit the Level up reps on every set last Monday, go up a weight today (that rule is called double progression and it is the simplest way to keep getting stronger). <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Pick yours each set. <strong>New:</strong> straight arm pulldowns on the lat tower (the exact strength rings and handstands need), negatives in the Skills Lab, and a 10 minute EMOM with 5 new moves.",
+            "estTime": "50 min",
+            "note": "<strong>Summer Build, week 2: heavier and faster.</strong> If you hit the Level up reps on every set last Monday, go up a weight today (that rule is called double progression and it is the simplest way to keep getting stronger). <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Pick yours each set. <strong>New bench!</strong> Station 3 adds preacher curls and bench tricep dips for stronger arms (great for rings and handstands). <strong>Also new:</strong> straight arm pulldowns on the lat tower (the exact strength rings and handstands need), negatives in the Skills Lab, and a 10 minute EMOM with 5 new moves.",
             "warmup": [
               {
                 "name": "Jumping Jacks",
@@ -12882,6 +12882,72 @@ window.SITE_DATA = {
                     "videoKnown": false,
                     "name": "Push Ups",
                     "qty": "3 rounds · Base: 10 (knees fine) · Level up: 12, beat last week's full reps"
+                  }
+                ]
+              },
+              {
+                "name": "Station 3: Bench Arms",
+                "rounds": 2,
+                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "timer": {
+                  "type": "partner",
+                  "turn": 40,
+                  "swap": 20,
+                  "betweenRounds": 60
+                },
+                "formatNote": "<strong>New bench, new arms!</strong> The preacher pad pins your elbows so your biceps can't cheat, and the bench is finally high enough for proper tricep dips (a stepping stone to full dips on the bars). One bench, so take turns.",
+                "exercises": [
+                  {
+                    "name": "EZ Bar Preacher Curl",
+                    "qty": "2 rounds · Base: 10 · Level up: 12 with a 3 sec lower",
+                    "weight": "EZ bar alone (~13 kg), no plates",
+                    "weightFor": {
+                      "pene": "EZ bar alone (~13 kg), no plates",
+                      "jenna": "EZ bar alone (~13 kg), or one 5 kg dumbbell, one arm at a time"
+                    },
+                    "video": "https://www.youtube.com/results?search_query=ez%20bar%20preacher%20curl%20form",
+                    "videoKnown": false,
+                    "station": "Bench · preacher curl pad · EZ bar",
+                    "setup": [
+                      "Fit the preacher pad to the bench and set the seat so your armpits sit snug on top of the pad.",
+                      "Load nothing on the EZ bar for the first round. Preacher curls feel much heavier than standing curls."
+                    ],
+                    "steps": [
+                      "Sit with the backs of your arms flat on the pad, holding the EZ bar on the angled grips, palms up.",
+                      "Curl the bar up towards your chin, keeping your arms on the pad.",
+                      "Lower slowly until your arms are almost straight. Stop just short of locking out."
+                    ],
+                    "watch": "lifting your elbows off the pad or dropping the bar fast at the bottom. Slow and controlled protects the elbows.",
+                    "variants": [
+                      "8 reps",
+                      "10 reps",
+                      "12 reps, 3 sec lower"
+                    ],
+                    "buddy": "Hammer curls, 5 kg dumbbells"
+                  },
+                  {
+                    "name": "Bench Tricep Dips",
+                    "qty": "2 rounds · Base: 10, knees bent · Level up: 12, legs straight",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=bench%20tricep%20dips%20form",
+                    "videoKnown": false,
+                    "station": "Bench, set flat",
+                    "setup": [
+                      "Set the bench flat and make sure it is steady.",
+                      "Sit on the long edge, hands beside your hips, fingers pointing forward."
+                    ],
+                    "steps": [
+                      "Slide your bottom off the bench, arms straight, feet on the floor.",
+                      "Bend your elbows straight back to about 90 degrees, lowering your hips towards the floor.",
+                      "Press back up until your arms are straight."
+                    ],
+                    "watch": "shoulders creeping up to your ears or elbows flaring out. Keep your chest proud and bottom close to the bench.",
+                    "variants": [
+                      "Knees bent, feet close",
+                      "Knees bent, feet further out",
+                      "Legs straight"
+                    ],
+                    "buddy": "Plank shoulder taps, slow"
                   }
                 ]
               },

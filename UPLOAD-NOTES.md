@@ -2,6 +2,9 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 59: Week 25 Monday, Station 3 Bench Arms (23 Nov)
+The adjustable bench arrived with leg curl/extension and a preacher curl pad. New partner block before the EMOM (40/20, 2 rounds): EZ Bar Preacher Curl (bar alone; Jenna can use one 5 kg DB) with Hammer Curls buddy, Bench Tricep Dips (knees bent base, legs straight level up) with Plank Shoulder Taps buddy. Monday now 50 min. New lines use the phone voice until timer-voice.json is regenerated. Offline cache pj-fitness-v42.
+
 ## Batch 58: Week 25 Thursday, Pistol Squat Skills Lab + control buddy moves (17 Nov)
 Pene wants movements with strength and control (pistol squats), plus single leg balance, side to side strength, core control and flow moves, with lots of variety.
 - Title Legs + Pistol Skills, 50 to 55 min. Warm up adds Ankle Rocks and Deep Squat Hold (pistol depth prep).
