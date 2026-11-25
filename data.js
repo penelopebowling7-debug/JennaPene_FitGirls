@@ -13620,34 +13620,50 @@ window.SITE_DATA = {
           {
             "id": "thu",
             "label": "Thursday",
-            "title": "Legs + Pistol Skills",
-            "estTime": "50 to 55 min",
-            "note": "<strong>New: the Pistol Squat Skills Lab! 🦵</strong> A pistol is a full squat on one leg, the other leg held out in front. It takes strength, balance, ankle mobility and core control all at once, so we build it in stages, starting while you're fresh. <strong>Every station now has a buddy move</strong> for strength and control: single leg balance, side to side strength, core control and slow crawls. <strong>Two levels on every card:</strong> <strong>Base</strong> is the starting point, <strong>Level up</strong> is the harder version. Then heavier legs and the partner burner. Keep the legs fresh enough for Friday's race: stop each set with a rep or two left.",
+            "title": "Legs + Pistols + Abs (with Ax)",
+            "estTime": "50 min",
+            "note": "<strong>Pene and Ax day! 👦💪</strong> No more 2 move stations: today is a 4 move Skills Lab, a 6 station Booty Rotation where you both work at the same time on different stations, an 8 move core Tabata and a dead hang showdown. <strong>Ax's version is on every card</strong> (bodyweight, cables on the lightest pin, no Smith machine, the Olympic bar is Pene only). <strong>Two levels on every card:</strong> Base is the starting point, Level up is the harder version. Pistols and dragon squats go first while your legs are fresh, because quality reps are what turn 1 or 2 pistols into 5.",
             "warmup": [
               {
-                "name": "Marching on the Spot",
-                "qty": "1 min, swing the arms",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=marching%20on%20the%20spot%20warm%20up",
-                "videoKnown": false
+                "name": "Skipping Rope",
+                "weight": "Skipping rope",
+                "video": "https://www.youtube.com/results?search_query=Skipping%20Rope%20exercise%20form",
+                "videoKnown": false,
+                "qty": "1 min, both of you (two ropes)"
               },
               {
                 "name": "Leg Swings",
-                "qty": "10 each leg, front and side",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=leg%20swings%20warm%20up",
-                "videoKnown": false
+                "videoKnown": false,
+                "qty": "10 each leg, front and side"
               },
               {
-                "name": "Walking Lunges",
-                "qty": "10 total, easy depth",
+                "name": "Walking Lunge with Twist",
                 "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=walking%20lunges%20form",
-                "videoKnown": false
+                "video": "https://www.youtube.com/results?search_query=walking%20lunge%20with%20twist",
+                "videoKnown": false,
+                "qty": "10 total, twist over the front knee",
+                "steps": [
+                  "Step forward into a lunge.",
+                  "Rotate your chest over the front knee, arms out.",
+                  "Untwist, step through and repeat on the other leg."
+                ]
+              },
+              {
+                "name": "Cossack Shifts",
+                "weight": "Bodyweight",
+                "video": "https://www.youtube.com/results?search_query=cossack%20squat%20mobility",
+                "videoKnown": false,
+                "qty": "6 each side, easy depth",
+                "steps": [
+                  "Stand with feet very wide, toes slightly out.",
+                  "Shift your weight to one side, bending that knee and keeping the other leg straight.",
+                  "Shift across to the other side. Stay as low as feels comfy."
+                ]
               },
               {
                 "name": "Ankle Rocks",
-                "qty": "10 each side",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=knee%20over%20toe%20ankle%20mobility%20rocks",
                 "videoKnown": false,
@@ -13656,11 +13672,11 @@ window.SITE_DATA = {
                   "Rock your front knee forward over your toes towards the wall, heel stays down.",
                   "Rock back and repeat. Swap legs."
                 ],
-                "watch": "your heel lifting. Ankle bend is what lets a pistol go deep."
+                "watch": "your heel lifting. Ankle bend is what lets a pistol go deep.",
+                "qty": "10 each side"
               },
               {
                 "name": "Deep Squat Hold",
-                "qty": "30 sec, hold the frame if you need",
                 "weight": "Bodyweight",
                 "video": "https://www.youtube.com/results?search_query=deep%20squat%20hold%20mobility",
                 "videoKnown": false,
@@ -13668,75 +13684,128 @@ window.SITE_DATA = {
                   "Feet a bit wider than hips, toes slightly out.",
                   "Sit all the way down, chest tall, elbows pushing your knees out.",
                   "Breathe and relax into it."
-                ]
-              },
-              {
-                "name": "High Knees",
-                "qty": "30 sec, light and bouncy",
-                "weight": "Bodyweight",
-                "video": "https://www.youtube.com/results?search_query=high%20knees%20exercise%20form",
-                "videoKnown": false
+                ],
+                "qty": "30 sec, hold the frame if you need"
               }
             ],
             "blocks": [
               {
-                "name": "Skills Lab: Pistol Squat",
+                "name": "Skills Lab: Pistols + Dragons",
                 "rounds": 2,
-                "tempo": "30 sec turns, 20 sec swap, 45 sec rest between rounds",
-                "timer": {
-                  "type": "partner",
-                  "turn": 30,
-                  "swap": 20,
-                  "betweenRounds": 45
-                },
-                "formatNote": "<strong>Quality over quantity.</strong> Stage 1 is the assisted pistol (hands on the Smith bar take some of your weight). Stage 2 is the box pistol (lower on one leg to sit on a chair). Over the coming weeks the help gets less and the chair gets lower, until it's a full pistol. Buddy moves: <strong>Cossack squat</strong> (side to side strength) and <strong>slow bear crawl</strong> (control).",
+                "tempo": "Reps, 30 sec rest between exercises, 60 sec rest between rounds",
+                "formatNote": "<strong>Side by side, 4 moves, quality first.</strong> Pene: do your 1 to 2 full pistols each leg first while you're fresh, then finish the set assisted. The slow lowering on the dragon squat is what builds the strength to let go of the frame. <strong>Ax</strong> does the box pistol to the bench and curtsy lunges. Everyone does the balance reach and Cossack squats.",
                 "exercises": [
                   {
-                    "name": "Assisted Pistol Squat",
-                    "qty": "2 rounds · Base: 3 each leg · Level up: 5 each leg, lighter grip",
+                    "name": "Pistol Squat",
                     "weight": "Bodyweight",
                     "video": "https://www.youtube.com/results?search_query=assisted%20pistol%20squat%20holding%20support",
                     "videoKnown": false,
-                    "station": "Smith bar at about hip height, locked in · hold with both hands",
+                    "station": "Hold the upright of the Beast frame for the assisted reps",
                     "steps": [
-                      "Stand on one leg facing the bar, other leg lifted a little in front.",
-                      "Sit back and down as low as you can control, using your hands only as much as you need.",
-                      "Drive up through your whole foot. Swap legs halfway."
+                      "Stand on one leg, other leg lifted out in front, arms reaching forward.",
+                      "Sit down on that one leg as low as you can control, about 3 seconds down.",
+                      "Drive up through your whole foot. Full ones first, then hold the frame for the assisted reps. Swap legs."
                     ],
-                    "watch": "your knee caving in. Keep it in line with your toes, even if you go less deep.",
-                    "buddy": "Cossack Squat"
+                    "watch": "your knee caving in. Keep it over your toes, even if you go a little less deep.",
+                    "qty": "2 rounds · Base: 1 full pistol each leg, then 2 assisted · Level up: 2 full each leg, then 2 assisted",
+                    "variants": [
+                      "Assisted, holding the frame",
+                      "1 full pistol each leg",
+                      "2 full pistols each leg",
+                      "Ax: box pistol to the bench, sit on one leg, stand on two"
+                    ]
                   },
                   {
-                    "name": "Box Pistol to Chair",
-                    "qty": "2 rounds · Base: 3 each leg, stand up on two legs · Level up: stand up on one leg",
+                    "name": "Dragon Squat (Assisted)",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=box%20pistol%20squat%20progression",
+                    "video": "https://www.youtube.com/results?search_query=dragon%20squat%20progression%20assisted",
                     "videoKnown": false,
-                    "station": "Sturdy chair, back against the wall",
+                    "qty": "2 rounds · Base: 3 each leg, slow 3 sec lower · Level up: 4 each leg, lighter grip",
+                    "station": "Hold the frame with one hand",
                     "steps": [
-                      "Stand in front of the chair on one leg, arms out in front for balance.",
-                      "Lower slowly on that leg until you sit, about 3 seconds down.",
-                      "Stand back up (both legs for Base, one leg for Level up). Swap legs halfway."
+                      "Stand on your right leg holding the frame.",
+                      "Sweep your left leg behind and across your right leg, like a deep curtsy, toes just off the floor.",
+                      "Lower slowly on the right leg, then stand back up. Swap legs."
                     ],
-                    "watch": "dropping into the chair. The slow lower is the bit that builds the pistol.",
-                    "buddy": "Slow Bear Crawl"
+                    "watch": "rushing the lower. Three slow seconds down is where the strength comes from.",
+                    "variants": [
+                      "Hold with both hands",
+                      "One hand on the frame",
+                      "Fingertips only",
+                      "Ax: curtsy lunges, 6 each leg"
+                    ]
+                  },
+                  {
+                    "name": "Single Leg Balance Reach",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=single%20leg%20rdl%20bodyweight%20reach",
+                    "videoKnown": false,
+                    "qty": "2 rounds · Base: 5 each leg · Level up: 8 each leg, slow",
+                    "steps": [
+                      "Stand on one leg, soft knee.",
+                      "Hinge forward and reach your hands towards the floor as the other leg floats back, hips level.",
+                      "Stand tall slowly. Swap legs."
+                    ],
+                    "watch": "hips twisting open. Point both hip bones at the floor.",
+                    "variants": [
+                      "Fingertips on the frame",
+                      "No hands",
+                      "Reach and hold 2 sec",
+                      "Ax: same as Pene"
+                    ]
+                  },
+                  {
+                    "name": "Cossack Squat",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=cossack%20squat%20form",
+                    "videoKnown": false,
+                    "qty": "2 rounds · Base: 4 each side · Level up: 6 each side, deeper",
+                    "steps": [
+                      "Feet very wide, toes slightly out.",
+                      "Sit down onto one leg, the other leg straight with the toes pointing up.",
+                      "Push back up through the middle and go to the other side."
+                    ],
+                    "watch": "your heel lifting on the bent leg. Only go as low as the heel stays down.",
+                    "variants": [
+                      "Hands on the frame",
+                      "Hands together in front",
+                      "Hold a 5 kg dumbbell",
+                      "Ax: same as Pene, bodyweight"
+                    ]
                   }
                 ]
               },
               {
-                "name": "Station 1: Squat + Carry",
+                "name": "Booty Rotation: 6 Stations",
                 "rounds": 3,
-                "tempo": "40 sec turns, 15 sec swap, 60 sec rest between rounds",
-                "timer": {
-                  "type": "partner",
-                  "turn": 40,
-                  "swap": 15,
-                  "betweenRounds": 60
-                },
-                "formatNote": "<strong>Goblet squats, then farmer carry laps of the shed or yard.</strong> Take turns. Buddy moves: <strong>hollow hold</strong> and <strong>side plank</strong> (core control).",
+                "tempo": "45 sec active / 15 sec rest, 90 sec rest between rounds",
+                "formatNote": "<strong>You both work at the same time and rotate.</strong> Pene starts on Station 1, Ax starts on Station 4. When the timer says move, step to the next station (Ax goes from 6 back round to 1). Only one of you is on the bench or the Olympic bar at a time, so no waiting. <strong>Ax's version</strong> is the last option on each card. Squeeze your glutes at the top of every rep!",
                 "exercises": [
                   {
-                    "name": "Dumbbell Goblet Squat",
+                    "name": "Station 1: Bench Hip Thrust",
+                    "weight": "Olympic bar (20 kg) or a plate on hips",
+                    "video": "https://www.youtube.com/results?search_query=barbell%20hip%20thrust%20bench%20form",
+                    "videoKnown": false,
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 2 sec squeeze at the top",
+                    "station": "Bench side on against the wall · towel or pad on the bar",
+                    "steps": [
+                      "Sit on the floor with your upper back against the long side of the bench, bar or plate over your hips.",
+                      "Feet flat, hip width, knees bent. Drive through your heels to lift your hips until your body is flat like a table.",
+                      "Squeeze your glutes hard at the top, chin tucked, then lower with control."
+                    ],
+                    "watch": "arching your lower back at the top. Ribs down, finish with your glutes.",
+                    "variants": [
+                      "Plate on hips",
+                      "Olympic bar, 20 kg",
+                      "Bar, 2 sec pause at top",
+                      "Ax: single leg glute bridge, shoulders on the bench, swap legs halfway"
+                    ],
+                    "weightFor": {
+                      "pene": "Olympic bar (20 kg)"
+                    }
+                  },
+                  {
+                    "name": "Station 2: Goblet Squat",
                     "videoKnown": false,
                     "weight": "10 kg dumbbell",
                     "video": "https://www.youtube.com/results?search_query=dumbbell%20goblet%20squat%20form",
@@ -13749,175 +13818,259 @@ window.SITE_DATA = {
                     "variants": [
                       "7 kg dumbbell",
                       "10 kg dumbbell",
-                      "12.5 kg dumbbell"
+                      "12.5 kg dumbbell",
+                      "Ax: squat jumps, soft landings"
                     ],
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower",
                     "weightFor": {
-                      "pene": "12.5 kg dumbbell",
-                      "jenna": "10 kg dumbbell"
-                    },
-                    "qty": "3 rounds · Base: 10 · Level up: 12",
-                    "buddy": "Hollow Hold"
+                      "pene": "10 kg dumbbell"
+                    }
                   },
                   {
-                    "name": "Farmer Carry",
+                    "name": "Station 3: Bulgarian Split Squat",
+                    "weight": "5 kg dumbbells",
+                    "video": "https://www.youtube.com/results?search_query=bulgarian%20split%20squat%20form",
                     "videoKnown": false,
-                    "weight": "2 x 10 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=farmer%20carry%20dumbbell%20form",
+                    "qty": "3 rounds · swap legs at 20 sec · Base: bodyweight · Level up: 5 kg in each hand",
+                    "station": "Back foot laces down on the aerobic step",
                     "steps": [
-                      "Pick up a heavy dumbbell in each hand with a flat back.",
-                      "Stand tall, shoulders down and back, and walk with short quick steps.",
-                      "Put them down with control, hinging at the hips."
+                      "Stand a big step in front of the step, back foot resting on it, laces down.",
+                      "Drop your back knee straight down towards the floor, front shin fairly upright.",
+                      "Push through your front heel to stand. Swap legs at 20 seconds."
                     ],
-                    "watch": "leaning to one side or shrugging. Tall and proud, like a waiter with a tray.",
+                    "watch": "your front knee caving in or your front heel lifting.",
                     "variants": [
-                      "2 x 7 kg",
-                      "2 x 10 kg",
-                      "2 x 12.5 kg"
+                      "Bodyweight, hand on the frame",
+                      "5 kg in each hand",
+                      "7 kg in each hand",
+                      "Ax: bodyweight, hand on the frame if wobbly"
                     ],
                     "weightFor": {
-                      "pene": "2 x 12.5 kg dumbbells",
-                      "jenna": "2 x 10 kg dumbbells"
-                    },
-                    "qty": "3 rounds · walk for 40 sec · Level up: heavier pair",
-                    "buddy": "Side Plank, swap sides halfway"
+                      "pene": "5 kg dumbbells"
+                    }
+                  },
+                  {
+                    "name": "Station 4: Olympic Bar Romanian Deadlift",
+                    "weight": "Olympic bar (20 kg), no plates",
+                    "video": "https://www.youtube.com/results?search_query=barbell%20romanian%20deadlift%20form",
+                    "videoKnown": false,
+                    "steps": [
+                      "Stand tall holding the Olympic bar at your thighs, hands just outside your hips, feet hip width.",
+                      "Soft knees, push your hips back and slide the bar down your thighs until you feel a stretch in your hamstrings (around mid shin).",
+                      "Squeeze your glutes and drive your hips forward to stand tall."
+                    ],
+                    "watch": "the bar drifting away from your legs or a rounded back. Keep it close, chest proud.",
+                    "variants": [
+                      "Olympic bar (20 kg)",
+                      "Bar, 3 sec lower",
+                      "Bar + 2.5 kg plates",
+                      "Ax: good mornings, hands on head, flat back"
+                    ],
+                    "qty": "3 rounds · Base: 10 · Level up: 12, 3 sec lower",
+                    "weightFor": {
+                      "pene": "Olympic bar (20 kg), no plates"
+                    }
+                  },
+                  {
+                    "name": "Station 5: Cable Pull Through",
+                    "weight": "Lightest pin",
+                    "video": "https://www.youtube.com/results?search_query=cable%20pull%20through%20rope%20form",
+                    "videoKnown": false,
+                    "station": "Side pulley · very bottom · rope",
+                    "setup": [
+                      "Pull the pop pin on one side pulley and slide it all the way to the bottom.",
+                      "Clip the rope on with the carabiner.",
+                      "Put the weight stack pin in the lightest plate."
+                    ],
+                    "steps": [
+                      "Stand with your back to the pulley, the cable running between your legs. Hold one rope end in each hand.",
+                      "Walk forward two big steps, feet a bit wider than your hips. Push your hips back so the rope travels back between your legs, back flat, soft knees.",
+                      "Squeeze your glutes to drive your hips forward and stand tall. Arms just hang, your hips do the work."
+                    ],
+                    "watch": "pulling with your arms or leaning back at the top. Stand tall, squeeze, done.",
+                    "variants": [
+                      "Lightest pin",
+                      "One pin heavier",
+                      "Ax: lightest pin, same as Pene"
+                    ],
+                    "qty": "3 rounds · Base: 12 smooth reps · Level up: 15, 2 sec squeeze"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Skater%20Jumps%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Station 6: Skater Jumps",
+                    "qty": "3 rounds · Base: step side to side · Level up: big leaps, stick the landing",
+                    "steps": [
+                      "Leap sideways onto your right foot, left foot sweeping behind.",
+                      "Touch the floor lightly if you like, then leap to the left.",
+                      "Keep going side to side, soft knees on every landing."
+                    ],
+                    "watch": "landing stiff legged. Land soft and quiet like a ninja.",
+                    "variants": [
+                      "Step side to side",
+                      "Small hops",
+                      "Big leaps",
+                      "Ax: big leaps, race Mum!"
+                    ]
                   }
                 ]
               },
               {
-                "name": "Station 2: Hinge + Single Leg",
-                "rounds": 3,
-                "tempo": "40 sec turns, 20 sec swap, 60 sec rest between rounds",
+                "name": "Core Tabata: 8 Moves",
+                "rounds": 1,
+                "tempo": "20 sec on / 10 sec off, 16 intervals (8 min)",
                 "timer": {
-                  "type": "partner",
-                  "turn": 40,
-                  "swap": 20,
-                  "betweenRounds": 60
+                  "type": "tabata",
+                  "work": 20,
+                  "rest": 10,
+                  "intervals": 16
                 },
-                "formatNote": "<strong>Pene 10 kg, Jenna 7 kg on the RDL.</strong> Level up: go up a pair if 12 felt easy last week. Buddy moves: <strong>single leg balance reach</strong> (stand on one leg, hinge and reach to the floor, swap legs halfway) and <strong>hollow to arch roll</strong> (roll from back to front keeping your body long, no hands).",
+                "formatNote": "<strong>Rest 2 minutes, then abs!</strong> 8 different moves, each one comes round twice. Do it side by side. Base: easier version, Level up: full version. Ax does the same moves.",
                 "exercises": [
                   {
-                    "name": "Dumbbell Romanian Deadlift",
-                    "qty": "3 rounds · Base: 10 · Level up: 12 or heavier",
-                    "weight": "7 kg dumbbells",
-                    "video": "https://www.youtube.com/results?search_query=dumbbell%20romanian%20deadlift%20form",
+                    "name": "Hollow Hold",
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Hollow%20Hold%20exercise%20form",
                     "videoKnown": false,
                     "steps": [
-                      "Stand tall with a dumbbell in each hand in front of your thighs, soft knees.",
-                      "Push your hips back and slide the dumbbells down your legs until you feel a stretch in your hamstrings. Back stays flat.",
-                      "Squeeze your glutes to drive your hips forward and stand tall."
+                      "Lie on your back, press your lower back into the floor.",
+                      "Lift your shoulders and legs off the floor, arms by your ears, like a banana.",
+                      "Hold the shape. Bend your knees or bring your arms forward if your back lifts."
                     ],
-                    "watch": "your back rounding. Stop the rep where your back is still flat.",
-                    "variants": [
-                      "5 kg dumbbells",
-                      "7 kg dumbbells",
-                      "7 kg, 3 sec lower"
-                    ],
-                    "weightFor": {
-                      "pene": "10 kg dumbbells",
-                      "jenna": "7 kg dumbbells"
-                    },
-                    "buddy": "Single Leg Balance Reach"
+                    "watch": "your lower back peeling off the floor. That is the moment to make it easier.",
+                    "qty": "2 intervals · Base: knees bent · Level up: legs long"
                   },
                   {
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=Reverse%20Lunges%20exercise%20form",
+                    "video": "https://www.youtube.com/results?search_query=Bicycle%20Crunch%20exercise%20form",
                     "videoKnown": false,
-                    "name": "Reverse Lunges",
-                    "qty": "3 rounds · Base: 6 each leg · Level up: 8 each holding 5 kg dumbbells",
+                    "name": "Bicycle Crunch",
+                    "qty": "2 intervals · slow elbow to knee"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Plank%20Jacks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Plank Jacks",
+                    "qty": "2 intervals · Base: step out · Level up: jump"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Russian%20Twist%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Russian Twist",
+                    "race": "30 Russian Twists",
+                    "qty": "2 intervals · Base: feet down · Level up: feet up"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Flutter%20Kicks%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Flutter Kicks",
                     "variants": [
-                      "Hold the frame for balance",
-                      "Bodyweight, alternating",
-                      "Ax: reverse lunge to knee drive"
+                      "Knees bent",
+                      "Legs higher",
+                      "Legs low"
                     ],
-                    "buddy": "Hollow to Arch Roll"
+                    "qty": "2 intervals · lower back pressed down"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Mountain%20Climbers%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Mountain Climbers",
+                    "amrap": "20",
+                    "qty": "2 intervals · Base: steady · Level up: fast"
+                  },
+                  {
+                    "name": "Reverse Crunch",
+                    "videoKnown": false,
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=reverse%20crunch%20form",
+                    "steps": [
+                      "Lie on your back, knees bent to 90 degrees, hands by your sides.",
+                      "Curl your knees to your chest so your hips lift off the floor a little.",
+                      "Lower slowly back to 90 degrees."
+                    ],
+                    "watch": "swinging. Slow and curled, like rolling up a yoga mat.",
+                    "variants": [
+                      "Small lift",
+                      "Full curl",
+                      "Legs straighter"
+                    ],
+                    "qty": "2 intervals · slow curl"
+                  },
+                  {
+                    "weight": "Bodyweight",
+                    "video": "https://www.youtube.com/results?search_query=Bear%20Crawl%20exercise%20form",
+                    "videoKnown": false,
+                    "name": "Bear Crawl",
+                    "qty": "2 intervals · knees hovering"
                   }
                 ]
               },
               {
-                "name": "Partner Burner: You Go, I Go",
-                "rounds": 3,
-                "tempo": "30 sec turns, 30 sec rest between rounds",
-                "timer": {
-                  "type": "partner",
-                  "turn": 30,
-                  "swap": 0,
-                  "betweenRounds": 30
-                },
-                "formatNote": "<strong>No rest while your partner works!</strong> One does the move, the other holds a wall sit (or plank). Swap straight away. 3 rounds.",
+                "name": "Dead Hang Challenge",
+                "rounds": 1,
+                "tempo": "No timer, one max hold each",
+                "formatNote": "<strong>The showdown! 🏆</strong> One max dead hang each, the other one times it. Write both times in the Finish note so next time you can beat them.",
                 "exercises": [
                   {
-                    "name": "Dumbbell Swing",
+                    "video": "https://www.youtube.com/results?search_query=dead%20hang%20beginner",
                     "videoKnown": false,
-                    "weight": "7 kg dumbbell",
-                    "video": "https://www.youtube.com/results?search_query=dumbbell%20swing%20form%20hip%20hinge",
-                    "steps": [
-                      "Hold one dumbbell by the end with both hands, feet a bit wider than hips.",
-                      "Hinge your hips back so the dumbbell swings between your legs.",
-                      "Snap your hips forward and squeeze your glutes so the dumbbell floats up to chest height. Arms just guide it."
-                    ],
-                    "watch": "squatting or lifting with the arms. It is a hip snap, like a big jump without leaving the floor.",
-                    "variants": [
-                      "4 kg kettlebell",
-                      "7 kg dumbbell",
-                      "10 kg dumbbell"
-                    ],
-                    "weightFor": {
-                      "pene": "10 kg dumbbell",
-                      "jenna": "7 kg dumbbell"
-                    },
-                    "qty": "3 rounds · 30 sec, hip snap",
-                    "buddy": "Wall sit hold"
-                  },
-                  {
-                    "name": "Burpees",
+                    "name": "Dead Hang Max Hold",
                     "weight": "Bodyweight",
-                    "video": "https://www.youtube.com/results?search_query=burpee%20beginner%20form",
-                    "videoKnown": false,
-                    "qty": "3 rounds · 30 sec · Base: step back · Level up: jump",
+                    "station": "Pull up bar · stepping block underneath",
                     "steps": [
-                      "Squat down and put your hands on the floor.",
-                      "Jump or step your feet back to a plank, then jump or step them back in.",
-                      "Stand up tall and jump with your arms overhead."
+                      "Step up on the block and grab the bar a little wider than your shoulders, palms facing away.",
+                      "Step off and hang with straight arms. Gently pull your shoulders down away from your ears.",
+                      "Breathe and hold. Step back onto the block before your grip gives out."
                     ],
-                    "watch": "flopping into the plank. Keep your belly tight.",
+                    "watch": "shrugging up to your ears. Shoulders down, neck long.",
                     "variants": [
-                      "Step back, no jump",
-                      "Jump back, no push up",
-                      "Full burpee with a push up"
+                      "Full hang",
+                      "Full hang, shoulders pulled down",
+                      "Ax: same, step off the block to start"
                     ],
-                    "buddy": "Forearm plank hold"
+                    "qty": "1 max hold each · log your time"
                   }
                 ]
               }
             ],
             "cooldown": [
               {
+                "name": "Pigeon Pose",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=pigeon%20pose%20stretch",
+                "videoKnown": false,
+                "qty": "45 sec each side"
+              },
+              {
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=figure%20four%20stretch",
+                "videoKnown": false,
+                "name": "Figure Four Stretch",
+                "qty": "30 sec each side"
+              },
+              {
+                "name": "Couch Stretch",
+                "weight": "",
+                "video": "https://www.youtube.com/results?search_query=couch%20stretch%20hip%20flexor%20quad",
+                "videoKnown": false,
+                "qty": "30 sec each side",
+                "steps": [
+                  "Kneel with your back to the couch or bench, one shin up against it.",
+                  "Step the other foot forward into a lunge and lift your chest.",
+                  "Squeeze the glute of the back leg. Swap sides."
+                ]
+              },
+              {
                 "name": "Child's Pose",
-                "qty": "45 sec",
                 "weight": "",
                 "video": "https://www.youtube.com/results?search_query=child's%20pose%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Standing Quad Stretch",
-                "qty": "30 sec each leg",
-                "weight": "",
-                "video": "https://www.youtube.com/results?search_query=standing%20quad%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Seated Hamstring Stretch",
-                "qty": "45 sec",
-                "weight": "",
-                "video": "https://www.youtube.com/results?search_query=Seated%20Hamstring%20Stretch%20stretch",
-                "videoKnown": false
-              },
-              {
-                "name": "Hip Flexor Stretch",
-                "qty": "30 sec each side",
-                "weight": "",
-                "video": "https://www.youtube.com/results?search_query=hip%20flexor%20stretch",
-                "videoKnown": false
+                "videoKnown": false,
+                "qty": "1 min"
               }
             ]
           },

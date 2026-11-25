@@ -2,6 +2,14 @@
 
 Drop these files into the repo root, replacing the existing ones (22 files as of Batch 28, still 22 in Batch 37, including the icon PNGs, tabata.js and coach-voice.json).
 
+## Batch 60: Week 25 Thursday rebuilt for Pene + Ax (25 Nov)
+Pene is training with Ax (11) on Thursday and doesn't like stations with only 2 exercises. She can do 1 to 2 full pistols and can almost do a dragon squat.
+- Title Legs + Pistols + Abs (with Ax), 50 min. Warm up: Skipping Rope (two ropes), Leg Swings, Walking Lunge with Twist, Cossack Shifts, Ankle Rocks, Deep Squat Hold.
+- Skills Lab: Pistols + Dragons, 4 moves side by side, 2 rounds (Pistol Squat full then assisted on the frame, Dragon Squat assisted, Single Leg Balance Reach, Cossack Squat).
+- Booty Rotation: 6 stations, 45/15 x 3, 90 sec between rounds (Bench Hip Thrust, Goblet Squat, Bulgarian Split Squat on the step, Olympic Bar RDL, Cable Pull Through, Skater Jumps). Pene starts 1, Ax starts 4.
+- Core Tabata: 8 moves, 16 intervals. Dead Hang Challenge to finish.
+- Ax version is the last variant on every card: bodyweight, cables lightest pin, no Smith, Olympic bar Pene only. Offline cache pj-fitness-v43. New lines use the phone voice.
+
 ## Batch 59: Week 25 Monday, Station 3 Bench Arms (23 Nov)
 The adjustable bench arrived with leg curl/extension and a preacher curl pad. New partner block before the EMOM (40/20, 2 rounds): EZ Bar Preacher Curl (bar alone; Jenna can use one 5 kg DB) with Hammer Curls buddy, Bench Tricep Dips (knees bent base, legs straight level up) with Plank Shoulder Taps buddy. Monday now 50 min. New lines use the phone voice until timer-voice.json is regenerated. Offline cache pj-fitness-v42.
 
